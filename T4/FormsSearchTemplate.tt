@@ -1,0 +1,297 @@
+﻿<#@ include file="includes.txt" #>
+<#
+switch (OutputType) {
+	case FileType.Page:
+		GeneratePage(SiteVisit, SiteVisit.SiteVisitForms);
+		break;
+	case FileType.Code:
+		GenerateCodeFile(SiteVisit, SiteVisit.SiteVisitForms);
+		break;
+	case FileType.Designer:
+		GenerateDesignerFile(SiteVisit, SiteVisit.SiteVisitForms);
+		break;
+	default:
+		break;
+}
+#><#+
+    void GeneratePage(SiteVisit sitevisit, IEnumerable<SiteVisitForm> forms)
+    {
+		string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
+		var parentForm = SiteVisitDBHelper.GetParentForm(sitevisit);
+		string table = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBTableName;
+        string pkey = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBPrimaryKeyName;
+#><%@ Page Title="<#= sitevisit.SiteVisitName #>" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="<#= sitevisitName #>Search.aspx.cs" Inherits="OnSite.WebUI.SiteVisits.<#= sitevisitName #>Search" %>
+<%@ Register Assembly="DevExpress.Web.ASPxGridView.v12.1.Export, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+    Namespace="DevExpress.Web.ASPxGridView.Export" TagPrefix="dx" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+	<table>
+		<tr>
+			<td>
+				<dx:ASPxHyperLink ID="lnkCreate" runat="server" Text="Create Building Contact" NavigateUrl="~/SiteVisits/<#= sitevisitName #>Edit.aspx">
+				</dx:ASPxHyperLink>
+			</td>
+			<td>
+				<dx:ASPxButton ID="btnCsvExport" runat="server" Text="Export to Csv" UseSubmitBehavior="False" />
+			</td>
+		</tr>
+	</table>
+    <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False">
+        <Columns>
+            <dx:GridViewCommandColumn VisibleIndex="0">
+                <CustomButtons>
+                    <dx:GridViewCommandColumnCustomButton ID="Edit" Text="Edit"></dx:GridViewCommandColumnCustomButton>
+                    <dx:GridViewCommandColumnCustomButton ID="Delete" Text="Delete"></dx:GridViewCommandColumnCustomButton>
+                </CustomButtons>
+                <ClearFilterButton Visible="True">
+                </ClearFilterButton>
+            </dx:GridViewCommandColumn>
+            <dx:GridViewDataTextColumn FieldName="<#= pkey #>" Caption="<#= pkey #>"
+                ReadOnly="True" VisibleIndex="0" Visible="False">
+			</dx:GridViewDataTextColumn>
+<#= GenerateGridViewColumns(parentForm) #>
+<#= GenerateGridViewExportColumns(parentForm) #>
+            <dx:GridViewDataTextColumn FieldName="LocationLatitude" 
+                ReadOnly="True" VisibleIndex="0" Visible="False">
+			</dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="LocationLongitude" 
+                ReadOnly="True" VisibleIndex="0" Visible="False">
+			</dx:GridViewDataTextColumn>
+        </Columns>
+        <Settings ShowFilterRow="True" />
+    </dx:ASPxGridView>
+	<dx:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="ASPxGridView1">
+    </dx:ASPxGridViewExporter>
+</asp:Content>
+
+<#+
+    }  
+
+	private string GenerateGridViewColumns(SiteVisitForm form)
+	{
+		foreach(SiteVisitFormField field in SiteVisitDBHelper.GetSiteVisitSearchableFields(form)) {
+#>			<dx:GridViewDataTextColumn FieldName="<#= field.FieldName #>" Caption="<#= field.FieldLabel #>"
+                ReadOnly="True" VisibleIndex="<#= field.FieldTabIndex #>">
+            </dx:GridViewDataTextColumn>
+<#+ 
+		}
+		return "";
+	}
+
+	private string GenerateGridViewExportColumns(SiteVisitForm form)
+	{
+		foreach(SiteVisitFormField field in SiteVisitDBHelper.GetSiteVisitExportFields(form)) {
+			string output = "";
+			//checkbox columns
+			if (field.ControlType.ControlTypeID == 1)
+			{
+				foreach(SiteVisitFormFieldItem item in field.SiteVisitFormFieldItems)
+				{
+					output += "\t\t\t<dx:GridViewDataTextColumn FieldName=\""+ field.FieldName +"_"+item.ListItemValue +"\" Caption=\""+item.ListItemLabel+"\" ReadOnly=\"True\" VisibleIndex=\""+ field.FieldTabIndex +"\" Visible=\"False\">\r\n\t\t\t</dx:GridViewDataTextColumn>\r\n";
+				}
+			}
+			else 
+			{
+				output = "<dx:GridViewDataTextColumn FieldName=\""+ field.FieldName +"\" ReadOnly=\"True\" VisibleIndex=\""+ field.FieldTabIndex +"\" Visible=\"False\">\r\n\t\t\t</dx:GridViewDataTextColumn>";
+			}
+
+#>			<#= output #>
+<#+ 
+		}
+		return "";
+	}
+
+    void GenerateCodeFile(SiteVisit sitevisit, IEnumerable<SiteVisitForm> forms)
+    {
+		string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
+		var parentForm = SiteVisitDBHelper.GetParentForm(sitevisit);
+		string table = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBTableName;
+        string pkey = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBPrimaryKeyName;
+#>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using DevExpress.Web.ASPxClasses;
+using OnSite.WebUI.Models;
+
+namespace OnSite.WebUI.SiteVisits
+{
+    public partial class <#= sitevisitName #>Search : System.Web.UI.Page
+    {
+        SiteVisitDataEntities ctx = new SiteVisitDataEntities();
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+			btnCsvExport.Click += new EventHandler(btnCsvExport_Click);
+            ASPxGridView1.CustomButtonCallback += new DevExpress.Web.ASPxGridView.ASPxGridViewCustomButtonCallbackEventHandler(ASPxGridView1_CustomButtonCallback);
+            ASPxGridView1_Bind();
+        }
+
+        protected void ASPxGridView1_Bind()
+        {
+            ASPxGridView1.DataSource = (from i in ctx.<#= table #>
+                                        select i);
+            ASPxGridView1.DataBind();
+        }
+
+        protected void ASPxGridView1_CustomButtonCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomButtonCallbackEventArgs e)
+        {
+            if (e.ButtonID == "Edit")
+            {
+                string id = ASPxGridView1.GetRowValues(e.VisibleIndex, "<#= pkey #>").ToString();
+                ASPxWebControl.RedirectOnCallback("<#= sitevisit.SiteVisitName #>Edit.aspx?ID="+id);
+            } 
+            else if (e.ButtonID == "Delete")
+            {
+                SiteVisitDataEntities ctx = new SiteVisitDataEntities();
+                int id = (int)ASPxGridView1.GetRowValues(e.VisibleIndex, "<#= pkey #>");
+
+                var record = (from b in ctx.<#= table #>
+                              where b.<#= pkey #> == id
+                              select b).FirstOrDefault();
+
+                ctx.DeleteObject(record);
+                ctx.SaveChanges();
+                ASPxGridView1.DataBind();
+            }
+   
+        }
+
+        protected void btnCsvExport_Click(object sender, EventArgs e)
+        {
+			ASPxGridView1.Columns["<#= pkey #>"].Visible = true;
+<#= GenerateExportColumns(parentForm) #>
+			ASPxGridView1.DataBind();
+            gridExport.WriteCsvToResponse();
+        }
+    }
+}
+<#+
+    }
+
+	private string GenerateExportColumns(SiteVisitForm form)
+	{
+
+		foreach(SiteVisitFormField field in SiteVisitDBHelper.GetSiteVisitExportFields(form)) {
+			string output = "";
+			//checkbox columns
+			if (field.ControlType.ControlTypeID == 1)
+			{
+				foreach(SiteVisitFormFieldItem item in field.SiteVisitFormFieldItems)
+				{
+					output += "ASPxGridView1.Columns[\""+ field.FieldName +"_"+item.ListItemValue +"\"].Visible = true;\r\n";
+				}
+			}
+			else 
+			{
+				output = "ASPxGridView1.Columns[\""+ field.FieldName +"\"].Visible = true;";
+			}
+#>			<#= output #>
+<#+ 
+		}
+		return "";
+	}
+	
+
+	void GenerateDesignerFile(SiteVisit sitevisit, IEnumerable<SiteVisitForm> forms)
+	{
+		string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
+#>
+//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated. 
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+namespace OnSite.WebUI.SiteVisits {
+    
+    
+    public partial class <#= sitevisitName #>Search {
+
+                /// <summary>
+        /// lnkCreate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxHyperLink lnkCreate;
+        
+		/// <summary>
+        /// btnXLSExport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnCsvExport;
+
+        /// <summary>
+        /// ASPxGridView1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView.ASPxGridView ASPxGridView1;
+        
+        /// <summary>
+        /// Edit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView.GridViewCommandColumnCustomButton Edit;
+        
+        /// <summary>
+        /// Delete control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView.GridViewCommandColumnCustomButton Delete;
+        
+        /// <summary>
+        /// gridExport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView.Export.ASPxGridViewExporter gridExport;
+
+//GenerateDesignerProperties(forms) 
+
+
+	}
+}
+<#+
+	}
+
+	private string GenerateDesignerProperties(IEnumerable<SiteVisitForm> forms)
+	{
+		foreach(SiteVisitForm form in forms) {
+#>
+        /// <summary>
+        /// uc<#= form.DBTableName #> control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::OnSite.WebUI.ClientForms.<#= form.DBTableName #> uc<#= form.DBTableName #>;
+<#+ 
+		}
+		return "";
+	}
+#>

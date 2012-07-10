@@ -1,0 +1,62 @@
+﻿<#@ include file="includes.txt" #>
+<#
+GenerateSitemap(SiteVisit);
+#>
+<#+
+	protected void GenerateSitemap(SiteVisit sitevisit)
+	{
+#>
+<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+	<siteMapNode url="~/Default.aspx?id=1" title="Home"  description="Home Page">
+<#= GenerateAuditorMap(sitevisit) #>
+<#= GenerateSchedulerMap(sitevisit) #>
+<#= GenerateReportMap(sitevisit) #>
+<#= GenerateResourceMap(sitevisit) #>
+      <siteMapNode url="~/Admin/ManageUsers.aspx" title="Admin"  description="Administrative Manager" roles="Administrator" />
+	</siteMapNode>
+</siteMap>
+<#+
+    }  
+
+	
+	private string GenerateAuditorMap(SiteVisit sitevisit)
+	{
+		string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
+#>			<siteMapNode url="~/SiteVisits/<#= sitevisitName #>Search.aspx?id=1" title="Site Visit"  description="<#= sitevisitName #> Site Visit" roles="Auditor">
+        <siteMapNode url="~/SiteVisits/<#= sitevisitName #>Search.aspx" title="Search"  description="Search <#= sitevisitName #>" />
+        <siteMapNode url="~/SiteVisits/<#= sitevisitName #>Preview.aspx" title="Preview"  description="Preview <#= sitevisitName #>" />
+      </siteMapNode>
+<#+ 
+
+		return "";
+	}
+	private string GenerateSchedulerMap(SiteVisit sitevisit)
+	{
+		string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
+#>			<siteMapNode url="~/Scheduler/<#= sitevisitName #>Edit.aspx?id=1" title="Scheduler"  description="<#= sitevisitName #> Schedule" roles="Scheduler">
+        <siteMapNode url="~/Scheduler/<#= sitevisitName #>Edit.aspx" title="Calendar"  description="Checklist Calendar" />
+        <siteMapNode url="~/Scheduler/<#= sitevisitName #>Data.aspx" title="Data Import/Export"  description="Data Import/Export" />
+      </siteMapNode>
+<#+ 
+		return "";
+	}
+	private string GenerateReportMap(SiteVisit sitevisit)
+	{
+		string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
+#>			<siteMapNode url="~/Reports/<#= sitevisitName #>Schedule.aspx?id=1" title="Reports"  description="<#= sitevisitName #> Reports" roles="ReportViewer">
+        <siteMapNode url="~/Reports/<#= sitevisitName #>Schedule.aspx" title="Schedule"  description="<#= sitevisitName #> Schedule Report" />
+      </siteMapNode>
+<#+ 
+		return "";
+	}
+	private string GenerateResourceMap(SiteVisit sitevisit)
+	{
+		string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
+#>			<siteMapNode url="~/Resource/My<#= sitevisitName #>Schedule.aspx?id=1" title="Resource"  description="<#= sitevisitName #> Resource" roles="Resource">
+        <siteMapNode url="~/Resource/My<#= sitevisitName #>Schedule.aspx" title="My Schedule"  description="My Schedule" />
+      </siteMapNode>
+<#+ 
+		return "";
+	}
+#>

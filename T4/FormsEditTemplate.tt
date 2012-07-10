@@ -1,0 +1,390 @@
+﻿<#@ include file="includes.txt" #>
+<#
+switch (OutputType) {
+	case FileType.Page:
+		GeneratePage(SiteVisit, SiteVisit.SiteVisitForms);
+		break;
+	case FileType.Code:
+		GenerateCodeFile(SiteVisit, SiteVisit.SiteVisitForms);
+		break;
+	case FileType.Designer:
+		GenerateDesignerFile(SiteVisit, SiteVisit.SiteVisitForms);
+		break;
+	default:
+		break;
+}
+#><#+
+    void GeneratePage(SiteVisit sitevisit, IEnumerable<SiteVisitForm> forms)
+    {
+		string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
+		var parentForm = SiteVisitDBHelper.GetParentForm(sitevisit);
+		string table = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBTableName;
+        string pkey = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBPrimaryKeyName;
+#>
+<%@ Page Title="<#= sitevisit.SiteVisitName #>" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="<#= sitevisit.SiteVisitName #>Edit.aspx.cs" Inherits="OnSite.WebUI.SiteVisits.<#= sitevisit.SiteVisitName #>Edit" %>
+<#= GenerateUserControlReferences(forms) #>
+
+<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+<script type="text/javascript">
+	function GetParentKey() {
+		return hfFormKey.Get("<#= pkey #>");
+	}
+</script>
+<script type="text/javascript" src="../Scripts/SiteVisitEdit.js"></script>
+</asp:Content>
+<asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
+    <h2>
+        <#= sitevisit.SiteVisitName #>
+    </h2>
+	<dx:ASPxHyperLink ID="lnkBack" runat="server" Text="Back to <#= parentForm.UIDisplayName #>s" NavigateUrl="<#= sitevisit.SiteVisitName #>Search.aspx">
+    </dx:ASPxHyperLink>
+    <table>
+        <tr>
+            <td valign="top">
+                <dx:ASPxNavBar ID="nbFormNavigation" runat="server" Width="254px" ClientInstanceName="nbFormNavigation" AllowSelectItem="true">
+                    <Groups>
+                        <dx:NavBarGroup Text="Check List">
+                            <Items>
+								<dx:NavBarItem Text="<#= parentForm.UIDisplayName #>" Name="<#= parentForm.DBTableName #>" Image-Url="~/Images/application_home.png" Selected="true">                        
+                                </dx:NavBarItem>
+<#= GenerateNavBarItems(forms) #>
+                            </Items>
+                        </dx:NavBarGroup>        
+                    </Groups>
+					<ClientSideEvents ItemClick="OnNavBarItemClick" Init="OnNavBarInit" />
+                </dx:ASPxNavBar>
+            </td>
+            <td valign="top">
+                <dx:ASPxMenu ID="TopMenu" ClientInstanceName="TopMenu" runat="server" EncodeHtml="False" Width="100%">
+                    <Items>
+                        <dx:MenuItem Name="Save" Text="Save" Image-Url="~/Images/disk.png">
+                        </dx:MenuItem>
+                        <dx:MenuItem Name="Previous" Text="Previous" Image-Url="~/Images/control_rewind.png">
+                        </dx:MenuItem>
+                        <dx:MenuItem Name="Next" Text="Next" Image-Url="~/Images/control_fastforward.png">
+                        </dx:MenuItem>
+                    </Items>
+                    <ClientSideEvents ItemClick="OnMenuItemClick" Init="OnTopMenuInit" />
+                </dx:ASPxMenu>
+				<dx:ASPxCallbackPanel ID="cpForms" runat="server" Width="100%" ClientInstanceName="cpForms" EnableAnimation="false" ShowLoadingPanel="true" EnableViewState="true" ViewStateMode="Enabled">
+                    <PanelCollection>
+                        <dx:PanelContent>
+							<dx:ASPxHiddenField ID="hfFormKey" runat="server" ClientInstanceName="hfFormKey"></dx:ASPxHiddenField>
+<#= GenerateUserControls(forms) #>
+                        </dx:PanelContent>
+                    </PanelCollection>
+					<ClientSideEvents EndCallback="OnFormsCallback" />
+                </dx:ASPxCallbackPanel>
+                <dx:ASPxMenu ID="BottomMenu" ClientInstanceName="BottomMenu" runat="server" EncodeHtml="False" Width="100%">
+                    <Items>
+                        <dx:MenuItem Name="Save" Text="Save" Image-Url="~/Images/disk.png">
+                        </dx:MenuItem>
+                        <dx:MenuItem Name="Previous" Text="Previous" Image-Url="~/Images/control_rewind.png">
+                        </dx:MenuItem>
+                        <dx:MenuItem Name="Next" Text="Next" Image-Url="~/Images/control_fastforward.png">
+                        </dx:MenuItem>
+                    </Items>
+                    <ClientSideEvents ItemClick="OnMenuItemClick" Init="OnBottomMenuInit" />
+                </dx:ASPxMenu>
+            </td>
+        </tr>
+    </table>
+
+</asp:Content>
+<#+
+    }  
+
+	private string GenerateUserControlReferences(IEnumerable<SiteVisitForm> forms)
+	{
+		foreach(SiteVisitForm form in forms) {
+#><%@ Register src="~/UserControls/GeneratedForms/<#= form.DBTableName #>.ascx" tagname="<#= form.DBTableName #>" tagprefix="uc" %>
+<#+ 
+		}
+		return "";
+	}
+	
+	private string GenerateNavBarItems(IEnumerable<SiteVisitForm> forms)
+	{
+		var query = from f in forms
+					where f.SiteVisitParentFormID != null
+					select f;
+		foreach(SiteVisitForm form in query) {
+			string visible = form.SiteVisitParentFormID == null ? "True" : "False";
+#>				                <dx:NavBarItem Text="<#= form.UIDisplayName #>" Name="<#= form.DBTableName #>" Image-Url="~/Images/application_form.png">                        
+                                </dx:NavBarItem>
+<#+ 
+		}
+		return "";
+	}
+
+	private string GenerateUserControls(IEnumerable<SiteVisitForm> forms)
+	{
+		foreach(SiteVisitForm form in forms) {
+			string visible = form.SiteVisitParentFormID == null ? "True" : "False";
+#>						<uc:<#= form.DBTableName #> ID="uc<#= form.DBTableName #>" runat="server" Visible="<#= visible #>" />
+<#+ 
+		}
+		return "";
+	}
+
+    void GenerateCodeFile(SiteVisit sitevisit, IEnumerable<SiteVisitForm> forms)
+    {
+		string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
+		var parentForm = SiteVisitDBHelper.GetParentForm(sitevisit);
+		string table = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBTableName;
+        string pkey = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBPrimaryKeyName;
+#>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using OnSite.WebUI.Models;
+
+namespace OnSite.WebUI.SiteVisits
+{
+    public partial class <#= sitevisit.SiteVisitName #>Edit : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+			cpForms.Callback += new DevExpress.Web.ASPxClasses.CallbackEventHandlerBase(cpForms_Callback);
+            if (!IsPostBack)
+            {
+                BindControls();
+                if (!string.IsNullOrEmpty(Request["ID"]))
+                {
+                    uc<#= parentForm.DBTableName #>.LoadForm(int.Parse(Request["ID"]));
+					hfFormKey["<#= pkey #>"] = uc<#= parentForm.DBTableName #>.<#= pkey #>;
+                }
+            }	
+		}
+
+		protected void BindControls()
+        {				
+<#= GenerateUserControlBinds(forms) #>			
+		}
+
+        protected int? getParentKey()
+        {
+			int? retVal = null;
+            if (hfFormKey["<#= pkey #>"] != null)
+                retVal = (int?) hfFormKey["<#= pkey #>"];
+            return retVal;
+        }
+
+        protected <#= table #> getParentFormData()
+        {
+            <#= table #> formdata = null;
+            if (getParentKey() != null)
+                formdata = uc<#= parentForm.DBTableName #>.GetFormData((int)getParentKey());
+            return formdata;
+        }
+
+        protected void cpForms_Callback(object sender, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+        {
+            string[] forms = e.Parameter.Split('_');
+            saveForm(forms[0]);
+            if (forms[1].Length > 0)
+            {
+                SetNavbarItem(forms[1]);
+            }
+        }
+		
+        private void saveForm(string formName)
+        {
+            switch (formName)
+            {
+                case "<#= parentForm.DBTableName #>":
+                    uc<#= parentForm.DBTableName #>.SaveForm();
+                    hfFormKey["<#= pkey #>"] = uc<#= parentForm.DBTableName #>.<#= pkey #>;
+                    break;
+<#= GenerateSaveSwitchCases(forms) #>
+			}
+            SetNavbarItem(formName);
+        }
+
+        private void SetNavbarItem(string ItemName)
+        {
+            hideControls();
+            switch (ItemName)
+            {
+                case "<#= parentForm.DBTableName #>":
+                    uc<#= parentForm.DBTableName #>.Visible = true;
+					if (getParentKey() != null)
+						uc<#= parentForm.DBTableName #>.LoadForm((int)getParentKey());
+                    break;
+<#= GenerateNavBarSwitchStatements(forms) #>
+                default:
+                    break;
+            }
+        }
+
+        private void hideControls()
+        {
+<#= GenerateUserControlHides(forms) #>
+        }
+    }
+}
+<#+
+    }
+
+	private string GenerateUserControlBinds(IEnumerable<SiteVisitForm> forms)
+	{
+		foreach(SiteVisitForm form in forms) {
+#>				uc<#= form.DBTableName #>.BindListControls();
+<#+ 
+		}
+		return "";
+	}
+
+	private string GenerateClientEnabledCode(IEnumerable<SiteVisitForm> forms)
+	{
+		var query = from f in forms
+					where f.SiteVisitParentFormID != null
+					select f;
+		foreach(SiteVisitForm form in query) {
+#>            nbFormNavigation.Items.FindByName("<#= form.DBTableName #>").ClientEnabled = (getParentKey() != null); 
+<#+ 
+		}
+		return "";
+	}
+
+	
+	private string GenerateSaveSwitchCases(IEnumerable<SiteVisitForm> forms)
+	{
+		var query = from f in forms
+					where f.SiteVisitParentFormID != null
+					select f;
+		foreach(SiteVisitForm form in query) {
+#>                case "<#= form.DBTableName #>":
+                    if (getParentKey() != null)
+                        uc<#= form.DBTableName #>.SaveForm((int)getParentKey());
+                    break;
+<#+
+		}
+		return "";
+	}
+	
+	private string GenerateNavBarSwitchStatements(IEnumerable<SiteVisitForm> forms)
+	{
+		var query = from f in forms
+					where f.SiteVisitParentFormID != null
+					select f;
+		foreach(SiteVisitForm form in query) {
+#>                case "<#= form.DBTableName #>":
+                    uc<#= form.DBTableName #>.Visible = true;
+					if (getParentKey() != null)
+                        uc<#= form.DBTableName #>.LoadForm(getParentFormData());
+                    break;  
+<#+ 
+		}
+		return "";
+	}
+
+	private string GenerateUserControlHides(IEnumerable<SiteVisitForm> forms)
+	{
+		foreach(SiteVisitForm form in forms) {
+#>				uc<#= form.DBTableName #>.Visible = false;       
+<#+ 
+		}
+		return "";
+	}
+
+	void GenerateDesignerFile(SiteVisit sitevisit, IEnumerable<SiteVisitForm> forms)
+	{
+		string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
+#>
+//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated. 
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+namespace OnSite.WebUI.SiteVisits {
+    
+    
+    public partial class <#= sitevisit.SiteVisitName #>Edit {
+
+		/// <summary>
+        /// lnkBack control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxHyperLink lnkBack;
+
+        /// <summary>
+        /// nbFormNavigation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxNavBar.ASPxNavBar nbFormNavigation;
+        
+        /// <summary>
+        /// TopMenu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxMenu.ASPxMenu TopMenu;
+        
+        /// <summary>
+        /// TopMenu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxMenu.ASPxMenu BottomMenu;
+        
+        /// <summary>
+        /// cpForms control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCallbackPanel.ASPxCallbackPanel cpForms;
+
+		/// <summary>
+        /// hfFormKey control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxHiddenField.ASPxHiddenField hfFormKey;
+
+<#= GenerateDesignerProperties(forms) #>
+
+	}
+}
+<#+
+	}
+
+	private string GenerateDesignerProperties(IEnumerable<SiteVisitForm> forms)
+	{
+		foreach(SiteVisitForm form in forms) {
+#>
+        /// <summary>
+        /// uc<#= form.DBTableName #> control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::OnSite.WebUI.UserControls.GeneratedForms.<#= form.DBTableName #> uc<#= form.DBTableName #>;
+<#+ 
+		}
+		return "";
+	}
+#>

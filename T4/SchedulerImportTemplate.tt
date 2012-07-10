@@ -1,0 +1,388 @@
+﻿<#@ include file="includes.txt" #>
+<#
+switch (OutputType) {
+	case FileType.Page:
+		GeneratePage(SiteVisit, SiteVisit.SiteVisitForms);
+		break;
+	case FileType.Code:
+		GenerateCodeFile(SiteVisit, SiteVisit.SiteVisitForms);
+		break;
+	case FileType.Designer:
+		GenerateDesignerFile(SiteVisit, SiteVisit.SiteVisitForms);
+		break;
+	default:
+		break;
+}
+#><#+
+    void GeneratePage(SiteVisit sitevisit, IEnumerable<SiteVisitForm> forms)
+    {
+		string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
+		var parentForm = SiteVisitDBHelper.GetParentForm(sitevisit);
+		string table = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBTableName;
+        string pkey = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBPrimaryKeyName;
+#><%@ Page Title="<#= sitevisit.SiteVisitName #>" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="<#= sitevisitName #>Data.aspx.cs" Inherits="OnSite.WebUI.SiteVisits.<#= sitevisitName #>Data" %>
+<%@ Register Assembly="DevExpress.Web.ASPxGridView.v12.1.Export, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+    Namespace="DevExpress.Web.ASPxGridView.Export" TagPrefix="dx" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+<script type="text/javascript">
+    // <![CDATA[
+    function Uploader_OnUploadStart() {
+        btnUpload.SetEnabled(false);
+    }
+    function Uploader_OnFileUploadComplete(args) {
+        grid.PerformCallback();
+    }
+    function Uploader_OnFilesUploadComplete(args) {
+        UpdateUploadButton();
+    }
+    function UpdateUploadButton() {
+        btnUpload.SetEnabled(uploader.GetText(0) != "");
+    }
+    // ]]> 
+</script>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+	<h2>Data Import/Export</h2>
+	<table cellpadding="0" cellspacing="0" style="background-color: #efefef; padding: 5px; width: 800px;">
+        <tr>
+            <td colspan="2">
+				<p>
+					To import data, export to Csv first, then use the resulting file as an import template. Use the upload button to import the template file.  Existing appointments will be updating, otherwise new appointments will be created.  Valid Contact ID's are required in order to import.
+				</p>
+            </td>
+        </tr>		
+        <tr>
+            <td class="caption" style="padding-right: 5px;">
+				<p>1. Export</p>
+                <dx:ASPxButton ID="btnCsvExport" runat="server" Text="Export to Csv" UseSubmitBehavior="False" />
+            </td>
+            <td>
+				<p>2. Import</p>
+                <dx:ASPxUploadControl ID="uplFile" runat="server" ClientInstanceName="uploader" ShowProgressPanel="True"
+                    NullText="Click here to browse files..." Size="35" OnFileUploadComplete="uplImage_FileUploadComplete">
+                    <ClientSideEvents FileUploadComplete="function(s, e) { Uploader_OnFileUploadComplete(e); }"
+                        FilesUploadComplete="function(s, e) { Uploader_OnFilesUploadComplete(e); }"
+                        FileUploadStart="function(s, e) { Uploader_OnUploadStart(); }"
+                        TextChanged="function(s, e) { UpdateUploadButton(); }"></ClientSideEvents>
+                    <ValidationSettings MaxFileSize="4194304" AllowedFileExtensions=".csv">
+                    </ValidationSettings>
+                </dx:ASPxUploadControl>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td class="note">
+                <dx:ASPxLabel ID="lblAllowebMimeType" runat="server" Text="Allowed file types: csv"
+                    Font-Size="8pt">
+                </dx:ASPxLabel>
+                <br />
+                <dx:ASPxLabel ID="lblMaxFileSize" runat="server" Text="Maximum file size: 4Mb" Font-Size="8pt">
+                </dx:ASPxLabel>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center" class="buttonCell">
+                <dx:ASPxButton ID="btnUpload" runat="server" AutoPostBack="False" Text="Upload" ClientInstanceName="btnUpload"
+                    Width="100px" ClientEnabled="False">
+                    <ClientSideEvents Click="function(s, e) { uploader.Upload(); }" />
+                </dx:ASPxButton>
+            </td>
+        </tr>
+    </table>
+    
+    <div style="margin-top: 5px; margin-bottom: 5px;">
+    <dx:ASPxGridView ID="grid" runat="server" AutoGenerateColumns="False" ClientInstanceName="grid" 
+        DataSourceID="AppointmentsDataSource" KeyFieldName="<#= table #>AppointmentID">
+        <Columns>
+            <dx:GridViewDataTextColumn FieldName="<#= pkey #>" Caption="Contact ID" ReadOnly="True" Visible="true"
+                VisibleIndex="0">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="SiteVisitAppointmentID" Caption="Appointment ID" ReadOnly="True" Visible="True"
+                VisibleIndex="0">
+            </dx:GridViewDataTextColumn>
+			<dx:GridViewDataTextColumn FieldName="AppointmentStatus.AppointmentStatusName" Caption="Appointment Status" VisibleIndex="1" Visible="true">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="SiteVisitAppointment.SiteVisitID" VisibleIndex="1" Visible="false">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="SiteVisitAppointment.ResourceID" VisibleIndex="2">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="SiteVisitAppointment.Type" VisibleIndex="3" Visible="false">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="SiteVisitAppointment.Subject" VisibleIndex="4">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="SiteVisitAppointment.Description" VisibleIndex="5">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="SiteVisitAppointment.AppointmentLocation" VisibleIndex="6">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="SiteVisitAppointment.AppointmentStartDate" VisibleIndex="7">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="SiteVisitAppointment.AppointmentEndDate" VisibleIndex="8">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="SiteVisitAppointment.Status" VisibleIndex="10" Visible="false">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="SiteVisitAppointment.Label" VisibleIndex="11" Visible="false">
+            </dx:GridViewDataTextColumn>
+        </Columns>
+		<Settings ShowFilterRow="True" />
+    </dx:ASPxGridView>
+    </div>
+    <asp:EntityDataSource ID="AppointmentsDataSource" runat="server" 
+        ConnectionString="name=SiteVisitDataEntities" 
+        DefaultContainerName="SiteVisitDataEntities" EnableFlattening="False" 
+        EntitySetName="<#= table #>Appointments" Include="SiteVisitAppointment,AppointmentStatus" Where="it.SiteVisitAppointment.SiteVisitID = <#= sitevisit.SiteVisitID #>">
+    </asp:EntityDataSource>
+    <dx:ASPxGridViewExporter ID="gridExporter" runat="server" GridViewID="grid">
+    </dx:ASPxGridViewExporter>
+    
+</asp:Content>
+
+<#+
+    }  
+
+    void GenerateCodeFile(SiteVisit sitevisit, IEnumerable<SiteVisitForm> forms)
+    {
+		string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
+		var parentForm = SiteVisitDBHelper.GetParentForm(sitevisit);
+		string table = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBTableName;
+        string pkey = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBPrimaryKeyName;
+#>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using DevExpress.Web.ASPxUploadControl;
+using System.IO;
+using CadmusUtility;
+using System.Data;
+using OnSite.WebUI.Models;
+using System.Web.Security;
+
+namespace OnSite.WebUI.SiteVisits
+{
+    public partial class <#= sitevisitName #>Data : System.Web.UI.Page
+    {
+        const string UploadDirectory = "~/Uploads/";
+        private SiteVisitDataEntities dataCtx = new SiteVisitDataEntities();
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            btnCsvExport.Click += new EventHandler(btnCsvExport_Click);
+            grid.CustomCallback += new DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventHandler(grid_CustomCallback);
+        }
+
+        protected void grid_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
+        {
+            grid.DataBind();
+        }
+
+        protected void btnCsvExport_Click(object sender, EventArgs e)
+        {
+			gridExporter.FileName = "<#= sitevisitName #>Appointments";
+            gridExporter.WriteCsvToResponse();
+        }
+
+        protected void uplImage_FileUploadComplete(object sender, FileUploadCompleteEventArgs e)
+        {
+            e.CallbackData = SavePostedFile(e.UploadedFile);
+        }
+
+        protected string SavePostedFile(UploadedFile uploadedFile)
+        {
+            if (!uploadedFile.IsValid)
+                return string.Empty;
+
+            FileInfo fileInfo = new FileInfo(uploadedFile.FileName);
+            string resFileName = MapPath(UploadDirectory) + fileInfo.Name;
+            uploadedFile.SaveAs(resFileName);
+            SaveAppointmentsFromCsvFile(resFileName);           
+
+            string fileLabel = fileInfo.Name;
+            string fileLength = uploadedFile.ContentLength / 1024 + "K";
+            return string.Format("{0} ({1})|{2}", fileLabel, fileLength, fileInfo.Name);
+        }
+
+        protected void SaveAppointmentsFromCsvFile(string filename)
+        {
+            CsvReader reader = new CsvReader();
+            DataTable dt = reader.GetDataTable(filename);
+            foreach (DataRow dr in dt.Rows)
+            {
+                try
+                {
+                    if (dr["Contact ID"] == null)
+                        throw new Exception("No contact ID was supplied");
+                    //look up existing record
+                    int contactID = (int)dr["Contact ID"];
+
+                    if (!string.IsNullOrEmpty(dr["Appointment ID"].ToString()))
+                    {
+                        //existing appointment
+                        int appointmentID = (int)dr["Appointment ID"];
+                        var appointment = (from a in dataCtx.<#= table #>Appointments
+                                           where a.<#= pkey #> == contactID && a.SiteVisitAppointmentID == appointmentID
+                                           select a).FirstOrDefault();
+                        var appt = appointment.SiteVisitAppointment;
+                        appt.ResourceID = (string)dr["Resource ID"];
+                        appt.Subject = dr["Subject"] != System.DBNull.Value ? (string)dr["Subject"] : null;
+                        appt.Description = dr["Description"] != System.DBNull.Value ? (string)dr["Description"] : null;
+                        appt.AppointmentLocation = (string)dr["Appointment Location"];
+                        appt.AppointmentStartDate = (DateTime)dr["Appointment Start Date"];
+                        appt.AppointmentEndDate = (DateTime)dr["Appointment End Date"];
+                        appt.LastModifiedDate = DateTime.Now;
+                        dataCtx.SaveChanges();
+                    }
+                    else
+                    {
+                        //new appointment
+                        //get existing contact
+                        var contact = (from c in dataCtx.<#= table #>
+                                       where c.<#= pkey #> == contactID
+                                       select c).FirstOrDefault();
+                        if (contact == null)
+                            throw new Exception("Contact not found in contact table");
+                        var appt = new SiteVisitAppointment();
+                        appt.SiteVisitID = <#= sitevisit.SiteVisitID #>;
+                        appt.ResourceID = (string)dr["Resource ID"];
+                        appt.Subject = dr["Subject"] != System.DBNull.Value ? (string)dr["Subject"] : null;
+                        appt.Description = dr["Description"] != System.DBNull.Value ? (string)dr["Description"] : null; 
+                        appt.AppointmentLocation = (string)dr["Appointment Location"];
+                        appt.AppointmentStartDate = (DateTime)dr["Appointment Start Date"];
+                        appt.AppointmentEndDate = (DateTime)dr["Appointment End Date"];
+                        appt.Status = 3;
+                        appt.Label = 6;
+                        appt.CreateDate = DateTime.Now;
+                        appt.LastModifiedDate = DateTime.Now;
+                        dataCtx.SiteVisitAppointments.AddObject(appt);
+                        dataCtx.SaveChanges();
+
+                        var contactApt = new <#= table #>Appointments();
+                        contactApt.SiteVisitAppointmentID = appt.SiteVisitAppointmentID;
+                        contactApt.<#= pkey #> = contactID;
+                        contactApt.CreateDate = DateTime.Now;
+                        contactApt.CreateUser = Membership.GetUser().UserName;
+                        contactApt.ModifiedDate = DateTime.Now;
+                        contactApt.ModifiedUser = Membership.GetUser().UserName;
+                        dataCtx.<#= table #>Appointments.AddObject(contactApt);
+
+                        dataCtx.SaveChanges();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+    }
+}
+<#+
+    }
+	
+	void GenerateDesignerFile(SiteVisit sitevisit, IEnumerable<SiteVisitForm> forms)
+	{
+		string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
+#>
+//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated. 
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+namespace OnSite.WebUI.SiteVisits {
+    
+    
+    public partial class <#= sitevisitName #>Data {
+
+/// <summary>
+        /// btnCsvExport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnCsvExport;
+        
+        /// <summary>
+        /// grid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView.ASPxGridView grid;
+        
+        /// <summary>
+        /// AppointmentsDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.EntityDataSource AppointmentsDataSource;
+        
+        /// <summary>
+        /// gridExporter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView.Export.ASPxGridViewExporter gridExporter;
+        
+        /// <summary>
+        /// lblSelectImage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxLabel lblSelectImage;
+        
+        /// <summary>
+        /// uplFile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxUploadControl.ASPxUploadControl uplFile;
+        
+        /// <summary>
+        /// lblAllowebMimeType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxLabel lblAllowebMimeType;
+        
+        /// <summary>
+        /// lblMaxFileSize control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxLabel lblMaxFileSize;
+        
+        /// <summary>
+        /// btnUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnUpload;
+
+	}
+}
+<#+
+	}
+#>

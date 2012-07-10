@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6E2DD1B3-6612-4C89-A532-E7A2E6AFEF91}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OnSite.TemplateWizard</RootNamespace>
+    <AssemblyName>OnSite.TemplateWizard</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\SitemapTemplate.cs" />
+    <Compile Include="Classes\ReportScheduleTemplate.cs" />
+    <Compile Include="Classes\ResourceScheduleTemplate.cs" />
+    <Compile Include="Classes\SchedulerImportTemplate.cs" />
+    <Compile Include="Classes\SchedulerEditTemplate.cs" />
+    <Compile Include="Classes\FormsPreviewTemplate.cs" />
+    <Compile Include="Classes\FormsSearchTemplate.cs" />
+    <Compile Include="Classes\FormsEditTemplate.cs" />
+    <Compile Include="Classes\SiteVisitDBHelper.cs" />
+    <Compile Include="Classes\SiteVisitSettings.cs" />
+    <Compile Include="Classes\SiteVisitFormTemplate.cs" />
+    <Compile Include="Classes\SiteVisitTemplateProcessor.cs" />
+    <Compile Include="Classes\StringSanitizer.cs" />
+    <Compile Include="Classes\FormsTemplate.cs" />
+    <Compile Include="Models\SiteVisitMetaModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SiteVisitMetaModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="T4\includes.txt" />
+    <Compile Include="T4\ReportScheduleTemplate.cs">
+      <DependentUpon>ReportScheduleTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="T4\ResourceScheduleTemplate.cs">
+      <DependentUpon>ResourceScheduleTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="T4\SchedulerImportTemplate.cs">
+      <DependentUpon>SchedulerImportTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="T4\SchedulerEditTemplate.cs">
+      <DependentUpon>SchedulerEditTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="T4\FormsSearchTemplate.cs">
+      <DependentUpon>FormsSearchTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="T4\FormsPreviewTemplate.cs">
+      <DependentUpon>FormsPreviewTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="T4\FormsEditTemplate.cs">
+      <DependentUpon>FormsEditTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="T4\FormsTemplate.cs">
+      <DependentUpon>FormsTemplate.tt</DependentUpon>
+      <SubType>Code</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="T4\SitemapTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SitemapTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Wizard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizard.Designer.cs">
+      <DependentUpon>Wizard.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Wizard.resx">
+      <DependentUpon>Wizard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="Models\SiteVisitMetaModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SiteVisitMetaModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="App.Config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="T4\ReportScheduleTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ReportScheduleTemplate.cs</LastGenOutput>
+      <CustomToolNamespace>OnSite.TemplateWizard.Classes</CustomToolNamespace>
+    </None>
+    <None Include="T4\ResourceScheduleTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ResourceScheduleTemplate.cs</LastGenOutput>
+      <CustomToolNamespace>OnSite.TemplateWizard.Classes</CustomToolNamespace>
+    </None>
+    <None Include="T4\SchedulerImportTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>SchedulerImportTemplate.cs</LastGenOutput>
+      <CustomToolNamespace>OnSite.TemplateWizard.Classes</CustomToolNamespace>
+    </None>
+    <None Include="T4\SchedulerEditTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>SchedulerEditTemplate.cs</LastGenOutput>
+      <CustomToolNamespace>OnSite.TemplateWizard.Classes</CustomToolNamespace>
+    </None>
+    <None Include="T4\FormsSearchTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>FormsSearchTemplate.cs</LastGenOutput>
+      <CustomToolNamespace>OnSite.TemplateWizard.Classes</CustomToolNamespace>
+    </None>
+    <None Include="T4\FormsPreviewTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>FormsPreviewTemplate.cs</LastGenOutput>
+      <CustomToolNamespace>OnSite.TemplateWizard.Classes</CustomToolNamespace>
+    </None>
+    <None Include="T4\FormsEditTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>FormsEditTemplate.cs</LastGenOutput>
+      <CustomToolNamespace>OnSite.TemplateWizard.Classes</CustomToolNamespace>
+    </None>
+    <None Include="T4\FormsTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>FormsTemplate.cs</LastGenOutput>
+      <CustomToolNamespace>OnSite.TemplateWizard.Classes</CustomToolNamespace>
+    </None>
+    <None Include="T4\SitemapTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>SitemapTemplate.cs</LastGenOutput>
+      <CustomToolNamespace>OnSite.TemplateWizard.Classes</CustomToolNamespace>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

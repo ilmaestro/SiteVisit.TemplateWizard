@@ -1,0 +1,449 @@
+﻿<#@ include file="includes.txt" #>
+<#
+switch (OutputType) {
+	case FileType.Page:
+		GeneratePage(SiteVisit, SiteVisit.SiteVisitForms);
+		break;
+	case FileType.Code:
+		GenerateCodeFile(SiteVisit, SiteVisit.SiteVisitForms);
+		break;
+	case FileType.Designer:
+		GenerateDesignerFile(SiteVisit, SiteVisit.SiteVisitForms);
+		break;
+	default:
+		break;
+}
+#><#+
+    void GeneratePage(SiteVisit sitevisit, IEnumerable<SiteVisitForm> forms)
+    {
+		string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
+		var parentForm = SiteVisitDBHelper.GetParentForm(sitevisit);
+		string table = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBTableName;
+        string pkey = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBPrimaryKeyName;
+#>
+<%@ Page Title="<#= sitevisit.SiteVisitName #>" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="<#= sitevisitName #>Schedule.aspx.cs" Inherits="OnSite.WebUI.Reports.<#= sitevisitName #>Schedule" %>
+<%@ Register Assembly="DevExpress.XtraReports.v12.1.Web, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+    Namespace="DevExpress.XtraReports.Web" TagPrefix="dx" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <h2><#= sitevisitName #> Schedule</h2>
+    <dx:ASPxRoundPanel ID="ASPxRoundPanel1" runat="server" Width="100%" HeaderText="Daily Style Options">
+        <PanelCollection>
+            <dx:PanelContent ID="Panelcontent1" runat="server">
+                <table cellpadding="5" cellspacing="0" width="100%">
+                    <tr align="left">
+                        <td align="left" style="white-space: nowrap; padding-right: 0px">
+                            <dx:ASPxLabel ID="lblResourceCount" runat="server" Text="Resource Count:" AssociatedControlID="cbResourceCount" />
+                        </td>
+                        <td>
+                            <dx:ASPxComboBox ID="cbResourceCount" runat="server" ValueType="System.Int32" SelectedIndex="1"
+                                Width="50px">
+                                <ClientSideEvents SelectedIndexChanged="function(s, e) { ClientReportViewer.Refresh(); }" />
+                                <Items>
+                                    <dx:ListEditItem Text="1" Value="1"></dx:ListEditItem>
+                                    <dx:ListEditItem Text="2" Value="2"></dx:ListEditItem>
+                                    <dx:ListEditItem Text="3" Value="3"></dx:ListEditItem>
+                                    <dx:ListEditItem Text="4" Value="4"></dx:ListEditItem>
+                                </Items>
+                            </dx:ASPxComboBox>
+                        </td>
+                        <td>
+                            <dx:ASPxLabel ID="lblStart" runat="server" Text="Start:" AssociatedControlID="edtStart" />
+                        </td>
+                        <td>
+                            <dx:ASPxDateEdit ID="edtStart" runat="server" Width="120px" ClientInstanceName="clientEdtStart">
+                                <ClientSideEvents DateChanged="function(s, e) { ValidateDates(); ClientReportViewer.Refresh(); }">
+                                </ClientSideEvents>
+                            </dx:ASPxDateEdit>
+                        </td>
+                        <td>
+                            <dx:ASPxLabel ID="lblTimeScale" runat="server" Text="Time scale:" AssociatedControlID="cbTimeScale" />
+                        </td>
+                        <td>
+                            <dx:ASPxComboBox ID="cbTimeScale" runat="server" ValueType="System.Int32" SelectedIndex="3"
+                                Width="120px">
+                                <Items>
+                                    <dx:ListEditItem Text="Year/Month" Value="0"></dx:ListEditItem>
+                                    <dx:ListEditItem Text="Month/Week" Value="1"></dx:ListEditItem>
+                                    <dx:ListEditItem Text="Week/Day" Value="2"></dx:ListEditItem>
+                                </Items>
+                                <ClientSideEvents SelectedIndexChanged="function(s, e) { ClientReportViewer.Refresh(); }" />
+                            </dx:ASPxComboBox>
+                        </td>
+                    </tr>
+                    <tr align="left">
+                        <td align="left" style="white-space: nowrap; padding-right: 0px">
+                            <dx:ASPxLabel ID="lblIntervalCount" runat="server" Text="Interval Count:" AssociatedControlID="cbIntervalCount" />
+                        </td>
+                        <td>
+                            <dx:ASPxComboBox ID="cbIntervalCount" runat="server" ValueType="System.Int32" SelectedIndex="2"
+                                Width="50px">
+                                <ClientSideEvents SelectedIndexChanged="function(s, e) { ClientReportViewer.Refresh(); }" />
+                                <Items>
+                                    <dx:ListEditItem Text="1" Value="1"></dx:ListEditItem>
+                                    <dx:ListEditItem Text="2" Value="2"></dx:ListEditItem>
+                                    <dx:ListEditItem Text="3" Value="3"></dx:ListEditItem>
+                                    <dx:ListEditItem Text="4" Value="4"></dx:ListEditItem>
+                                    <dx:ListEditItem Text="5" Value="5"></dx:ListEditItem>
+                                    <dx:ListEditItem Text="6" Value="6"></dx:ListEditItem>
+                                    <dx:ListEditItem Text="7" Value="7"></dx:ListEditItem>
+                                </Items>
+                            </dx:ASPxComboBox>
+                        </td>
+                        <td>
+                            <dx:ASPxLabel ID="lblEnd" runat="server" Text="End:" AssociatedControlID="edtEnd" />
+                        </td>
+                        <td colspan="3" align="left">
+                            <dx:ASPxDateEdit ID="edtEnd" runat="server" Width="120px" ClientInstanceName="clientEdtEnd">
+                                <ClientSideEvents DateChanged="function(s, e) { ValidateDates(); ClientReportViewer.Refresh(); }">
+                                </ClientSideEvents>
+                            </dx:ASPxDateEdit>
+                        </td>
+                    </tr>
+                </table>
+            </dx:PanelContent>
+        </PanelCollection>
+    </dx:ASPxRoundPanel>
+    <br />
+    <dx:ReportToolbar ID="ReportToolbar1" runat="server" ReportViewer="<%# ReportViewer %>"
+        ShowDefaultButtons="False" Width="100%">
+        <Items>
+            <dx:ReportToolbarButton ItemKind="Search" Enabled="false" />
+            <dx:ReportToolbarSeparator />
+            <dx:ReportToolbarButton ItemKind="PrintReport" ToolTip="Print the report" />
+            <dx:ReportToolbarButton ItemKind="PrintPage" ToolTip="Print the current page" />
+            <dx:ReportToolbarSeparator />
+            <dx:ReportToolbarButton ItemKind="FirstPage" ToolTip="First Page" />
+            <dx:ReportToolbarButton ItemKind="PreviousPage" ToolTip="Previous Page" />
+            <dx:ReportToolbarLabel Text="Page" />
+            <dx:ReportToolbarComboBox ItemKind="PageNumber" Width="65px">
+            </dx:ReportToolbarComboBox>
+            <dx:ReportToolbarLabel Text="of" />
+            <dx:ReportToolbarTextBox IsReadOnly="True" ItemKind="PageCount" />
+            <dx:ReportToolbarButton ItemKind="NextPage" ToolTip="Next Page" />
+            <dx:ReportToolbarButton ItemKind="LastPage" ToolTip="Last Page" />
+            <dx:ReportToolbarSeparator />
+            <dx:ReportToolbarButton ItemKind="SaveToDisk" ToolTip="Export a report and save it to the disk" />
+            <dx:ReportToolbarButton ItemKind="SaveToWindow" ToolTip="Export a report and show it in a new window" />
+            <dx:ReportToolbarComboBox ItemKind="SaveFormat" Width="70px">
+                <Elements>
+                    <dx:ListElement Text="Pdf" Value="pdf" />
+                    <dx:ListElement Text="Mht" Value="mht" />
+                    <dx:ListElement Text="Image" Value="png" />
+                </Elements>
+            </dx:ReportToolbarComboBox>
+        </Items>
+        <Styles>
+            <LabelStyle>
+                <Margins MarginLeft="3px" MarginRight="3px" />
+            </LabelStyle>
+        </Styles>
+    </dx:ReportToolbar>
+    <dx:ReportViewer ID="ReportViewer" runat="server" ClientInstanceName="ClientReportViewer">
+    </dx:ReportViewer>
+</asp:Content>
+
+<#+
+    }  
+
+	private string GenerateGridViewColumns(SiteVisitForm form)
+	{
+		foreach(SiteVisitFormField field in SiteVisitDBHelper.GetSiteVisitSearchableFields(form)) {
+#>										<dx:GridViewDataTextColumn FieldName="<#= field.FieldName #>" Caption="<#= field.FieldLabel #>"
+											ReadOnly="True" VisibleIndex="<#= field.FieldTabIndex #>">
+										</dx:GridViewDataTextColumn>
+<#+ 
+		}
+		return "";
+	}
+	
+	private string GenerateNavBarItems(IEnumerable<SiteVisitForm> forms)
+	{
+		var query = from f in forms
+					where f.SiteVisitParentFormID != null
+					select f;
+		foreach(SiteVisitForm form in query) {
+			string visible = form.SiteVisitParentFormID == null ? "True" : "False";
+#>				                <dx:NavBarItem Text="<#= form.UIDisplayName #>" Name="<#= form.DBTableName #>" Image-Url="~/Images/application_form.png">                        
+                                </dx:NavBarItem>
+<#+ 
+		}
+		return "";
+	}
+
+	private string GenerateUserControls(IEnumerable<SiteVisitForm> forms)
+	{
+		foreach(SiteVisitForm form in forms) {
+			string visible = form.SiteVisitParentFormID == null ? "True" : "False";
+#>						<uc:<#= form.DBTableName #> ID="uc<#= form.DBTableName #>" runat="server" Visible="<#= visible #>" />
+<#+ 
+		}
+		return "";
+	}
+
+    void GenerateCodeFile(SiteVisit sitevisit, IEnumerable<SiteVisitForm> forms)
+    {
+		string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
+		string siteVisitID = sitevisit.SiteVisitID.ToString();
+		var parentForm = SiteVisitDBHelper.GetParentForm(sitevisit);
+		string table = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBTableName;
+        string pkey = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBPrimaryKeyName;
+#>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using DevExpress.XtraScheduler;
+using DevExpress.XtraScheduler.Reporting;
+using OnSite.WebUI.Classes;
+using OnSite.WebUI.Models;
+
+namespace OnSite.WebUI.Reports
+{
+    public partial class <#= sitevisitName #>Schedule : System.Web.UI.Page
+    {
+        private SiteVisitDataEntities apptCtx = new SiteVisitDataEntities();
+        private DateTime Start { get { return (DateTime)edtStart.Value; } }
+        private DateTime End { get { return (DateTime)edtEnd.Value; } }
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            TimelineStyleReport report = new TimelineStyleReport();            
+            report.SchedulerAdapter = GetSchedulerAdapter();
+            ReportViewer.Report = report;
+            InitializeControlValues();
+            ApplyOptions(report);
+        }
+
+        protected void InitializeControlValues()
+        {
+            if (!IsPostBack)
+            {
+                this.edtStart.Value = DateTime.Now.AddDays(-DateTime.Now.Day);
+                this.edtEnd.Value = DateTime.Now.AddDays(-DateTime.Now.Day).AddMonths(1);
+            }
+        }
+
+        protected void ApplyOptions(TimelineStyleReport report)
+        {
+            report.SchedulerAdapter.TimeInterval = new TimeInterval(Start, End);
+            report.TimeIntervalCount = (int)cbIntervalCount.Value;
+            report.ResourceCount = (int)cbResourceCount.Value;
+
+            switch ((int)cbTimeScale.Value)
+            {
+                case 0:
+                    {
+                        report.FirstLevelTimeScale = "Year";
+                        report.SecondLevelTimeScale = "Month";
+                        break;
+                    }
+                case 1:
+                    {
+                        report.FirstLevelTimeScale = "Month";
+                        report.SecondLevelTimeScale = "Week";
+                        break;
+                    }
+                case 2:
+                    {
+                        report.FirstLevelTimeScale = "Week";
+                        report.SecondLevelTimeScale = "Day";
+                        break;
+                    }
+            }
+        }
+
+
+        protected SchedulerStoragePrintAdapter GetSchedulerAdapter()
+        {
+            SchedulerStorage schedulerStorage = new SchedulerStorage();
+            ResourceMappingInfo resourceMappings = schedulerStorage.Resources.Mappings;
+            AppointmentMappingInfo appointmentMappings = schedulerStorage.Appointments.Mappings;
+
+            resourceMappings.Id = "ResourceID";
+            resourceMappings.Caption = "ResourceName";
+
+            appointmentMappings.AppointmentId = "SiteVisitAppointmentID";
+            appointmentMappings.Start = "AppointmentStartDate";
+            appointmentMappings.End = "AppointmentEndDate";
+            appointmentMappings.Subject = "Subject";
+            appointmentMappings.Description = "Description";
+            appointmentMappings.Location = "AppointmentLocation";
+            appointmentMappings.Label = "Label";
+            appointmentMappings.Status = "Status";
+            appointmentMappings.AllDay = "AppointmentAllDay";
+            appointmentMappings.ReminderInfo = "ReminderInfo";
+            appointmentMappings.RecurrenceInfo = "RecurrenceInfo";
+            appointmentMappings.Type = "Type";
+            appointmentMappings.ResourceId = "ResourceID";
+
+            schedulerStorage.Appointments.ResourceSharing = false;
+
+            schedulerStorage.Resources.DataSource = MembershipHelper.GetResources();
+
+            schedulerStorage.Appointments.DataSource = (from a in apptCtx.SiteVisitAppointments
+                                                        select a);                                                            
+            SchedulerStoragePrintAdapter adapter = new SchedulerStoragePrintAdapter(schedulerStorage);
+            //adapter.TimeInterval = new TimeInterval(DateTime.Now, TimeSpan.FromDays(14));
+            //adapter.EnableSmartSync = true;
+
+            return adapter;
+        }
+    }
+}
+<#+
+    }
+
+	void GenerateDesignerFile(SiteVisit sitevisit, IEnumerable<SiteVisitForm> forms)
+	{
+		string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
+		var parentForm = SiteVisitDBHelper.GetParentForm(sitevisit);
+		string table = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBTableName;
+        string pkey = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBPrimaryKeyName;
+#>
+//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated. 
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+namespace OnSite.WebUI.Reports {
+    
+    
+    public partial class <#= sitevisitName #>Schedule {
+
+        /// <summary>
+        /// ASPxRoundPanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxRoundPanel.ASPxRoundPanel ASPxRoundPanel1;
+        
+        /// <summary>
+        /// Panelcontent1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxPanel.PanelContent Panelcontent1;
+        
+        /// <summary>
+        /// lblResourceCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxLabel lblResourceCount;
+        
+        /// <summary>
+        /// cbResourceCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cbResourceCount;
+        
+        /// <summary>
+        /// lblStart control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxLabel lblStart;
+        
+        /// <summary>
+        /// edtStart control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit edtStart;
+        
+        /// <summary>
+        /// lblTimeScale control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxLabel lblTimeScale;
+        
+        /// <summary>
+        /// cbTimeScale control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cbTimeScale;
+        
+        /// <summary>
+        /// lblIntervalCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxLabel lblIntervalCount;
+        
+        /// <summary>
+        /// cbIntervalCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cbIntervalCount;
+        
+        /// <summary>
+        /// lblEnd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxLabel lblEnd;
+        
+        /// <summary>
+        /// edtEnd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit edtEnd;
+        
+        /// <summary>
+        /// ReportToolbar1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.XtraReports.Web.ReportToolbar ReportToolbar1;
+        
+        /// <summary>
+        /// ReportViewer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.XtraReports.Web.ReportViewer ReportViewer;
+	}
+}
+<#+
+	}
+#>
