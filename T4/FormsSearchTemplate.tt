@@ -24,12 +24,22 @@ switch (OutputType) {
 <%@ Register Assembly="DevExpress.Web.ASPxGridView.v12.1.Export, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxGridView.Export" TagPrefix="dx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+<script type="text/javascript">
+	function OnCustomButtonClick(s,e) {
+		if (e.buttonID == 'Delete'){ 
+			e.processOnServer = confirm('Are you sure you want to delete this item?');
+		} else {
+			e.processOnServer = true;
+		}
+	}
+</script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+	<h2>Search <#= parentForm.UIDisplayName #>'s</h2>
 	<table>
 		<tr>
 			<td>
-				<dx:ASPxHyperLink ID="lnkCreate" runat="server" Text="Create Building Contact" NavigateUrl="~/SiteVisits/<#= sitevisitName #>Edit.aspx">
+				<dx:ASPxHyperLink ID="lnkCreate" runat="server" Text="Create <#= parentForm.UIDisplayName #>" NavigateUrl="~/SiteVisits/<#= sitevisitName #>Edit.aspx">
 				</dx:ASPxHyperLink>
 			</td>
 			<td>
@@ -37,7 +47,7 @@ switch (OutputType) {
 			</td>
 		</tr>
 	</table>
-    <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False">
+    <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="<#= table #>DataSource">
         <Columns>
             <dx:GridViewCommandColumn VisibleIndex="0">
                 <CustomButtons>
@@ -59,8 +69,14 @@ switch (OutputType) {
                 ReadOnly="True" VisibleIndex="0" Visible="False">
 			</dx:GridViewDataTextColumn>
         </Columns>
-        <Settings ShowFilterRow="True" />
+        <Settings ShowFilterRow="True" ShowHeaderFilterButton="true" />
+		<ClientSideEvents CustomButtonClick="OnCustomButtonClick" />
     </dx:ASPxGridView>
+    <asp:EntityDataSource ID="<#= table #>DataSource" runat="server" 
+        ConnectionString="name=SiteVisitDataEntities" 
+        DefaultContainerName="SiteVisitDataEntities" EnableFlattening="False" 
+        EntitySetName="<#= table #>">
+    </asp:EntityDataSource>
 	<dx:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="ASPxGridView1">
     </dx:ASPxGridViewExporter>
 </asp:Content>
@@ -129,14 +145,14 @@ namespace OnSite.WebUI.SiteVisits
         {
 			btnCsvExport.Click += new EventHandler(btnCsvExport_Click);
             ASPxGridView1.CustomButtonCallback += new DevExpress.Web.ASPxGridView.ASPxGridViewCustomButtonCallbackEventHandler(ASPxGridView1_CustomButtonCallback);
-            ASPxGridView1_Bind();
+            //ASPxGridView1_Bind();
         }
 
         protected void ASPxGridView1_Bind()
         {
-            ASPxGridView1.DataSource = (from i in ctx.<#= table #>
-                                        select i);
-            ASPxGridView1.DataBind();
+            //ASPxGridView1.DataSource = (from i in ctx.<#= table #>
+            //                            select i);
+            //ASPxGridView1.DataBind();
         }
 
         protected void ASPxGridView1_CustomButtonCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomButtonCallbackEventArgs e)
@@ -167,6 +183,7 @@ namespace OnSite.WebUI.SiteVisits
 			ASPxGridView1.Columns["<#= pkey #>"].Visible = true;
 <#= GenerateExportColumns(parentForm) #>
 			ASPxGridView1.DataBind();
+			gridExport.FileName = "<#= table #>";
             gridExport.WriteCsvToResponse();
         }
     }

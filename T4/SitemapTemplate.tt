@@ -9,10 +9,12 @@ GenerateSitemap(SiteVisit);
 <?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
 	<siteMapNode url="~/Default.aspx?id=1" title="Home"  description="Home Page">
+	  <siteMapNode url="~/Default.aspx" title="Home"  description="Home Page"></siteMapNode>
 <#= GenerateAuditorMap(sitevisit) #>
 <#= GenerateSchedulerMap(sitevisit) #>
 <#= GenerateReportMap(sitevisit) #>
 <#= GenerateResourceMap(sitevisit) #>
+	  <siteMapNode url="~/Documents/Default.aspx" title="Documents"  description="Documents" roles="Administrator,Auditor,ReportViewer,Scheduler,Resource" />
       <siteMapNode url="~/Admin/ManageUsers.aspx" title="Admin"  description="Administrative Manager" roles="Administrator" />
 	</siteMapNode>
 </siteMap>
@@ -26,6 +28,7 @@ GenerateSitemap(SiteVisit);
 #>			<siteMapNode url="~/SiteVisits/<#= sitevisitName #>Search.aspx?id=1" title="Site Visit"  description="<#= sitevisitName #> Site Visit" roles="Auditor">
         <siteMapNode url="~/SiteVisits/<#= sitevisitName #>Search.aspx" title="Search"  description="Search <#= sitevisitName #>" />
         <siteMapNode url="~/SiteVisits/<#= sitevisitName #>Preview.aspx" title="Preview"  description="Preview <#= sitevisitName #>" />
+		<siteMapNode url="~/SiteVisits/<#= sitevisitName #>Print.aspx" title="Print"  description="Print <#= sitevisitName #>" />
       </siteMapNode>
 <#+ 
 

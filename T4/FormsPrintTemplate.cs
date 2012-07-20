@@ -25,16 +25,28 @@ namespace OnSite.TemplateWizard.Classes
     using System.Data.EntityClient;
     
     
-    #line 1 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
+    #line 1 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "10.0.0.0")]
-    public partial class SitemapTemplate : SitemapTemplateBase
+    public partial class FormsPrintTemplate : FormsPrintTemplateBase
     {
         public virtual string TransformText()
         {
             
-            #line 2 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
+            #line 2 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
 
-GenerateSitemap(SiteVisit);
+switch (OutputType) {
+	case FileType.Page:
+		GeneratePage(SiteVisit, SiteVisit.SiteVisitForms);
+		break;
+	case FileType.Code:
+		GenerateCodeFile(SiteVisit, SiteVisit.SiteVisitForms);
+		break;
+	case FileType.Designer:
+		GenerateDesignerFile(SiteVisit, SiteVisit.SiteVisitForms);
+		break;
+	default:
+		break;
+}
 
             
             #line default
@@ -42,225 +54,222 @@ GenerateSitemap(SiteVisit);
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 5 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
+        #line 16 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
 
-	protected void GenerateSitemap(SiteVisit sitevisit)
+    void GeneratePage(SiteVisit sitevisit, IEnumerable<SiteVisitForm> forms)
 	{
+		string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
 
         
         #line default
         #line hidden
         
-        #line 8 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write(@"<?xml version=""1.0"" encoding=""utf-8"" ?>
-<siteMap xmlns=""http://schemas.microsoft.com/AspNet/SiteMap-File-1.0"" >
-	<siteMapNode url=""~/Default.aspx?id=1"" title=""Home""  description=""Home Page"">
-	  <siteMapNode url=""~/Default.aspx"" title=""Home""  description=""Home Page""></siteMapNode>
-");
+        #line 20 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write("<%@ Page Title=\"");
 
         
         #line default
         #line hidden
         
-        #line 13 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(GenerateAuditorMap(sitevisit)));
+        #line 21 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 13 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write("\r\n");
+        #line 21 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write(" Print\" Language=\"C#\" MasterPageFile=\"~/Site.master\" AutoEventWireup=\"true\" CodeB" +
+        "ehind=\"");
 
         
         #line default
         #line hidden
         
-        #line 14 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(GenerateSchedulerMap(sitevisit)));
+        #line 21 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 14 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write("\r\n");
+        #line 21 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write("Print.aspx.cs\" Inherits=\"OnSite.WebUI.SiteVisits.");
 
         
         #line default
         #line hidden
         
-        #line 15 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(GenerateReportMap(sitevisit)));
+        #line 21 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 15 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write("\r\n");
+        #line 21 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write("Print\" %>\r\n");
 
         
         #line default
         #line hidden
         
-        #line 16 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(GenerateResourceMap(sitevisit)));
+        #line 22 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(GenerateUserControlReferences(forms)));
 
         
         #line default
         #line hidden
         
-        #line 16 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
+        #line 22 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
 this.Write(@"
-	  <siteMapNode url=""~/Documents/Default.aspx"" title=""Documents""  description=""Documents"" roles=""Administrator,Auditor,ReportViewer,Scheduler,Resource"" />
-      <siteMapNode url=""~/Admin/ManageUsers.aspx"" title=""Admin""  description=""Administrative Manager"" roles=""Administrator"" />
-	</siteMapNode>
-</siteMap>
+
+<asp:Content ID=""HeaderContent"" runat=""server"" ContentPlaceHolderID=""HeadContent"">
+</asp:Content>
+<asp:Content ID=""BodyContent"" runat=""server"" ContentPlaceHolderID=""MainContent"">
+    <h2>
+        Forms Printer
+    </h2>
+	<input type=""button"" value=""Print this page"" onClick=""window.print()"" />
 ");
 
         
         #line default
         #line hidden
         
-        #line 21 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
+        #line 31 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(GenerateUserControls(forms)));
+
+        
+        #line default
+        #line hidden
+        
+        #line 31 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write("\r\n</asp:Content>\r\n");
+
+        
+        #line default
+        #line hidden
+        
+        #line 33 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
 
     }  
 
+	private string GenerateUserControlReferences(IEnumerable<SiteVisitForm> forms)
+	{
+		foreach(SiteVisitForm form in forms) {
+
+        
+        #line default
+        #line hidden
+        
+        #line 39 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write("<%@ Register src=\"~/UserControls/GeneratedForms/");
+
+        
+        #line default
+        #line hidden
+        
+        #line 39 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
+
+        
+        #line default
+        #line hidden
+        
+        #line 39 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write(".ascx\" tagname=\"");
+
+        
+        #line default
+        #line hidden
+        
+        #line 39 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
+
+        
+        #line default
+        #line hidden
+        
+        #line 39 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write("\" tagprefix=\"uc\" %>\r\n");
+
+        
+        #line default
+        #line hidden
+        
+        #line 40 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+ 
+		}
+		return "";
+	}
 	
-	private string GenerateAuditorMap(SiteVisit sitevisit)
+
+	private string GenerateUserControls(IEnumerable<SiteVisitForm> forms)
 	{
-		string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
+		foreach(SiteVisitForm form in forms) {
+			string visible = form.SiteVisitParentFormID == null ? "True" : "False";
 
         
         #line default
         #line hidden
         
-        #line 28 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write("\t\t\t<siteMapNode url=\"~/SiteVisits/");
+        #line 50 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write("\t<h3>");
 
         
         #line default
         #line hidden
         
-        #line 28 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
+        #line 50 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(form.UIDisplayName));
 
         
         #line default
         #line hidden
         
-        #line 28 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write("Search.aspx?id=1\" title=\"Site Visit\"  description=\"");
+        #line 50 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write("</h3>\r\n\t<uc:");
 
         
         #line default
         #line hidden
         
-        #line 28 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
+        #line 51 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 28 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write(" Site Visit\" roles=\"Auditor\">\r\n        <siteMapNode url=\"~/SiteVisits/");
+        #line 51 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write(" ID=\"uc");
 
         
         #line default
         #line hidden
         
-        #line 29 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
+        #line 51 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 29 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write("Search.aspx\" title=\"Search\"  description=\"Search ");
+        #line 51 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write("\" runat=\"server\" />\r\n");
 
         
         #line default
         #line hidden
         
-        #line 29 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
-
-        
-        #line default
-        #line hidden
-        
-        #line 29 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write("\" />\r\n        <siteMapNode url=\"~/SiteVisits/");
-
-        
-        #line default
-        #line hidden
-        
-        #line 30 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
-
-        
-        #line default
-        #line hidden
-        
-        #line 30 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write("Preview.aspx\" title=\"Preview\"  description=\"Preview ");
-
-        
-        #line default
-        #line hidden
-        
-        #line 30 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
-
-        
-        #line default
-        #line hidden
-        
-        #line 30 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write("\" />\r\n\t\t<siteMapNode url=\"~/SiteVisits/");
-
-        
-        #line default
-        #line hidden
-        
-        #line 31 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
-
-        
-        #line default
-        #line hidden
-        
-        #line 31 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write("Print.aspx\" title=\"Print\"  description=\"Print ");
-
-        
-        #line default
-        #line hidden
-        
-        #line 31 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
-
-        
-        #line default
-        #line hidden
-        
-        #line 31 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write("\" />\r\n      </siteMapNode>\r\n");
-
-        
-        #line default
-        #line hidden
-        
-        #line 33 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
+        #line 52 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
  
-
+		}
 		return "";
 	}
-	private string GenerateSchedulerMap(SiteVisit sitevisit)
+
+    void GenerateCodeFile(SiteVisit sitevisit, IEnumerable<SiteVisitForm> forms)
 	{
 		string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
 
@@ -268,76 +277,84 @@ this.Write("\" />\r\n      </siteMapNode>\r\n");
         #line default
         #line hidden
         
-        #line 40 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write("\t\t\t<siteMapNode url=\"~/Scheduler/");
+        #line 60 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write("\r\nusing System;\r\nusing System.Collections.Generic;\r\nusing System.Linq;\r\nusing Sys" +
+        "tem.Web;\r\nusing System.Web.UI;\r\nusing System.Web.UI.WebControls;\r\nusing OnSite.W" +
+        "ebUI.Models;\r\n\r\nnamespace OnSite.WebUI.SiteVisits\r\n{\r\n    public partial class ");
 
         
         #line default
         #line hidden
         
-        #line 40 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
+        #line 72 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 40 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write("Edit.aspx?id=1\" title=\"Scheduler\"  description=\"");
+        #line 72 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write("Print : System.Web.UI.Page\r\n    {\r\n        protected void Page_Load(object sender" +
+        ", EventArgs e)\r\n        {\r\n            if (!IsPostBack)\r\n            {\t\t\t\t\t\t\r\n");
 
         
         #line default
         #line hidden
         
-        #line 40 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
+        #line 78 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(GenerateUserControlBinds(forms)));
 
         
         #line default
         #line hidden
         
-        #line 40 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write(" Schedule\" roles=\"Scheduler\">\r\n        <siteMapNode url=\"~/Scheduler/");
+        #line 78 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write("\r\n\t\t\t}\r\n\t\t}\r\n\r\n    }\r\n}\r\n");
 
         
         #line default
         #line hidden
         
-        #line 41 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
+        #line 84 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+
+    }
+
+	private string GenerateUserControlBinds(IEnumerable<SiteVisitForm> forms)
+	{
+		foreach(SiteVisitForm form in forms) {
 
         
         #line default
         #line hidden
         
-        #line 41 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write("Edit.aspx\" title=\"Calendar\"  description=\"Checklist Calendar\" />\r\n        <siteMa" +
-        "pNode url=\"~/Scheduler/");
+        #line 90 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write("\t\t\t\tuc");
 
         
         #line default
         #line hidden
         
-        #line 42 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
+        #line 90 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 42 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write("Data.aspx\" title=\"Data Import/Export\"  description=\"Data Import/Export\" />\r\n     " +
-        " </siteMapNode>\r\n");
+        #line 90 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write(".BindListControls();        \r\n");
 
         
         #line default
         #line hidden
         
-        #line 44 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
+        #line 91 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
  
+		}
 		return "";
 	}
-	private string GenerateReportMap(SiteVisit sitevisit)
+
+	void GenerateDesignerFile(SiteVisit sitevisit, IEnumerable<SiteVisitForm> forms)
 	{
 		string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
 
@@ -345,133 +362,123 @@ this.Write("Data.aspx\" title=\"Data Import/Export\"  description=\"Data Import/
         #line default
         #line hidden
         
-        #line 50 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write("\t\t\t<siteMapNode url=\"~/Reports/");
+        #line 99 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write(@"//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated. 
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+namespace OnSite.WebUI.SiteVisits {
+    
+    
+    public partial class ");
 
         
         #line default
         #line hidden
         
-        #line 50 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
+        #line 112 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 50 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write("Schedule.aspx?id=1\" title=\"Reports\"  description=\"");
+        #line 112 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write("Print {\r\n\r\n");
 
         
         #line default
         #line hidden
         
-        #line 50 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
+        #line 114 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(GenerateDesignerProperties(forms)));
 
         
         #line default
         #line hidden
         
-        #line 50 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write(" Reports\" roles=\"ReportViewer\">\r\n        <siteMapNode url=\"~/Reports/");
+        #line 114 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write("\r\n\r\n\t}\r\n}\r\n");
 
         
         #line default
         #line hidden
         
-        #line 51 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
+        #line 118 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
 
-        
-        #line default
-        #line hidden
-        
-        #line 51 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write("Schedule.aspx\" title=\"Schedule\"  description=\"");
-
-        
-        #line default
-        #line hidden
-        
-        #line 51 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
-
-        
-        #line default
-        #line hidden
-        
-        #line 51 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write(" Schedule Report\" />\r\n      </siteMapNode>\r\n");
-
-        
-        #line default
-        #line hidden
-        
-        #line 53 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
- 
-		return "";
 	}
-	private string GenerateResourceMap(SiteVisit sitevisit)
+
+	private string GenerateDesignerProperties(IEnumerable<SiteVisitForm> forms)
 	{
-		string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
+		foreach(SiteVisitForm form in forms) {
 
         
         #line default
         #line hidden
         
-        #line 59 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write("\t\t\t<siteMapNode url=\"~/Resource/My");
+        #line 124 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write("        /// <summary>\r\n        /// uc");
 
         
         #line default
         #line hidden
         
-        #line 59 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
+        #line 126 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 59 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write("Schedule.aspx?id=1\" title=\"Resource\"  description=\"");
+        #line 126 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write(@" control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::OnSite.WebUI.UserControls.GeneratedForms.");
 
         
         #line default
         #line hidden
         
-        #line 59 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
+        #line 132 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 59 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write(" Resource\" roles=\"Resource\">\r\n        <siteMapNode url=\"~/Resource/My");
+        #line 132 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write(" uc");
 
         
         #line default
         #line hidden
         
-        #line 60 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
+        #line 132 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 60 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write("Schedule.aspx\" title=\"My Schedule\"  description=\"My Schedule\" />\r\n      </siteMap" +
-        "Node>\r\n");
+        #line 132 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write(";\r\n");
 
         
         #line default
         #line hidden
         
-        #line 62 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
+        #line 133 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
  
+		}
 		return "";
 	}
 
@@ -487,7 +494,7 @@ this.Write("Schedule.aspx\" title=\"My Schedule\"  description=\"My Schedule\" /
     /// Base class for this transformation
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "10.0.0.0")]
-    public class SitemapTemplateBase
+    public class FormsPrintTemplateBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

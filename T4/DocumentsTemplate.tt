@@ -1,0 +1,543 @@
+﻿<#@ include file="includes.txt" #>
+<#
+switch (OutputType) {
+	case FileType.DocPage:
+		GenerateDocumentPage();
+		break;
+	case FileType.DocCode:
+		GenerateDocumentCodeFile();
+		break;
+	case FileType.DocDesigner:
+		GenerateDocumentDesignerFile();
+		break;
+	case FileType.GetPage:
+		GenerateGetFilePage();
+		break;
+	case FileType.GetCode:
+		GenerateGetFileCodeFile();
+		break;
+	case FileType.GetDesigner:
+		GenerateGetFileDesignerFile();
+		break;
+	default:
+		break;
+}
+#><#+
+    void GenerateDocumentPage()
+	{
+#>
+<%@ Page Title="Documents" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="OnSite.WebUI.Documents.Default" %>
+<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+<script type="text/javascript">
+    // <![CDATA[
+    function Uploader_OnUploadStart() {
+        btnUpload.SetEnabled(false);
+    }
+    function Uploader_OnFileUploadComplete(args) {
+        if (args.callbackData.length > 0) {
+            alert(args.callbackData);
+        } else {
+            grid.PerformCallback(uploader.GetText() + "|" + txtDescription.GetText());
+            txtDescription.SetValue('');
+        }
+    }
+    function Uploader_OnFilesUploadComplete(args) {
+        UpdateUploadButton();
+    }
+    function UpdateUploadButton() {
+        btnUpload.SetEnabled(uploader.GetText(0) != "");
+    }
+    function OnCustomButtonClick(s, e) {
+        if (e.buttonID == 'Delete') {
+            e.processOnServer = confirm('Are you sure you want to delete this item?');
+        } else {
+            e.processOnServer = true;
+        }
+    }
+
+    function OnGridEndCallback(s, e) {
+        if (grid.cpErrorMessage.length > 0)
+		{
+            alert(grid.cpErrorMessage); 
+			grid.cpErrorMessage = "";       
+		}
+    }
+    // ]]> 
+</script>
+</asp:Content>
+<asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
+	<h2>Documents</h2>
+    <p>
+    <dx:ASPxPopupControl ID="pcUpload" runat="server" ClientInstanceName="uploadPopup" CloseAction="CloseButton" Modal="True"
+        PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" HeaderText="New Document" AllowDragging="True">
+        <ContentCollection>
+            <dx:PopupControlContentControl>
+                <dx:ASPxUploadControl ID="uplFile" runat="server" ClientInstanceName="uploader" ShowProgressPanel="True"
+                    NullText="Click here to browse files..." Size="35" OnFileUploadComplete="uploader_FileUploadComplete">
+                    <ClientSideEvents FileUploadComplete="function(s, e) { Uploader_OnFileUploadComplete(e); }"
+                        FilesUploadComplete="function(s, e) { Uploader_OnFilesUploadComplete(e); }"
+                        FileUploadStart="function(s, e) { Uploader_OnUploadStart(); }"
+                        TextChanged="function(s, e) { UpdateUploadButton(); }"></ClientSideEvents>
+                    <ValidationSettings MaxFileSize="20480000">
+                    </ValidationSettings>
+                </dx:ASPxUploadControl>
+                Description:
+                <dx:ASPxTextBox ID="mDescription" runat="server" Width="200px" ClientInstanceName="txtDescription">
+                </dx:ASPxTextBox>
+                <dx:ASPxButton ID="btnUpload" runat="server" AutoPostBack="False" Text="Upload" ClientInstanceName="btnUpload"
+                    Width="100px" ClientEnabled="False">
+                    <ClientSideEvents Click="function(s, e) { uploader.Upload(); }" />
+                </dx:ASPxButton>
+            </dx:PopupControlContentControl>
+        </ContentCollection>
+    </dx:ASPxPopupControl>
+    <dx:ASPxButton ID="btnNewDocument" runat="server" Text="New Document" AutoPostBack="false">
+        <ClientSideEvents Click="function(s,e){uploadPopup.Show();}" />
+    </dx:ASPxButton>
+    </p>
+    <dx:ASPxGridView ID="gvFiles" runat="server" AutoGenerateColumns="False" ClientInstanceName="grid"
+        DataSourceID="FileDataSource" KeyFieldName="FileGUID">
+        <Columns>
+            <dx:GridViewCommandColumn VisibleIndex="0">
+                <ClearFilterButton Visible="True">
+                </ClearFilterButton>
+                <CustomButtons>
+                    <dx:GridViewCommandColumnCustomButton ID="Delete" Text="Delete"></dx:GridViewCommandColumnCustomButton>
+                    <dx:GridViewCommandColumnCustomButton ID="Download" Text="Download"></dx:GridViewCommandColumnCustomButton>
+                </CustomButtons>
+            </dx:GridViewCommandColumn>
+            <dx:GridViewDataTextColumn FieldName="ProjectFileID" Visible="False" 
+                VisibleIndex="1">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="FileGUID" ReadOnly="True" Visible="False" 
+                VisibleIndex="2">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="FileName" VisibleIndex="3">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="FileDescription" VisibleIndex="4">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="CreatedBy" VisibleIndex="8">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataDateColumn FieldName="CreatedDate" VisibleIndex="7">
+            </dx:GridViewDataDateColumn>
+            <dx:GridViewDataTextColumn FieldName="ModifiedBy" VisibleIndex="6">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="ModifiedDate" VisibleIndex="5">
+            </dx:GridViewDataTextColumn>
+        </Columns>
+		<ClientSideEvents CustomButtonClick="OnCustomButtonClick" EndCallback="OnGridEndCallback" />
+    </dx:ASPxGridView>
+    <asp:EntityDataSource ID="FileDataSource" runat="server" 
+        ConnectionString="name=SiteVisitMetaEntities" 
+        DefaultContainerName="SiteVisitMetaEntities" EnableFlattening="False" 
+        EntitySetName="ProjectFiles">
+    </asp:EntityDataSource>
+</asp:Content>
+<#+
+    }  
+
+    void GenerateDocumentCodeFile()
+	{
+#>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using DevExpress.Web.ASPxTreeList;
+using System.IO;
+using DevExpress.Web.Data;
+using DevExpress.Web.ASPxUploadControl;
+using System.Collections;
+using OnSite.WebUI.Models;
+using OnSite.WebUI.Classes;
+using System.Web.Security;
+using DevExpress.Web.ASPxClasses;
+
+namespace OnSite.WebUI.Documents
+{
+    public partial class Default : System.Web.UI.Page
+    {
+       const string UploadDirectory = "~/Uploads/";
+        private SiteVisitMetaEntities ctx = new SiteVisitMetaEntities();
+        private string gvFilesErrorMessage = "";
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            gvFiles.CustomButtonCallback += new DevExpress.Web.ASPxGridView.ASPxGridViewCustomButtonCallbackEventHandler(gvFiles_CustomButtonCallback);
+            gvFiles.CustomCallback += new DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventHandler(gvFiles_CustomCallback);
+            gvFiles.CustomJSProperties += new DevExpress.Web.ASPxGridView.ASPxGridViewClientJSPropertiesEventHandler(gvFiles_CustomJSProperties);
+        }
+
+        protected void gvFiles_CustomJSProperties(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewClientJSPropertiesEventArgs e)
+        {
+            e.Properties.Add("cpErrorMessage", gvFilesErrorMessage);
+        }
+
+        protected void gvFiles_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
+        {
+            if (e.Parameters.Length > 0)
+            {
+                string[] parameters = e.Parameters.Split(new char[]{'|'});
+                string filename = parameters[0];
+                string description = parameters[1];
+
+				if (filename.Contains("\\"))
+                {
+                    //get the filename by itself
+                    int l = filename.LastIndexOf("\\")+1;
+                    filename = filename.Substring(l, filename.Length - l);
+                }
+
+                var file = (from f in ctx.ProjectFiles
+                            where f.FileName == filename
+                            select f).FirstOrDefault();
+                if (file != null)
+                {
+                    file.FileDescription = description;
+                    ctx.SaveChanges();
+
+                    string fileLength = file.FileContents.Length / 1024 + "kb";
+                    gvFilesErrorMessage = string.Format("Successfully uploaded {0} ({1}).", file.FileName, fileLength);                    
+                }
+            }
+            gvFiles.DataBind();
+        }
+
+        protected void gvFiles_CustomButtonCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomButtonCallbackEventArgs e)
+        {
+            try
+            {
+                if (e.ButtonID == "Download")
+                {
+                    if (PermissionHelper.Documents.CanDownload())
+                    {
+                        string fileguid = gvFiles.GetRowValues(e.VisibleIndex, "FileGUID").ToString();
+                        ASPxWebControl.RedirectOnCallback("GetFile.aspx?f=" + fileguid);
+                    }
+                    else
+                    {
+                        throw new Exception(PermissionHelper.Documents.DownloadDeniedMessage);
+                    }
+                }
+                else
+                {
+                    Guid fileguid = (Guid)gvFiles.GetRowValues(e.VisibleIndex, "FileGUID");
+                    ProjectFile file = (from f in ctx.ProjectFiles
+                                        where f.FileGUID == fileguid
+                                        select f).FirstOrDefault();
+                    if (file != null)
+                    {
+                        if (PermissionHelper.Documents.CanDelete(file.CreatedBy))
+                        {
+                            ctx.ProjectFiles.DeleteObject(file);
+                            ctx.SaveChanges();
+                        }
+                        else
+                        {
+                            throw new Exception(PermissionHelper.Documents.DeleteDeniedMessage);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                gvFilesErrorMessage = ex.Message;
+                
+            }
+            gvFiles.DataBind();
+        }
+
+        protected void uploader_FileUploadComplete(object sender, FileUploadCompleteEventArgs e)
+        {
+            e.CallbackData = SavePostedFile(e.UploadedFile);
+        }
+
+        protected string SavePostedFile(UploadedFile uploadedFile)
+        {
+            if (!uploadedFile.IsValid)
+                return string.Empty;
+
+
+            var file = (from f in ctx.ProjectFiles
+                        where f.FileName == uploadedFile.FileName
+                        select f).FirstOrDefault();
+            string returnMessage = "";
+
+            try
+            {
+                if (file == null)
+                {
+                    if (PermissionHelper.Documents.CanUpload())
+                    {
+
+                        //TODO: come up with a better way to select projectID (actually better way to deal with projects.!)
+                        int projectID = (from p in ctx.Projects
+                                         select p.ProjectID).FirstOrDefault();
+
+                        ProjectFile newFile = new ProjectFile();
+                        newFile.ProjectID = projectID;
+                        newFile.FileGUID = Guid.NewGuid();
+                        newFile.FileContents = ReadFully(uploadedFile.FileContent); //System.IO.File.ReadAllBytes(resFileName);
+                        newFile.FileName = uploadedFile.FileName;
+                        newFile.FileType = uploadedFile.ContentType;
+                        string currentuser = Membership.GetUser().UserName;
+                        newFile.CreatedBy = currentuser;
+                        newFile.ModifiedBy = currentuser;
+                        newFile.CreatedDate = DateTime.Now;
+                        newFile.ModifiedDate = DateTime.Now;
+                        ctx.AddObject("ProjectFiles", newFile);
+                        ctx.SaveChanges();
+                    }
+                    else
+                    {
+                        throw new Exception(PermissionHelper.Documents.UploadDeniedMessage);
+                    }
+                }
+                else
+                {
+                    if (PermissionHelper.Documents.CanOverwrite(file.CreatedBy))
+                    {
+                        //save file contents over the top of the existing file
+                        file.FileContents = ReadFully(uploadedFile.FileContent);
+                        file.FileType = uploadedFile.ContentType;
+                        file.ModifiedBy = Membership.GetUser().UserName;
+                        file.ModifiedDate = DateTime.Now;
+                        ctx.SaveChanges();
+                    }
+                    else
+                    {
+                        throw new Exception(PermissionHelper.Documents.OverwriteDeniedMessage);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                returnMessage = ex.Message;
+            }
+
+            return returnMessage;
+        }
+
+        public byte[] ReadFully(Stream input)
+        {
+            byte[] buffer = new byte[input.Length];
+            //byte[] buffer = new byte[16 * 1024];
+            using (MemoryStream ms = new MemoryStream())
+            {
+                int read;
+                while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
+                {
+                    ms.Write(buffer, 0, read);
+                }
+                return ms.ToArray();
+            }
+        }
+    }
+}
+<#+
+    }
+
+	void GenerateDocumentDesignerFile()
+	{
+#>
+//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated. 
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+namespace OnSite.WebUI.Documents {
+    
+    
+    public partial class Default {
+		/// <summary>
+        /// pcUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxPopupControl.ASPxPopupControl pcUpload;
+        
+        /// <summary>
+        /// uplFile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxUploadControl.ASPxUploadControl uplFile;
+        
+        /// <summary>
+        /// mDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox mDescription;
+        
+        /// <summary>
+        /// btnUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnUpload;
+        
+        /// <summary>
+        /// btnNewDocument control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnNewDocument;
+        
+        /// <summary>
+        /// gvFiles control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gvFiles;
+        
+        /// <summary>
+        /// Delete control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView.GridViewCommandColumnCustomButton Delete;
+        
+        /// <summary>
+        /// Download control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView.GridViewCommandColumnCustomButton Download;
+        
+        /// <summary>
+        /// FileDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.EntityDataSource FileDataSource;
+	}
+}
+<#+
+	}
+	void GenerateGetFilePage()
+	{
+#>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="GetFile.aspx.cs" Inherits="OnSite.WebUI.Documents.GetFile" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+		No Data
+    </div>
+    </form>
+</body>
+</html>
+<#+
+    }  
+
+    void GenerateGetFileCodeFile()
+	{
+#>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using OnSite.WebUI.Models;
+using System.IO;
+
+namespace OnSite.WebUI.Documents
+{
+    public partial class GetFile : System.Web.UI.Page
+    {
+        SiteVisitMetaEntities ctx = new SiteVisitMetaEntities();
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            Guid fileguid;
+            Guid.TryParse(Request.Params[0], out fileguid);
+            
+            ProjectFile file = (from f in ctx.ProjectFiles
+                                where f.FileGUID == fileguid
+                                select f).FirstOrDefault();
+            if (file != null)
+            {
+                using (Stream st = new MemoryStream(file.FileContents))
+                {
+                    long dataLengthToRead = st.Length;
+                    Response.ContentType = file.FileType;
+                    Response.AddHeader("Content-Disposition", "attachment; filename=\"" + file.FileName + "\"");
+                    byte[] buffer = new byte[1024];
+                    int blockSize = 100;
+
+                    while (dataLengthToRead > 0 && Response.IsClientConnected)
+                    {
+                        Int32 lengthRead = st.Read(buffer, 0, blockSize);
+                        Response.OutputStream.Write(buffer, 0, lengthRead);
+                        Response.Flush();
+                        dataLengthToRead = dataLengthToRead - lengthRead;
+                    }
+                    Response.Flush();
+                    Response.Close();
+                }
+                Response.End();
+            }
+        }
+    }
+}
+<#+
+    }
+
+	void GenerateGetFileDesignerFile()
+	{
+#>
+//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated. 
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+namespace OnSite.WebUI.Documents {   
+    
+    public partial class Default {
+        /// <summary>
+        /// form1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+	}
+}
+<#+
+	}
+#>

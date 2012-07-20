@@ -25,6 +25,8 @@ switch (OutputType) {
 <%@ Register Assembly="DevExpress.Web.ASPxScheduler.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxScheduler" TagPrefix="dxwschs" %>
 <%@ Register assembly="DevExpress.XtraScheduler.v12.1.Core, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.XtraScheduler" tagprefix="dx" %>
+<%@ Register src="~/UserControls/FormControls/ZipCode.ascx" tagname="ZipCode" tagprefix="uc" %>
+<%@ Register src="~/UserControls/FormControls/PhoneNumber.ascx" tagname="PhoneNumber" tagprefix="uc" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=yes" />
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyDg2r9hOucSc8Whgr-4-bfvbXBvzSEIAR0"></script>
@@ -172,13 +174,21 @@ switch (OutputType) {
                         <ContentCollection>
                             <dx:SplitterContentControl>
 								<h3>Site List (double-click to select)</h3>
+								<dx:ASPxButton ID="btnRefresh" runat="server" AutoPostback="false" Text="Refresh">
+									<ClientSideEvents Click="function(s,e){grid.PerformCallback();}" />
+								</dx:ASPxButton>
+								<p>
 								<dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" ClientInstanceName="grid">
 									<Columns>
+										<dx:GridViewCommandColumn VisibleIndex="0">
+											<ClearFilterButton Visible="True">
+											</ClearFilterButton>
+										</dx:GridViewCommandColumn>
 										<dx:GridViewDataTextColumn FieldName="<#= pkey #>" 
 											ReadOnly="True" VisibleIndex="0" Visible="False">
 										</dx:GridViewDataTextColumn>
 										<dx:GridViewDataComboBoxColumn FieldName="Disposition.DispositionName" ReadOnly="True" VisibleIndex="0" Visible="true">
-											<PropertiesComboBox DataSourceID="DispositionsDataSource" ValueField="DispositionID" IncrementalFilteringMode="StartsWith" TextField="DispositionName" ValueType="System.Int32" DropDownStyle="DropDown" />
+											<PropertiesComboBox DataSourceID="DispositionsDataSource" ValueField="DispositionName" IncrementalFilteringMode="StartsWith" TextField="DispositionName" ValueType="System.Int32" DropDownStyle="DropDown" />
 										</dx:GridViewDataComboBoxColumn>
 <#= GenerateGridViewColumns(parentForm) #>
 										<dx:GridViewDataTextColumn FieldName="LocationLatitude" 
@@ -188,7 +198,7 @@ switch (OutputType) {
 											ReadOnly="True" VisibleIndex="0" Visible="False">
 										</dx:GridViewDataTextColumn>
 									</Columns>
-									<Settings ShowFilterRow="True" />
+									<Settings ShowFilterRow="True" ShowHeaderFilterButton="true" />
                                     <SettingsBehavior AllowSelectByRowClick="true" />
                                     <ClientSideEvents EndCallback="function(s,e){UpdateMap();}" RowDblClick="OnGridRowDblClick" />
 								</dx:ASPxGridView>
@@ -196,6 +206,7 @@ switch (OutputType) {
 									ConnectionString="name=SiteVisitDataEntities" DefaultContainerName="SiteVisitDataEntities" 
 									EnableFlattening="False" EntitySetName="Dispositions">
 								</asp:EntityDataSource> 
+								</p>
                             </dx:SplitterContentControl>
                         </ContentCollection>                    
                     </dx:SplitterPane>
@@ -282,12 +293,6 @@ switch (OutputType) {
 																<legend>Summary</legend>
 																<table>
 																	<tr>
-																		<td colspan="2">
-																			<dx:ASPxLabel ID="lblSelectedSite" runat="server" Text="ASPxLabel">
-																			</dx:ASPxLabel>
-																		</td>
-																	</tr>
-																	<tr>
 																		<td>Disposition:</td>
 																		<td>
 																			<dx:ASPxComboBox ID="cbDisposition" runat="server" ValueType="System.Int32" Width="125px">
@@ -298,25 +303,35 @@ switch (OutputType) {
 																</table>
 															</fieldset>
 														</td>
-														<td valign="top" class="SelectedSiteContact">
+														<td valign="top" class="SelectedSiteAddress">
 															<fieldset>
-																<legend>Contact</legend>
+																<legend>Address</legend>
 																<table>
 																	<tr>
-																		<td>Address:</td>
-																	</tr>
-																	<tr>
 																		<td>
-																			<dx:ASPxLabel ID="lblAddress" runat="server" Text="ASPxLabel">
-																			</dx:ASPxLabel>
+																			Address:
+																			<dx:ASPxTextBox ID="tbAddress1" runat="server" Width="140px">
+                                                                            </dx:ASPxTextBox>
+																			<dx:ASPxTextBox ID="tbAddress2" runat="server" Width="140px">
+                                                                            </dx:ASPxTextBox>
+																			City:
+																			<dx:ASPxTextBox ID="tbCity" runat="server" Width="140px">
+                                                                            </dx:ASPxTextBox>
+																			State:
+																			<dx:ASPxTextBox ID="tbState" runat="server" Width="140px">
+                                                                            </dx:ASPxTextBox>
+																			Zip:
+																			<uc:ZipCode ID="tbZip" runat="server" IsRequired="False" />
 																		</td>
 																	</tr>
-																	<tr>
-																		<td>
-																			<dx:ASPxLabel ID="lblPhone" runat="server" Text="ASPxLabel">
-																			</dx:ASPxLabel>
-																		</td>
-																	</tr>
+																</table>
+															</fieldset>
+														</td>
+														<td valign="top" class="SelectedSitePhone">
+															<fieldset>
+																<legend>Phone</legend>
+																<table>
+<#= GeneratePhoneInputs(parentForm) #>
 																</table>
 															</fieldset>
 														</td>
@@ -336,7 +351,7 @@ switch (OutputType) {
 														</td>
 													</tr>
 													<tr>
-														<td colspan="2" valign="top" class="SelectedSiteNotes">
+														<td colspan="3" valign="top" class="SelectedSiteNotes">
 															<fieldset>
 																<legend>Notes</legend>
 																<dx:ASPxMemo ID="SchedulerNotes" runat="server" Height="100px" Width="100%">
@@ -376,18 +391,39 @@ switch (OutputType) {
 	private string GenerateSummaryLabels(SiteVisitForm form)
 	{
 		foreach(SiteVisitFormField field in SiteVisitDBHelper.GetSiteVisitSummaryFields(form)) {
-#>				<tr>
-					<td><#=StringSanitizer.SanitizeForWeb(field.FieldLabel)#>:</td>
-					<td>
-						<dx:ASPxLabel ID="lbl<#= field.FieldName #>" runat="server" Text="">
-						</dx:ASPxLabel>
-					</td>
-				</tr>
+#>																	<tr>
+																		<td><#=StringSanitizer.SanitizeForWeb(field.FieldLabel)#>:</td>
+																		<td>
+																			<dx:ASPxLabel ID="lbl<#= field.FieldName #>" runat="server" Text="">
+																			</dx:ASPxLabel>
+																		</td>
+																	</tr>
 <#+ 
 		}
 		return "";
 	}
+	
 
+	private string GeneratePhoneInputs(SiteVisitForm form)
+	{
+		var phoneFields = (from f in form.SiteVisitFormFields
+							where f.ControlType.UITypeName == "PhoneNumber"
+							select f);
+		foreach (SiteVisitFormField field in phoneFields)
+		{
+#>																	<tr>
+																		<td>
+																			<#=StringSanitizer.SanitizeForWeb(field.FieldLabel)#>
+																			<uc:PhoneNumber ID="uc<#= field.FieldName #>" runat="server" 
+																				Visible="True" 
+																				IsRequired="False">
+																			</uc:<#= field.ControlType.UITypeName #>>
+																		</td>
+																	</tr>
+<#+ 
+		}
+		return "";
+	}
     void GenerateCodeFile(SiteVisit sitevisit, IEnumerable<SiteVisitForm> forms)
     {
 		string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
@@ -481,6 +517,8 @@ namespace OnSite.WebUI.Scheduler
 				contact = (from d in dataCtx.<#= table #>
 							   where d.<#= pkey #> == id
 							   select d).FirstOrDefault();
+<#= GenerateAddressSaveExpression(parentForm) #>
+<#= GeneratePhoneSaveExpression(parentForm) #>
 				contact.SchedulerNotes = SchedulerNotes.Text;
 				contact.DispositionID = (int)cbDisposition.SelectedItem.Value;
 				contact.ModifiedDate = DateTime.Now;
@@ -496,11 +534,9 @@ namespace OnSite.WebUI.Scheduler
 							   select d).FirstOrDefault();
 				hf["<#= pkey #>"] = id;
 			}
-			
-			lblSelectedSite.Text = "Record ID: " + contact.<#= pkey #>.ToString();
 <#= GenerateSummaryLabelsExpressions(parentForm) #>
-			lblAddress.Text = <#= GenerateAddressExpression(parentForm) #>;
-			lblPhone.Text = <#= GeneratePhoneExpression(parentForm) #>;
+<#= GenerateAddressExpression(parentForm) #>
+<#= GeneratePhoneExpression(parentForm) #>
 			cbDisposition.Items.FindByValue(contact.DispositionID).Selected = true;
 			lblSavedDate.Text = contact.ModifiedDate.ToString();
 			lblSavedBy.Text = contact.ModifiedUser;         
@@ -593,74 +629,70 @@ namespace OnSite.WebUI.Scheduler
 
 	private string GenerateLocationExpression(SiteVisitForm form)
 	{
-		var addressField = (from f in form.SiteVisitFormFields
-							where f.FieldName.EndsWith("Address")
-							select f).FirstOrDefault();
-		var cityField = (from f in form.SiteVisitFormFields
-							where f.FieldName.EndsWith("City")
-							select f).FirstOrDefault();
-		var stateField = (from f in form.SiteVisitFormFields
-							where f.FieldName.EndsWith("State")
-							select f).FirstOrDefault();
-		var zipField = (from f in form.SiteVisitFormFields
-							where f.FieldName.EndsWith("Zip") || f.FieldName.EndsWith("ZipCode")
-							select f).FirstOrDefault();
-		
-#>contact.<#= addressField.FieldName #> + " " + contact.<#= cityField.FieldName #> + ", " + contact.<#= stateField.FieldName #> + " " + contact.<#= zipField.FieldName #><#+ 
+		AddressFieldHelper helper = new AddressFieldHelper(form);		
+#><#= helper.GetAddressSingleLine("contact") #><#+ 
 		return "";
 	}
 
 	private string GenerateAddressExpression(SiteVisitForm form)
 	{
-		var addressField = (from f in form.SiteVisitFormFields
-							where f.FieldName.EndsWith("Address")
-							select f).FirstOrDefault();
-		var cityField = (from f in form.SiteVisitFormFields
-							where f.FieldName.EndsWith("City")
-							select f).FirstOrDefault();
-		var stateField = (from f in form.SiteVisitFormFields
-							where f.FieldName.EndsWith("State")
-							select f).FirstOrDefault();
-		var zipField = (from f in form.SiteVisitFormFields
-							where f.FieldName.EndsWith("Zip") || f.FieldName.EndsWith("ZipCode")
-							select f).FirstOrDefault();
+		AddressFieldHelper helper = new AddressFieldHelper(form);
 		
-#>contact.<#= addressField.FieldName #> + "\n" + contact.<#= cityField.FieldName #> + ", " + contact.<#= stateField.FieldName #> + " " + contact.<#= zipField.FieldName #><#+ 
+#>			tbAddress1.Text = contact.<#= helper.Address1.FieldName #>;
+			tbAddress2.Text = contact.<#= helper.Address2.FieldName #>;
+			tbCity.Text = contact.<#= helper.City.FieldName #>;
+			tbState.Text = contact.<#= helper.State.FieldName #>;
+			tbZip.Value = contact.<#= helper.Zip.FieldName #>;
+<#+ 
 		return "";
 	}
 
 	private string GeneratePhoneExpression(SiteVisitForm form)
 	{
 		var phoneFields = (from f in form.SiteVisitFormFields
-							where f.FieldName.EndsWith("PhoneNumber") || f.FieldName.EndsWith("Phone")
+							where f.ControlType.UITypeName == "PhoneNumber"
 							select f);
 		
-		string phoneExpression = "";
 		foreach (SiteVisitFormField phoneField in phoneFields)
 		{
-			phoneExpression += "\"" + StringSanitizer.SanitizeForWeb(phoneField.FieldLabel) + ":\" + contact." + phoneField.FieldName + " + \"\\n\" + ";
+#>			uc<#= phoneField.FieldName #>.Value = contact.<#= phoneField.FieldName #>;
+<#+ 
 		}
-		
-#><#= phoneExpression #>""<#+ 
 		return "";
 	}
 
+	private string GenerateAddressSaveExpression(SiteVisitForm form)
+	{
+		AddressFieldHelper helper = new AddressFieldHelper(form);
+		
+#>				contact.<#= helper.Address1.FieldName #> = (string)tbAddress1.Text;
+				contact.<#= helper.Address2.FieldName #> = (string)tbAddress2.Text;
+				contact.<#= helper.City.FieldName #> = (string)tbCity.Text;
+				contact.<#= helper.State.FieldName #> = (string)tbState.Text;
+				contact.<#= helper.Zip.FieldName #> = (int?)tbZip.Value;
+<#+ 
+		return "";
+	}
+
+	private string GeneratePhoneSaveExpression(SiteVisitForm form)
+	{
+		var phoneFields = (from f in form.SiteVisitFormFields
+							where f.ControlType.UITypeName == "PhoneNumber"
+							select f);
+		
+		foreach (SiteVisitFormField phoneField in phoneFields)
+		{
+#>				contact.<#= phoneField.FieldName #> = (string)uc<#= phoneField.FieldName #>.Value;
+<#+ 
+		}
+		return "";
+	}
 	private string GenerateDescriptionExpression(SiteVisitForm form)
 	{
-		var addressField = (from f in form.SiteVisitFormFields
-							where f.FieldName.EndsWith("Address")
-							select f).FirstOrDefault();
-		var cityField = (from f in form.SiteVisitFormFields
-							where f.FieldName.EndsWith("City")
-							select f).FirstOrDefault();
-		var stateField = (from f in form.SiteVisitFormFields
-							where f.FieldName.EndsWith("State")
-							select f).FirstOrDefault();
-		var zipField = (from f in form.SiteVisitFormFields
-							where f.FieldName.EndsWith("Zip") || f.FieldName.EndsWith("ZipCode")
-							select f).FirstOrDefault();
+		AddressFieldHelper addressHelper = new AddressFieldHelper(form);
+
 		var phoneFields = (from f in form.SiteVisitFormFields
-							where f.FieldName.EndsWith("PhoneNumber") || f.FieldName.EndsWith("Phone")
+							where f.ControlType.UITypeName == "PhoneNumber"
 							select f);
 		var summaryFields = SiteVisitDBHelper.GetSiteVisitSummaryFields(form);
 
@@ -676,8 +708,8 @@ namespace OnSite.WebUI.Scheduler
 		{
 			phoneExpression += "\"" + StringSanitizer.SanitizeForWeb(phoneField.FieldLabel) + ":\" + contact." + phoneField.FieldName + " + \"\\n\" + ";
 		}
-		
-#><#= summaryExpression #><#= phoneExpression #>"\nAddress:\n" + contact.<#= addressField.FieldName #> + "\n" + contact.<#= cityField.FieldName #> + ", " + contact.<#= stateField.FieldName #> + " " + contact.<#= zipField.FieldName #> + "\n\nGoogle Map:\n" + "http://maps.google.com/maps?q=" + Server.UrlEncode(contact.<#= addressField.FieldName #> + " " + contact.<#= cityField.FieldName #> + ", " + contact.<#= stateField.FieldName #> + " " + contact.<#= zipField.FieldName #>)<#+ 
+
+#><#= summaryExpression #><#= phoneExpression #>"\nAddress:\n" + <#= addressHelper.GetAddressFormatted("contact") #> + "\n\nGoogle Map:\n" + "http://maps.google.com/maps?q=" + Server.UrlEncode(<#= addressHelper.GetAddressSingleLine("contact") #>)<#+ 
 		return "";
 	}
 
@@ -818,35 +850,55 @@ namespace OnSite.WebUI.Scheduler {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxLabel lblSavedBy;
-        
-        /// <summary>
-        /// lblSelectedSite control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxLabel lblSelectedSite;
-        
+                
 <#= GenerateSummaryProperties(parentForm) #>
         
-        /// <summary>
-        /// lblSelectedSite control.
+		/// <summary>
+        /// tbAddress1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxLabel lblAddress;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox tbAddress1;
         
         /// <summary>
-        /// lblSelectedSite control.
+        /// tbAddress2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxLabel lblPhone;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox tbAddress2;
+        
+        /// <summary>
+        /// tbCity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox tbCity;
+        
+        /// <summary>
+        /// tbState control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox tbState;
+        
+        /// <summary>
+        /// tbZip control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::OnSite.WebUI.UserControls.FormControls.ZipCode tbZip;
+
+<#= GeneratePhoneProperties(parentForm) #>    
 
 		/// <summary>
         /// cbDisposition control.
@@ -875,8 +927,6 @@ namespace OnSite.WebUI.Scheduler {
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxMemo SchedulerNotes;
 
-
-
 	}
 }
 <#+
@@ -893,6 +943,27 @@ namespace OnSite.WebUI.Scheduler {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxLabel lbl<#= field.FieldName #>;
+<#+ 
+		}
+		return "";
+	}
+	
+	private string GeneratePhoneProperties(SiteVisitForm form)
+	{
+		var phoneFields = (from f in form.SiteVisitFormFields
+							where f.ControlType.UITypeName == "PhoneNumber"
+							select f);
+		
+		foreach (SiteVisitFormField field in phoneFields)
+		{
+#>		/// <summary>
+        /// uc<#= field.FieldName #> control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::OnSite.WebUI.UserControls.FormControls.PhoneNumber uc<#= field.FieldName #>;
 <#+ 
 		}
 		return "";

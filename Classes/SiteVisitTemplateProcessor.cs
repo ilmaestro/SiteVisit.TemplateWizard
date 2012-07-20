@@ -15,6 +15,7 @@ namespace OnSite.TemplateWizard.Classes
         public string ReportsPath { get; set; }
         public string SchedulerPath { get; set; }
         public string ResourcePath { get; set; }
+        public string DocumentsPath { get; set; }
         public string SitemapPath { get; set; }
 
         public SiteVisitTemplateProcessor(string basePath)
@@ -25,6 +26,7 @@ namespace OnSite.TemplateWizard.Classes
             ReportsPath = Path.Combine(BasePath, @"Reports\");
             SchedulerPath = Path.Combine(BasePath, @"Scheduler\");
             ResourcePath = Path.Combine(BasePath, @"Resource\");
+            DocumentsPath = Path.Combine(BasePath, @"Documents\");
             SitemapPath = BasePath;
         }
 
@@ -81,6 +83,7 @@ namespace OnSite.TemplateWizard.Classes
                 //generate site visit pages
                 GenerateFormsEdit(sitevisit);
                 GenerateFormsPreview(sitevisit);
+                GenerateFormsPrint(sitevisit);
                 GenerateFormsSearch(sitevisit);
                 //generate scheduler pages
                 GenerateSchedulerEdit(sitevisit);
@@ -93,6 +96,7 @@ namespace OnSite.TemplateWizard.Classes
 
             //generate sitemap
             GenerateSitemap(sitevisits.FirstOrDefault()); //TODO: adjust sitemap to work for all sitevisits
+            GenerateDocuments();
         }
 
         private void GenerateForm(SiteVisitForm form)
@@ -148,6 +152,25 @@ namespace OnSite.TemplateWizard.Classes
 
             template.OutputType = FormsPreviewTemplate.FileType.Designer;
             template.OutputFilePath = Path.Combine(SiteVisitsPath, sitevisitName + "Preview.aspx.designer.cs");
+            template.SaveOutput(template.TransformText());
+        }
+
+        private void GenerateFormsPrint(SiteVisit sitevisit)
+        {
+            FormsPrintTemplate template = new FormsPrintTemplate();
+            template.SiteVisit = sitevisit;
+            string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
+
+            template.OutputType = FormsPrintTemplate.FileType.Page;
+            template.OutputFilePath = Path.Combine(SiteVisitsPath, sitevisitName + "Print.aspx");
+            template.SaveOutput(template.TransformText());
+
+            template.OutputType = FormsPrintTemplate.FileType.Code;
+            template.OutputFilePath = Path.Combine(SiteVisitsPath, sitevisitName + "Print.aspx.cs");
+            template.SaveOutput(template.TransformText());
+
+            template.OutputType = FormsPrintTemplate.FileType.Designer;
+            template.OutputFilePath = Path.Combine(SiteVisitsPath, sitevisitName + "Print.aspx.designer.cs");
             template.SaveOutput(template.TransformText());
         }
 
@@ -254,5 +277,28 @@ namespace OnSite.TemplateWizard.Classes
             template.SaveOutput(template.TransformText());            
         }
 
+        private void GenerateDocuments()
+        {
+            DocumentsTemplate template = new DocumentsTemplate();
+            template.OutputType = DocumentsTemplate.FileType.DocPage;
+            template.OutputFilePath = Path.Combine(DocumentsPath, "Default.aspx");
+            template.SaveOutput(template.TransformText());
+            template.OutputType = DocumentsTemplate.FileType.DocCode;
+            template.OutputFilePath = Path.Combine(DocumentsPath, "Default.aspx.cs");
+            template.SaveOutput(template.TransformText());
+            template.OutputType = DocumentsTemplate.FileType.DocDesigner;
+            template.OutputFilePath = Path.Combine(DocumentsPath, "Default.aspx.designer.cs");
+            template.SaveOutput(template.TransformText());
+
+            template.OutputType = DocumentsTemplate.FileType.GetPage;
+            template.OutputFilePath = Path.Combine(DocumentsPath, "GetFile.aspx");
+            template.SaveOutput(template.TransformText());
+            template.OutputType = DocumentsTemplate.FileType.GetCode;
+            template.OutputFilePath = Path.Combine(DocumentsPath, "GetFile.aspx.cs");
+            template.SaveOutput(template.TransformText());
+            template.OutputType = DocumentsTemplate.FileType.GetDesigner;
+            template.OutputFilePath = Path.Combine(DocumentsPath, "GetFile.aspx.designer.cs");
+            template.SaveOutput(template.TransformText());
+        }
     }
 }

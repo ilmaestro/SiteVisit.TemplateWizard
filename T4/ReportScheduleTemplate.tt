@@ -37,7 +37,7 @@ switch (OutputType) {
                             <dx:ASPxLabel ID="lblResourceCount" runat="server" Text="Resource Count:" AssociatedControlID="cbResourceCount" />
                         </td>
                         <td>
-                            <dx:ASPxComboBox ID="cbResourceCount" runat="server" ValueType="System.Int32" SelectedIndex="1"
+                            <dx:ASPxComboBox ID="cbResourceCount" runat="server" ValueType="System.Int32" SelectedIndex="3"
                                 Width="50px">
                                 <ClientSideEvents SelectedIndexChanged="function(s, e) { ClientReportViewer.Refresh(); }" />
                                 <Items>
@@ -45,6 +45,8 @@ switch (OutputType) {
                                     <dx:ListEditItem Text="2" Value="2"></dx:ListEditItem>
                                     <dx:ListEditItem Text="3" Value="3"></dx:ListEditItem>
                                     <dx:ListEditItem Text="4" Value="4"></dx:ListEditItem>
+                                    <dx:ListEditItem Text="5" Value="5"></dx:ListEditItem>
+                                    <dx:ListEditItem Text="6" Value="6"></dx:ListEditItem>
                                 </Items>
                             </dx:ASPxComboBox>
                         </td>
@@ -53,7 +55,7 @@ switch (OutputType) {
                         </td>
                         <td>
                             <dx:ASPxDateEdit ID="edtStart" runat="server" Width="120px" ClientInstanceName="clientEdtStart">
-                                <ClientSideEvents DateChanged="function(s, e) { ValidateDates(); ClientReportViewer.Refresh(); }">
+                                <ClientSideEvents DateChanged="function(s, e) {ClientReportViewer.Refresh(); }">
                                 </ClientSideEvents>
                             </dx:ASPxDateEdit>
                         </td>
@@ -61,7 +63,7 @@ switch (OutputType) {
                             <dx:ASPxLabel ID="lblTimeScale" runat="server" Text="Time scale:" AssociatedControlID="cbTimeScale" />
                         </td>
                         <td>
-                            <dx:ASPxComboBox ID="cbTimeScale" runat="server" ValueType="System.Int32" SelectedIndex="3"
+                            <dx:ASPxComboBox ID="cbTimeScale" runat="server" ValueType="System.Int32" SelectedIndex="1"
                                 Width="120px">
                                 <Items>
                                     <dx:ListEditItem Text="Year/Month" Value="0"></dx:ListEditItem>
@@ -77,7 +79,7 @@ switch (OutputType) {
                             <dx:ASPxLabel ID="lblIntervalCount" runat="server" Text="Interval Count:" AssociatedControlID="cbIntervalCount" />
                         </td>
                         <td>
-                            <dx:ASPxComboBox ID="cbIntervalCount" runat="server" ValueType="System.Int32" SelectedIndex="2"
+                            <dx:ASPxComboBox ID="cbIntervalCount" runat="server" ValueType="System.Int32" SelectedIndex="3"
                                 Width="50px">
                                 <ClientSideEvents SelectedIndexChanged="function(s, e) { ClientReportViewer.Refresh(); }" />
                                 <Items>
@@ -96,7 +98,7 @@ switch (OutputType) {
                         </td>
                         <td colspan="3" align="left">
                             <dx:ASPxDateEdit ID="edtEnd" runat="server" Width="120px" ClientInstanceName="clientEdtEnd">
-                                <ClientSideEvents DateChanged="function(s, e) { ValidateDates(); ClientReportViewer.Refresh(); }">
+                                <ClientSideEvents DateChanged="function(s, e) { ClientReportViewer.Refresh(); }">
                                 </ClientSideEvents>
                             </dx:ASPxDateEdit>
                         </td>

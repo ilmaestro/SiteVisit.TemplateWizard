@@ -25,14 +25,14 @@ namespace OnSite.TemplateWizard.Classes
     using System.Data.EntityClient;
     
     
-    #line 1 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+    #line 1 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "10.0.0.0")]
     public partial class ReportScheduleTemplate : ReportScheduleTemplateBase
     {
         public virtual string TransformText()
         {
             
-            #line 2 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+            #line 2 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 
 switch (OutputType) {
 	case FileType.Page:
@@ -54,7 +54,7 @@ switch (OutputType) {
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 16 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 16 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 
     void GeneratePage(SiteVisit sitevisit, IEnumerable<SiteVisitForm> forms)
     {
@@ -67,21 +67,21 @@ switch (OutputType) {
         #line default
         #line hidden
         
-        #line 23 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 23 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write("<%@ Page Title=\"");
 
         
         #line default
         #line hidden
         
-        #line 24 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 24 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisit.SiteVisitName));
 
         
         #line default
         #line hidden
         
-        #line 24 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 24 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write("\" Language=\"C#\" MasterPageFile=\"~/Site.master\" AutoEventWireup=\"true\" CodeBehind=" +
         "\"");
 
@@ -89,28 +89,28 @@ this.Write("\" Language=\"C#\" MasterPageFile=\"~/Site.master\" AutoEventWireup=
         #line default
         #line hidden
         
-        #line 24 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 24 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 24 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 24 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write("Schedule.aspx.cs\" Inherits=\"OnSite.WebUI.Reports.");
 
         
         #line default
         #line hidden
         
-        #line 24 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 24 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 24 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 24 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write(@"Schedule"" %>
 <%@ Register Assembly=""DevExpress.XtraReports.v12.1.Web, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a""
     Namespace=""DevExpress.XtraReports.Web"" TagPrefix=""dx"" %>
@@ -123,14 +123,14 @@ this.Write(@"Schedule"" %>
         #line default
         #line hidden
         
-        #line 30 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 30 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 30 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 30 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write(" Schedule</h2>\r\n    <dx:ASPxRoundPanel ID=\"ASPxRoundPanel1\" runat=\"server\" Width=" +
         "\"100%\" HeaderText=\"Daily Style Options\">\r\n        <PanelCollection>\r\n           " +
         " <dx:PanelContent ID=\"Panelcontent1\" runat=\"server\">\r\n                <table cel" +
@@ -140,96 +140,97 @@ this.Write(" Schedule</h2>\r\n    <dx:ASPxRoundPanel ID=\"ASPxRoundPanel1\" runa
         "nat=\"server\" Text=\"Resource Count:\" AssociatedControlID=\"cbResourceCount\" />\r\n  " +
         "                      </td>\r\n                        <td>\r\n                     " +
         "       <dx:ASPxComboBox ID=\"cbResourceCount\" runat=\"server\" ValueType=\"System.In" +
-        "t32\" SelectedIndex=\"1\"\r\n                                Width=\"50px\">\r\n         " +
+        "t32\" SelectedIndex=\"3\"\r\n                                Width=\"50px\">\r\n         " +
         "                       <ClientSideEvents SelectedIndexChanged=\"function(s, e) { " +
         "ClientReportViewer.Refresh(); }\" />\r\n                                <Items>\r\n  " +
         "                                  <dx:ListEditItem Text=\"1\" Value=\"1\"></dx:ListE" +
         "ditItem>\r\n                                    <dx:ListEditItem Text=\"2\" Value=\"2" +
         "\"></dx:ListEditItem>\r\n                                    <dx:ListEditItem Text=" +
         "\"3\" Value=\"3\"></dx:ListEditItem>\r\n                                    <dx:ListEd" +
-        "itItem Text=\"4\" Value=\"4\"></dx:ListEditItem>\r\n                                </" +
-        "Items>\r\n                            </dx:ASPxComboBox>\r\n                        " +
-        "</td>\r\n                        <td>\r\n                            <dx:ASPxLabel I" +
-        "D=\"lblStart\" runat=\"server\" Text=\"Start:\" AssociatedControlID=\"edtStart\" />\r\n   " +
-        "                     </td>\r\n                        <td>\r\n                      " +
-        "      <dx:ASPxDateEdit ID=\"edtStart\" runat=\"server\" Width=\"120px\" ClientInstance" +
-        "Name=\"clientEdtStart\">\r\n                                <ClientSideEvents DateCh" +
-        "anged=\"function(s, e) { ValidateDates(); ClientReportViewer.Refresh(); }\">\r\n    " +
-        "                            </ClientSideEvents>\r\n                            </d" +
-        "x:ASPxDateEdit>\r\n                        </td>\r\n                        <td>\r\n  " +
-        "                          <dx:ASPxLabel ID=\"lblTimeScale\" runat=\"server\" Text=\"T" +
-        "ime scale:\" AssociatedControlID=\"cbTimeScale\" />\r\n                        </td>\r" +
-        "\n                        <td>\r\n                            <dx:ASPxComboBox ID=\"" +
-        "cbTimeScale\" runat=\"server\" ValueType=\"System.Int32\" SelectedIndex=\"3\"\r\n        " +
-        "                        Width=\"120px\">\r\n                                <Items>\r" +
-        "\n                                    <dx:ListEditItem Text=\"Year/Month\" Value=\"0" +
-        "\"></dx:ListEditItem>\r\n                                    <dx:ListEditItem Text=" +
-        "\"Month/Week\" Value=\"1\"></dx:ListEditItem>\r\n                                    <" +
-        "dx:ListEditItem Text=\"Week/Day\" Value=\"2\"></dx:ListEditItem>\r\n                  " +
-        "              </Items>\r\n                                <ClientSideEvents Select" +
-        "edIndexChanged=\"function(s, e) { ClientReportViewer.Refresh(); }\" />\r\n          " +
-        "                  </dx:ASPxComboBox>\r\n                        </td>\r\n           " +
-        "         </tr>\r\n                    <tr align=\"left\">\r\n                        <" +
-        "td align=\"left\" style=\"white-space: nowrap; padding-right: 0px\">\r\n              " +
-        "              <dx:ASPxLabel ID=\"lblIntervalCount\" runat=\"server\" Text=\"Interval " +
-        "Count:\" AssociatedControlID=\"cbIntervalCount\" />\r\n                        </td>\r" +
-        "\n                        <td>\r\n                            <dx:ASPxComboBox ID=\"" +
-        "cbIntervalCount\" runat=\"server\" ValueType=\"System.Int32\" SelectedIndex=\"2\"\r\n    " +
-        "                            Width=\"50px\">\r\n                                <Clie" +
-        "ntSideEvents SelectedIndexChanged=\"function(s, e) { ClientReportViewer.Refresh()" +
-        "; }\" />\r\n                                <Items>\r\n                              " +
-        "      <dx:ListEditItem Text=\"1\" Value=\"1\"></dx:ListEditItem>\r\n                  " +
-        "                  <dx:ListEditItem Text=\"2\" Value=\"2\"></dx:ListEditItem>\r\n      " +
-        "                              <dx:ListEditItem Text=\"3\" Value=\"3\"></dx:ListEditI" +
-        "tem>\r\n                                    <dx:ListEditItem Text=\"4\" Value=\"4\"></" +
-        "dx:ListEditItem>\r\n                                    <dx:ListEditItem Text=\"5\" " +
-        "Value=\"5\"></dx:ListEditItem>\r\n                                    <dx:ListEditIt" +
-        "em Text=\"6\" Value=\"6\"></dx:ListEditItem>\r\n                                    <d" +
-        "x:ListEditItem Text=\"7\" Value=\"7\"></dx:ListEditItem>\r\n                          " +
-        "      </Items>\r\n                            </dx:ASPxComboBox>\r\n                " +
-        "        </td>\r\n                        <td>\r\n                            <dx:ASP" +
-        "xLabel ID=\"lblEnd\" runat=\"server\" Text=\"End:\" AssociatedControlID=\"edtEnd\" />\r\n " +
-        "                       </td>\r\n                        <td colspan=\"3\" align=\"lef" +
-        "t\">\r\n                            <dx:ASPxDateEdit ID=\"edtEnd\" runat=\"server\" Wid" +
-        "th=\"120px\" ClientInstanceName=\"clientEdtEnd\">\r\n                                <" +
-        "ClientSideEvents DateChanged=\"function(s, e) { ValidateDates(); ClientReportView" +
-        "er.Refresh(); }\">\r\n                                </ClientSideEvents>\r\n        " +
-        "                    </dx:ASPxDateEdit>\r\n                        </td>\r\n         " +
-        "           </tr>\r\n                </table>\r\n            </dx:PanelContent>\r\n    " +
-        "    </PanelCollection>\r\n    </dx:ASPxRoundPanel>\r\n    <br />\r\n    <dx:ReportTool" +
-        "bar ID=\"ReportToolbar1\" runat=\"server\" ReportViewer=\"<%# ReportViewer %>\"\r\n     " +
-        "   ShowDefaultButtons=\"False\" Width=\"100%\">\r\n        <Items>\r\n            <dx:Re" +
-        "portToolbarButton ItemKind=\"Search\" Enabled=\"false\" />\r\n            <dx:ReportTo" +
-        "olbarSeparator />\r\n            <dx:ReportToolbarButton ItemKind=\"PrintReport\" To" +
-        "olTip=\"Print the report\" />\r\n            <dx:ReportToolbarButton ItemKind=\"Print" +
-        "Page\" ToolTip=\"Print the current page\" />\r\n            <dx:ReportToolbarSeparato" +
-        "r />\r\n            <dx:ReportToolbarButton ItemKind=\"FirstPage\" ToolTip=\"First Pa" +
-        "ge\" />\r\n            <dx:ReportToolbarButton ItemKind=\"PreviousPage\" ToolTip=\"Pre" +
-        "vious Page\" />\r\n            <dx:ReportToolbarLabel Text=\"Page\" />\r\n            <" +
-        "dx:ReportToolbarComboBox ItemKind=\"PageNumber\" Width=\"65px\">\r\n            </dx:R" +
-        "eportToolbarComboBox>\r\n            <dx:ReportToolbarLabel Text=\"of\" />\r\n        " +
-        "    <dx:ReportToolbarTextBox IsReadOnly=\"True\" ItemKind=\"PageCount\" />\r\n        " +
-        "    <dx:ReportToolbarButton ItemKind=\"NextPage\" ToolTip=\"Next Page\" />\r\n        " +
-        "    <dx:ReportToolbarButton ItemKind=\"LastPage\" ToolTip=\"Last Page\" />\r\n        " +
-        "    <dx:ReportToolbarSeparator />\r\n            <dx:ReportToolbarButton ItemKind=" +
-        "\"SaveToDisk\" ToolTip=\"Export a report and save it to the disk\" />\r\n            <" +
-        "dx:ReportToolbarButton ItemKind=\"SaveToWindow\" ToolTip=\"Export a report and show" +
-        " it in a new window\" />\r\n            <dx:ReportToolbarComboBox ItemKind=\"SaveFor" +
-        "mat\" Width=\"70px\">\r\n                <Elements>\r\n                    <dx:ListElem" +
-        "ent Text=\"Pdf\" Value=\"pdf\" />\r\n                    <dx:ListElement Text=\"Mht\" Va" +
-        "lue=\"mht\" />\r\n                    <dx:ListElement Text=\"Image\" Value=\"png\" />\r\n " +
-        "               </Elements>\r\n            </dx:ReportToolbarComboBox>\r\n        </I" +
-        "tems>\r\n        <Styles>\r\n            <LabelStyle>\r\n                <Margins Marg" +
-        "inLeft=\"3px\" MarginRight=\"3px\" />\r\n            </LabelStyle>\r\n        </Styles>\r" +
-        "\n    </dx:ReportToolbar>\r\n    <dx:ReportViewer ID=\"ReportViewer\" runat=\"server\" " +
-        "ClientInstanceName=\"ClientReportViewer\">\r\n    </dx:ReportViewer>\r\n</asp:Content>" +
-        "\r\n\r\n");
+        "itItem Text=\"4\" Value=\"4\"></dx:ListEditItem>\r\n                                  " +
+        "  <dx:ListEditItem Text=\"5\" Value=\"5\"></dx:ListEditItem>\r\n                      " +
+        "              <dx:ListEditItem Text=\"6\" Value=\"6\"></dx:ListEditItem>\r\n          " +
+        "                      </Items>\r\n                            </dx:ASPxComboBox>\r\n" +
+        "                        </td>\r\n                        <td>\r\n                   " +
+        "         <dx:ASPxLabel ID=\"lblStart\" runat=\"server\" Text=\"Start:\" AssociatedCont" +
+        "rolID=\"edtStart\" />\r\n                        </td>\r\n                        <td>" +
+        "\r\n                            <dx:ASPxDateEdit ID=\"edtStart\" runat=\"server\" Widt" +
+        "h=\"120px\" ClientInstanceName=\"clientEdtStart\">\r\n                                " +
+        "<ClientSideEvents DateChanged=\"function(s, e) {ClientReportViewer.Refresh(); }\">" +
+        "\r\n                                </ClientSideEvents>\r\n                         " +
+        "   </dx:ASPxDateEdit>\r\n                        </td>\r\n                        <t" +
+        "d>\r\n                            <dx:ASPxLabel ID=\"lblTimeScale\" runat=\"server\" T" +
+        "ext=\"Time scale:\" AssociatedControlID=\"cbTimeScale\" />\r\n                        " +
+        "</td>\r\n                        <td>\r\n                            <dx:ASPxComboBo" +
+        "x ID=\"cbTimeScale\" runat=\"server\" ValueType=\"System.Int32\" SelectedIndex=\"1\"\r\n  " +
+        "                              Width=\"120px\">\r\n                                <I" +
+        "tems>\r\n                                    <dx:ListEditItem Text=\"Year/Month\" Va" +
+        "lue=\"0\"></dx:ListEditItem>\r\n                                    <dx:ListEditItem" +
+        " Text=\"Month/Week\" Value=\"1\"></dx:ListEditItem>\r\n                               " +
+        "     <dx:ListEditItem Text=\"Week/Day\" Value=\"2\"></dx:ListEditItem>\r\n            " +
+        "                    </Items>\r\n                                <ClientSideEvents " +
+        "SelectedIndexChanged=\"function(s, e) { ClientReportViewer.Refresh(); }\" />\r\n    " +
+        "                        </dx:ASPxComboBox>\r\n                        </td>\r\n     " +
+        "               </tr>\r\n                    <tr align=\"left\">\r\n                   " +
+        "     <td align=\"left\" style=\"white-space: nowrap; padding-right: 0px\">\r\n        " +
+        "                    <dx:ASPxLabel ID=\"lblIntervalCount\" runat=\"server\" Text=\"Int" +
+        "erval Count:\" AssociatedControlID=\"cbIntervalCount\" />\r\n                        " +
+        "</td>\r\n                        <td>\r\n                            <dx:ASPxComboBo" +
+        "x ID=\"cbIntervalCount\" runat=\"server\" ValueType=\"System.Int32\" SelectedIndex=\"3\"" +
+        "\r\n                                Width=\"50px\">\r\n                               " +
+        " <ClientSideEvents SelectedIndexChanged=\"function(s, e) { ClientReportViewer.Ref" +
+        "resh(); }\" />\r\n                                <Items>\r\n                        " +
+        "            <dx:ListEditItem Text=\"1\" Value=\"1\"></dx:ListEditItem>\r\n            " +
+        "                        <dx:ListEditItem Text=\"2\" Value=\"2\"></dx:ListEditItem>\r\n" +
+        "                                    <dx:ListEditItem Text=\"3\" Value=\"3\"></dx:Lis" +
+        "tEditItem>\r\n                                    <dx:ListEditItem Text=\"4\" Value=" +
+        "\"4\"></dx:ListEditItem>\r\n                                    <dx:ListEditItem Tex" +
+        "t=\"5\" Value=\"5\"></dx:ListEditItem>\r\n                                    <dx:List" +
+        "EditItem Text=\"6\" Value=\"6\"></dx:ListEditItem>\r\n                                " +
+        "    <dx:ListEditItem Text=\"7\" Value=\"7\"></dx:ListEditItem>\r\n                    " +
+        "            </Items>\r\n                            </dx:ASPxComboBox>\r\n          " +
+        "              </td>\r\n                        <td>\r\n                            <" +
+        "dx:ASPxLabel ID=\"lblEnd\" runat=\"server\" Text=\"End:\" AssociatedControlID=\"edtEnd\"" +
+        " />\r\n                        </td>\r\n                        <td colspan=\"3\" alig" +
+        "n=\"left\">\r\n                            <dx:ASPxDateEdit ID=\"edtEnd\" runat=\"serve" +
+        "r\" Width=\"120px\" ClientInstanceName=\"clientEdtEnd\">\r\n                           " +
+        "     <ClientSideEvents DateChanged=\"function(s, e) { ClientReportViewer.Refresh(" +
+        "); }\">\r\n                                </ClientSideEvents>\r\n                   " +
+        "         </dx:ASPxDateEdit>\r\n                        </td>\r\n                    " +
+        "</tr>\r\n                </table>\r\n            </dx:PanelContent>\r\n        </Panel" +
+        "Collection>\r\n    </dx:ASPxRoundPanel>\r\n    <br />\r\n    <dx:ReportToolbar ID=\"Rep" +
+        "ortToolbar1\" runat=\"server\" ReportViewer=\"<%# ReportViewer %>\"\r\n        ShowDefa" +
+        "ultButtons=\"False\" Width=\"100%\">\r\n        <Items>\r\n            <dx:ReportToolbar" +
+        "Button ItemKind=\"Search\" Enabled=\"false\" />\r\n            <dx:ReportToolbarSepara" +
+        "tor />\r\n            <dx:ReportToolbarButton ItemKind=\"PrintReport\" ToolTip=\"Prin" +
+        "t the report\" />\r\n            <dx:ReportToolbarButton ItemKind=\"PrintPage\" ToolT" +
+        "ip=\"Print the current page\" />\r\n            <dx:ReportToolbarSeparator />\r\n     " +
+        "       <dx:ReportToolbarButton ItemKind=\"FirstPage\" ToolTip=\"First Page\" />\r\n   " +
+        "         <dx:ReportToolbarButton ItemKind=\"PreviousPage\" ToolTip=\"Previous Page\"" +
+        " />\r\n            <dx:ReportToolbarLabel Text=\"Page\" />\r\n            <dx:ReportTo" +
+        "olbarComboBox ItemKind=\"PageNumber\" Width=\"65px\">\r\n            </dx:ReportToolba" +
+        "rComboBox>\r\n            <dx:ReportToolbarLabel Text=\"of\" />\r\n            <dx:Rep" +
+        "ortToolbarTextBox IsReadOnly=\"True\" ItemKind=\"PageCount\" />\r\n            <dx:Rep" +
+        "ortToolbarButton ItemKind=\"NextPage\" ToolTip=\"Next Page\" />\r\n            <dx:Rep" +
+        "ortToolbarButton ItemKind=\"LastPage\" ToolTip=\"Last Page\" />\r\n            <dx:Rep" +
+        "ortToolbarSeparator />\r\n            <dx:ReportToolbarButton ItemKind=\"SaveToDisk" +
+        "\" ToolTip=\"Export a report and save it to the disk\" />\r\n            <dx:ReportTo" +
+        "olbarButton ItemKind=\"SaveToWindow\" ToolTip=\"Export a report and show it in a ne" +
+        "w window\" />\r\n            <dx:ReportToolbarComboBox ItemKind=\"SaveFormat\" Width=" +
+        "\"70px\">\r\n                <Elements>\r\n                    <dx:ListElement Text=\"P" +
+        "df\" Value=\"pdf\" />\r\n                    <dx:ListElement Text=\"Mht\" Value=\"mht\" /" +
+        ">\r\n                    <dx:ListElement Text=\"Image\" Value=\"png\" />\r\n            " +
+        "    </Elements>\r\n            </dx:ReportToolbarComboBox>\r\n        </Items>\r\n    " +
+        "    <Styles>\r\n            <LabelStyle>\r\n                <Margins MarginLeft=\"3px" +
+        "\" MarginRight=\"3px\" />\r\n            </LabelStyle>\r\n        </Styles>\r\n    </dx:R" +
+        "eportToolbar>\r\n    <dx:ReportViewer ID=\"ReportViewer\" runat=\"server\" ClientInsta" +
+        "nceName=\"ClientReportViewer\">\r\n    </dx:ReportViewer>\r\n</asp:Content>\r\n\r\n");
 
         
         #line default
         #line hidden
         
-        #line 147 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 149 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 
     }  
 
@@ -241,56 +242,56 @@ this.Write(" Schedule</h2>\r\n    <dx:ASPxRoundPanel ID=\"ASPxRoundPanel1\" runa
         #line default
         #line hidden
         
-        #line 153 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 155 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write("\t\t\t\t\t\t\t\t\t\t<dx:GridViewDataTextColumn FieldName=\"");
 
         
         #line default
         #line hidden
         
-        #line 153 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 155 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 153 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 155 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write("\" Caption=\"");
 
         
         #line default
         #line hidden
         
-        #line 153 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 155 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.FieldLabel));
 
         
         #line default
         #line hidden
         
-        #line 153 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 155 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write("\"\r\n\t\t\t\t\t\t\t\t\t\t\tReadOnly=\"True\" VisibleIndex=\"");
 
         
         #line default
         #line hidden
         
-        #line 154 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 156 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.FieldTabIndex));
 
         
         #line default
         #line hidden
         
-        #line 154 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 156 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write("\">\r\n\t\t\t\t\t\t\t\t\t\t</dx:GridViewDataTextColumn>\r\n");
 
         
         #line default
         #line hidden
         
-        #line 156 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 158 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
  
 		}
 		return "";
@@ -308,35 +309,35 @@ this.Write("\">\r\n\t\t\t\t\t\t\t\t\t\t</dx:GridViewDataTextColumn>\r\n");
         #line default
         #line hidden
         
-        #line 168 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 170 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write("\t\t\t\t                <dx:NavBarItem Text=\"");
 
         
         #line default
         #line hidden
         
-        #line 168 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 170 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.UIDisplayName));
 
         
         #line default
         #line hidden
         
-        #line 168 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 170 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write("\" Name=\"");
 
         
         #line default
         #line hidden
         
-        #line 168 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 170 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 168 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 170 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write("\" Image-Url=\"~/Images/application_form.png\">                        \r\n           " +
         "                     </dx:NavBarItem>\r\n");
 
@@ -344,7 +345,7 @@ this.Write("\" Image-Url=\"~/Images/application_form.png\">                     
         #line default
         #line hidden
         
-        #line 170 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 172 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
  
 		}
 		return "";
@@ -359,56 +360,56 @@ this.Write("\" Image-Url=\"~/Images/application_form.png\">                     
         #line default
         #line hidden
         
-        #line 179 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 181 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write("\t\t\t\t\t\t<uc:");
 
         
         #line default
         #line hidden
         
-        #line 179 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 181 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 179 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 181 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write(" ID=\"uc");
 
         
         #line default
         #line hidden
         
-        #line 179 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 181 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 179 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 181 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write("\" runat=\"server\" Visible=\"");
 
         
         #line default
         #line hidden
         
-        #line 179 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 181 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(visible));
 
         
         #line default
         #line hidden
         
-        #line 179 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 181 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write("\" />\r\n");
 
         
         #line default
         #line hidden
         
-        #line 180 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 182 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
  
 		}
 		return "";
@@ -426,7 +427,7 @@ this.Write("\" />\r\n");
         #line default
         #line hidden
         
-        #line 192 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 194 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write(@"using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -446,14 +447,14 @@ namespace OnSite.WebUI.Reports
         #line default
         #line hidden
         
-        #line 205 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 207 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 205 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 207 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write("Schedule : System.Web.UI.Page\r\n    {\r\n        private SiteVisitDataEntities apptC" +
         "tx = new SiteVisitDataEntities();\r\n        private DateTime Start { get { return" +
         " (DateTime)edtStart.Value; } }\r\n        private DateTime End { get { return (Dat" +
@@ -508,7 +509,7 @@ this.Write("Schedule : System.Web.UI.Page\r\n    {\r\n        private SiteVisitD
         #line default
         #line hidden
         
-        #line 296 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 298 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 
     }
 
@@ -523,7 +524,7 @@ this.Write("Schedule : System.Web.UI.Page\r\n    {\r\n        private SiteVisitD
         #line default
         #line hidden
         
-        #line 305 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 307 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write(@"//------------------------------------------------------------------------------
 // <auto-generated>
 //     This code was generated by a tool.
@@ -542,14 +543,14 @@ namespace OnSite.WebUI.Reports {
         #line default
         #line hidden
         
-        #line 318 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 320 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 318 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 320 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write("Schedule {\r\n\r\n        /// <summary>\r\n        /// ASPxRoundPanel1 control.\r\n      " +
         "  /// </summary>\r\n        /// <remarks>\r\n        /// Auto-generated field.\r\n    " +
         "    /// To modify move field declaration from designer file to code-behind file." +
@@ -615,7 +616,7 @@ this.Write("Schedule {\r\n\r\n        /// <summary>\r\n        /// ASPxRoundPane
         #line default
         #line hidden
         
-        #line 447 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 449 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 
 	}
 

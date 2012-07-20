@@ -10,15 +10,6 @@ namespace OnSite.TemplateWizard.Classes
 {
     public static class SiteVisitDBHelper
     {
-        //public        
-        public static string FormsPath = SiteVisitSettings.BasePath + @"UserControls\GeneratedForms\";
-        public static string SiteVisitsPath = SiteVisitSettings.BasePath + @"SiteVisits\";
-        public static string ReportsPath = SiteVisitSettings.BasePath + @"Reports\";
-        public static string SchedulerPath = SiteVisitSettings.BasePath + @"Scheduler\";
-        public static string ResourcePath = SiteVisitSettings.BasePath + @"Resource\";
-        public static string SitemapPath = SiteVisitSettings.BasePath;
-
-        //private static SiteVisitMetaEntities ctx = new SiteVisitMetaEntities("metadata=res://*/SiteVisitMetaModel.csdl|res://*/SiteVisitMetaModel.ssdl|res://*/SiteVisitMetaModel.msl;provider=System.Data.SqlClient;provider connection string='data source=" + SiteVisitSettings.Datasource + ";initial catalog=" + SiteVisitSettings.Catalog + ";integrated security=True;multipleactiveresultsets=True;App=EntityFramework'");
         private static SiteVisitMetaEntities ctx = new SiteVisitMetaEntities();
 
         public static IEnumerable<SiteVisit> GetSiteVisits(int clientID)
@@ -26,24 +17,6 @@ namespace OnSite.TemplateWizard.Classes
             var forms = from f in ctx.SiteVisits
                         orderby f.SiteVisitID
                         where f.Project.ClientID == clientID
-                        select f;
-            return forms;
-        }
-
-        public static IEnumerable<SiteVisitForm> GetSiteVisitForms()
-        {
-            var forms = from f in ctx.SiteVisitForms
-                        orderby f.UIDisplayOrder
-                        where f.SiteVisit.Project.ClientID == SiteVisitSettings.ClientID
-                        select f;
-            return forms;
-        }
-
-        public static IEnumerable<SiteVisitForm> GetSiteVisitForms(int siteVisitID)
-        {
-            var forms = from f in ctx.SiteVisitForms
-                        orderby f.UIDisplayOrder
-                        where f.SiteVisitID == siteVisitID && f.SiteVisit.Project.ClientID == SiteVisitSettings.ClientID
                         select f;
             return forms;
         }
@@ -59,7 +32,7 @@ namespace OnSite.TemplateWizard.Classes
         public static IEnumerable<SiteVisitFormGroup> GetSiteVisitFormGroups(int siteVisitFormID)
         {
             var groups = from g in ctx.SiteVisitFormGroups
-                         where g.SiteVisitFormID == siteVisitFormID && g.SiteVisitForm.SiteVisit.Project.ClientID == SiteVisitSettings.ClientID
+                         where g.SiteVisitFormID == siteVisitFormID
                          orderby g.SiteVisitFormGroupOrder
                          select g;
             return groups;
@@ -73,13 +46,11 @@ namespace OnSite.TemplateWizard.Classes
             {
                 var groupFields = from gf in ctx.SiteVisitFormGroupFields
                                   where gf.SiteVisitFormGroupID == siteVisitFormGroupID
-                                  && gf.SiteVisitFormGroup.SiteVisitForm.SiteVisit.Project.ClientID == SiteVisitSettings.ClientID
                                   select gf.SiteVisitFormFieldID;
 
                 var query = (from f in ctx.SiteVisitFormFields
                              orderby f.FieldGroupOrder
                              where f.SiteVisitFormID == siteVisitFormID && groupFields.Contains(f.SiteVisitFormFieldID)
-                             && f.SiteVisitForm.SiteVisit.Project.ClientID == SiteVisitSettings.ClientID
                              select new { f.FieldGroupOrder, f.FieldGroupName }).Distinct();
                 fieldGroups = (from g in query
                                orderby g.FieldGroupOrder
@@ -90,7 +61,7 @@ namespace OnSite.TemplateWizard.Classes
             {
                 var query = (from f in ctx.SiteVisitFormFields
                              orderby f.FieldGroupOrder
-                             where f.SiteVisitFormID == siteVisitFormID && f.SiteVisitForm.SiteVisit.Project.ClientID == SiteVisitSettings.ClientID
+                             where f.SiteVisitFormID == siteVisitFormID
                              select new { f.FieldGroupOrder, f.FieldGroupName }).Distinct();
                 fieldGroups = (from g in query
                                orderby g.FieldGroupOrder
@@ -110,12 +81,10 @@ namespace OnSite.TemplateWizard.Classes
             {
                 var groupFields = from gf in ctx.SiteVisitFormGroupFields
                                   where gf.SiteVisitFormGroupID == siteVisitFormGroupID
-                                  && gf.SiteVisitFormGroup.SiteVisitForm.SiteVisit.Project.ClientID == SiteVisitSettings.ClientID
                                   select gf.SiteVisitFormFieldID;
 
                 fields = from f in ctx.SiteVisitFormFields
                          where groupFields.Contains(f.SiteVisitFormFieldID) && (includeLabels == true || !string.IsNullOrEmpty(f.ControlType.CSTypeName))
-                         && f.SiteVisitForm.SiteVisit.Project.ClientID == SiteVisitSettings.ClientID
                          orderby f.FieldTabIndex
                          select f;
             }
@@ -123,7 +92,6 @@ namespace OnSite.TemplateWizard.Classes
             {
                 fields = from f in ctx.SiteVisitFormFields
                          where (includeLabels == true || !string.IsNullOrEmpty(f.ControlType.CSTypeName)) && f.SiteVisitFormID == siteVisitFormID
-                         && f.SiteVisitForm.SiteVisit.Project.ClientID == SiteVisitSettings.ClientID
                          orderby f.FieldTabIndex
                          select f;
             }
@@ -136,16 +104,12 @@ namespace OnSite.TemplateWizard.Classes
             IEnumerable<SiteVisitFormField> fields;
             var groupFields = from gf in ctx.SiteVisitFormGroupFields
                               where gf.SiteVisitFormGroupID == siteVisitFormGroupID
-                              && gf.SiteVisitFormGroup.SiteVisitForm.SiteVisit.Project.ClientID == SiteVisitSettings.ClientID
                               select gf.SiteVisitFormFieldID;
 
             fields = from f in ctx.SiteVisitFormFields
                      where groupFields.Contains(f.SiteVisitFormFieldID) && (string.IsNullOrEmpty(f.FieldGroupName) || f.FieldGroupName == fieldGroupName)
-                     && f.SiteVisitForm.SiteVisit.Project.ClientID == SiteVisitSettings.ClientID
                      orderby f.FieldTabIndex
                      select f;
-
-
             return fields;
         }
 

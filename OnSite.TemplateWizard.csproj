@@ -51,6 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\AddressFieldHelper.cs" />
+    <Compile Include="Classes\DocumentsTemplate.cs" />
+    <Compile Include="Classes\FormsPrintTemplate.cs" />
     <Compile Include="Classes\SitemapTemplate.cs" />
     <Compile Include="Classes\ReportScheduleTemplate.cs" />
     <Compile Include="Classes\ResourceScheduleTemplate.cs" />
@@ -73,6 +76,16 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="T4\includes.txt" />
+    <Compile Include="T4\DocumentsTemplate.cs">
+      <DependentUpon>DocumentsTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="T4\FormsPrintTemplate.cs">
+      <DependentUpon>FormsPrintTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="T4\ReportScheduleTemplate.cs">
       <DependentUpon>ReportScheduleTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -152,6 +165,16 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="T4\DocumentsTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DocumentsTemplate.cs</LastGenOutput>
+      <CustomToolNamespace>OnSite.TemplateWizard.Classes</CustomToolNamespace>
+    </None>
+    <None Include="T4\FormsPrintTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>FormsPrintTemplate.cs</LastGenOutput>
+      <CustomToolNamespace>OnSite.TemplateWizard.Classes</CustomToolNamespace>
+    </None>
     <None Include="T4\ReportScheduleTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>ReportScheduleTemplate.cs</LastGenOutput>

@@ -28,16 +28,17 @@ namespace OnSite.TemplateWizard
         private void btnGenerate_Click(object sender, EventArgs e)
         {
             Client client = (Client)comboBox1.SelectedItem;
-
-            SiteVisitTemplateProcessor processor = new SiteVisitTemplateProcessor(tbOutputPath.Text);
+            string outputpath = Path.Combine(tbBasePath.Text, tbWebUIPath.Text);
+            SiteVisitTemplateProcessor processor = new SiteVisitTemplateProcessor(outputpath);
             tbLogOutput.Text += "Beginning processing...";
-            processor.ProcessTemplates(client.ClientID); //NEEA
+            processor.ProcessTemplates(client.ClientID);
             tbLogOutput.Text += "processing complete!\n";
         }
 
         private void btnCleanup_Click(object sender, EventArgs e)
         {
-            SiteVisitTemplateProcessor processor = new SiteVisitTemplateProcessor(tbOutputPath.Text);
+            string outputpath = Path.Combine(tbBasePath.Text, tbWebUIPath.Text);
+            SiteVisitTemplateProcessor processor = new SiteVisitTemplateProcessor(outputpath);
             tbLogOutput.Text += "Beginning cleanup...";
             processor.CleanUpFolders();
             tbLogOutput.Text += "cleanup complete!\n";
@@ -45,7 +46,8 @@ namespace OnSite.TemplateWizard
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-        
+            Client client = (Client)comboBox1.SelectedItem;
+            tbWebUIPath.Text = "On-Site." + client.ClientName + "\\OnSite.WebUI";
         }
     }
 }
