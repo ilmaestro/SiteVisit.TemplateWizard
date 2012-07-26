@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\AddressFieldHelper.cs" />
+    <Compile Include="Classes\MobileFormsTemplate.cs" />
     <Compile Include="Classes\DocumentsTemplate.cs" />
     <Compile Include="Classes\FormsPrintTemplate.cs" />
     <Compile Include="Classes\SitemapTemplate.cs" />
@@ -76,6 +77,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="T4\includes.txt" />
+    <Compile Include="T4\MobileFormsTemplate.cs">
+      <DependentUpon>MobileFormsTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="T4\DocumentsTemplate.cs">
       <DependentUpon>DocumentsTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -165,6 +171,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="T4\MobileFormsTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>MobileFormsTemplate.cs</LastGenOutput>
+      <CustomToolNamespace>OnSite.TemplateWizard.Classes</CustomToolNamespace>
+    </None>
     <None Include="T4\DocumentsTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>DocumentsTemplate.cs</LastGenOutput>

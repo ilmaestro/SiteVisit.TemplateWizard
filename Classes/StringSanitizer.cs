@@ -9,12 +9,13 @@ namespace OnSite.TemplateWizard.Classes
     {
         public static string SanitizeForWeb(string input)
         {
-            string output = input.Replace("\n", "<br />")
-                                 .Replace("°", "&deg;")
+            string output = input.Replace("°", "&deg;")
                                  .Replace(">", "&gt;")
                                  .Replace("<", "&lt;")
                                  .Replace("/", "&#47;")
-                                 .Replace("µ", "&micro;");
+                                 .Replace("µ", "&micro;")
+                                 //.Replace("\n", "<br />"); //<BR> must be last (since it has <> chars)
+                                 .Replace("\n", "&nbsp;");
             return output;
         }
     }

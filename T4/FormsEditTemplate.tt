@@ -40,7 +40,7 @@ switch (OutputType) {
     </dx:ASPxHyperLink>
     <table>
         <tr>
-            <td valign="top">
+            <td valign="top" id="NavBarFormNavigation">
                 <dx:ASPxNavBar ID="nbFormNavigation" runat="server" Width="254px" ClientInstanceName="nbFormNavigation" AllowSelectItem="true">
                     <Groups>
                         <dx:NavBarGroup Text="Check List">
@@ -116,7 +116,20 @@ switch (OutputType) {
 		}
 		return "";
 	}
-
+	
+	private string GenerateMenuItems(IEnumerable<SiteVisitForm> forms)
+	{
+		var query = from f in forms
+					where f.SiteVisitParentFormID != null
+					select f;
+		foreach(SiteVisitForm form in query) {
+			string visible = form.SiteVisitParentFormID == null ? "True" : "False";
+#>				                <dx:MenuItem Text="<#= form.UIDisplayName #>" Name="<#= form.DBTableName #>" Image-Url="~/Images/application_form.png">                        
+                                </dx:MenuItem>
+<#+ 
+		}
+		return "";
+	}
 	private string GenerateUserControls(IEnumerable<SiteVisitForm> forms)
 	{
 		foreach(SiteVisitForm form in forms) {

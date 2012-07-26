@@ -78,7 +78,8 @@ namespace OnSite.TemplateWizard.Classes
                 //generate forms (user controls)
                 foreach (SiteVisitForm form in sitevisit.SiteVisitForms)
                 {
-                    GenerateForm(form);
+                    //GenerateForm(form);
+                    GenerateMobileForm(form);
                 }
                 //generate site visit pages
                 GenerateFormsEdit(sitevisit);
@@ -113,6 +114,24 @@ namespace OnSite.TemplateWizard.Classes
             template.SaveOutput(template.TransformText());
 
             template.OutputType = FormsTemplate.FileType.Designer;
+            template.OutputFilePath = Path.Combine(FormsPath, form.DBTableName + ".ascx.designer.cs");
+            template.SaveOutput(template.TransformText());
+        }
+
+        private void GenerateMobileForm(SiteVisitForm form)
+        {
+            MobileFormsTemplate template = new MobileFormsTemplate();
+            template.Form = form;
+
+            template.OutputType = MobileFormsTemplate.FileType.Page;
+            template.OutputFilePath = Path.Combine(FormsPath, form.DBTableName + ".ascx");
+            template.SaveOutput(template.TransformText());
+
+            template.OutputType = MobileFormsTemplate.FileType.Code;
+            template.OutputFilePath = Path.Combine(FormsPath, form.DBTableName + ".ascx.cs");
+            template.SaveOutput(template.TransformText());
+
+            template.OutputType = MobileFormsTemplate.FileType.Designer;
             template.OutputFilePath = Path.Combine(FormsPath, form.DBTableName + ".ascx.designer.cs");
             template.SaveOutput(template.TransformText());
         }
