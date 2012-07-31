@@ -154,7 +154,7 @@ this.Write(this.ToStringHelper.ToStringWithCulture(!string.IsNullOrEmpty(fkey) ?
         #line hidden
         
         #line 42 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
-this.Write("\r\n\t<div class=\"toolbar\" style=\"display:none\">\r\n\t\t<dx:ASPxLabel ID=\"");
+this.Write("\r\n\t<div class=\"formTitle\">\r\n\t\t<dx:ASPxLabel ID=\"");
 
         
         #line default

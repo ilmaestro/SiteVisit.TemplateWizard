@@ -40,7 +40,7 @@ switch (OutputType) {
 <asp:Panel ID="<#= form.DBTableName #>Panel" runat="server">
 	<dx:ASPxTextBox ID="hv<#= pkey #>" runat="server" ClientVisible="false"></dx:ASPxTextBox>
 	<#= !string.IsNullOrEmpty(fkey) ? "<dx:ASPxTextBox ID=\"hv" + fkey + "\" runat=\"server\" ClientVisible=\"false\"></dx:ASPxTextBox>" : "" #>
-	<div class="toolbar" style="display:none">
+	<div class="formTitle">
 		<dx:ASPxLabel ID="<#= pkey #>Caption" runat="server" text="<#= form.UIDisplayName #>" ForeColor="Black" CssClass="caption">
 		</dx:ASPxLabel>
 	</div>

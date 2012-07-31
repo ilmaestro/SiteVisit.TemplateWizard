@@ -127,31 +127,34 @@ this.Write(@"
 <asp:Content ID=""HeaderContent"" runat=""server"" ContentPlaceHolderID=""HeadContent"">
 </asp:Content>
 <asp:Content ID=""BodyContent"" runat=""server"" ContentPlaceHolderID=""MainContent"">
-    <h2>
-        Forms Printer
-    </h2>
-	<input type=""button"" value=""Print this page"" onClick=""window.print()"" />
+	<div class=""formsPrinterHeader"">
+		<h2>
+			Forms Printer
+		</h2>
+		<input type=""button"" value=""Print this page"" onClick=""window.print()"" />
+	</div>
+	<div class=""formsPrinterBody"">
 ");
 
         
         #line default
         #line hidden
         
-        #line 31 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+        #line 34 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(GenerateUserControls(forms)));
 
         
         #line default
         #line hidden
         
-        #line 31 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
-this.Write("\r\n</asp:Content>\r\n");
+        #line 34 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write("\r\n\t</div>\r\n</asp:Content>\r\n");
 
         
         #line default
         #line hidden
         
-        #line 33 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+        #line 37 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
 
     }  
 
@@ -163,42 +166,42 @@ this.Write("\r\n</asp:Content>\r\n");
         #line default
         #line hidden
         
-        #line 39 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+        #line 43 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
 this.Write("<%@ Register src=\"~/UserControls/GeneratedForms/");
 
         
         #line default
         #line hidden
         
-        #line 39 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+        #line 43 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 39 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+        #line 43 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
 this.Write(".ascx\" tagname=\"");
 
         
         #line default
         #line hidden
         
-        #line 39 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+        #line 43 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 39 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+        #line 43 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
 this.Write("\" tagprefix=\"uc\" %>\r\n");
 
         
         #line default
         #line hidden
         
-        #line 40 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+        #line 44 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
  
 		}
 		return "";
@@ -214,56 +217,42 @@ this.Write("\" tagprefix=\"uc\" %>\r\n");
         #line default
         #line hidden
         
-        #line 50 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
-this.Write("\t<h3>");
+        #line 54 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write("\t<uc:");
 
         
         #line default
         #line hidden
         
-        #line 50 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(form.UIDisplayName));
-
-        
-        #line default
-        #line hidden
-        
-        #line 50 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
-this.Write("</h3>\r\n\t<uc:");
-
-        
-        #line default
-        #line hidden
-        
-        #line 51 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+        #line 54 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 51 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+        #line 54 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
 this.Write(" ID=\"uc");
 
         
         #line default
         #line hidden
         
-        #line 51 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+        #line 54 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 51 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
-this.Write("\" runat=\"server\" />\r\n");
+        #line 54 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+this.Write("\" runat=\"server\" />\r\n\t<div class=\"formsPrinterSeparator\">&nbsp;</div>\r\n");
 
         
         #line default
         #line hidden
         
-        #line 52 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+        #line 56 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
  
 		}
 		return "";
@@ -277,7 +266,7 @@ this.Write("\" runat=\"server\" />\r\n");
         #line default
         #line hidden
         
-        #line 60 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+        #line 64 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
 this.Write("\r\nusing System;\r\nusing System.Collections.Generic;\r\nusing System.Linq;\r\nusing Sys" +
         "tem.Web;\r\nusing System.Web.UI;\r\nusing System.Web.UI.WebControls;\r\nusing OnSite.W" +
         "ebUI.Models;\r\n\r\nnamespace OnSite.WebUI.SiteVisits\r\n{\r\n    public partial class ");
@@ -286,14 +275,14 @@ this.Write("\r\nusing System;\r\nusing System.Collections.Generic;\r\nusing Syst
         #line default
         #line hidden
         
-        #line 72 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+        #line 76 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 72 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+        #line 76 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
 this.Write("Print : System.Web.UI.Page\r\n    {\r\n        protected void Page_Load(object sender" +
         ", EventArgs e)\r\n        {\r\n            if (!IsPostBack)\r\n            {\t\t\t\t\t\t\r\n");
 
@@ -301,21 +290,21 @@ this.Write("Print : System.Web.UI.Page\r\n    {\r\n        protected void Page_L
         #line default
         #line hidden
         
-        #line 78 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+        #line 82 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(GenerateUserControlBinds(forms)));
 
         
         #line default
         #line hidden
         
-        #line 78 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+        #line 82 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
 this.Write("\r\n\t\t\t}\r\n\t\t}\r\n\r\n    }\r\n}\r\n");
 
         
         #line default
         #line hidden
         
-        #line 84 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+        #line 88 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
 
     }
 
@@ -327,28 +316,28 @@ this.Write("\r\n\t\t\t}\r\n\t\t}\r\n\r\n    }\r\n}\r\n");
         #line default
         #line hidden
         
-        #line 90 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+        #line 94 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
 this.Write("\t\t\t\tuc");
 
         
         #line default
         #line hidden
         
-        #line 90 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+        #line 94 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 90 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+        #line 94 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
 this.Write(".BindListControls();        \r\n");
 
         
         #line default
         #line hidden
         
-        #line 91 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+        #line 95 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
  
 		}
 		return "";
@@ -362,7 +351,7 @@ this.Write(".BindListControls();        \r\n");
         #line default
         #line hidden
         
-        #line 99 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+        #line 103 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
 this.Write(@"//------------------------------------------------------------------------------
 // <auto-generated>
 //     This code was generated by a tool.
@@ -381,35 +370,35 @@ namespace OnSite.WebUI.SiteVisits {
         #line default
         #line hidden
         
-        #line 112 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+        #line 116 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 112 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+        #line 116 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
 this.Write("Print {\r\n\r\n");
 
         
         #line default
         #line hidden
         
-        #line 114 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+        #line 118 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(GenerateDesignerProperties(forms)));
 
         
         #line default
         #line hidden
         
-        #line 114 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+        #line 118 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
 this.Write("\r\n\r\n\t}\r\n}\r\n");
 
         
         #line default
         #line hidden
         
-        #line 118 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+        #line 122 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
 
 	}
 
@@ -421,21 +410,21 @@ this.Write("\r\n\r\n\t}\r\n}\r\n");
         #line default
         #line hidden
         
-        #line 124 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+        #line 128 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
 this.Write("        /// <summary>\r\n        /// uc");
 
         
         #line default
         #line hidden
         
-        #line 126 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+        #line 130 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 126 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+        #line 130 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
 this.Write(@" control.
         /// </summary>
         /// <remarks>
@@ -448,35 +437,35 @@ this.Write(@" control.
         #line default
         #line hidden
         
-        #line 132 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+        #line 136 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 132 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+        #line 136 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
 this.Write(" uc");
 
         
         #line default
         #line hidden
         
-        #line 132 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+        #line 136 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 132 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+        #line 136 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
 this.Write(";\r\n");
 
         
         #line default
         #line hidden
         
-        #line 133 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
+        #line 137 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPrintTemplate.tt"
  
 		}
 		return "";

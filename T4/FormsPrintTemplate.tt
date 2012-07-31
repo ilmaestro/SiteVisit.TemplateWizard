@@ -24,11 +24,15 @@ switch (OutputType) {
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <h2>
-        Forms Printer
-    </h2>
-	<input type="button" value="Print this page" onClick="window.print()" />
+	<div class="formsPrinterHeader">
+		<h2>
+			Forms Printer
+		</h2>
+		<input type="button" value="Print this page" onClick="window.print()" />
+	</div>
+	<div class="formsPrinterBody">
 <#= GenerateUserControls(forms) #>
+	</div>
 </asp:Content>
 <#+
     }  
@@ -47,8 +51,8 @@ switch (OutputType) {
 	{
 		foreach(SiteVisitForm form in forms) {
 			string visible = form.SiteVisitParentFormID == null ? "True" : "False";
-#>	<h3><#= form.UIDisplayName #></h3>
-	<uc:<#= form.DBTableName #> ID="uc<#= form.DBTableName #>" runat="server" />
+#>	<uc:<#= form.DBTableName #> ID="uc<#= form.DBTableName #>" runat="server" />
+	<div class="formsPrinterSeparator">&nbsp;</div>
 <#+ 
 		}
 		return "";
