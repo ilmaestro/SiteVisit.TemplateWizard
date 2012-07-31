@@ -52,23 +52,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\AddressFieldHelper.cs" />
-    <Compile Include="Classes\MobileFormsTemplate.cs" />
-    <Compile Include="Classes\DocumentsTemplate.cs" />
-    <Compile Include="Classes\FormsPrintTemplate.cs" />
-    <Compile Include="Classes\SitemapTemplate.cs" />
-    <Compile Include="Classes\ReportScheduleTemplate.cs" />
-    <Compile Include="Classes\ResourceScheduleTemplate.cs" />
-    <Compile Include="Classes\SchedulerImportTemplate.cs" />
-    <Compile Include="Classes\SchedulerEditTemplate.cs" />
-    <Compile Include="Classes\FormsPreviewTemplate.cs" />
-    <Compile Include="Classes\FormsSearchTemplate.cs" />
-    <Compile Include="Classes\FormsEditTemplate.cs" />
+    <Compile Include="T4\Partials\MobileFormsTemplate.cs" />
+    <Compile Include="T4\Partials\DocumentsTemplate.cs" />
+    <Compile Include="T4\Partials\FormsPrintTemplate.cs" />
+    <Compile Include="T4\Partials\SitemapTemplate.cs" />
+    <Compile Include="T4\Partials\ReportScheduleTemplate.cs" />
+    <Compile Include="T4\Partials\ResourceScheduleTemplate.cs" />
+    <Compile Include="T4\Partials\SchedulerImportTemplate.cs" />
+    <Compile Include="T4\Partials\SchedulerEditTemplate.cs" />
+    <Compile Include="T4\Partials\FormsPreviewTemplate.cs" />
+    <Compile Include="T4\Partials\FormsSearchTemplate.cs" />
+    <Compile Include="T4\Partials\FormsEditTemplate.cs" />
     <Compile Include="Classes\SiteVisitDBHelper.cs" />
-    <Compile Include="Classes\SiteVisitSettings.cs" />
-    <Compile Include="Classes\SiteVisitFormTemplate.cs" />
+    <Compile Include="T4\Partials\SiteVisitFormTemplate.cs" />
     <Compile Include="Classes\SiteVisitTemplateProcessor.cs" />
     <Compile Include="Classes\StringSanitizer.cs" />
-    <Compile Include="Classes\FormsTemplate.cs" />
+    <Compile Include="T4\Partials\FormsTemplate.cs" />
     <Compile Include="Models\SiteVisitMetaModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
