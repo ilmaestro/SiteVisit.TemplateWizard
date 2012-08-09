@@ -33,11 +33,13 @@ switch (OutputType) {
 <script type="text/javascript" src="../Scripts/SiteVisitEdit.js"></script>
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <h2>
-        <#= sitevisit.SiteVisitName #>
-    </h2>
-	<dx:ASPxHyperLink ID="lnkBack" runat="server" Text="Back to <#= parentForm.UIDisplayName #>s" NavigateUrl="<#= sitevisit.SiteVisitName #>Search.aspx">
-    </dx:ASPxHyperLink>
+	<div class="formsEditHeader">
+		<h2>
+			<#= sitevisit.SiteVisitName #>
+		</h2>
+		<dx:ASPxHyperLink ID="lnkBack" runat="server" Text="Back to <#= parentForm.UIDisplayName #>s" NavigateUrl="<#= sitevisit.SiteVisitName #>Search.aspx">
+		</dx:ASPxHyperLink>
+	</div>
     <table>
         <tr>
             <td valign="top" id="NavBarFormNavigation">
@@ -55,7 +57,7 @@ switch (OutputType) {
                 </dx:ASPxNavBar>
             </td>
             <td valign="top">
-                <dx:ASPxMenu ID="TopMenu" ClientInstanceName="TopMenu" runat="server" EncodeHtml="False" Width="100%">
+                <dx:ASPxMenu ID="TopMenu" ClientInstanceName="TopMenu" runat="server" EncodeHtml="False" Width="100%" CssClass="TopMenuFormNavigation">
                     <Items>
                         <dx:MenuItem Name="Save" Text="Save" Image-Url="~/Images/disk.png">
                         </dx:MenuItem>
@@ -75,7 +77,7 @@ switch (OutputType) {
                     </PanelCollection>
 					<ClientSideEvents EndCallback="OnFormsCallback" />
                 </dx:ASPxCallbackPanel>
-                <dx:ASPxMenu ID="BottomMenu" ClientInstanceName="BottomMenu" runat="server" EncodeHtml="False" Width="100%">
+                <dx:ASPxMenu ID="BottomMenu" ClientInstanceName="BottomMenu" runat="server" EncodeHtml="False" Width="100%" CssClass="BottomMenuFormNavigation">
                     <Items>
                         <dx:MenuItem Name="Save" Text="Save" Image-Url="~/Images/disk.png">
                         </dx:MenuItem>
@@ -170,6 +172,11 @@ namespace OnSite.WebUI.SiteVisits
                 {
                     uc<#= parentForm.DBTableName #>.LoadForm(int.Parse(Request["ID"]));
 					hfFormKey["<#= pkey #>"] = uc<#= parentForm.DBTableName #>.<#= pkey #>;
+					Page.Title = "<#= parentForm.UIDisplayName #> " + uc<#= parentForm.DBTableName #>.<#= pkey #>.ToString();
+                }
+                else
+                {
+                    Page.Title = "New <#= parentForm.UIDisplayName #>";
                 }
             }	
 		}

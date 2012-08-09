@@ -28,7 +28,6 @@ switch (OutputType) {
 <%@ Register src="~/UserControls/FormControls/ZipCode.ascx" tagname="ZipCode" tagprefix="uc" %>
 <%@ Register src="~/UserControls/FormControls/PhoneNumber.ascx" tagname="PhoneNumber" tagprefix="uc" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-	<meta name="viewport" content="initial-scale=1.0, user-scalable=yes" />
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyDg2r9hOucSc8Whgr-4-bfvbXBvzSEIAR0"></script>
     <script type="text/javascript">
         var map;
@@ -58,7 +57,7 @@ switch (OutputType) {
                     for (var i = 0; i < values.length; i++) {
 						if (values[i][0])
 						{
-							addMarker(values[i][0], values[i][1], values[i][2]);
+							addMarker(i, values[i][0], values[i][1], values[i][2]);
 							bounds.extend(new google.maps.LatLng(values[i][1], values[i][2]));
 						}
                     }
@@ -70,8 +69,18 @@ switch (OutputType) {
             }
         }
 
-        function addMarker(id, latitude, longitude) {
-			var contentString = '<div><a href="../SiteVisits/<#= sitevisitName #>Edit.aspx?ID='+ id +'">Edit Site</a></div>';
+        function addMarker(index, id, latitude, longitude) {
+			var contentString = ""; //'<div><a href="../SiteVisits/VSDSchedulingEdit.aspx?ID='+ id +'">Edit Site</a></div>';
+			//loop through grid columns write content into info window
+			var row = grid.GetRow(index);
+
+			for (var x = 3; x < grid.columns.length; x++)
+			{
+				if (grid.columns[x].visible == true && x < row.cells.length && x < 8) //limit to 5 fields
+				{
+					contentString += "<div><strong>"+grid.columns[x].fieldName+"</strong>: " + row.cells[x].innerHTML + "</div>"; //
+				}
+			}
 			var infowindow = new google.maps.InfoWindow({
 				content: contentString
 			});
@@ -83,7 +92,13 @@ switch (OutputType) {
             markersArray.push(marker);
 			infowindowsArray.push(infowindow);
 			google.maps.event.addListener(marker, 'click', function() {
+			  closeInfowindows();
 			  infowindow.open(map,marker);
+			  lastSelectedVisibleIndex = index;
+			  cpSelectedSite.SetClientVisible(true);
+			  splitter.GetPaneByName("SelectedSitePane").Expand();
+			  grid.SelectRowOnPage(index);
+			  cpSelectedSite.PerformCallback(index);
 			});
         }
 
@@ -105,7 +120,7 @@ switch (OutputType) {
             }
 		}
 
-        function OnGridRowDblClick(s, e) {
+        function OnGridRowClick(s, e) {
 			closeInfowindows();
 			lastSelectedVisibleIndex = e.visibleIndex;
 			infowindowsArray[e.visibleIndex].open(map,markersArray[e.visibleIndex])
@@ -157,7 +172,7 @@ switch (OutputType) {
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<h2>Current Schedule - <asp:Label ID="timezone" runat="server" /></h2>
-    <dx:ASPxSplitter ID="ASPxSplitter1" runat="server" EnableTheming="True" Height="800px" ClientInstanceName="splitter"
+    <dx:ASPxSplitter ID="ASPxSplitter1" runat="server" EnableTheming="True" FullscreenMode="True" ClientInstanceName="splitter"
         Theme="DevEx" ShowCollapseBackwardButton="True"
         ShowCollapseForwardButton="True">
         <Panes>
@@ -173,12 +188,12 @@ switch (OutputType) {
                     <dx:SplitterPane Name="SitesListPane" ScrollBars="Auto">
                         <ContentCollection>
                             <dx:SplitterContentControl>
-								<h3>Site List (double-click to select)</h3>
+								<h3>Site List (click to select)</h3>
 								<dx:ASPxButton ID="btnRefresh" runat="server" AutoPostback="false" Text="Refresh">
 									<ClientSideEvents Click="function(s,e){grid.PerformCallback();}" />
 								</dx:ASPxButton>
 								<p>
-								<dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" ClientInstanceName="grid">
+								<dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" ClientInstanceName="grid" KeyFieldName="<#= pkey #>">
 									<Columns>
 										<dx:GridViewCommandColumn VisibleIndex="0">
 											<ClearFilterButton Visible="True">
@@ -187,8 +202,8 @@ switch (OutputType) {
 										<dx:GridViewDataTextColumn FieldName="<#= pkey #>" 
 											ReadOnly="True" VisibleIndex="0" Visible="False">
 										</dx:GridViewDataTextColumn>
-										<dx:GridViewDataComboBoxColumn FieldName="Disposition.DispositionName" ReadOnly="True" VisibleIndex="0" Visible="true">
-											<PropertiesComboBox DataSourceID="DispositionsDataSource" ValueField="DispositionName" IncrementalFilteringMode="StartsWith" TextField="DispositionName" ValueType="System.Int32" DropDownStyle="DropDown" />
+										<dx:GridViewDataComboBoxColumn FieldName="DispositionID" Caption="Disposition" ReadOnly="True" VisibleIndex="0" Visible="true">
+											<PropertiesComboBox DataSourceID="DispositionsDataSource" ValueField="DispositionID" IncrementalFilteringMode="StartsWith" TextField="DispositionName" ValueType="System.Int32" DropDownStyle="DropDown" />
 										</dx:GridViewDataComboBoxColumn>
 <#= GenerateGridViewColumns(parentForm) #>
 										<dx:GridViewDataTextColumn FieldName="LocationLatitude" 
@@ -199,8 +214,8 @@ switch (OutputType) {
 										</dx:GridViewDataTextColumn>
 									</Columns>
 									<Settings ShowFilterRow="True" ShowHeaderFilterButton="true" />
-                                    <SettingsBehavior AllowSelectByRowClick="true" />
-                                    <ClientSideEvents EndCallback="function(s,e){UpdateMap();}" RowDblClick="OnGridRowDblClick" />
+                                    <SettingsBehavior AllowSelectByRowClick="true" AllowSelectSingleRowOnly="true" />
+                                    <ClientSideEvents EndCallback="function(s,e){UpdateMap();}" RowClick="OnGridRowClick" />
 								</dx:ASPxGridView>
 								<asp:EntityDataSource ID="DispositionsDataSource" runat="server" 
 									ConnectionString="name=SiteVisitDataEntities" DefaultContainerName="SiteVisitDataEntities" 

@@ -20,22 +20,30 @@ switch (OutputType) {
 		var parentForm = SiteVisitDBHelper.GetParentForm(sitevisit);
 		string table = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBTableName;
         string pkey = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBPrimaryKeyName;
-#><%@ Page Title="<#= sitevisit.SiteVisitName #>" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="<#= sitevisitName #>Search.aspx.cs" Inherits="OnSite.WebUI.SiteVisits.<#= sitevisitName #>Search" %>
+#><%@ Page Title="<#= parentForm.UIDisplayName #> Search" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="<#= sitevisitName #>Search.aspx.cs" Inherits="OnSite.WebUI.SiteVisits.<#= sitevisitName #>Search" %>
 <%@ Register Assembly="DevExpress.Web.ASPxGridView.v12.1.Export, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxGridView.Export" TagPrefix="dx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 <script type="text/javascript">
+	var eEvent;
 	function OnCustomButtonClick(s,e) {
 		if (e.buttonID == 'Delete'){ 
 			e.processOnServer = confirm('Are you sure you want to delete this item?');
 		} else {
-			e.processOnServer = true;
+			e.processOnServer = false;
+			var id = grid.GetRowKey(e.visibleIndex);
+			window.open("<#= sitevisit.SiteVisitName #>Edit.aspx?ID="+id);
 		}
+	}
+
+	function OnRowClick(s,e) {
+		var id = grid.GetRowKey(e.visibleIndex);
+		window.open("<#= sitevisit.SiteVisitName #>Edit.aspx?ID="+id);
 	}
 </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-	<h2>Search <#= parentForm.UIDisplayName #>'s</h2>
+	<h2>Search <#= parentForm.UIDisplayName #>s</h2>
 	<table>
 		<tr>
 			<td>
@@ -47,7 +55,10 @@ switch (OutputType) {
 			</td>
 		</tr>
 	</table>
-    <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="<#= table #>DataSource">
+    <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" 
+		DataSourceID="<#= table #>DataSource" 
+		KeyFieldName="<#= pkey #>"
+		ClientInstanceName="grid">
         <Columns>
             <dx:GridViewCommandColumn VisibleIndex="0">
                 <CustomButtons>
@@ -70,7 +81,8 @@ switch (OutputType) {
 			</dx:GridViewDataTextColumn>
         </Columns>
         <Settings ShowFilterRow="True" ShowHeaderFilterButton="true" />
-		<ClientSideEvents CustomButtonClick="OnCustomButtonClick" />
+		<SettingsBehavior AllowSelectByRowClick="true" AllowSelectSingleRowOnly="true" />
+		<ClientSideEvents CustomButtonClick="OnCustomButtonClick" RowClick="OnRowClick" />
     </dx:ASPxGridView>
     <asp:EntityDataSource ID="<#= table #>DataSource" runat="server" 
         ConnectionString="name=SiteVisitDataEntities" 
