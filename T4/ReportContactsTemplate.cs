@@ -25,14 +25,14 @@ namespace OnSite.TemplateWizard.Classes
     using System.Data.EntityClient;
     
     
-    #line 1 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+    #line 1 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "10.0.0.0")]
-    public partial class FormsSearchTemplate : FormsSearchTemplateBase
+    public partial class ReportContactsTemplate : ReportContactsTemplateBase
     {
         public virtual string TransformText()
         {
             
-            #line 2 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+            #line 2 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 
 switch (OutputType) {
 	case FileType.Page:
@@ -54,7 +54,7 @@ switch (OutputType) {
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 16 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 16 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 
     void GeneratePage(SiteVisit sitevisit, IEnumerable<SiteVisitForm> forms)
     {
@@ -67,21 +67,21 @@ switch (OutputType) {
         #line default
         #line hidden
         
-        #line 23 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 23 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write("<%@ Page Title=\"");
 
         
         #line default
         #line hidden
         
-        #line 23 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 23 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(parentForm.UIDisplayName));
 
         
         #line default
         #line hidden
         
-        #line 23 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 23 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(" Search\" Language=\"C#\" MasterPageFile=\"~/Site.master\" AutoEventWireup=\"true\" Code" +
         "Behind=\"");
 
@@ -89,117 +89,54 @@ this.Write(" Search\" Language=\"C#\" MasterPageFile=\"~/Site.master\" AutoEvent
         #line default
         #line hidden
         
-        #line 23 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 23 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 23 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
-this.Write("Search.aspx.cs\" Inherits=\"OnSite.WebUI.SiteVisits.");
+        #line 23 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+this.Write("Search.aspx.cs\" Inherits=\"OnSite.WebUI.Reports.");
 
         
         #line default
         #line hidden
         
-        #line 23 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 23 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 23 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 23 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(@"Search"" %>
 <%@ Register Assembly=""DevExpress.Web.ASPxGridView.v12.1.Export, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a""
     Namespace=""DevExpress.Web.ASPxGridView.Export"" TagPrefix=""dx"" %>
 <asp:Content ID=""Content1"" ContentPlaceHolderID=""HeadContent"" runat=""server"">
 <script type=""text/javascript"">
-	var eEvent;
-	function OnCustomButtonClick(s,e) {
-		if (e.buttonID == 'Delete'){ 
-			e.processOnServer = confirm('Are you sure you want to delete this item?');
-		} else {
-			e.processOnServer = false;
-			var id = grid.GetRowKey(e.visibleIndex);
-			window.open(""");
+
+</script>
+</asp:Content>
+<asp:Content ID=""Content2"" ContentPlaceHolderID=""MainContent"" runat=""server"">
+	<h2>Search ");
 
         
         #line default
         #line hidden
         
-        #line 35 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(sitevisit.SiteVisitName));
-
-        
-        #line default
-        #line hidden
-        
-        #line 35 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
-this.Write("Edit.aspx?ID=\"+id);\r\n\t\t}\r\n\t}\r\n\r\n\tfunction OnRowClick(s,e) {\r\n\t\tvar id = grid.GetR" +
-        "owKey(e.visibleIndex);\r\n\t\twindow.open(\"");
-
-        
-        #line default
-        #line hidden
-        
-        #line 41 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(sitevisit.SiteVisitName));
-
-        
-        #line default
-        #line hidden
-        
-        #line 41 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
-this.Write("Edit.aspx?ID=\"+id);\r\n\t}\r\n\r\n\tfunction OnCreateClick(s,e) {\r\n\t\twindow.open(\"");
-
-        
-        #line default
-        #line hidden
-        
-        #line 45 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(sitevisit.SiteVisitName));
-
-        
-        #line default
-        #line hidden
-        
-        #line 45 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
-this.Write("Edit.aspx\");\r\n\t}\r\n</script>\r\n</asp:Content>\r\n<asp:Content ID=\"Content2\" ContentPl" +
-        "aceHolderID=\"MainContent\" runat=\"server\">\r\n\t<h2>Search ");
-
-        
-        #line default
-        #line hidden
-        
-        #line 50 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 32 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(parentForm.UIDisplayName));
 
         
         #line default
         #line hidden
         
-        #line 50 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
-this.Write("s</h2>\r\n\t<table>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t\t<dx:ASPxButton ID=\"lnkCreate\" runat=\"serve" +
-        "r\" Text=\"Create ");
-
-        
-        #line default
-        #line hidden
-        
-        #line 54 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(parentForm.UIDisplayName));
-
-        
-        #line default
-        #line hidden
-        
-        #line 54 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
-this.Write(@""" UseSubmitBehavior=""False"">
-					<ClientSideEvents Click=""OnCreateClick"" />
-				</dx:ASPxButton>
-			</td>
+        #line 32 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+this.Write(@"s</h2>
+	<table>
+		<tr>
 			<td>
 				<dx:ASPxButton ID=""btnCsvExport"" runat=""server"" Text=""Export to Csv"" UseSubmitBehavior=""False"" />
 			</td>
@@ -212,36 +149,32 @@ this.Write(@""" UseSubmitBehavior=""False"">
         #line default
         #line hidden
         
-        #line 64 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 41 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(table));
 
         
         #line default
         #line hidden
         
-        #line 64 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 41 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write("DataSource\" \r\n\t\tKeyFieldName=\"");
 
         
         #line default
         #line hidden
         
-        #line 65 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 42 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 65 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 42 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(@"""
 		ClientInstanceName=""grid"">
         <Columns>
             <dx:GridViewCommandColumn VisibleIndex=""0"">
-                <CustomButtons>
-                    <dx:GridViewCommandColumnCustomButton ID=""Edit"" Text=""Edit""></dx:GridViewCommandColumnCustomButton>
-                    <dx:GridViewCommandColumnCustomButton ID=""Delete"" Text=""Delete""></dx:GridViewCommandColumnCustomButton>
-                </CustomButtons>
                 <ClearFilterButton Visible=""True"">
                 </ClearFilterButton>
             </dx:GridViewCommandColumn>
@@ -251,57 +184,62 @@ this.Write(@"""
         #line default
         #line hidden
         
-        #line 76 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 49 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 76 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 49 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write("\" Caption=\"");
 
         
         #line default
         #line hidden
         
-        #line 76 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 49 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 76 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
-this.Write("\"\r\n                ReadOnly=\"True\" VisibleIndex=\"0\" Visible=\"False\">\r\n\t\t\t</dx:Gri" +
-        "dViewDataTextColumn>\r\n");
+        #line 49 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+this.Write(@"""
+                ReadOnly=""True"" VisibleIndex=""0"" Visible=""False"">
+			</dx:GridViewDataTextColumn>
+			<dx:GridViewDataComboBoxColumn FieldName=""DispositionID"" Caption=""Disposition"" ReadOnly=""True"" VisibleIndex=""0"" Visible=""true"">
+				<PropertiesComboBox DataSourceID=""DispositionsDataSource"" ValueField=""DispositionID"" IncrementalFilteringMode=""StartsWith"" TextField=""DispositionName"" ValueType=""System.Int32"" DropDownStyle=""DropDown"" />
+			</dx:GridViewDataComboBoxColumn>
+");
 
         
         #line default
         #line hidden
         
-        #line 79 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 55 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(GenerateGridViewColumns(parentForm)));
 
         
         #line default
         #line hidden
         
-        #line 79 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 55 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write("\r\n");
 
         
         #line default
         #line hidden
         
-        #line 80 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 56 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(GenerateGridViewExportColumns(parentForm)));
 
         
         #line default
         #line hidden
         
-        #line 80 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 56 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(@"
             <dx:GridViewDataTextColumn FieldName=""LocationLatitude"" 
                 ReadOnly=""True"" VisibleIndex=""0"" Visible=""False"">
@@ -311,8 +249,8 @@ this.Write(@"
 			</dx:GridViewDataTextColumn>
         </Columns>
         <Settings ShowFilterRow=""True"" ShowHeaderFilterButton=""true"" />
-		<SettingsBehavior AllowSelectByRowClick=""true"" AllowSelectSingleRowOnly=""true"" />
-		<ClientSideEvents CustomButtonClick=""OnCustomButtonClick"" RowClick=""OnRowClick"" />
+		<SettingsBehavior />
+		<ClientSideEvents />
     </dx:ASPxGridView>
     <asp:EntityDataSource ID=""");
 
@@ -320,14 +258,14 @@ this.Write(@"
         #line default
         #line hidden
         
-        #line 92 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 68 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(table));
 
         
         #line default
         #line hidden
         
-        #line 92 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 68 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write("DataSource\" runat=\"server\" \r\n        ConnectionString=\"name=SiteVisitDataEntities" +
         "\" \r\n        DefaultContainerName=\"SiteVisitDataEntities\" EnableFlattening=\"False" +
         "\" \r\n        EntitySetName=\"");
@@ -336,23 +274,31 @@ this.Write("DataSource\" runat=\"server\" \r\n        ConnectionString=\"name=Si
         #line default
         #line hidden
         
-        #line 95 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 71 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(table));
 
         
         #line default
         #line hidden
         
-        #line 95 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
-this.Write("\">\r\n    </asp:EntityDataSource>\r\n\t<dx:ASPxGridViewExporter ID=\"gridExport\" runat=" +
-        "\"server\" GridViewID=\"ASPxGridView1\">\r\n    </dx:ASPxGridViewExporter>\r\n</asp:Cont" +
-        "ent>\r\n\r\n");
+        #line 71 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+this.Write(@""">
+    </asp:EntityDataSource>
+	<asp:EntityDataSource ID=""DispositionsDataSource"" runat=""server"" 
+		ConnectionString=""name=SiteVisitDataEntities"" DefaultContainerName=""SiteVisitDataEntities"" 
+		EnableFlattening=""False"" EntitySetName=""Dispositions"">
+	</asp:EntityDataSource> 
+	<dx:ASPxGridViewExporter ID=""gridExport"" runat=""server"" GridViewID=""ASPxGridView1"">
+    </dx:ASPxGridViewExporter>
+</asp:Content>
+
+");
 
         
         #line default
         #line hidden
         
-        #line 101 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 81 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 
     }  
 
@@ -364,56 +310,56 @@ this.Write("\">\r\n    </asp:EntityDataSource>\r\n\t<dx:ASPxGridViewExporter ID=
         #line default
         #line hidden
         
-        #line 107 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 87 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write("\t\t\t<dx:GridViewDataTextColumn FieldName=\"");
 
         
         #line default
         #line hidden
         
-        #line 107 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 87 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 107 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 87 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write("\" Caption=\"");
 
         
         #line default
         #line hidden
         
-        #line 107 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 87 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.FieldLabel));
 
         
         #line default
         #line hidden
         
-        #line 107 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 87 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write("\"\r\n                ReadOnly=\"True\" VisibleIndex=\"");
 
         
         #line default
         #line hidden
         
-        #line 108 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 88 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.FieldTabIndex));
 
         
         #line default
         #line hidden
         
-        #line 108 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 88 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write("\">\r\n            </dx:GridViewDataTextColumn>\r\n");
 
         
         #line default
         #line hidden
         
-        #line 110 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 90 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
  
 		}
 		return "";
@@ -441,28 +387,28 @@ this.Write("\">\r\n            </dx:GridViewDataTextColumn>\r\n");
         #line default
         #line hidden
         
-        #line 132 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 112 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write("\t\t\t");
 
         
         #line default
         #line hidden
         
-        #line 132 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 112 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(output));
 
         
         #line default
         #line hidden
         
-        #line 132 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 112 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write("\r\n");
 
         
         #line default
         #line hidden
         
-        #line 133 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 113 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
  
 		}
 		return "";
@@ -479,7 +425,7 @@ this.Write("\r\n");
         #line default
         #line hidden
         
-        #line 144 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 124 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(@"
 using System;
 using System.Collections.Generic;
@@ -490,7 +436,7 @@ using System.Web.UI.WebControls;
 using DevExpress.Web.ASPxClasses;
 using OnSite.WebUI.Models;
 
-namespace OnSite.WebUI.SiteVisits
+namespace OnSite.WebUI.Reports
 {
     public partial class ");
 
@@ -498,14 +444,14 @@ namespace OnSite.WebUI.SiteVisits
         #line default
         #line hidden
         
-        #line 157 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 137 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 157 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 137 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(@"Search : System.Web.UI.Page
     {
         SiteVisitDataEntities ctx = new SiteVisitDataEntities();
@@ -513,117 +459,8 @@ this.Write(@"Search : System.Web.UI.Page
         protected void Page_Load(object sender, EventArgs e)
         {
 			btnCsvExport.Click += new EventHandler(btnCsvExport_Click);
-            ASPxGridView1.CustomButtonCallback += new DevExpress.Web.ASPxGridView.ASPxGridViewCustomButtonCallbackEventHandler(ASPxGridView1_CustomButtonCallback);
-            //ASPxGridView1_Bind();
         }
 
-        protected void ASPxGridView1_Bind()
-        {
-            //ASPxGridView1.DataSource = (from i in ctx.");
-
-        
-        #line default
-        #line hidden
-        
-        #line 170 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(table));
-
-        
-        #line default
-        #line hidden
-        
-        #line 170 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
-this.Write(@"
-            //                            select i);
-            //ASPxGridView1.DataBind();
-        }
-
-        protected void ASPxGridView1_CustomButtonCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomButtonCallbackEventArgs e)
-        {
-            if (e.ButtonID == ""Edit"")
-            {
-                string id = ASPxGridView1.GetRowValues(e.VisibleIndex, """);
-
-        
-        #line default
-        #line hidden
-        
-        #line 179 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
-
-        
-        #line default
-        #line hidden
-        
-        #line 179 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
-this.Write("\").ToString();\r\n                ASPxWebControl.RedirectOnCallback(\"");
-
-        
-        #line default
-        #line hidden
-        
-        #line 180 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(sitevisit.SiteVisitName));
-
-        
-        #line default
-        #line hidden
-        
-        #line 180 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
-this.Write("Edit.aspx?ID=\"+id);\r\n            } \r\n            else if (e.ButtonID == \"Delete\")" +
-        "\r\n            {\r\n                SiteVisitDataEntities ctx = new SiteVisitDataEn" +
-        "tities();\r\n                int id = (int)ASPxGridView1.GetRowValues(e.VisibleInd" +
-        "ex, \"");
-
-        
-        #line default
-        #line hidden
-        
-        #line 185 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
-
-        
-        #line default
-        #line hidden
-        
-        #line 185 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
-this.Write("\");\r\n\r\n                var record = (from b in ctx.");
-
-        
-        #line default
-        #line hidden
-        
-        #line 187 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(table));
-
-        
-        #line default
-        #line hidden
-        
-        #line 187 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
-this.Write("\r\n                              where b.");
-
-        
-        #line default
-        #line hidden
-        
-        #line 188 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
-
-        
-        #line default
-        #line hidden
-        
-        #line 188 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
-this.Write(@" == id
-                              select b).FirstOrDefault();
-
-                ctx.DeleteObject(record);
-                ctx.SaveChanges();
-                ASPxGridView1.DataBind();
-            }
-   
-        }
 
         protected void btnCsvExport_Click(object sender, EventArgs e)
         {
@@ -633,49 +470,49 @@ this.Write(@" == id
         #line default
         #line hidden
         
-        #line 200 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 149 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 200 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 149 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write("\"].Visible = true;\r\n");
 
         
         #line default
         #line hidden
         
-        #line 201 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 150 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(GenerateExportColumns(parentForm)));
 
         
         #line default
         #line hidden
         
-        #line 201 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 150 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write("\r\n\t\t\tASPxGridView1.DataBind();\r\n\t\t\tgridExport.FileName = \"");
 
         
         #line default
         #line hidden
         
-        #line 203 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 152 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(table));
 
         
         #line default
         #line hidden
         
-        #line 203 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 152 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write("\";\r\n            gridExport.WriteCsvToResponse();\r\n        }\r\n    }\r\n}\r\n");
 
         
         #line default
         #line hidden
         
-        #line 208 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 157 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 
     }
 
@@ -701,28 +538,28 @@ this.Write("\";\r\n            gridExport.WriteCsvToResponse();\r\n        }\r\n
         #line default
         #line hidden
         
-        #line 228 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 177 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write("\t\t\t");
 
         
         #line default
         #line hidden
         
-        #line 228 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 177 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(output));
 
         
         #line default
         #line hidden
         
-        #line 228 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 177 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write("\r\n");
 
         
         #line default
         #line hidden
         
-        #line 229 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 178 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
  
 		}
 		return "";
@@ -737,7 +574,7 @@ this.Write("\r\n");
         #line default
         #line hidden
         
-        #line 238 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 187 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(@"//------------------------------------------------------------------------------
 // <auto-generated>
 //     This code was generated by a tool.
@@ -747,7 +584,7 @@ this.Write(@"//-----------------------------------------------------------------
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OnSite.WebUI.SiteVisits {
+namespace OnSite.WebUI.Reports {
     
     
     public partial class ");
@@ -756,47 +593,43 @@ namespace OnSite.WebUI.SiteVisits {
         #line default
         #line hidden
         
-        #line 251 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 200 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 251 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
-this.Write("Search {\r\n\r\n        /// <summary>\r\n        /// lnkCreate control.\r\n        /// </" +
-        "summary>\r\n        /// <remarks>\r\n        /// Auto-generated field.\r\n        /// " +
-        "To modify move field declaration from designer file to code-behind file.\r\n      " +
-        "  /// </remarks>\r\n        protected global::DevExpress.Web.ASPxEditors.ASPxButto" +
-        "n lnkCreate;\r\n        \r\n\t\t/// <summary>\r\n        /// btnXLSExport control.\r\n    " +
-        "    /// </summary>\r\n        /// <remarks>\r\n        /// Auto-generated field.\r\n  " +
-        "      /// To modify move field declaration from designer file to code-behind fil" +
-        "e.\r\n        /// </remarks>\r\n        protected global::DevExpress.Web.ASPxEditors" +
-        ".ASPxButton btnCsvExport;\r\n\r\n        /// <summary>\r\n        /// ASPxGridView1 co" +
-        "ntrol.\r\n        /// </summary>\r\n        /// <remarks>\r\n        /// Auto-generate" +
-        "d field.\r\n        /// To modify move field declaration from designer file to cod" +
-        "e-behind file.\r\n        /// </remarks>\r\n        protected global::DevExpress.Web" +
-        ".ASPxGridView.ASPxGridView ASPxGridView1;\r\n        \r\n        /// <summary>\r\n    " +
-        "    /// Edit control.\r\n        /// </summary>\r\n        /// <remarks>\r\n        //" +
-        "/ Auto-generated field.\r\n        /// To modify move field declaration from desig" +
-        "ner file to code-behind file.\r\n        /// </remarks>\r\n        protected global:" +
-        ":DevExpress.Web.ASPxGridView.GridViewCommandColumnCustomButton Edit;\r\n        \r\n" +
-        "        /// <summary>\r\n        /// Delete control.\r\n        /// </summary>\r\n    " +
-        "    /// <remarks>\r\n        /// Auto-generated field.\r\n        /// To modify move" +
-        " field declaration from designer file to code-behind file.\r\n        /// </remark" +
-        "s>\r\n        protected global::DevExpress.Web.ASPxGridView.GridViewCommandColumnC" +
-        "ustomButton Delete;\r\n        \r\n        /// <summary>\r\n        /// gridExport con" +
-        "trol.\r\n        /// </summary>\r\n        /// <remarks>\r\n        /// Auto-generated" +
-        " field.\r\n        /// To modify move field declaration from designer file to code" +
-        "-behind file.\r\n        /// </remarks>\r\n        protected global::DevExpress.Web." +
-        "ASPxGridView.Export.ASPxGridViewExporter gridExport;\r\n\r\n//GenerateDesignerProper" +
-        "ties(forms) \r\n\r\n\r\n\t}\r\n}\r\n");
+        #line 200 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+this.Write("Search {\r\n        \r\n\t\t/// <summary>\r\n        /// btnXLSExport control.\r\n        /" +
+        "// </summary>\r\n        /// <remarks>\r\n        /// Auto-generated field.\r\n       " +
+        " /// To modify move field declaration from designer file to code-behind file.\r\n " +
+        "       /// </remarks>\r\n        protected global::DevExpress.Web.ASPxEditors.ASPx" +
+        "Button btnCsvExport;\r\n\r\n        /// <summary>\r\n        /// ASPxGridView1 control" +
+        ".\r\n        /// </summary>\r\n        /// <remarks>\r\n        /// Auto-generated fie" +
+        "ld.\r\n        /// To modify move field declaration from designer file to code-beh" +
+        "ind file.\r\n        /// </remarks>\r\n        protected global::DevExpress.Web.ASPx" +
+        "GridView.ASPxGridView ASPxGridView1;\r\n\r\n\t\t/// <summary>\r\n        /// cbDispositi" +
+        "on control.\r\n        /// </summary>\r\n        /// <remarks>\r\n        /// Auto-gen" +
+        "erated field.\r\n        /// To modify move field declaration from designer file t" +
+        "o code-behind file.\r\n        /// </remarks>\r\n        protected global::DevExpres" +
+        "s.Web.ASPxEditors.ASPxComboBox cbDisposition;\r\n\r\n\t\t/// <summary>\r\n        /// Di" +
+        "spositionsDataSource control.\r\n        /// </summary>\r\n        /// <remarks>\r\n  " +
+        "      /// Auto-generated field.\r\n        /// To modify move field declaration fr" +
+        "om designer file to code-behind file.\r\n        /// </remarks>\r\n        protected" +
+        " global::System.Web.UI.WebControls.EntityDataSource DispositionsDataSource;\r\n   " +
+        "     \r\n        /// <summary>\r\n        /// gridExport control.\r\n        /// </sum" +
+        "mary>\r\n        /// <remarks>\r\n        /// Auto-generated field.\r\n        /// To " +
+        "modify move field declaration from designer file to code-behind file.\r\n        /" +
+        "// </remarks>\r\n        protected global::DevExpress.Web.ASPxGridView.Export.ASPx" +
+        "GridViewExporter gridExport;\r\n\r\n//GenerateDesignerProperties(forms) \r\n\r\n\r\n\t}\r\n}\r" +
+        "\n");
 
         
         #line default
         #line hidden
         
-        #line 312 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 252 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 
 	}
 
@@ -808,21 +641,21 @@ this.Write("Search {\r\n\r\n        /// <summary>\r\n        /// lnkCreate contr
         #line default
         #line hidden
         
-        #line 318 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 258 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write("        /// <summary>\r\n        /// uc");
 
         
         #line default
         #line hidden
         
-        #line 320 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 260 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 320 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 260 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(" control.\r\n        /// </summary>\r\n        /// <remarks>\r\n        /// Auto-genera" +
         "ted field.\r\n        /// To modify move field declaration from designer file to c" +
         "ode-behind file.\r\n        /// </remarks>\r\n        protected global::OnSite.WebUI" +
@@ -832,35 +665,35 @@ this.Write(" control.\r\n        /// </summary>\r\n        /// <remarks>\r\n    
         #line default
         #line hidden
         
-        #line 326 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 266 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 326 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 266 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(" uc");
 
         
         #line default
         #line hidden
         
-        #line 326 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 266 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 326 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 266 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(";\r\n");
 
         
         #line default
         #line hidden
         
-        #line 327 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
+        #line 267 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
  
 		}
 		return "";
@@ -878,7 +711,7 @@ this.Write(";\r\n");
     /// Base class for this transformation
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "10.0.0.0")]
-    public class FormsSearchTemplateBase
+    public class ReportContactsTemplateBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

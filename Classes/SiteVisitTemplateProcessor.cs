@@ -233,21 +233,54 @@ namespace OnSite.TemplateWizard.Classes
 
         private void GenerateReportSchedule(SiteVisit sitevisit)
         {
-            ReportScheduleTemplate template = new ReportScheduleTemplate();
-            template.SiteVisit = sitevisit;
+            /** Schedule - calendar **/
+            ReportScheduleTemplate scheduleTemplate = new ReportScheduleTemplate();
+            scheduleTemplate.SiteVisit = sitevisit;
             string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
 
-            template.OutputType = ReportScheduleTemplate.FileType.Page;
-            template.OutputFilePath = Path.Combine(ReportsPath, sitevisitName + "Schedule.aspx");
-            template.SaveOutput(template.TransformText());
+            scheduleTemplate.OutputType = ReportScheduleTemplate.FileType.Page;
+            scheduleTemplate.OutputFilePath = Path.Combine(ReportsPath, sitevisitName + "Schedule.aspx");
+            scheduleTemplate.SaveOutput(scheduleTemplate.TransformText());
 
-            template.OutputType = ReportScheduleTemplate.FileType.Code;
-            template.OutputFilePath = Path.Combine(ReportsPath, sitevisitName + "Schedule.aspx.cs");
-            template.SaveOutput(template.TransformText());
+            scheduleTemplate.OutputType = ReportScheduleTemplate.FileType.Code;
+            scheduleTemplate.OutputFilePath = Path.Combine(ReportsPath, sitevisitName + "Schedule.aspx.cs");
+            scheduleTemplate.SaveOutput(scheduleTemplate.TransformText());
 
-            template.OutputType = ReportScheduleTemplate.FileType.Designer;
-            template.OutputFilePath = Path.Combine(ReportsPath, sitevisitName + "Schedule.aspx.designer.cs");
-            template.SaveOutput(template.TransformText());
+            scheduleTemplate.OutputType = ReportScheduleTemplate.FileType.Designer;
+            scheduleTemplate.OutputFilePath = Path.Combine(ReportsPath, sitevisitName + "Schedule.aspx.designer.cs");
+            scheduleTemplate.SaveOutput(scheduleTemplate.TransformText());
+
+            /** Appointments list **/
+            ReportAppointmentsTemplate appointmentsTemplate = new ReportAppointmentsTemplate();
+            appointmentsTemplate.SiteVisit = sitevisit;
+
+            appointmentsTemplate.OutputType = ReportAppointmentsTemplate.FileType.Page;
+            appointmentsTemplate.OutputFilePath = Path.Combine(ReportsPath, sitevisitName + "Appointments.aspx");
+            appointmentsTemplate.SaveOutput(appointmentsTemplate.TransformText());
+
+            appointmentsTemplate.OutputType = ReportAppointmentsTemplate.FileType.Code;
+            appointmentsTemplate.OutputFilePath = Path.Combine(ReportsPath, sitevisitName + "Appointments.aspx.cs");
+            appointmentsTemplate.SaveOutput(appointmentsTemplate.TransformText());
+
+            appointmentsTemplate.OutputType = ReportAppointmentsTemplate.FileType.Designer;
+            appointmentsTemplate.OutputFilePath = Path.Combine(ReportsPath, sitevisitName + "Appointments.aspx.designer.cs");
+            appointmentsTemplate.SaveOutput(appointmentsTemplate.TransformText());
+
+            /** Contacts list **/
+            ReportContactsTemplate ContactsTemplate = new ReportContactsTemplate();
+            ContactsTemplate.SiteVisit = sitevisit;
+
+            ContactsTemplate.OutputType = ReportContactsTemplate.FileType.Page;
+            ContactsTemplate.OutputFilePath = Path.Combine(ReportsPath, sitevisitName + "Contacts.aspx");
+            ContactsTemplate.SaveOutput(ContactsTemplate.TransformText());
+
+            ContactsTemplate.OutputType = ReportContactsTemplate.FileType.Code;
+            ContactsTemplate.OutputFilePath = Path.Combine(ReportsPath, sitevisitName + "Contacts.aspx.cs");
+            ContactsTemplate.SaveOutput(ContactsTemplate.TransformText());
+
+            ContactsTemplate.OutputType = ReportContactsTemplate.FileType.Designer;
+            ContactsTemplate.OutputFilePath = Path.Combine(ReportsPath, sitevisitName + "Contacts.aspx.designer.cs");
+            ContactsTemplate.SaveOutput(ContactsTemplate.TransformText());
         }
 
         private void GenerateSchedulerImport(SiteVisit sitevisit)

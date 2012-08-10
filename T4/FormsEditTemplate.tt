@@ -21,7 +21,7 @@ switch (OutputType) {
 		string table = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBTableName;
         string pkey = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBPrimaryKeyName;
 #>
-<%@ Page Title="<#= sitevisit.SiteVisitName #>" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="<#= sitevisit.SiteVisitName #>Edit.aspx.cs" Inherits="OnSite.WebUI.SiteVisits.<#= sitevisit.SiteVisitName #>Edit" %>
+<%@ Page Title="<#= sitevisit.SiteVisitName #>" Language="C#" MasterPageFile="~/Fullscreen.master" AutoEventWireup="true" CodeBehind="<#= sitevisit.SiteVisitName #>Edit.aspx.cs" Inherits="OnSite.WebUI.SiteVisits.<#= sitevisit.SiteVisitName #>Edit" %>
 <#= GenerateUserControlReferences(forms) #>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
@@ -29,17 +29,21 @@ switch (OutputType) {
 	function GetParentKey() {
 		return hfFormKey.Get("<#= pkey #>");
 	}
+	function OnCloseClick(s,e) {
+		window.close();
+	}
 </script>
 <script type="text/javascript" src="../Scripts/SiteVisitEdit.js"></script>
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
 	<div class="formsEditHeader">
 		<h2>
-			<#= sitevisit.SiteVisitName #>
+			<asp:Label ID="lblFormHeader" runat="server" />
 		</h2>
-		<dx:ASPxHyperLink ID="lnkBack" runat="server" Text="Back to <#= parentForm.UIDisplayName #>s" NavigateUrl="<#= sitevisit.SiteVisitName #>Search.aspx">
-		</dx:ASPxHyperLink>
 	</div>
+	<dx:ASPxButton ID="btnClose" runat="server" Text="Close" UseSubmitBehavior="False">
+		<ClientSideEvents Click="OnCloseClick" />
+	</dx:ASPxButton>
     <table>
         <tr>
             <td valign="top" id="NavBarFormNavigation">
@@ -172,11 +176,15 @@ namespace OnSite.WebUI.SiteVisits
                 {
                     uc<#= parentForm.DBTableName #>.LoadForm(int.Parse(Request["ID"]));
 					hfFormKey["<#= pkey #>"] = uc<#= parentForm.DBTableName #>.<#= pkey #>;
-					Page.Title = "<#= parentForm.UIDisplayName #> " + uc<#= parentForm.DBTableName #>.<#= pkey #>.ToString();
+					string formHeader = ""<#= GenerateSummaryExpression(parentForm) #>;
+					Page.Title = formHeader;
+					lblFormHeader.Text = formHeader;
                 }
                 else
                 {
-                    Page.Title = "New <#= parentForm.UIDisplayName #>";
+                    string formHeader ="New <#= parentForm.UIDisplayName #>";
+					Page.Title = formHeader;
+					lblFormHeader.Text = formHeader;
                 }
             }	
 		}
@@ -249,6 +257,14 @@ namespace OnSite.WebUI.SiteVisits
 }
 <#+
     }
+	
+	private string GenerateSummaryExpression(SiteVisitForm form)
+	{
+		foreach(SiteVisitFormField field in SiteVisitDBHelper.GetSiteVisitSummaryFields(form)) {
+#> + uc<#= form.DBTableName #>.<#= field.FieldName #> + " "<#+ 
+		}
+		return "";
+	}
 
 	private string GenerateUserControlBinds(IEnumerable<SiteVisitForm> forms)
 	{
@@ -331,13 +347,22 @@ namespace OnSite.WebUI.SiteVisits {
     public partial class <#= sitevisit.SiteVisitName #>Edit {
 
 		/// <summary>
-        /// lnkBack control.
+        /// lblFormHeader control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxHyperLink lnkBack;
+		protected global::System.Web.UI.WebControls.Label lblFormHeader;
+
+		/// <summary>
+        /// btnClose control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnClose;
 
         /// <summary>
         /// nbFormNavigation control.

@@ -125,6 +125,7 @@ switch (OutputType) {
             <dx:GridViewDataTextColumn FieldName="ModifiedDate" VisibleIndex="5">
             </dx:GridViewDataTextColumn>
         </Columns>
+		<Settings ShowFilterRow="True" ShowHeaderFilterButton="true" />
 		<ClientSideEvents CustomButtonClick="OnCustomButtonClick" EndCallback="OnGridEndCallback" />
     </dx:ASPxGridView>
     <asp:EntityDataSource ID="FileDataSource" runat="server" 

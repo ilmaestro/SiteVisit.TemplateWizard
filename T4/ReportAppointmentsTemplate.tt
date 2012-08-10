@@ -1,0 +1,189 @@
+﻿<#@ include file="includes.txt" #>
+<#
+switch (OutputType) {
+	case FileType.Page:
+		GeneratePage(SiteVisit, SiteVisit.SiteVisitForms);
+		break;
+	case FileType.Code:
+		GenerateCodeFile(SiteVisit, SiteVisit.SiteVisitForms);
+		break;
+	case FileType.Designer:
+		GenerateDesignerFile(SiteVisit, SiteVisit.SiteVisitForms);
+		break;
+	default:
+		break;
+}
+#><#+
+    void GeneratePage(SiteVisit sitevisit, IEnumerable<SiteVisitForm> forms)
+    {
+		string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
+		var parentForm = SiteVisitDBHelper.GetParentForm(sitevisit);
+		string table = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBTableName;
+        string pkey = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBPrimaryKeyName;
+#><%@ Page Title="<#= sitevisit.SiteVisitName #>" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="<#= sitevisitName #>Appointments.aspx.cs" Inherits="OnSite.WebUI.Reports.<#= sitevisitName #>Appointments" %>
+<%@ Register Assembly="DevExpress.Web.ASPxGridView.v12.1.Export, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+    Namespace="DevExpress.Web.ASPxGridView.Export" TagPrefix="dx" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+<script type="text/javascript">
+    // <![CDATA[
+    // ]]> 
+</script>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+	<h2>Data Import/Export</h2>
+	<dx:ASPxButton ID="btnCsvExport" runat="server" Text="Export to Csv" UseSubmitBehavior="False" />
+    <div style="margin-top: 5px; margin-bottom: 5px;">
+    <dx:ASPxGridView ID="grid" runat="server" AutoGenerateColumns="False" ClientInstanceName="grid" 
+        DataSourceID="AppointmentsDataSource" KeyFieldName="<#= table #>AppointmentID">
+        <Columns>
+            <dx:GridViewDataTextColumn FieldName="<#= pkey #>" Caption="Contact ID" ReadOnly="True" Visible="true"
+                VisibleIndex="0">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="SiteVisitAppointmentID" Caption="Appointment ID" ReadOnly="True" Visible="True"
+                VisibleIndex="0">
+            </dx:GridViewDataTextColumn>
+			<dx:GridViewDataTextColumn FieldName="AppointmentStatus.AppointmentStatusName" Caption="Appointment Status" VisibleIndex="1" Visible="true">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="SiteVisitAppointment.SiteVisitID" VisibleIndex="1" Visible="false">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="SiteVisitAppointment.ResourceID" VisibleIndex="2">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="SiteVisitAppointment.Type" VisibleIndex="3" Visible="false">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="SiteVisitAppointment.Subject" VisibleIndex="4">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="SiteVisitAppointment.Description" VisibleIndex="5">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="SiteVisitAppointment.AppointmentLocation" VisibleIndex="6">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="SiteVisitAppointment.AppointmentStartDate" VisibleIndex="7">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="SiteVisitAppointment.AppointmentEndDate" VisibleIndex="8">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="SiteVisitAppointment.Status" VisibleIndex="10" Visible="false">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="SiteVisitAppointment.Label" VisibleIndex="11" Visible="false">
+            </dx:GridViewDataTextColumn>
+        </Columns>
+		<Settings ShowFilterRow="True" />
+    </dx:ASPxGridView>
+    </div>
+    <asp:EntityDataSource ID="AppointmentsDataSource" runat="server" 
+        ConnectionString="name=SiteVisitDataEntities" 
+        DefaultContainerName="SiteVisitDataEntities" EnableFlattening="False" 
+        EntitySetName="<#= table #>Appointments" Include="SiteVisitAppointment,AppointmentStatus" Where="it.SiteVisitAppointment.SiteVisitID = <#= sitevisit.SiteVisitID #>">
+    </asp:EntityDataSource>
+    <dx:ASPxGridViewExporter ID="gridExporter" runat="server" GridViewID="grid">
+    </dx:ASPxGridViewExporter>
+    
+</asp:Content>
+
+<#+
+    }  
+
+    void GenerateCodeFile(SiteVisit sitevisit, IEnumerable<SiteVisitForm> forms)
+    {
+		string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
+		var parentForm = SiteVisitDBHelper.GetParentForm(sitevisit);
+		string table = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBTableName;
+        string pkey = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBPrimaryKeyName;
+#>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using DevExpress.Web.ASPxUploadControl;
+using System.IO;
+using CadmusUtility;
+using System.Data;
+using OnSite.WebUI.Models;
+using System.Web.Security;
+
+namespace OnSite.WebUI.Reports
+{
+    public partial class <#= sitevisitName #>Appointments : System.Web.UI.Page
+    {
+        private SiteVisitDataEntities dataCtx = new SiteVisitDataEntities();
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            btnCsvExport.Click += new EventHandler(btnCsvExport_Click);
+            grid.CustomCallback += new DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventHandler(grid_CustomCallback);
+        }
+
+        protected void grid_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
+        {
+            grid.DataBind();
+        }
+
+        protected void btnCsvExport_Click(object sender, EventArgs e)
+        {
+			gridExporter.FileName = "<#= sitevisitName #>Appointments";
+            gridExporter.WriteCsvToResponse();
+        }
+    }
+}
+<#+
+    }
+	
+	void GenerateDesignerFile(SiteVisit sitevisit, IEnumerable<SiteVisitForm> forms)
+	{
+		string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
+#>
+//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated. 
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+namespace OnSite.WebUI.Reports {
+    
+    
+    public partial class <#= sitevisitName #>Appointments {
+
+/// <summary>
+        /// btnCsvExport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnCsvExport;
+        
+        /// <summary>
+        /// grid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView.ASPxGridView grid;
+        
+        /// <summary>
+        /// AppointmentsDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.EntityDataSource AppointmentsDataSource;
+        
+        /// <summary>
+        /// gridExporter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView.Export.ASPxGridViewExporter gridExporter;        
+	}
+}
+<#+
+	}
+#>

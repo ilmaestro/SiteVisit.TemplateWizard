@@ -21,7 +21,7 @@ switch (OutputType) {
 		string table = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBTableName;
         string pkey = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBPrimaryKeyName;
 #>
-<%@ Page Title="<#= sitevisit.SiteVisitName #>" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="<#= sitevisitName #>Edit.aspx.cs" Inherits="OnSite.WebUI.Scheduler.<#= sitevisitName #>Edit" %>
+<%@ Page Title="<#= sitevisit.SiteVisitName #>" Language="C#" MasterPageFile="~/Fullscreen.master" AutoEventWireup="true" CodeBehind="<#= sitevisitName #>Edit.aspx.cs" Inherits="OnSite.WebUI.Scheduler.<#= sitevisitName #>Edit" %>
 <%@ Register Assembly="DevExpress.Web.ASPxScheduler.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxScheduler" TagPrefix="dxwschs" %>
 <%@ Register assembly="DevExpress.XtraScheduler.v12.1.Core, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.XtraScheduler" tagprefix="dx" %>
@@ -171,7 +171,6 @@ switch (OutputType) {
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-	<h2>Current Schedule - <asp:Label ID="timezone" runat="server" /></h2>
     <dx:ASPxSplitter ID="ASPxSplitter1" runat="server" EnableTheming="True" FullscreenMode="True" ClientInstanceName="splitter"
         Theme="DevEx" ShowCollapseBackwardButton="True"
         ShowCollapseForwardButton="True">
@@ -235,6 +234,7 @@ switch (OutputType) {
                     <dx:SplitterPane ScrollBars="Auto">
                     <ContentCollection>
                         <dx:SplitterContentControl>
+							<h2>Current Schedule - <asp:Label ID="timezone" runat="server" /></h2>
                             <dxwschs:ASPxScheduler ID="ASPxScheduler1" runat="server"  ActiveViewType="WorkWeek"
                                 GroupType="Resource" EncodeHtml="False"
                                 AppointmentDataSourceID="AppointmentsDataSource" ClientIDMode="AutoID" ResourceDataSourceID="ResourceDataSource" >
@@ -511,7 +511,7 @@ namespace OnSite.WebUI.Scheduler
 
                     e.Appointment.Subject = "Site Visit: "<#= GenerateSummaryExpression(parentForm) #>;
                     e.Appointment.Location = <#= GenerateLocationExpression(parentForm) #>;
-					e.Appointment.Description = <#= GenerateDescriptionExpression(parentForm) #>;
+					e.Appointment.Description = <#= GenerateDescriptionExpression(parentForm, sitevisitName) #>;
                     e.Appointment.StatusId = 3;
                     e.Appointment.LabelId = 6;
                 }
@@ -652,9 +652,15 @@ namespace OnSite.WebUI.Scheduler
 	private string GenerateAddressExpression(SiteVisitForm form)
 	{
 		AddressFieldHelper helper = new AddressFieldHelper(form);
-		
+		string address2 = "";
+		if (helper.Address2 != null)
+		{
+			address2 = "tbAddress2.Text = contact."+helper.Address2.FieldName+";";
+		} else {
+			address2 = "tbAddress2.Visible = false;";
+		}
 #>			tbAddress1.Text = contact.<#= helper.Address1.FieldName #>;
-			tbAddress2.Text = contact.<#= helper.Address2.FieldName #>;
+			<#= address2 #>
 			tbCity.Text = contact.<#= helper.City.FieldName #>;
 			tbState.Text = contact.<#= helper.State.FieldName #>;
 			tbZip.Value = contact.<#= helper.Zip.FieldName #>;
@@ -679,9 +685,15 @@ namespace OnSite.WebUI.Scheduler
 	private string GenerateAddressSaveExpression(SiteVisitForm form)
 	{
 		AddressFieldHelper helper = new AddressFieldHelper(form);
-		
+		string address2 = "";
+		if (helper.Address2 != null)
+		{
+			address2 = "contact."+helper.Address2.FieldName+" = (string)tbAddress2.Text;";
+		} else {
+			address2 = "";
+		}
 #>				contact.<#= helper.Address1.FieldName #> = (string)tbAddress1.Text;
-				contact.<#= helper.Address2.FieldName #> = (string)tbAddress2.Text;
+				<#= address2 #>
 				contact.<#= helper.City.FieldName #> = (string)tbCity.Text;
 				contact.<#= helper.State.FieldName #> = (string)tbState.Text;
 				contact.<#= helper.Zip.FieldName #> = (int?)tbZip.Value;
@@ -702,7 +714,7 @@ namespace OnSite.WebUI.Scheduler
 		}
 		return "";
 	}
-	private string GenerateDescriptionExpression(SiteVisitForm form)
+	private string GenerateDescriptionExpression(SiteVisitForm form, string sitevisitName)
 	{
 		AddressFieldHelper addressHelper = new AddressFieldHelper(form);
 
@@ -724,7 +736,7 @@ namespace OnSite.WebUI.Scheduler
 			phoneExpression += "\"" + StringSanitizer.SanitizeForWeb(phoneField.FieldLabel) + ":\" + contact." + phoneField.FieldName + " + \"\\n\" + ";
 		}
 
-#><#= summaryExpression #><#= phoneExpression #>"\nAddress:\n" + <#= addressHelper.GetAddressFormatted("contact") #> + "\n\nGoogle Map:\n" + "http://maps.google.com/maps?q=" + Server.UrlEncode(<#= addressHelper.GetAddressSingleLine("contact") #>)<#+ 
+#><#= summaryExpression #><#= phoneExpression #>"\nAddress:\n" + <#= addressHelper.GetAddressFormatted("contact") #> + "\n\nGoogle Map:\n" + "http://maps.google.com/maps?q=" + Server.UrlEncode(<#= addressHelper.GetAddressSingleLine("contact") #>) + "\n\nSite Visit:\n" + "http://"+Request.Url.Authority+(string.IsNullOrEmpty(Request.ApplicationPath) ? "" : Request.ApplicationPath+"/") +"SiteVisits/<#= sitevisitName #>Edit.aspx?ID="+contactId<#+ 
 		return "";
 	}
 

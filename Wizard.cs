@@ -30,7 +30,7 @@ namespace OnSite.TemplateWizard
             Client client = (Client)comboBox1.SelectedItem;
             string outputpath = Path.Combine(tbBasePath.Text, tbWebUIPath.Text);
             SiteVisitTemplateProcessor processor = new SiteVisitTemplateProcessor(outputpath);
-            tbLogOutput.Text += "Beginning processing...";
+            tbLogOutput.Text += "Beginning processing " + client.ClientName + "...";
             processor.ProcessTemplates(client.ClientID);
             tbLogOutput.Text += "processing complete!\n";
         }

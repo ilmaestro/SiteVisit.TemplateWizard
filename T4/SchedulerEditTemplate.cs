@@ -82,8 +82,8 @@ this.Write(this.ToStringHelper.ToStringWithCulture(sitevisit.SiteVisitName));
         #line hidden
         
         #line 24 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
-this.Write("\" Language=\"C#\" MasterPageFile=\"~/Site.master\" AutoEventWireup=\"true\" CodeBehind=" +
-        "\"");
+this.Write("\" Language=\"C#\" MasterPageFile=\"~/Fullscreen.master\" AutoEventWireup=\"true\" CodeB" +
+        "ehind=\"");
 
         
         #line default
@@ -198,36 +198,35 @@ this.Write(";LocationLatitude;LocationLongitude;\', function (values) {\r\n     
         "indow, \'load\', initialize);\r\n    </script>\r\n    <style type=\"text/css\">\r\n      #" +
         "map_canvas {\r\n\t\theight: 100%;\r\n\t\twidth: 100%;\r\n\t  }\r\n    </style>\r\n</asp:Content" +
         ">\r\n<asp:Content ID=\"Content2\" ContentPlaceHolderID=\"MainContent\" runat=\"server\">" +
-        "\r\n\t<h2>Current Schedule - <asp:Label ID=\"timezone\" runat=\"server\" /></h2>\r\n    <" +
-        "dx:ASPxSplitter ID=\"ASPxSplitter1\" runat=\"server\" EnableTheming=\"True\" Fullscree" +
-        "nMode=\"True\" ClientInstanceName=\"splitter\"\r\n        Theme=\"DevEx\" ShowCollapseBa" +
-        "ckwardButton=\"True\"\r\n        ShowCollapseForwardButton=\"True\">\r\n        <Panes>\r" +
-        "\n            <dx:SplitterPane Size=\"30%\">\r\n                <Panes>\r\n            " +
-        "        <dx:SplitterPane Name=\"MapPane\">\r\n                        <ContentCollec" +
-        "tion>\r\n                            <dx:SplitterContentControl>\r\n                " +
-        "                <div id=\"map_canvas\"></div>\r\n                            </dx:Sp" +
-        "litterContentControl>\r\n                        </ContentCollection>\r\n           " +
-        "         </dx:SplitterPane>\r\n                    <dx:SplitterPane Name=\"SitesLis" +
-        "tPane\" ScrollBars=\"Auto\">\r\n                        <ContentCollection>\r\n        " +
-        "                    <dx:SplitterContentControl>\r\n\t\t\t\t\t\t\t\t<h3>Site List (click to" +
-        " select)</h3>\r\n\t\t\t\t\t\t\t\t<dx:ASPxButton ID=\"btnRefresh\" runat=\"server\" AutoPostbac" +
-        "k=\"false\" Text=\"Refresh\">\r\n\t\t\t\t\t\t\t\t\t<ClientSideEvents Click=\"function(s,e){grid." +
-        "PerformCallback();}\" />\r\n\t\t\t\t\t\t\t\t</dx:ASPxButton>\r\n\t\t\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t\t<dx:ASPx" +
-        "GridView ID=\"ASPxGridView1\" runat=\"server\" AutoGenerateColumns=\"False\" ClientIns" +
-        "tanceName=\"grid\" KeyFieldName=\"");
+        "\r\n    <dx:ASPxSplitter ID=\"ASPxSplitter1\" runat=\"server\" EnableTheming=\"True\" Fu" +
+        "llscreenMode=\"True\" ClientInstanceName=\"splitter\"\r\n        Theme=\"DevEx\" ShowCol" +
+        "lapseBackwardButton=\"True\"\r\n        ShowCollapseForwardButton=\"True\">\r\n        <" +
+        "Panes>\r\n            <dx:SplitterPane Size=\"30%\">\r\n                <Panes>\r\n     " +
+        "               <dx:SplitterPane Name=\"MapPane\">\r\n                        <Conten" +
+        "tCollection>\r\n                            <dx:SplitterContentControl>\r\n         " +
+        "                       <div id=\"map_canvas\"></div>\r\n                            " +
+        "</dx:SplitterContentControl>\r\n                        </ContentCollection>\r\n    " +
+        "                </dx:SplitterPane>\r\n                    <dx:SplitterPane Name=\"S" +
+        "itesListPane\" ScrollBars=\"Auto\">\r\n                        <ContentCollection>\r\n " +
+        "                           <dx:SplitterContentControl>\r\n\t\t\t\t\t\t\t\t<h3>Site List (c" +
+        "lick to select)</h3>\r\n\t\t\t\t\t\t\t\t<dx:ASPxButton ID=\"btnRefresh\" runat=\"server\" Auto" +
+        "Postback=\"false\" Text=\"Refresh\">\r\n\t\t\t\t\t\t\t\t\t<ClientSideEvents Click=\"function(s,e" +
+        "){grid.PerformCallback();}\" />\r\n\t\t\t\t\t\t\t\t</dx:ASPxButton>\r\n\t\t\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t\t<" +
+        "dx:ASPxGridView ID=\"ASPxGridView1\" runat=\"server\" AutoGenerateColumns=\"False\" Cl" +
+        "ientInstanceName=\"grid\" KeyFieldName=\"");
 
         
         #line default
         #line hidden
         
-        #line 196 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 195 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 196 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 195 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write("\">\r\n\t\t\t\t\t\t\t\t\t<Columns>\r\n\t\t\t\t\t\t\t\t\t\t<dx:GridViewCommandColumn VisibleIndex=\"0\">\r\n\t\t" +
         "\t\t\t\t\t\t\t\t\t<ClearFilterButton Visible=\"True\">\r\n\t\t\t\t\t\t\t\t\t\t\t</ClearFilterButton>\r\n\t\t" +
         "\t\t\t\t\t\t\t\t</dx:GridViewCommandColumn>\r\n\t\t\t\t\t\t\t\t\t\t<dx:GridViewDataTextColumn FieldN" +
@@ -237,14 +236,14 @@ this.Write("\">\r\n\t\t\t\t\t\t\t\t\t<Columns>\r\n\t\t\t\t\t\t\t\t\t\t<dx:GridVi
         #line default
         #line hidden
         
-        #line 202 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 201 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 202 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 201 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(@""" 
 											ReadOnly=""True"" VisibleIndex=""0"" Visible=""False"">
 										</dx:GridViewDataTextColumn>
@@ -257,14 +256,14 @@ this.Write(@"""
         #line default
         #line hidden
         
-        #line 208 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 207 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(GenerateGridViewColumns(parentForm)));
 
         
         #line default
         #line hidden
         
-        #line 208 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 207 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write("\r\n\t\t\t\t\t\t\t\t\t\t<dx:GridViewDataTextColumn FieldName=\"LocationLatitude\" \r\n\t\t\t\t\t\t\t\t\t\t\t" +
         "ReadOnly=\"True\" VisibleIndex=\"0\" Visible=\"False\">\r\n\t\t\t\t\t\t\t\t\t\t</dx:GridViewDataTe" +
         "xtColumn>\r\n\t\t\t\t\t\t\t\t\t\t<dx:GridViewDataTextColumn FieldName=\"LocationLongitude\" \r\n" +
@@ -285,69 +284,70 @@ this.Write("\r\n\t\t\t\t\t\t\t\t\t\t<dx:GridViewDataTextColumn FieldName=\"Locat
         "plitterPane>\r\n            <dx:SplitterPane Name=\"SchedulerPane\">\r\n              " +
         "  <Panes>\r\n                    <dx:SplitterPane ScrollBars=\"Auto\">\r\n            " +
         "        <ContentCollection>\r\n                        <dx:SplitterContentControl>" +
-        "\r\n                            <dxwschs:ASPxScheduler ID=\"ASPxScheduler1\" runat=\"" +
-        "server\"  ActiveViewType=\"WorkWeek\"\r\n                                GroupType=\"R" +
-        "esource\" EncodeHtml=\"False\"\r\n                                AppointmentDataSour" +
-        "ceID=\"AppointmentsDataSource\" ClientIDMode=\"AutoID\" ResourceDataSourceID=\"Resour" +
-        "ceDataSource\" >\r\n                                <Storage>\r\n                    " +
-        "                <Appointments>\r\n                                        <Mapping" +
-        "s AllDay=\"AppointmentAllDay\" AppointmentId=\"SiteVisitAppointmentID\" \r\n          " +
-        "                                  Label=\"Label\" Location=\"AppointmentLocation\" S" +
-        "tatus=\"Status\" \r\n                                            Subject=\"Subject\" D" +
-        "escription=\"Description\" \r\n                                            Start=\"Ap" +
-        "pointmentStartDate\" End=\"AppointmentEndDate\"  \r\n                                " +
-        "            RecurrenceInfo=\"RecurrenceInfo\" ReminderInfo=\"ReminderInfo\" \r\n      " +
-        "                                      ResourceId=\"ResourceID\"   \r\n              " +
-        "                              Type=\"Type\" />\r\n                                  " +
-        "  </Appointments>\r\n                                    <Resources>\r\n            " +
-        "                            <Mappings Caption=\"ResourceName\" ResourceId=\"Resourc" +
-        "eID\" />\r\n                                    </Resources>\r\n                     " +
-        "           </Storage>\r\n                                <Views>\r\n                " +
-        "                    <DayView TimeScale=\"60\">\r\n                                  " +
-        "      <TimeRulers>\r\n                                            <dx:TimeRuler></" +
-        "dx:TimeRuler>\r\n                                        </TimeRulers>\r\n          " +
-        "                          </DayView>\r\n                                    <WorkW" +
-        "eekView TimeScale=\"60\">\r\n                                        <TimeRulers>\r\n " +
-        "                                           <dx:TimeRuler></dx:TimeRuler>\r\n      " +
-        "                                  </TimeRulers>\r\n                               " +
-        "     </WorkWeekView>\r\n                                </Views>\r\n                " +
-        "                <ClientSideEvents MenuItemClicked=\"OnSchedulerMenuItemClick\" End" +
-        "Callback=\"OnSchedulerEndCallback\" />\r\n                            </dxwschs:ASPx" +
-        "Scheduler>\r\n                            <asp:ObjectDataSource ID=\"ResourceDataSo" +
-        "urce\" runat=\"server\" \r\n                                SelectMethod=\"GetResource" +
-        "s\" TypeName=\"OnSite.WebUI.Classes.MembershipHelper\">\r\n                          " +
-        "  </asp:ObjectDataSource>\r\n                            <asp:EntityDataSource ID=" +
-        "\"AppointmentsDataSource\" runat=\"server\" \r\n                                Connec" +
-        "tionString=\"name=SiteVisitDataEntities\" DefaultContainerName=\"SiteVisitDataEntit" +
-        "ies\" \r\n                                EnableDelete=\"True\" EnableFlattening=\"Fal" +
-        "se\" EnableInsert=\"True\" \r\n                                EnableUpdate=\"True\" En" +
-        "titySetName=\"SiteVisitAppointments\" StoreOriginalValuesInViewState=\"false\">\r\n   " +
-        "                         </asp:EntityDataSource>         \r\n                     " +
-        "   </dx:SplitterContentControl>\r\n                    </ContentCollection>\r\n     " +
-        "               </dx:SplitterPane>\r\n                    <dx:SplitterPane Size=\"30" +
-        "%\" ScrollBars=\"Auto\" Name=\"SelectedSitePane\" Collapsed=\"true\">\r\n                " +
-        "        <ContentCollection>\r\n                            <dx:SplitterContentCont" +
-        "rol>\r\n                                <dx:ASPxCallbackPanel ID=\"cpSelectedSite\" " +
-        "runat=\"server\" Width=\"100%\" ClientInstanceName=\"cpSelectedSite\" ClientVisible=\"f" +
-        "alse\">\r\n                                    <PanelCollection>\r\n                 " +
-        "                       <dx:PanelContent>\r\n                                      " +
-        "      <dx:ASPxHiddenField ID=\"hf\" runat=\"server\" ClientInstanceName=\"hf\">\r\n     " +
-        "                                       </dx:ASPxHiddenField>\r\n\t\t\t\t\t\t\t\t\t\t\t<table>" +
-        "\r\n\t\t\t\t\t\t\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<dx:ASPxMenu ID=\"ASPxMenu1\"" +
-        " runat=\"server\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<Items>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<dx:MenuItem Text=\"Sav" +
-        "e Changes\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</dx:MenuItem>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</Items>\r\n\t\t\t\t\t\t\t\t\t\t" +
-        "\t\t\t\t\t<ClientSideEvents ItemClick=\"OnSiteMenuItemClick\" />\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</dx:AS" +
-        "PxMenu>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<td>Last modified: <dx:ASPxLabel ID=\"l" +
-        "blSavedDate\" runat=\"server\" Text=\"ASPxLabel\"></dx:ASPxLabel></td>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t" +
-        "<td>Modified by: <dx:ASPxLabel ID=\"lblSavedBy\" runat=\"server\" Text=\"ASPxLabel\"><" +
-        "/dx:ASPxLabel></td>\r\n\t\t\t\t\t\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t\t\t\t\t\t</table>\r\n\t\t\t\t\t\t\t\t\t\t\t<div id=" +
-        "\"SchedulerSelectedSite\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t<table class=\"SelectedSiteTable\">\r\n\t\t\t\t\t\t\t" +
-        "\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td valign=\"top\" class=\"SelectedSiteSummary\">\r\n\t\t\t\t\t\t\t" +
-        "\t\t\t\t\t\t\t\t<fieldset>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<legend>Summary</legend>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<t" +
-        "able>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td>Disposition:</td>\r\n\t\t\t\t\t\t\t\t\t" +
-        "\t\t\t\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<dx:ASPxComboBox ID=\"cbDisposition\" runat=\"ser" +
-        "ver\" ValueType=\"System.Int32\" Width=\"125px\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</dx:ASPxComboB" +
-        "ox>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\r\n");
+        "\r\n\t\t\t\t\t\t\t<h2>Current Schedule - <asp:Label ID=\"timezone\" runat=\"server\" /></h2>\r" +
+        "\n                            <dxwschs:ASPxScheduler ID=\"ASPxScheduler1\" runat=\"s" +
+        "erver\"  ActiveViewType=\"WorkWeek\"\r\n                                GroupType=\"Re" +
+        "source\" EncodeHtml=\"False\"\r\n                                AppointmentDataSourc" +
+        "eID=\"AppointmentsDataSource\" ClientIDMode=\"AutoID\" ResourceDataSourceID=\"Resourc" +
+        "eDataSource\" >\r\n                                <Storage>\r\n                     " +
+        "               <Appointments>\r\n                                        <Mappings" +
+        " AllDay=\"AppointmentAllDay\" AppointmentId=\"SiteVisitAppointmentID\" \r\n           " +
+        "                                 Label=\"Label\" Location=\"AppointmentLocation\" St" +
+        "atus=\"Status\" \r\n                                            Subject=\"Subject\" De" +
+        "scription=\"Description\" \r\n                                            Start=\"App" +
+        "ointmentStartDate\" End=\"AppointmentEndDate\"  \r\n                                 " +
+        "           RecurrenceInfo=\"RecurrenceInfo\" ReminderInfo=\"ReminderInfo\" \r\n       " +
+        "                                     ResourceId=\"ResourceID\"   \r\n               " +
+        "                             Type=\"Type\" />\r\n                                   " +
+        " </Appointments>\r\n                                    <Resources>\r\n             " +
+        "                           <Mappings Caption=\"ResourceName\" ResourceId=\"Resource" +
+        "ID\" />\r\n                                    </Resources>\r\n                      " +
+        "          </Storage>\r\n                                <Views>\r\n                 " +
+        "                   <DayView TimeScale=\"60\">\r\n                                   " +
+        "     <TimeRulers>\r\n                                            <dx:TimeRuler></d" +
+        "x:TimeRuler>\r\n                                        </TimeRulers>\r\n           " +
+        "                         </DayView>\r\n                                    <WorkWe" +
+        "ekView TimeScale=\"60\">\r\n                                        <TimeRulers>\r\n  " +
+        "                                          <dx:TimeRuler></dx:TimeRuler>\r\n       " +
+        "                                 </TimeRulers>\r\n                                " +
+        "    </WorkWeekView>\r\n                                </Views>\r\n                 " +
+        "               <ClientSideEvents MenuItemClicked=\"OnSchedulerMenuItemClick\" EndC" +
+        "allback=\"OnSchedulerEndCallback\" />\r\n                            </dxwschs:ASPxS" +
+        "cheduler>\r\n                            <asp:ObjectDataSource ID=\"ResourceDataSou" +
+        "rce\" runat=\"server\" \r\n                                SelectMethod=\"GetResources" +
+        "\" TypeName=\"OnSite.WebUI.Classes.MembershipHelper\">\r\n                           " +
+        " </asp:ObjectDataSource>\r\n                            <asp:EntityDataSource ID=\"" +
+        "AppointmentsDataSource\" runat=\"server\" \r\n                                Connect" +
+        "ionString=\"name=SiteVisitDataEntities\" DefaultContainerName=\"SiteVisitDataEntiti" +
+        "es\" \r\n                                EnableDelete=\"True\" EnableFlattening=\"Fals" +
+        "e\" EnableInsert=\"True\" \r\n                                EnableUpdate=\"True\" Ent" +
+        "itySetName=\"SiteVisitAppointments\" StoreOriginalValuesInViewState=\"false\">\r\n    " +
+        "                        </asp:EntityDataSource>         \r\n                      " +
+        "  </dx:SplitterContentControl>\r\n                    </ContentCollection>\r\n      " +
+        "              </dx:SplitterPane>\r\n                    <dx:SplitterPane Size=\"30%" +
+        "\" ScrollBars=\"Auto\" Name=\"SelectedSitePane\" Collapsed=\"true\">\r\n                 " +
+        "       <ContentCollection>\r\n                            <dx:SplitterContentContr" +
+        "ol>\r\n                                <dx:ASPxCallbackPanel ID=\"cpSelectedSite\" r" +
+        "unat=\"server\" Width=\"100%\" ClientInstanceName=\"cpSelectedSite\" ClientVisible=\"fa" +
+        "lse\">\r\n                                    <PanelCollection>\r\n                  " +
+        "                      <dx:PanelContent>\r\n                                       " +
+        "     <dx:ASPxHiddenField ID=\"hf\" runat=\"server\" ClientInstanceName=\"hf\">\r\n      " +
+        "                                      </dx:ASPxHiddenField>\r\n\t\t\t\t\t\t\t\t\t\t\t<table>\r" +
+        "\n\t\t\t\t\t\t\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<dx:ASPxMenu ID=\"ASPxMenu1\" " +
+        "runat=\"server\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<Items>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<dx:MenuItem Text=\"Save" +
+        " Changes\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</dx:MenuItem>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</Items>\r\n\t\t\t\t\t\t\t\t\t\t\t" +
+        "\t\t\t\t<ClientSideEvents ItemClick=\"OnSiteMenuItemClick\" />\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</dx:ASP" +
+        "xMenu>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<td>Last modified: <dx:ASPxLabel ID=\"lb" +
+        "lSavedDate\" runat=\"server\" Text=\"ASPxLabel\"></dx:ASPxLabel></td>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<" +
+        "td>Modified by: <dx:ASPxLabel ID=\"lblSavedBy\" runat=\"server\" Text=\"ASPxLabel\"></" +
+        "dx:ASPxLabel></td>\r\n\t\t\t\t\t\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t\t\t\t\t\t</table>\r\n\t\t\t\t\t\t\t\t\t\t\t<div id=\"" +
+        "SchedulerSelectedSite\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t<table class=\"SelectedSiteTable\">\r\n\t\t\t\t\t\t\t\t" +
+        "\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td valign=\"top\" class=\"SelectedSiteSummary\">\r\n\t\t\t\t\t\t\t\t" +
+        "\t\t\t\t\t\t\t<fieldset>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<legend>Summary</legend>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<ta" +
+        "ble>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td>Disposition:</td>\r\n\t\t\t\t\t\t\t\t\t\t" +
+        "\t\t\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<dx:ASPxComboBox ID=\"cbDisposition\" runat=\"serv" +
+        "er\" ValueType=\"System.Int32\" Width=\"125px\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</dx:ASPxComboBo" +
+        "x>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\r\n");
 
         
         #line default
@@ -802,7 +802,7 @@ this.Write(";\r\n\t\t\t\t\te.Appointment.Description = ");
         #line hidden
         
         #line 514 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(GenerateDescriptionExpression(parentForm)));
+this.Write(this.ToStringHelper.ToStringWithCulture(GenerateDescriptionExpression(parentForm, sitevisitName)));
 
         
         #line default
@@ -1364,90 +1364,96 @@ this.Write(this.ToStringHelper.ToStringWithCulture(helper.GetAddressSingleLine("
 	private string GenerateAddressExpression(SiteVisitForm form)
 	{
 		AddressFieldHelper helper = new AddressFieldHelper(form);
-		
+		string address2 = "";
+		if (helper.Address2 != null)
+		{
+			address2 = "tbAddress2.Text = contact."+helper.Address2.FieldName+";";
+		} else {
+			address2 = "tbAddress2.Visible = false;";
+		}
 
         
         #line default
         #line hidden
         
-        #line 656 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 662 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write("\t\t\ttbAddress1.Text = contact.");
 
         
         #line default
         #line hidden
         
-        #line 656 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 662 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(helper.Address1.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 656 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
-this.Write(";\r\n\t\t\ttbAddress2.Text = contact.");
+        #line 662 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+this.Write(";\r\n\t\t\t");
 
         
         #line default
         #line hidden
         
-        #line 657 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(helper.Address2.FieldName));
+        #line 663 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(address2));
 
         
         #line default
         #line hidden
         
-        #line 657 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
-this.Write(";\r\n\t\t\ttbCity.Text = contact.");
+        #line 663 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+this.Write("\r\n\t\t\ttbCity.Text = contact.");
 
         
         #line default
         #line hidden
         
-        #line 658 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 664 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(helper.City.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 658 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 664 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(";\r\n\t\t\ttbState.Text = contact.");
 
         
         #line default
         #line hidden
         
-        #line 659 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 665 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(helper.State.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 659 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 665 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(";\r\n\t\t\ttbZip.Value = contact.");
 
         
         #line default
         #line hidden
         
-        #line 660 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 666 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(helper.Zip.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 660 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 666 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(";\r\n");
 
         
         #line default
         #line hidden
         
-        #line 661 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 667 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
  
 		return "";
 	}
@@ -1465,42 +1471,42 @@ this.Write(";\r\n");
         #line default
         #line hidden
         
-        #line 673 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 679 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write("\t\t\tuc");
 
         
         #line default
         #line hidden
         
-        #line 673 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 679 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(phoneField.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 673 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 679 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(".Value = contact.");
 
         
         #line default
         #line hidden
         
-        #line 673 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 679 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(phoneField.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 673 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 679 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(";\r\n");
 
         
         #line default
         #line hidden
         
-        #line 674 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 680 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
  
 		}
 		return "";
@@ -1509,90 +1515,96 @@ this.Write(";\r\n");
 	private string GenerateAddressSaveExpression(SiteVisitForm form)
 	{
 		AddressFieldHelper helper = new AddressFieldHelper(form);
-		
+		string address2 = "";
+		if (helper.Address2 != null)
+		{
+			address2 = "contact."+helper.Address2.FieldName+" = (string)tbAddress2.Text;";
+		} else {
+			address2 = "";
+		}
 
         
         #line default
         #line hidden
         
-        #line 683 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 695 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write("\t\t\t\tcontact.");
 
         
         #line default
         #line hidden
         
-        #line 683 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 695 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(helper.Address1.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 683 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
-this.Write(" = (string)tbAddress1.Text;\r\n\t\t\t\tcontact.");
+        #line 695 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+this.Write(" = (string)tbAddress1.Text;\r\n\t\t\t\t");
 
         
         #line default
         #line hidden
         
-        #line 684 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(helper.Address2.FieldName));
+        #line 696 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(address2));
 
         
         #line default
         #line hidden
         
-        #line 684 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
-this.Write(" = (string)tbAddress2.Text;\r\n\t\t\t\tcontact.");
+        #line 696 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+this.Write("\r\n\t\t\t\tcontact.");
 
         
         #line default
         #line hidden
         
-        #line 685 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 697 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(helper.City.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 685 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 697 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(" = (string)tbCity.Text;\r\n\t\t\t\tcontact.");
 
         
         #line default
         #line hidden
         
-        #line 686 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 698 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(helper.State.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 686 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 698 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(" = (string)tbState.Text;\r\n\t\t\t\tcontact.");
 
         
         #line default
         #line hidden
         
-        #line 687 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 699 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(helper.Zip.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 687 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 699 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(" = (int?)tbZip.Value;\r\n");
 
         
         #line default
         #line hidden
         
-        #line 688 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 700 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
  
 		return "";
 	}
@@ -1610,47 +1622,47 @@ this.Write(" = (int?)tbZip.Value;\r\n");
         #line default
         #line hidden
         
-        #line 700 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 712 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write("\t\t\t\tcontact.");
 
         
         #line default
         #line hidden
         
-        #line 700 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 712 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(phoneField.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 700 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 712 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(" = (string)uc");
 
         
         #line default
         #line hidden
         
-        #line 700 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 712 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(phoneField.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 700 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 712 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(".Value;\r\n");
 
         
         #line default
         #line hidden
         
-        #line 701 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 713 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
  
 		}
 		return "";
 	}
-	private string GenerateDescriptionExpression(SiteVisitForm form)
+	private string GenerateDescriptionExpression(SiteVisitForm form, string sitevisitName)
 	{
 		AddressFieldHelper addressHelper = new AddressFieldHelper(form);
 
@@ -1677,56 +1689,71 @@ this.Write(".Value;\r\n");
         #line default
         #line hidden
         
-        #line 727 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 739 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(summaryExpression));
 
         
         #line default
         #line hidden
         
-        #line 727 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 739 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(phoneExpression));
 
         
         #line default
         #line hidden
         
-        #line 727 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 739 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write("\"\\nAddress:\\n\" + ");
 
         
         #line default
         #line hidden
         
-        #line 727 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 739 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(addressHelper.GetAddressFormatted("contact")));
 
         
         #line default
         #line hidden
         
-        #line 727 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 739 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(" + \"\\n\\nGoogle Map:\\n\" + \"http://maps.google.com/maps?q=\" + Server.UrlEncode(");
 
         
         #line default
         #line hidden
         
-        #line 727 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 739 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(addressHelper.GetAddressSingleLine("contact")));
 
         
         #line default
         #line hidden
         
-        #line 727 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
-this.Write(")");
+        #line 739 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+this.Write(") + \"\\n\\nSite Visit:\\n\" + \"http://\"+Request.Url.Authority+(string.IsNullOrEmpty(R" +
+        "equest.ApplicationPath) ? \"\" : Request.ApplicationPath+\"/\") +\"SiteVisits/");
 
         
         #line default
         #line hidden
         
-        #line 727 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 739 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
+
+        
+        #line default
+        #line hidden
+        
+        #line 739 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+this.Write("Edit.aspx?ID=\"+contactId");
+
+        
+        #line default
+        #line hidden
+        
+        #line 739 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
  
 		return "";
 	}
@@ -1742,7 +1769,7 @@ this.Write(")");
         #line default
         #line hidden
         
-        #line 737 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 749 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(@"//------------------------------------------------------------------------------
 // <auto-generated>
 //     This code was generated by a tool.
@@ -1761,14 +1788,14 @@ namespace OnSite.WebUI.Scheduler {
         #line default
         #line hidden
         
-        #line 750 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 762 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 750 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 762 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(@"Edit {
 
 		/// <summary>
@@ -1805,14 +1832,14 @@ this.Write(@"Edit {
         #line default
         #line hidden
         
-        #line 780 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 792 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(table));
 
         
         #line default
         #line hidden
         
-        #line 780 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 792 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(@"ntityDataSource control.
         /// </summary>
         /// <remarks>
@@ -1825,14 +1852,14 @@ this.Write(@"ntityDataSource control.
         #line default
         #line hidden
         
-        #line 786 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 798 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(table));
 
         
         #line default
         #line hidden
         
-        #line 786 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 798 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write("EntityDataSource;\r\n        \r\n        /// <summary>\r\n        /// SiteDataSource co" +
         "ntrol.\r\n        /// </summary>\r\n        /// <remarks>\r\n        /// Auto-generate" +
         "d field.\r\n        /// To modify move field declaration from designer file to cod" +
@@ -1878,14 +1905,14 @@ this.Write("EntityDataSource;\r\n        \r\n        /// <summary>\r\n        //
         #line default
         #line hidden
         
-        #line 869 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 881 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(GenerateSummaryProperties(parentForm)));
 
         
         #line default
         #line hidden
         
-        #line 869 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 881 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write("\r\n        \r\n\t\t/// <summary>\r\n        /// tbAddress1 control.\r\n        /// </summa" +
         "ry>\r\n        /// <remarks>\r\n        /// Auto-generated field.\r\n        /// To mo" +
         "dify move field declaration from designer file to code-behind file.\r\n        ///" +
@@ -1912,14 +1939,14 @@ this.Write("\r\n        \r\n\t\t/// <summary>\r\n        /// tbAddress1 control.
         #line default
         #line hidden
         
-        #line 916 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 928 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(GeneratePhoneProperties(parentForm)));
 
         
         #line default
         #line hidden
         
-        #line 916 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 928 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(@"    
 
 		/// <summary>
@@ -1957,7 +1984,7 @@ this.Write(@"
         #line default
         #line hidden
         
-        #line 947 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 959 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 
 	}
 
@@ -1969,21 +1996,21 @@ this.Write(@"
         #line default
         #line hidden
         
-        #line 953 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 965 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write("\t\t/// <summary>\r\n        /// lbl");
 
         
         #line default
         #line hidden
         
-        #line 954 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 966 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 954 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 966 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(@" control.
         /// </summary>
         /// <remarks>
@@ -1996,21 +2023,21 @@ this.Write(@" control.
         #line default
         #line hidden
         
-        #line 960 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 972 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 960 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 972 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(";\r\n");
 
         
         #line default
         #line hidden
         
-        #line 961 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 973 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
  
 		}
 		return "";
@@ -2029,21 +2056,21 @@ this.Write(";\r\n");
         #line default
         #line hidden
         
-        #line 974 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 986 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write("\t\t/// <summary>\r\n        /// uc");
 
         
         #line default
         #line hidden
         
-        #line 975 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 987 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 975 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 987 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(@" control.
         /// </summary>
         /// <remarks>
@@ -2056,21 +2083,21 @@ this.Write(@" control.
         #line default
         #line hidden
         
-        #line 981 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 993 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 981 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 993 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write(";\r\n");
 
         
         #line default
         #line hidden
         
-        #line 982 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
+        #line 994 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
  
 		}
 		return "";

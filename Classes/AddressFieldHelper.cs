@@ -85,7 +85,7 @@ namespace OnSite.TemplateWizard.Classes
         {
             fieldName = fieldName.ToLower();
 
-            return fieldName.EndsWith("address") || fieldName.EndsWith("address2") || fieldName.EndsWith("address_2");
+            return (fieldName.Contains("2") && fieldName.EndsWith("address")) || fieldName.EndsWith("address2") || fieldName.EndsWith("address_2");
         }
 
         private bool IsCity(string fieldName)
