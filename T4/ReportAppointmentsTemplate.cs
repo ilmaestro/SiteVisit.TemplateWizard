@@ -121,7 +121,7 @@ this.Write(@"Appointments"" %>
 </script>
 </asp:Content>
 <asp:Content ID=""Content2"" ContentPlaceHolderID=""MainContent"" runat=""server"">
-	<h2>Data Import/Export</h2>
+	<h2>Appointments</h2>
 	<dx:ASPxButton ID=""btnCsvExport"" runat=""server"" Text=""Export to Csv"" UseSubmitBehavior=""False"" />
     <div style=""margin-top: 5px; margin-bottom: 5px;"">
     <dx:ASPxGridView ID=""grid"" runat=""server"" AutoGenerateColumns=""False"" ClientInstanceName=""grid"" 

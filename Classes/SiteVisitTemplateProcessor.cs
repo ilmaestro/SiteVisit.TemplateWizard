@@ -281,6 +281,22 @@ namespace OnSite.TemplateWizard.Classes
             ContactsTemplate.OutputType = ReportContactsTemplate.FileType.Designer;
             ContactsTemplate.OutputFilePath = Path.Combine(ReportsPath, sitevisitName + "Contacts.aspx.designer.cs");
             ContactsTemplate.SaveOutput(ContactsTemplate.TransformText());
+
+            /** Master schedule **/
+            ReportMasterScheduleTemplate MasterScheduleTemplate = new ReportMasterScheduleTemplate();
+            MasterScheduleTemplate.SiteVisit = sitevisit;
+
+            MasterScheduleTemplate.OutputType = ReportMasterScheduleTemplate.FileType.Page;
+            MasterScheduleTemplate.OutputFilePath = Path.Combine(ReportsPath, "Master" + sitevisitName + "Schedule.aspx");
+            MasterScheduleTemplate.SaveOutput(MasterScheduleTemplate.TransformText());
+
+            MasterScheduleTemplate.OutputType = ReportMasterScheduleTemplate.FileType.Code;
+            MasterScheduleTemplate.OutputFilePath = Path.Combine(ReportsPath, "Master" + sitevisitName + "Schedule.aspx.cs");
+            MasterScheduleTemplate.SaveOutput(MasterScheduleTemplate.TransformText());
+
+            MasterScheduleTemplate.OutputType = ReportMasterScheduleTemplate.FileType.Designer;
+            MasterScheduleTemplate.OutputFilePath = Path.Combine(ReportsPath, "Master" + sitevisitName + "Schedule.aspx.designer.cs");
+            MasterScheduleTemplate.SaveOutput(MasterScheduleTemplate.TransformText());
         }
 
         private void GenerateSchedulerImport(SiteVisit sitevisit)

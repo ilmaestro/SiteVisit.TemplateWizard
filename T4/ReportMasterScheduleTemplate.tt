@@ -1,0 +1,504 @@
+﻿<#@ include file="includes.txt" #>
+<#
+switch (OutputType) {
+	case FileType.Page:
+		GeneratePage(SiteVisit, SiteVisit.SiteVisitForms);
+		break;
+	case FileType.Code:
+		GenerateCodeFile(SiteVisit, SiteVisit.SiteVisitForms);
+		break;
+	case FileType.Designer:
+		GenerateDesignerFile(SiteVisit, SiteVisit.SiteVisitForms);
+		break;
+	default:
+		break;
+}
+#><#+
+    void GeneratePage(SiteVisit sitevisit, IEnumerable<SiteVisitForm> forms)
+    {
+		string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
+		var parentForm = SiteVisitDBHelper.GetParentForm(sitevisit);
+		string table = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBTableName;
+        string pkey = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBPrimaryKeyName;
+#>
+<%@ Page Title="<#= sitevisit.SiteVisitName #>" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="Master<#= sitevisitName #>Schedule.aspx.cs" Inherits="OnSite.WebUI.Reports.Master<#= sitevisitName #>Schedule" %>
+<%@ Register Assembly="DevExpress.Web.ASPxScheduler.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+    Namespace="DevExpress.Web.ASPxScheduler" TagPrefix="dxwschs" %>
+<%@ Register assembly="DevExpress.XtraScheduler.v12.1.Core, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.XtraScheduler" tagprefix="dx" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+<script type="text/javascript">
+    // <![CDATA[
+        function OnAppointmentsSelectionChanged(scheduler, appointmentIds) {
+            if(appointmentIds != null && appointmentIds.length == 1) {
+                scheduler.GetAppointmentProperties(appointmentIds[0], 'Subject;Location;Start;End;Description;ResourceId', OnGetAppointmentProps);
+            } else
+                OnGetAppointmentProps(null);
+        }
+        function OnGetAppointmentProps(values) {
+            var subj = _aspxGetElementById('aptsubj');
+            var loc = _aspxGetElementById('aptloc');
+            var start = _aspxGetElementById('aptstart');
+            var end = _aspxGetElementById('aptend');
+            var resource = _aspxGetElementById('aptres');
+            var description = _aspxGetElementById('aptdesc');
+            if(values != null) {
+                subj.innerHTML = values[0];
+                loc.innerHTML = values[1];
+                var formatter = new ASPxDateFormatter();
+                formatter.SetFormatString("MM/dd/yyyy HH:mm");
+                start.innerHTML = formatter.Format(values[2]);
+                end.innerHTML = formatter.Format(values[3]);
+                resource.innerHTML = values[5];
+                description.innerHTML = values[4].replace(/[\n|\r\n]/g,"<br />");
+            } else {
+                var emptyStr = '&nbsp';
+                subj.innerHTML = emptyStr;
+                loc.innerHTML = emptyStr;
+                start.innerHTML = emptyStr;
+                end.innerHTML = emptyStr;
+                resource.innerHTML = emptyStr;
+                description.innerHTML = emptyStr;
+            }
+        }
+    // ]]> 
+    </script>
+	<style type="text/css">
+		#aptdesc {
+			background-color: #fff;
+			border: 1px solid #cccccc;
+			padding: 3px;
+		}
+	</style>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <h2>Master Calendar- <asp:Label ID="timezone" runat="server" /></h2>
+	<p>
+    <dx:ASPxMenu ID="CalendarMenu" ClientInstanceName="CalendarMenu" runat="server" EncodeHtml="False">
+    </dx:ASPxMenu>
+	</p>
+    
+    <dx:ASPxTextBox ID="txtResourceID" runat="server" Visible="false">
+    </dx:ASPxTextBox>
+    <dx:ASPxScheduler ID="ASPxScheduler1" runat="server" ActiveViewType="Timeline"
+        ClientIDMode="AutoID" AppointmentDataSourceID="AppointmentsDataSource"
+        ResourceDataSourceID="ResourceDataSource" >
+        <Storage>
+            <Appointments>
+                <Mappings AllDay="AppointmentAllDay" AppointmentId="SiteVisitAppointmentID" 
+                    Label="Label" Location="AppointmentLocation" Status="Status" 
+                    Subject="Subject" Description="Description" 
+                    Start="AppointmentStartDate" End="AppointmentEndDate"  
+                    RecurrenceInfo="RecurrenceInfo" ReminderInfo="ReminderInfo" 
+                    ResourceId="ResourceID"   
+                    Type="Type" />
+            </Appointments>
+            <Resources>
+                <Mappings Caption="ResourceName" ResourceId="ResourceID" />
+            </Resources>
+        </Storage>
+        <Views>
+			<DayView ResourcesPerPage="2">
+                <TimeRulers>
+                    <dx:TimeRuler />
+                </TimeRulers>
+                <DayViewStyles ScrollAreaHeight="200px" />
+            </DayView>
+            <WorkWeekView ResourcesPerPage="2">
+                <TimeRulers>
+                    <dx:TimeRuler />
+                </TimeRulers>
+                <WorkWeekViewStyles ScrollAreaHeight="200px" />
+            </WorkWeekView>
+            <WeekView ResourcesPerPage="2">
+                <WeekViewStyles>
+                    <DateCellBody Height="50px" />
+                </WeekViewStyles>
+            </WeekView>
+            <MonthView ResourcesPerPage="2">
+                <MonthViewStyles>
+                    <DateCellBody Height="50px" />
+                </MonthViewStyles>
+            </MonthView>
+            <TimelineView ResourcesPerPage="2">
+                <TimelineViewStyles>
+                    <TimelineCellBody Height="250px" />
+                </TimelineViewStyles>
+            </TimelineView>
+        </Views>
+		<OptionsCustomization AllowAppointmentCopy="None" AllowAppointmentCreate="None" AllowAppointmentDelete="None" AllowAppointmentDrag="None" AllowAppointmentEdit="None" AllowDisplayAppointmentForm="Never" />
+		<ClientSideEvents AppointmentsSelectionChanged="function(s, e) { OnAppointmentsSelectionChanged(s, e.appointmentIds); }" />
+    </dx:ASPxScheduler>
+    <asp:ObjectDataSource ID="ResourceDataSource" runat="server" 
+        SelectMethod="GetResources" TypeName="OnSite.WebUI.Classes.MembershipHelper">
+    </asp:ObjectDataSource>
+    <asp:EntityDataSource ID="AppointmentsDataSource" runat="server" 
+        ConnectionString="name=SiteVisitDataEntities" DefaultContainerName="SiteVisitDataEntities" 
+        EnableDelete="True" EnableFlattening="False" EnableInsert="True" 
+        EnableUpdate="True" EntitySetName="SiteVisitAppointments" 
+        StoreOriginalValuesInViewState="False">
+    </asp:EntityDataSource> 
+	<br />
+    <table cellpadding="0" cellspacing="0" width="100%">
+        <tr valign="top">
+            <td>
+            </td>
+            <td style="width: 6px">
+                &nbsp;
+            </td>
+            <td>
+                <dx:ASPxRoundPanel ID="pnlAptSelection" runat="server" Width="100%" HeaderText="Appointment Details">
+                    <ContentPaddings Padding="0px" />
+                    <PanelCollection>
+                        <dx:PanelContent runat="server">
+                            <div>
+                                <table cellpadding="3" cellspacing="2" style="width: 100%">
+                                    <tr>
+                                        <td style="width: 20%">
+                                            Subject:
+                                        </td>
+                                        <td style="width: 80%">
+                                            <div id="aptsubj" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Location:
+                                        </td>
+                                        <td>
+                                            <div id="aptloc" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Start time:
+                                        </td>
+                                        <td>
+                                            <div id="aptstart" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            End time:
+                                        </td>
+                                        <td>
+                                            <div id="aptend" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Resource:
+                                        </td>
+                                        <td>
+                                            <div id="aptres" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            Description:
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <div id="aptdesc" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </dx:PanelContent>
+                    </PanelCollection>
+                </dx:ASPxRoundPanel>
+            </td>
+        </tr>
+    </table>
+</asp:Content>
+
+<#+
+    }  
+
+	private string GenerateGridViewColumns(SiteVisitForm form)
+	{
+		foreach(SiteVisitFormField field in SiteVisitDBHelper.GetSiteVisitSearchableFields(form)) {
+#>										<dx:GridViewDataTextColumn FieldName="<#= field.FieldName #>" Caption="<#= field.FieldLabel #>"
+											ReadOnly="True" VisibleIndex="<#= field.FieldTabIndex #>">
+										</dx:GridViewDataTextColumn>
+<#+ 
+		}
+		return "";
+	}
+	
+	private string GenerateNavBarItems(IEnumerable<SiteVisitForm> forms)
+	{
+		var query = from f in forms
+					where f.SiteVisitParentFormID != null
+					select f;
+		foreach(SiteVisitForm form in query) {
+			string visible = form.SiteVisitParentFormID == null ? "True" : "False";
+#>				                <dx:NavBarItem Text="<#= form.UIDisplayName #>" Name="<#= form.DBTableName #>" Image-Url="~/Images/application_form.png">                        
+                                </dx:NavBarItem>
+<#+ 
+		}
+		return "";
+	}
+
+	private string GenerateUserControls(IEnumerable<SiteVisitForm> forms)
+	{
+		foreach(SiteVisitForm form in forms) {
+			string visible = form.SiteVisitParentFormID == null ? "True" : "False";
+#>						<uc:<#= form.DBTableName #> ID="uc<#= form.DBTableName #>" runat="server" Visible="<#= visible #>" />
+<#+ 
+		}
+		return "";
+	}
+
+    void GenerateCodeFile(SiteVisit sitevisit, IEnumerable<SiteVisitForm> forms)
+    {
+		string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
+		string siteVisitID = sitevisit.SiteVisitID.ToString();
+		var parentForm = SiteVisitDBHelper.GetParentForm(sitevisit);
+		string table = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBTableName;
+        string pkey = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBPrimaryKeyName;
+#>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.Security;
+using DevExpress.Web.ASPxClasses;
+using XtraScheduler = DevExpress.XtraScheduler;
+using DevExpress.Web.ASPxScheduler;
+using System.Configuration;
+using OnSite.WebUI.Models;
+
+namespace OnSite.WebUI.Reports
+{
+    public partial class Master<#= sitevisitName #>Schedule : System.Web.UI.Page
+    {
+        private int lastInsertedAppointmentId;
+
+        SiteVisitDataEntities dataCtx = new SiteVisitDataEntities();
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            ASPxScheduler1.AppointmentRowInserted += new ASPxSchedulerDataInsertedEventHandler(ASPxScheduler1_AppointmentRowInserted);
+            ASPxScheduler1.AppointmentRowInserting += new ASPxSchedulerDataInsertingEventHandler(ASPxScheduler1_AppointmentRowInserting);
+            ASPxScheduler1.AppointmentRowUpdating += new ASPxSchedulerDataUpdatingEventHandler(ASPxScheduler1_AppointmentRowUpdating);
+            ASPxScheduler1.AppointmentsInserted += new XtraScheduler.PersistentObjectsEventHandler(ASPxScheduler1_AppointmentsInserted);
+            AppointmentsDataSource.Inserted += new EventHandler<EntityDataSourceChangedEventArgs>(AppointmentsDataSource_Inserted);
+
+            if (!IsPostBack)
+			{
+				SetCalendarLinks();
+                txtResourceID.Text = Membership.GetUser().UserName;
+				timezone.Text = ConfigurationManager.AppSettings["ICalTimeZone"].ToString();
+			}
+        }
+
+        protected void ASPxScheduler1_AppointmentRowInserted(object sender, DevExpress.Web.ASPxScheduler.ASPxSchedulerDataInsertedEventArgs e)
+        {
+            e.KeyFieldValue = this.lastInsertedAppointmentId;
+        }
+
+        protected void ASPxScheduler1_AppointmentRowInserting(object sender, DevExpress.Web.ASPxScheduler.ASPxSchedulerDataInsertingEventArgs e)
+        {
+            e.NewValues.Remove("SiteVisitAppointmentID");
+            e.NewValues["SiteVisitID"] = <#= siteVisitID #>;
+            if (e.NewValues["CreateDate"] == null)
+                e.NewValues["CreateDate"] = DateTime.Now;
+            e.NewValues["LastModifiedDate"] = DateTime.Now;
+        }
+
+        protected void ASPxScheduler1_AppointmentRowUpdating(object sender, ASPxSchedulerDataUpdatingEventArgs e)
+        {
+            e.NewValues["LastModifiedDate"] = DateTime.Now;
+        }
+
+        protected void ASPxScheduler1_AppointmentsInserted(object sender, DevExpress.XtraScheduler.PersistentObjectsEventArgs e)
+        {
+            int count = e.Objects.Count;
+            System.Diagnostics.Debug.Assert(count == 1);
+            XtraScheduler.Appointment apt = (XtraScheduler.Appointment)e.Objects[0];
+            ASPxSchedulerStorage storage = (ASPxSchedulerStorage)sender;
+            storage.SetAppointmentId(apt, this.lastInsertedAppointmentId);
+        }
+        protected void AppointmentsDataSource_Inserted(object sender, EntityDataSourceChangedEventArgs e)
+        {
+            SiteVisitAppointment apt = e.Entity as SiteVisitAppointment;
+            if (apt == null)
+                return;
+            this.lastInsertedAppointmentId = apt.SiteVisitAppointmentID;
+        }
+
+        protected void SetCalendarLinks()
+        {
+            Guid onSiteUserGUID = (Guid)Membership.GetUser().ProviderUserKey;
+
+            string rootURL = Request.Url.AbsoluteUri.Replace(Request.Url.AbsolutePath, string.Empty);
+            rootURL = rootURL.Replace("http://", string.Empty);
+			string q = CadmusUtility.Encoding.Base64Encode("&SID=<#= siteVisitID #>&UID=" + onSiteUserGUID);
+            
+			string ICSNavigateUrl =  "http://" + rootURL + ResolveUrl("~/WebServices/iCal.aspx?q=" + q);
+            string OutlookNavigateUrl = "webcal://" + rootURL + ResolveUrl("~/WebServices/iCal.aspx?q=" + q);
+
+            CalendarMenu.Items.Add("Open in Outlook", "Outlook", "~/Images/Outlook-icon.gif", OutlookNavigateUrl, "");
+            CalendarMenu.Items.Add("Export to ICS", "ICS", "~/Images/ics_icon.gif", ICSNavigateUrl, "");
+        }
+    }
+}
+<#+
+    }
+
+	private string GenerateSummaryExpression(SiteVisitForm form)
+	{
+		foreach(SiteVisitFormField field in SiteVisitDBHelper.GetSiteVisitSummaryFields(form)) {
+#> + contact.<#= field.FieldName #> + " "<#+ 
+		}
+		return "";
+	}
+
+	private string GenerateLocationExpression(SiteVisitForm form)
+	{
+		var addressField = (from f in form.SiteVisitFormFields
+							where f.FieldName.EndsWith("Address")
+							select f).FirstOrDefault();
+		var cityField = (from f in form.SiteVisitFormFields
+							where f.FieldName.EndsWith("City")
+							select f).FirstOrDefault();
+		var stateField = (from f in form.SiteVisitFormFields
+							where f.FieldName.EndsWith("State")
+							select f).FirstOrDefault();
+		var zipField = (from f in form.SiteVisitFormFields
+							where f.FieldName.EndsWith("Zip") || f.FieldName.EndsWith("ZipCode")
+							select f).FirstOrDefault();
+		
+#>contact.<#= addressField.FieldName #> + " " + contact.<#= cityField.FieldName #> + ", " + contact.<#= stateField.FieldName #> + " " + contact.<#= zipField.FieldName #><#+ 
+		return "";
+	}
+
+	private string GenerateDescriptionExpression(SiteVisitForm form)
+	{
+		var addressField = (from f in form.SiteVisitFormFields
+							where f.FieldName.EndsWith("Address")
+							select f).FirstOrDefault();
+		var cityField = (from f in form.SiteVisitFormFields
+							where f.FieldName.EndsWith("City")
+							select f).FirstOrDefault();
+		var stateField = (from f in form.SiteVisitFormFields
+							where f.FieldName.EndsWith("State")
+							select f).FirstOrDefault();
+		var zipField = (from f in form.SiteVisitFormFields
+							where f.FieldName.EndsWith("Zip") || f.FieldName.EndsWith("ZipCode")
+							select f).FirstOrDefault();
+		var phoneFields = (from f in form.SiteVisitFormFields
+							where f.FieldName.EndsWith("PhoneNumber") || f.FieldName.EndsWith("Phone")
+							select f);
+		var summaryFields = SiteVisitDBHelper.GetSiteVisitSummaryFields(form);
+
+		
+		string summaryExpression = "";
+		foreach (SiteVisitFormField phoneField in summaryFields)
+		{
+			summaryExpression += "\"" + StringSanitizer.SanitizeForWeb(phoneField.FieldLabel) + ":\" + contact." + phoneField.FieldName + " + \"\\n\" + ";
+		}
+
+		string phoneExpression = "";
+		foreach (SiteVisitFormField phoneField in phoneFields)
+		{
+			phoneExpression += "\"" + StringSanitizer.SanitizeForWeb(phoneField.FieldLabel) + ":\" + contact." + phoneField.FieldName + " + \"\\n\" + ";
+		}
+		
+#><#= summaryExpression #><#= phoneExpression #>"Address:\n" + contact.<#= addressField.FieldName #> + "\n" + contact.<#= cityField.FieldName #> + ", " + contact.<#= stateField.FieldName #> + " " + contact.<#= zipField.FieldName #><#+ 
+		return "";
+	}
+
+	void GenerateDesignerFile(SiteVisit sitevisit, IEnumerable<SiteVisitForm> forms)
+	{
+		string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
+		var parentForm = SiteVisitDBHelper.GetParentForm(sitevisit);
+		string table = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBTableName;
+        string pkey = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBPrimaryKeyName;
+#>
+//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated. 
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+namespace OnSite.WebUI.Reports {
+    
+    
+    public partial class Master<#= sitevisitName #>Schedule {
+
+        /// <summary>
+        /// CalendarMenu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxMenu.ASPxMenu CalendarMenu;
+        
+        /// <summary>
+        /// txtResourceID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox txtResourceID;
+        
+		/// <summary>
+        /// timezone control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label timezone;
+
+        /// <summary>
+        /// ASPxScheduler1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxScheduler.ASPxScheduler ASPxScheduler1;
+        
+		/// <summary>
+        /// pnlAptSelection control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxRoundPanel.ASPxRoundPanel pnlAptSelection;
+
+		
+        /// <summary>
+        /// ResourceDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource ResourceDataSource;
+        
+        /// <summary>
+        /// AppointmentsDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.EntityDataSource AppointmentsDataSource;
+	}
+}
+<#+
+	}
+#>

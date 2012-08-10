@@ -120,21 +120,7 @@ this.Write(@"Search"" %>
 </script>
 </asp:Content>
 <asp:Content ID=""Content2"" ContentPlaceHolderID=""MainContent"" runat=""server"">
-	<h2>Search ");
-
-        
-        #line default
-        #line hidden
-        
-        #line 32 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(parentForm.UIDisplayName));
-
-        
-        #line default
-        #line hidden
-        
-        #line 32 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
-this.Write(@"s</h2>
+	<h2>Contacts</h2>
 	<table>
 		<tr>
 			<td>

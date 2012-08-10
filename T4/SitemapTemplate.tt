@@ -48,7 +48,8 @@ GenerateSitemap(SiteVisit);
 	{
 		string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
 #>			<siteMapNode url="~/Reports/<#= sitevisitName #>Schedule.aspx?id=1" title="Reports"  description="<#= sitevisitName #> Reports" roles="ReportViewer">
-        <siteMapNode url="~/Reports/<#= sitevisitName #>Schedule.aspx" title="Schedule"  description="<#= sitevisitName #> Schedule Report" />
+        <siteMapNode url="~/Reports/Master<#= sitevisitName #>Schedule.aspx" title="Master Calendar"  description="<#= sitevisitName #> Master Calendar" />
+		<siteMapNode url="~/Reports/<#= sitevisitName #>Schedule.aspx" title="Print Schedule"  description="<#= sitevisitName #> Schedule Report" />        
         <siteMapNode url="~/Reports/<#= sitevisitName #>Appointments.aspx" title="Appointments"  description="<#= sitevisitName #> Appointments Report" />
         <siteMapNode url="~/Reports/<#= sitevisitName #>Contacts.aspx" title="Contacts"  description="<#= sitevisitName #> Contacts Report" />
       </siteMapNode>
