@@ -209,6 +209,7 @@
     </EntityDeploy>
     <None Include="App.Config" />
     <None Include="OnSite.TemplateWizard_TemporaryKey.pfx" />
+    <None Include="Properties\DataSources\OnSite.TemplateWizard.Models.SiteVisitMetaEntities.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

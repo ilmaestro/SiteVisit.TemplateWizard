@@ -73,12 +73,14 @@ switch (OutputType) {
 			var contentString = ""; //'<div><a href="../SiteVisits/VSDSchedulingEdit.aspx?ID='+ id +'">Edit Site</a></div>';
 			//loop through grid columns write content into info window
 			var row = grid.GetRow(index);
-
-			for (var x = 3; x < grid.columns.length; x++)
+			if (row != null)
 			{
-				if (grid.columns[x].visible == true && x < row.cells.length && x < 8) //limit to 5 fields
+				for (var x = 3; x < grid.columns.length; x++)
 				{
-					contentString += "<div><strong>"+grid.columns[x].fieldName+"</strong>: " + row.cells[x].innerHTML + "</div>"; //
+					if (grid.columns[x].visible == true && x < row.cells.length && x < 8) //limit to 5 fields
+					{
+						contentString += "<div><strong>"+grid.columns[x].fieldName+"</strong>: " + row.cells[x].innerHTML + "</div>"; //
+					}
 				}
 			}
 			var infowindow = new google.maps.InfoWindow({
@@ -172,7 +174,7 @@ switch (OutputType) {
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <dx:ASPxSplitter ID="ASPxSplitter1" runat="server" EnableTheming="True" FullscreenMode="True" ClientInstanceName="splitter"
-        Theme="DevEx" ShowCollapseBackwardButton="True"
+        Theme="DevEx" ShowCollapseBackwardButton="True" CssClass="Splitter"
         ShowCollapseForwardButton="True">
         <Panes>
             <dx:SplitterPane Size="30%">
@@ -184,7 +186,7 @@ switch (OutputType) {
                             </dx:SplitterContentControl>
                         </ContentCollection>
                     </dx:SplitterPane>
-                    <dx:SplitterPane Name="SitesListPane" ScrollBars="Auto">
+                    <dx:SplitterPane Name="SitesListPane" ScrollBars="Both">
                         <ContentCollection>
                             <dx:SplitterContentControl>
 								<h3>Site List (click to select)</h3>
@@ -235,8 +237,9 @@ switch (OutputType) {
                     <ContentCollection>
                         <dx:SplitterContentControl>
 							<h2>Current Schedule - <asp:Label ID="timezone" runat="server" /></h2>
+							<div class="SchedulerContainer">
                             <dxwschs:ASPxScheduler ID="ASPxScheduler1" runat="server"  ActiveViewType="WorkWeek"
-                                GroupType="Resource" EncodeHtml="False"
+                                GroupType="Resource" EncodeHtml="False" ClientInstanceName="ASPxScheduler1"
                                 AppointmentDataSourceID="AppointmentsDataSource" ClientIDMode="AutoID" ResourceDataSourceID="ResourceDataSource" >
                                 <Storage>
                                     <Appointments>
@@ -266,6 +269,9 @@ switch (OutputType) {
                                 </Views>
                                 <ClientSideEvents MenuItemClicked="OnSchedulerMenuItemClick" EndCallback="OnSchedulerEndCallback" />
                             </dxwschs:ASPxScheduler>
+							<script type="text/javascript">
+                                ASPxScheduler1.ChangePopupMenuContainer(document.getElementById('aspnetForm'));
+                            </script>
                             <asp:ObjectDataSource ID="ResourceDataSource" runat="server" 
                                 SelectMethod="GetResources" TypeName="OnSite.WebUI.Classes.MembershipHelper">
                             </asp:ObjectDataSource>
@@ -273,7 +279,8 @@ switch (OutputType) {
                                 ConnectionString="name=SiteVisitDataEntities" DefaultContainerName="SiteVisitDataEntities" 
                                 EnableDelete="True" EnableFlattening="False" EnableInsert="True" 
                                 EnableUpdate="True" EntitySetName="SiteVisitAppointments" StoreOriginalValuesInViewState="false">
-                            </asp:EntityDataSource>         
+                            </asp:EntityDataSource>      
+							</div>   
                         </dx:SplitterContentControl>
                     </ContentCollection>
                     </dx:SplitterPane>
@@ -636,7 +643,7 @@ namespace OnSite.WebUI.Scheduler
 	private string GenerateSummaryLabelsExpressions(SiteVisitForm form)
 	{
 		foreach(SiteVisitFormField field in SiteVisitDBHelper.GetSiteVisitSummaryFields(form)) {
-#>			lbl<#= field.FieldName #>.Text = (<#= field.ControlType.CSTypeName #>)contact.<#= field.FieldName #>;
+#>			lbl<#= field.FieldName #>.Text = contact.<#= field.FieldName #> != null ? contact.<#= field.FieldName #>.ToString() : string.Empty;
 <#+ 
 		}
 		return "";
@@ -694,9 +701,9 @@ namespace OnSite.WebUI.Scheduler
 		}
 #>				contact.<#= helper.Address1.FieldName #> = (string)tbAddress1.Text;
 				<#= address2 #>
-				contact.<#= helper.City.FieldName #> = (string)tbCity.Text;
-				contact.<#= helper.State.FieldName #> = (string)tbState.Text;
-				contact.<#= helper.Zip.FieldName #> = (int?)tbZip.Value;
+				contact.<#= helper.City.FieldName #> = (<#= helper.City.ControlType.CSTypeName #>)tbCity.Text;
+				contact.<#= helper.State.FieldName #> = (<#= helper.State.ControlType.CSTypeName #>)tbState.Text;
+				contact.<#= helper.Zip.FieldName #> = (<#= helper.Zip.ControlType.CSTypeName #>)tbZip.Value;
 <#+ 
 		return "";
 	}
@@ -709,7 +716,7 @@ namespace OnSite.WebUI.Scheduler
 		
 		foreach (SiteVisitFormField phoneField in phoneFields)
 		{
-#>				contact.<#= phoneField.FieldName #> = (string)uc<#= phoneField.FieldName #>.Value;
+#>				contact.<#= phoneField.FieldName #> = (<#= phoneField.ControlType.CSTypeName #>)uc<#= phoneField.FieldName #>.Value;
 <#+ 
 		}
 		return "";
