@@ -195,7 +195,7 @@ namespace OnSite.WebUI.UserControls.GeneratedForms
         }
 <#= GetForeignKeyLoadForm(table, fkeyTable) #>
 
-        public void LoadForm(int _<#= pkey #>)
+        public <#= table #> LoadForm(int _<#= pkey #>)
         {
             <#= table #> formdata = (from f in dataCtx.<#= table #>
 								   where f.<#= pkey #> == _<#= pkey #>
@@ -204,6 +204,7 @@ namespace OnSite.WebUI.UserControls.GeneratedForms
             {
 				PopulateForm(formdata);
             }
+			return formdata;
         }
 
 		public <#= table #> GetFormData(int _<#= pkey #>)
@@ -218,6 +219,13 @@ namespace OnSite.WebUI.UserControls.GeneratedForms
         {
             hv<#= pkey #>.Text = formdata.<#= pkey #>.ToString();
 <#= GenerateLoadFields(form.SiteVisitFormID) #>
+		}
+
+		public void SaveForm(<#= table #> form)
+		{
+			form.ModifiedDate = DateTime.Now;
+			form.ModifiedUser = Membership.GetUser().UserName;
+			dataCtx.SaveChanges();
 		}
 
         public void SaveForm(<#= !string.IsNullOrEmpty(fkey) ? "int " + fkey : ""#>)

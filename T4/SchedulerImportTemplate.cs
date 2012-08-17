@@ -25,14 +25,14 @@ namespace OnSite.TemplateWizard.Classes
     using System.Data.EntityClient;
     
     
-    #line 1 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+    #line 1 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "10.0.0.0")]
     public partial class SchedulerImportTemplate : SchedulerImportTemplateBase
     {
         public virtual string TransformText()
         {
             
-            #line 2 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+            #line 2 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 
 switch (OutputType) {
 	case FileType.Page:
@@ -54,7 +54,7 @@ switch (OutputType) {
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 16 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 16 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 
     void GeneratePage(SiteVisit sitevisit, IEnumerable<SiteVisitForm> forms)
     {
@@ -67,21 +67,21 @@ switch (OutputType) {
         #line default
         #line hidden
         
-        #line 23 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 23 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 this.Write("<%@ Page Title=\"");
 
         
         #line default
         #line hidden
         
-        #line 23 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 23 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisit.SiteVisitName));
 
         
         #line default
         #line hidden
         
-        #line 23 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 23 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 this.Write("\" Language=\"C#\" MasterPageFile=\"~/Site.master\" AutoEventWireup=\"true\" CodeBehind=" +
         "\"");
 
@@ -89,28 +89,28 @@ this.Write("\" Language=\"C#\" MasterPageFile=\"~/Site.master\" AutoEventWireup=
         #line default
         #line hidden
         
-        #line 23 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 23 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 23 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 23 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 this.Write("Data.aspx.cs\" Inherits=\"OnSite.WebUI.SiteVisits.");
 
         
         #line default
         #line hidden
         
-        #line 23 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 23 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 23 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 23 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 this.Write("Data\" %>\r\n<%@ Register Assembly=\"DevExpress.Web.ASPxGridView.v12.1.Export, Versio" +
         "n=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a\"\r\n    Namespace=\"De" +
         "vExpress.Web.ASPxGridView.Export\" TagPrefix=\"dx\" %>\r\n<asp:Content ID=\"Content1\" " +
@@ -161,14 +161,14 @@ this.Write("Data\" %>\r\n<%@ Register Assembly=\"DevExpress.Web.ASPxGridView.v12
         #line default
         #line hidden
         
-        #line 96 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 96 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(table));
 
         
         #line default
         #line hidden
         
-        #line 96 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 96 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 this.Write("AppointmentID\">\r\n        <Columns>\r\n            <dx:GridViewDataTextColumn FieldN" +
         "ame=\"");
 
@@ -176,57 +176,55 @@ this.Write("AppointmentID\">\r\n        <Columns>\r\n            <dx:GridViewDat
         #line default
         #line hidden
         
-        #line 98 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 98 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 98 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 98 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 this.Write("\" Caption=\"Contact ID\" ReadOnly=\"True\" Visible=\"true\"\r\n                VisibleInd" +
         "ex=\"0\">\r\n            </dx:GridViewDataTextColumn>\r\n            <dx:GridViewDataT" +
         "extColumn FieldName=\"SiteVisitAppointmentID\" Caption=\"Appointment ID\" ReadOnly=\"" +
         "True\" Visible=\"True\"\r\n                VisibleIndex=\"0\">\r\n            </dx:GridVi" +
-        "ewDataTextColumn>\r\n\t\t\t<dx:GridViewDataTextColumn FieldName=\"AppointmentStatus.Ap" +
-        "pointmentStatusName\" Caption=\"Appointment Status\" VisibleIndex=\"1\" Visible=\"true" +
-        "\">\r\n            </dx:GridViewDataTextColumn>\r\n            <dx:GridViewDataTextCo" +
-        "lumn FieldName=\"SiteVisitAppointment.SiteVisitID\" VisibleIndex=\"1\" Visible=\"fals" +
-        "e\">\r\n            </dx:GridViewDataTextColumn>\r\n            <dx:GridViewDataTextC" +
-        "olumn FieldName=\"SiteVisitAppointment.ResourceID\" VisibleIndex=\"2\">\r\n           " +
+        "ewDataTextColumn>\r\n            <dx:GridViewDataTextColumn FieldName=\"SiteVisitAp" +
+        "pointment.SiteVisitID\" VisibleIndex=\"1\" Visible=\"false\">\r\n            </dx:GridV" +
+        "iewDataTextColumn>\r\n            <dx:GridViewDataTextColumn FieldName=\"SiteVisitA" +
+        "ppointment.ResourceID\" VisibleIndex=\"2\">\r\n            </dx:GridViewDataTextColum" +
+        "n>\r\n            <dx:GridViewDataTextColumn FieldName=\"SiteVisitAppointment.Type\"" +
+        " VisibleIndex=\"3\" Visible=\"false\">\r\n            </dx:GridViewDataTextColumn>\r\n  " +
+        "          <dx:GridViewDataTextColumn FieldName=\"SiteVisitAppointment.Subject\" Vi" +
+        "sibleIndex=\"4\">\r\n            </dx:GridViewDataTextColumn>\r\n            <dx:GridV" +
+        "iewDataTextColumn FieldName=\"SiteVisitAppointment.Description\" VisibleIndex=\"5\">" +
+        "\r\n            </dx:GridViewDataTextColumn>\r\n            <dx:GridViewDataTextColu" +
+        "mn FieldName=\"SiteVisitAppointment.AppointmentLocation\" VisibleIndex=\"6\">\r\n     " +
+        "       </dx:GridViewDataTextColumn>\r\n            <dx:GridViewDataTextColumn Fiel" +
+        "dName=\"SiteVisitAppointment.AppointmentStartDate\" VisibleIndex=\"7\">\r\n           " +
         " </dx:GridViewDataTextColumn>\r\n            <dx:GridViewDataTextColumn FieldName=" +
-        "\"SiteVisitAppointment.Type\" VisibleIndex=\"3\" Visible=\"false\">\r\n            </dx:" +
-        "GridViewDataTextColumn>\r\n            <dx:GridViewDataTextColumn FieldName=\"SiteV" +
-        "isitAppointment.Subject\" VisibleIndex=\"4\">\r\n            </dx:GridViewDataTextCol" +
-        "umn>\r\n            <dx:GridViewDataTextColumn FieldName=\"SiteVisitAppointment.Des" +
-        "cription\" VisibleIndex=\"5\">\r\n            </dx:GridViewDataTextColumn>\r\n         " +
-        "   <dx:GridViewDataTextColumn FieldName=\"SiteVisitAppointment.AppointmentLocatio" +
-        "n\" VisibleIndex=\"6\">\r\n            </dx:GridViewDataTextColumn>\r\n            <dx:" +
-        "GridViewDataTextColumn FieldName=\"SiteVisitAppointment.AppointmentStartDate\" Vis" +
-        "ibleIndex=\"7\">\r\n            </dx:GridViewDataTextColumn>\r\n            <dx:GridVi" +
-        "ewDataTextColumn FieldName=\"SiteVisitAppointment.AppointmentEndDate\" VisibleInde" +
-        "x=\"8\">\r\n            </dx:GridViewDataTextColumn>\r\n            <dx:GridViewDataTe" +
-        "xtColumn FieldName=\"SiteVisitAppointment.Status\" VisibleIndex=\"10\" Visible=\"fals" +
-        "e\">\r\n            </dx:GridViewDataTextColumn>\r\n            <dx:GridViewDataTextC" +
-        "olumn FieldName=\"SiteVisitAppointment.Label\" VisibleIndex=\"11\" Visible=\"false\">\r" +
-        "\n            </dx:GridViewDataTextColumn>\r\n        </Columns>\r\n\t\t<Settings ShowF" +
-        "ilterRow=\"True\" />\r\n    </dx:ASPxGridView>\r\n    </div>\r\n    <asp:EntityDataSourc" +
-        "e ID=\"AppointmentsDataSource\" runat=\"server\" \r\n        ConnectionString=\"name=Si" +
-        "teVisitDataEntities\" \r\n        DefaultContainerName=\"SiteVisitDataEntities\" Enab" +
-        "leFlattening=\"False\" \r\n        EntitySetName=\"");
+        "\"SiteVisitAppointment.AppointmentEndDate\" VisibleIndex=\"8\">\r\n            </dx:Gr" +
+        "idViewDataTextColumn>\r\n            <dx:GridViewDataTextColumn FieldName=\"SiteVis" +
+        "itAppointment.Status\" VisibleIndex=\"10\" Visible=\"false\">\r\n            </dx:GridV" +
+        "iewDataTextColumn>\r\n            <dx:GridViewDataTextColumn FieldName=\"SiteVisitA" +
+        "ppointment.Label\" VisibleIndex=\"11\" Visible=\"false\">\r\n            </dx:GridViewD" +
+        "ataTextColumn>\r\n        </Columns>\r\n\t\t<Settings ShowFilterRow=\"True\" />\r\n    </d" +
+        "x:ASPxGridView>\r\n    </div>\r\n    <asp:EntityDataSource ID=\"AppointmentsDataSourc" +
+        "e\" runat=\"server\" \r\n        ConnectionString=\"name=SiteVisitDataEntities\" \r\n    " +
+        "    DefaultContainerName=\"SiteVisitDataEntities\" EnableFlattening=\"False\" \r\n    " +
+        "    EntitySetName=\"");
 
         
         #line default
         #line hidden
         
-        #line 133 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 131 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(table));
 
         
         #line default
         #line hidden
         
-        #line 133 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 131 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 this.Write("Appointments\" Include=\"SiteVisitAppointment,AppointmentStatus\" Where=\"it.SiteVisi" +
         "tAppointment.SiteVisitID = ");
 
@@ -234,14 +232,14 @@ this.Write("Appointments\" Include=\"SiteVisitAppointment,AppointmentStatus\" Wh
         #line default
         #line hidden
         
-        #line 133 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 131 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisit.SiteVisitID));
 
         
         #line default
         #line hidden
         
-        #line 133 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 131 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 this.Write("\">\r\n    </asp:EntityDataSource>\r\n    <dx:ASPxGridViewExporter ID=\"gridExporter\" r" +
         "unat=\"server\" GridViewID=\"grid\">\r\n    </dx:ASPxGridViewExporter>\r\n    \r\n</asp:Co" +
         "ntent>\r\n\r\n");
@@ -250,7 +248,7 @@ this.Write("\">\r\n    </asp:EntityDataSource>\r\n    <dx:ASPxGridViewExporter I
         #line default
         #line hidden
         
-        #line 140 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 138 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 
     }  
 
@@ -265,7 +263,7 @@ this.Write("\">\r\n    </asp:EntityDataSource>\r\n    <dx:ASPxGridViewExporter I
         #line default
         #line hidden
         
-        #line 149 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 147 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 this.Write(@"
 using System;
 using System.Collections.Generic;
@@ -288,14 +286,14 @@ namespace OnSite.WebUI.SiteVisits
         #line default
         #line hidden
         
-        #line 166 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 164 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 166 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 164 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 this.Write(@"Data : System.Web.UI.Page
     {
         const string UploadDirectory = ""~/Uploads/"";
@@ -320,14 +318,14 @@ this.Write(@"Data : System.Web.UI.Page
         #line default
         #line hidden
         
-        #line 184 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 182 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 184 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 182 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 this.Write("Appointments\";\r\n            gridExporter.WriteCsvToResponse();\r\n        }\r\n\r\n    " +
         "    protected void uplImage_FileUploadComplete(object sender, FileUploadComplete" +
         "EventArgs e)\r\n        {\r\n            e.CallbackData = SavePostedFile(e.UploadedF" +
@@ -355,28 +353,28 @@ this.Write("Appointments\";\r\n            gridExporter.WriteCsvToResponse();\r\
         #line default
         #line hidden
         
-        #line 225 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 223 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(table));
 
         
         #line default
         #line hidden
         
-        #line 225 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 223 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 this.Write("Appointments\r\n                                           where a.");
 
         
         #line default
         #line hidden
         
-        #line 226 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 224 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 226 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 224 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 this.Write(@" == contactID && a.SiteVisitAppointmentID == appointmentID
                                            select a).FirstOrDefault();
                         var appt = appointment.SiteVisitAppointment;
@@ -399,28 +397,28 @@ this.Write(@" == contactID && a.SiteVisitAppointmentID == appointmentID
         #line default
         #line hidden
         
-        #line 242 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 240 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(table));
 
         
         #line default
         #line hidden
         
-        #line 242 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 240 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 this.Write("\r\n                                       where c.");
 
         
         #line default
         #line hidden
         
-        #line 243 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 241 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 243 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 241 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 this.Write(@" == contactID
                                        select c).FirstOrDefault();
                         if (contact == null)
@@ -432,14 +430,14 @@ this.Write(@" == contactID
         #line default
         #line hidden
         
-        #line 248 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 246 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisit.SiteVisitID));
 
         
         #line default
         #line hidden
         
-        #line 248 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 246 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 this.Write(@";
                         appt.ResourceID = (string)dr[""Resource ID""];
                         appt.Subject = dr[""Subject""] != System.DBNull.Value ? (string)dr[""Subject""] : null;
@@ -460,14 +458,14 @@ this.Write(@";
         #line default
         #line hidden
         
-        #line 262 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 260 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(table));
 
         
         #line default
         #line hidden
         
-        #line 262 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 260 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 this.Write("Appointments();\r\n                        contactApt.SiteVisitAppointmentID = appt" +
         ".SiteVisitAppointmentID;\r\n                        contactApt.");
 
@@ -475,14 +473,14 @@ this.Write("Appointments();\r\n                        contactApt.SiteVisitAppoi
         #line default
         #line hidden
         
-        #line 264 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 262 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 264 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 262 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 this.Write(@" = contactID;
                         contactApt.CreateDate = DateTime.Now;
                         contactApt.CreateUser = Membership.GetUser().UserName;
@@ -494,14 +492,14 @@ this.Write(@" = contactID;
         #line default
         #line hidden
         
-        #line 269 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 267 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(table));
 
         
         #line default
         #line hidden
         
-        #line 269 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 267 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 this.Write(@"Appointments.AddObject(contactApt);
 
                         dataCtx.SaveChanges();
@@ -521,7 +519,7 @@ this.Write(@"Appointments.AddObject(contactApt);
         #line default
         #line hidden
         
-        #line 282 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 280 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 
     }
 	
@@ -533,7 +531,7 @@ this.Write(@"Appointments.AddObject(contactApt);
         #line default
         #line hidden
         
-        #line 288 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 286 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 this.Write(@"//------------------------------------------------------------------------------
 // <auto-generated>
 //     This code was generated by a tool.
@@ -552,14 +550,14 @@ namespace OnSite.WebUI.SiteVisits {
         #line default
         #line hidden
         
-        #line 301 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 299 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 301 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 299 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 this.Write("Data {\r\n\r\n/// <summary>\r\n        /// btnCsvExport control.\r\n        /// </summary" +
         ">\r\n        /// <remarks>\r\n        /// Auto-generated field.\r\n        /// To modi" +
         "fy move field declaration from designer file to code-behind file.\r\n        /// <" +
@@ -604,7 +602,7 @@ this.Write("Data {\r\n\r\n/// <summary>\r\n        /// btnCsvExport control.\r\n
         #line default
         #line hidden
         
-        #line 386 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
+        #line 384 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerImportTemplate.tt"
 
 	}
 

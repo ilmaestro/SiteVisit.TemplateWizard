@@ -100,23 +100,23 @@ namespace OnSite.TemplateWizard.Classes
             GenerateDocuments();
         }
 
-        private void GenerateForm(SiteVisitForm form)
-        {
-            FormsTemplate template = new FormsTemplate();
-            template.Form = form;
+        //private void GenerateForm(SiteVisitForm form)
+        //{
+        //    FormsTemplate template = new FormsTemplate();
+        //    template.Form = form;
 
-            template.OutputType = FormsTemplate.FileType.Page;
-            template.OutputFilePath = Path.Combine(FormsPath, form.DBTableName + ".ascx");
-            template.SaveOutput(template.TransformText());
+        //    template.OutputType = FormsTemplate.FileType.Page;
+        //    template.OutputFilePath = Path.Combine(FormsPath, form.DBTableName + ".ascx");
+        //    template.SaveOutput(template.TransformText());
             
-            template.OutputType = FormsTemplate.FileType.Code;
-            template.OutputFilePath = Path.Combine(FormsPath, form.DBTableName + ".ascx.cs");            
-            template.SaveOutput(template.TransformText());
+        //    template.OutputType = FormsTemplate.FileType.Code;
+        //    template.OutputFilePath = Path.Combine(FormsPath, form.DBTableName + ".ascx.cs");            
+        //    template.SaveOutput(template.TransformText());
 
-            template.OutputType = FormsTemplate.FileType.Designer;
-            template.OutputFilePath = Path.Combine(FormsPath, form.DBTableName + ".ascx.designer.cs");
-            template.SaveOutput(template.TransformText());
-        }
+        //    template.OutputType = FormsTemplate.FileType.Designer;
+        //    template.OutputFilePath = Path.Combine(FormsPath, form.DBTableName + ".ascx.designer.cs");
+        //    template.SaveOutput(template.TransformText());
+        //}
 
         private void GenerateMobileForm(SiteVisitForm form)
         {

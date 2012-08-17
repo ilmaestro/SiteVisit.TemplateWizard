@@ -114,7 +114,6 @@
     <Compile Include="T4\Partials\SiteVisitFormTemplate.cs" />
     <Compile Include="Classes\SiteVisitTemplateProcessor.cs" />
     <Compile Include="Classes\StringSanitizer.cs" />
-    <Compile Include="T4\Partials\FormsTemplate.cs" />
     <Compile Include="Models\SiteVisitMetaModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -172,12 +171,6 @@
       <DependentUpon>FormsEditTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="T4\FormsTemplate.cs">
-      <DependentUpon>FormsTemplate.tt</DependentUpon>
-      <SubType>Code</SubType>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="T4\SitemapTemplate.cs">
       <AutoGen>True</AutoGen>
@@ -282,11 +275,6 @@
     <None Include="T4\FormsEditTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>FormsEditTemplate.cs</LastGenOutput>
-      <CustomToolNamespace>OnSite.TemplateWizard.Classes</CustomToolNamespace>
-    </None>
-    <None Include="T4\FormsTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>FormsTemplate.cs</LastGenOutput>
       <CustomToolNamespace>OnSite.TemplateWizard.Classes</CustomToolNamespace>
     </None>
     <None Include="T4\SitemapTemplate.tt">

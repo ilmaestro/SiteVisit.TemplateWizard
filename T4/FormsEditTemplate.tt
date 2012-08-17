@@ -72,6 +72,16 @@ switch (OutputType) {
                     </Items>
                     <ClientSideEvents ItemClick="OnMenuItemClick" Init="OnTopMenuInit" />
                 </dx:ASPxMenu>
+				<table>
+					<tr>
+						<td>Disposition:</td>
+						<td>
+							<dx:ASPxComboBox ID="cbDisposition" runat="server" ValueType="System.Int32" Width="125px" ClientInstanceName="cbDisposition">
+								<ClientSideEvents SelectedIndexChanged="function(s,e) { window.setTimeout(function(){cpForms.PerformCallback('Disposition:'+cbDisposition.GetSelectedItem().value);}, 100); }" />
+							</dx:ASPxComboBox>
+						</td>
+					</tr>
+				</table>
 				<dx:ASPxCallbackPanel ID="cpForms" runat="server" Width="100%" ClientInstanceName="cpForms" EnableAnimation="false" ShowLoadingPanel="true" EnableViewState="true" ViewStateMode="Enabled">
                     <PanelCollection>
                         <dx:PanelContent>
@@ -166,15 +176,26 @@ namespace OnSite.WebUI.SiteVisits
 {
     public partial class <#= sitevisit.SiteVisitName #>Edit : System.Web.UI.Page
     {
+		SiteVisitDataEntities dataCtx = new SiteVisitDataEntities();
+
         protected void Page_Load(object sender, EventArgs e)
         {
 			cpForms.Callback += new DevExpress.Web.ASPxClasses.CallbackEventHandlerBase(cpForms_Callback);
+			
+
+
             if (!IsPostBack)
             {
                 BindControls();
+				cbDisposition.DataSource = dataCtx.Dispositions.OrderBy(d => d.DisplayOrder);
+				cbDisposition.TextField = "DispositionName";
+				cbDisposition.ValueField = "DispositionID";
+				cbDisposition.DataBind();
+
                 if (!string.IsNullOrEmpty(Request["ID"]))
                 {
-                    uc<#= parentForm.DBTableName #>.LoadForm(int.Parse(Request["ID"]));
+                    var formdata = uc<#= parentForm.DBTableName #>.LoadForm(int.Parse(Request["ID"]));
+					cbDisposition.Items.FindByValue(formdata.DispositionID).Selected = true;
 					hfFormKey["<#= pkey #>"] = uc<#= parentForm.DBTableName #>.<#= pkey #>;
 					string formHeader = ""<#= GenerateSummaryExpression(parentForm) #>;
 					Page.Title = formHeader;
@@ -212,14 +233,26 @@ namespace OnSite.WebUI.SiteVisits
 
         protected void cpForms_Callback(object sender, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
         {
-            string[] forms = e.Parameter.Split('_');
-            saveForm(forms[0]);
-            if (forms[1].Length > 0)
+            if (e.Parameter.StartsWith("Disposition:"))
             {
-                SetNavbarItem(forms[1]);
+			    var form = getParentFormData();
+				if (form != null)
+				{
+					form.DispositionID = int.Parse(e.Parameter);
+					uc<#= parentForm.DBTableName #>.SaveForm(form);
+				}
+            }
+            else
+            {
+                string[] forms = e.Parameter.Split('_');
+                saveForm(forms[0]);
+                if (forms[1].Length > 0)
+                {
+                    SetNavbarItem(forms[1]);
+                }
             }
         }
-		
+
         private void saveForm(string formName)
         {
             switch (formName)
@@ -408,6 +441,15 @@ namespace OnSite.WebUI.SiteVisits {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxHiddenField.ASPxHiddenField hfFormKey;
+
+		/// <summary>
+        /// cbDisposition control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox cbDisposition;
 
 <#= GenerateDesignerProperties(forms) #>
 

@@ -101,8 +101,6 @@ switch (OutputType) {
             <dx:GridViewDataTextColumn FieldName="SiteVisitAppointmentID" Caption="Appointment ID" ReadOnly="True" Visible="True"
                 VisibleIndex="0">
             </dx:GridViewDataTextColumn>
-			<dx:GridViewDataTextColumn FieldName="AppointmentStatus.AppointmentStatusName" Caption="Appointment Status" VisibleIndex="1" Visible="true">
-            </dx:GridViewDataTextColumn>
             <dx:GridViewDataTextColumn FieldName="SiteVisitAppointment.SiteVisitID" VisibleIndex="1" Visible="false">
             </dx:GridViewDataTextColumn>
             <dx:GridViewDataTextColumn FieldName="SiteVisitAppointment.ResourceID" VisibleIndex="2">

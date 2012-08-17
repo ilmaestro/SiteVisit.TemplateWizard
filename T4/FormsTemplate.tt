@@ -214,6 +214,13 @@ namespace OnSite.WebUI.UserControls.GeneratedForms
 <#= GenerateLoadFields(form.SiteVisitFormID) #>
 		}
 
+		public void SaveForm(<#= table #> form)
+		{
+			form.ModifiedDate = DateTime.Now;
+			form.ModifiedUser = Membership.GetUser().UserName;
+			dataCtx.SaveChanges();
+		}
+
         public void SaveForm(<#= !string.IsNullOrEmpty(fkey) ? "int " + fkey : ""#>)
         {
             <#= table #> formdata;
@@ -246,7 +253,7 @@ namespace OnSite.WebUI.UserControls.GeneratedForms
                 dataCtx.<#= table #>.AddObject(formdata);
             }
 
-            dataCtx.SaveChanges().ToString();
+            dataCtx.SaveChanges();
 			hv<#= pkey #>.Text = formdata.<#= pkey #>.ToString();
 			<#= string.IsNullOrEmpty(fkey) ? "dataCtx."+ table + "UpdateGeography();" : "" #>
         }

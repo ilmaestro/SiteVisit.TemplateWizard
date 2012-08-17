@@ -76,6 +76,9 @@ switch (OutputType) {
             <dx:GridViewDataTextColumn FieldName="<#= pkey #>" Caption="<#= pkey #>"
                 ReadOnly="True" VisibleIndex="0" Visible="False">
 			</dx:GridViewDataTextColumn>
+			<dx:GridViewDataComboBoxColumn FieldName="DispositionID" Caption="Disposition" ReadOnly="True" VisibleIndex="0" Visible="true">
+				<PropertiesComboBox DataSourceID="DispositionsDataSource" ValueField="DispositionID" IncrementalFilteringMode="StartsWith" TextField="DispositionName" ValueType="System.Int32" DropDownStyle="DropDown" />
+			</dx:GridViewDataComboBoxColumn>
 <#= GenerateGridViewColumns(parentForm) #>
 <#= GenerateGridViewExportColumns(parentForm) #>
             <dx:GridViewDataTextColumn FieldName="LocationLatitude" 
@@ -94,6 +97,10 @@ switch (OutputType) {
         DefaultContainerName="SiteVisitDataEntities" EnableFlattening="False" 
         EntitySetName="<#= table #>">
     </asp:EntityDataSource>
+	<asp:EntityDataSource ID="DispositionsDataSource" runat="server" 
+		ConnectionString="name=SiteVisitDataEntities" DefaultContainerName="SiteVisitDataEntities" 
+		EnableFlattening="False" EntitySetName="Dispositions">
+	</asp:EntityDataSource> 
 	<dx:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="ASPxGridView1">
     </dx:ASPxGridViewExporter>
 </asp:Content>
@@ -285,6 +292,15 @@ namespace OnSite.WebUI.SiteVisits {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxGridView.GridViewCommandColumnCustomButton Edit;
+
+		/// <summary>
+        /// DispositionsDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.EntityDataSource DispositionsDataSource;
         
         /// <summary>
         /// Delete control.

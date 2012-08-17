@@ -363,7 +363,6 @@ switch (OutputType) {
 																<dx:ASPxGridView ID="gridAppointments" runat="server" Width="100%" 
 																	AutoGenerateColumns="False">
 																	<Columns>
-																		<dx:GridViewDataTextColumn FieldName="AppointmentStatus.AppointmentStatusName" Caption="Appointment Status" VisibleIndex="1"></dx:GridViewDataTextColumn>
 																		<dx:GridViewDataTextColumn FieldName="SiteVisitAppointment.ResourceID" VisibleIndex="2"></dx:GridViewDataTextColumn>																		
 																		<dx:GridViewDataTextColumn FieldName="SiteVisitAppointment.AppointmentStartDate" VisibleIndex="7"></dx:GridViewDataTextColumn>
 																		<dx:GridViewDataTextColumn FieldName="SiteVisitAppointment.AppointmentEndDate" VisibleIndex="8"></dx:GridViewDataTextColumn>

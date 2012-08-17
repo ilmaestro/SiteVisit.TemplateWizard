@@ -158,45 +158,43 @@ this.Write("\" Caption=\"Contact ID\" ReadOnly=\"True\" Visible=\"true\"\r\n    
         "ex=\"0\">\r\n            </dx:GridViewDataTextColumn>\r\n            <dx:GridViewDataT" +
         "extColumn FieldName=\"SiteVisitAppointmentID\" Caption=\"Appointment ID\" ReadOnly=\"" +
         "True\" Visible=\"True\"\r\n                VisibleIndex=\"0\">\r\n            </dx:GridVi" +
-        "ewDataTextColumn>\r\n\t\t\t<dx:GridViewDataTextColumn FieldName=\"AppointmentStatus.Ap" +
-        "pointmentStatusName\" Caption=\"Appointment Status\" VisibleIndex=\"1\" Visible=\"true" +
-        "\">\r\n            </dx:GridViewDataTextColumn>\r\n            <dx:GridViewDataTextCo" +
-        "lumn FieldName=\"SiteVisitAppointment.SiteVisitID\" VisibleIndex=\"1\" Visible=\"fals" +
-        "e\">\r\n            </dx:GridViewDataTextColumn>\r\n            <dx:GridViewDataTextC" +
-        "olumn FieldName=\"SiteVisitAppointment.ResourceID\" VisibleIndex=\"2\">\r\n           " +
+        "ewDataTextColumn>\r\n            <dx:GridViewDataTextColumn FieldName=\"SiteVisitAp" +
+        "pointment.SiteVisitID\" VisibleIndex=\"1\" Visible=\"false\">\r\n            </dx:GridV" +
+        "iewDataTextColumn>\r\n            <dx:GridViewDataTextColumn FieldName=\"SiteVisitA" +
+        "ppointment.ResourceID\" VisibleIndex=\"2\">\r\n            </dx:GridViewDataTextColum" +
+        "n>\r\n            <dx:GridViewDataTextColumn FieldName=\"SiteVisitAppointment.Type\"" +
+        " VisibleIndex=\"3\" Visible=\"false\">\r\n            </dx:GridViewDataTextColumn>\r\n  " +
+        "          <dx:GridViewDataTextColumn FieldName=\"SiteVisitAppointment.Subject\" Vi" +
+        "sibleIndex=\"4\">\r\n            </dx:GridViewDataTextColumn>\r\n            <dx:GridV" +
+        "iewDataTextColumn FieldName=\"SiteVisitAppointment.Description\" VisibleIndex=\"5\">" +
+        "\r\n            </dx:GridViewDataTextColumn>\r\n            <dx:GridViewDataTextColu" +
+        "mn FieldName=\"SiteVisitAppointment.AppointmentLocation\" VisibleIndex=\"6\">\r\n     " +
+        "       </dx:GridViewDataTextColumn>\r\n            <dx:GridViewDataTextColumn Fiel" +
+        "dName=\"SiteVisitAppointment.AppointmentStartDate\" VisibleIndex=\"7\">\r\n           " +
         " </dx:GridViewDataTextColumn>\r\n            <dx:GridViewDataTextColumn FieldName=" +
-        "\"SiteVisitAppointment.Type\" VisibleIndex=\"3\" Visible=\"false\">\r\n            </dx:" +
-        "GridViewDataTextColumn>\r\n            <dx:GridViewDataTextColumn FieldName=\"SiteV" +
-        "isitAppointment.Subject\" VisibleIndex=\"4\">\r\n            </dx:GridViewDataTextCol" +
-        "umn>\r\n            <dx:GridViewDataTextColumn FieldName=\"SiteVisitAppointment.Des" +
-        "cription\" VisibleIndex=\"5\">\r\n            </dx:GridViewDataTextColumn>\r\n         " +
-        "   <dx:GridViewDataTextColumn FieldName=\"SiteVisitAppointment.AppointmentLocatio" +
-        "n\" VisibleIndex=\"6\">\r\n            </dx:GridViewDataTextColumn>\r\n            <dx:" +
-        "GridViewDataTextColumn FieldName=\"SiteVisitAppointment.AppointmentStartDate\" Vis" +
-        "ibleIndex=\"7\">\r\n            </dx:GridViewDataTextColumn>\r\n            <dx:GridVi" +
-        "ewDataTextColumn FieldName=\"SiteVisitAppointment.AppointmentEndDate\" VisibleInde" +
-        "x=\"8\">\r\n            </dx:GridViewDataTextColumn>\r\n            <dx:GridViewDataTe" +
-        "xtColumn FieldName=\"SiteVisitAppointment.Status\" VisibleIndex=\"10\" Visible=\"fals" +
-        "e\">\r\n            </dx:GridViewDataTextColumn>\r\n            <dx:GridViewDataTextC" +
-        "olumn FieldName=\"SiteVisitAppointment.Label\" VisibleIndex=\"11\" Visible=\"false\">\r" +
-        "\n            </dx:GridViewDataTextColumn>\r\n        </Columns>\r\n\t\t<Settings ShowF" +
-        "ilterRow=\"True\" />\r\n    </dx:ASPxGridView>\r\n    </div>\r\n    <asp:EntityDataSourc" +
-        "e ID=\"AppointmentsDataSource\" runat=\"server\" \r\n        ConnectionString=\"name=Si" +
-        "teVisitDataEntities\" \r\n        DefaultContainerName=\"SiteVisitDataEntities\" Enab" +
-        "leFlattening=\"False\" \r\n        EntitySetName=\"");
+        "\"SiteVisitAppointment.AppointmentEndDate\" VisibleIndex=\"8\">\r\n            </dx:Gr" +
+        "idViewDataTextColumn>\r\n            <dx:GridViewDataTextColumn FieldName=\"SiteVis" +
+        "itAppointment.Status\" VisibleIndex=\"10\" Visible=\"false\">\r\n            </dx:GridV" +
+        "iewDataTextColumn>\r\n            <dx:GridViewDataTextColumn FieldName=\"SiteVisitA" +
+        "ppointment.Label\" VisibleIndex=\"11\" Visible=\"false\">\r\n            </dx:GridViewD" +
+        "ataTextColumn>\r\n        </Columns>\r\n\t\t<Settings ShowFilterRow=\"True\" />\r\n    </d" +
+        "x:ASPxGridView>\r\n    </div>\r\n    <asp:EntityDataSource ID=\"AppointmentsDataSourc" +
+        "e\" runat=\"server\" \r\n        ConnectionString=\"name=SiteVisitDataEntities\" \r\n    " +
+        "    DefaultContainerName=\"SiteVisitDataEntities\" EnableFlattening=\"False\" \r\n    " +
+        "    EntitySetName=\"");
 
         
         #line default
         #line hidden
         
-        #line 74 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 72 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(table));
 
         
         #line default
         #line hidden
         
-        #line 74 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 72 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write("Appointments\" Include=\"SiteVisitAppointment,AppointmentStatus\" Where=\"it.SiteVisi" +
         "tAppointment.SiteVisitID = ");
 
@@ -204,14 +202,14 @@ this.Write("Appointments\" Include=\"SiteVisitAppointment,AppointmentStatus\" Wh
         #line default
         #line hidden
         
-        #line 74 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 72 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisit.SiteVisitID));
 
         
         #line default
         #line hidden
         
-        #line 74 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 72 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write("\">\r\n    </asp:EntityDataSource>\r\n    <dx:ASPxGridViewExporter ID=\"gridExporter\" r" +
         "unat=\"server\" GridViewID=\"grid\">\r\n    </dx:ASPxGridViewExporter>\r\n    \r\n</asp:Co" +
         "ntent>\r\n\r\n");
@@ -220,7 +218,7 @@ this.Write("\">\r\n    </asp:EntityDataSource>\r\n    <dx:ASPxGridViewExporter I
         #line default
         #line hidden
         
-        #line 81 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 79 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 
     }  
 
@@ -235,7 +233,7 @@ this.Write("\">\r\n    </asp:EntityDataSource>\r\n    <dx:ASPxGridViewExporter I
         #line default
         #line hidden
         
-        #line 90 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 88 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write(@"
 using System;
 using System.Collections.Generic;
@@ -258,14 +256,14 @@ namespace OnSite.WebUI.Reports
         #line default
         #line hidden
         
-        #line 107 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 105 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 107 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 105 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write(@"Appointments : System.Web.UI.Page
     {
         private SiteVisitDataEntities dataCtx = new SiteVisitDataEntities();
@@ -289,14 +287,14 @@ this.Write(@"Appointments : System.Web.UI.Page
         #line default
         #line hidden
         
-        #line 124 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 122 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 124 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 122 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write("Appointments\";\r\n            gridExporter.WriteCsvToResponse();\r\n        }\r\n    }\r" +
         "\n}\r\n");
 
@@ -304,7 +302,7 @@ this.Write("Appointments\";\r\n            gridExporter.WriteCsvToResponse();\r\
         #line default
         #line hidden
         
-        #line 129 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 127 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 
     }
 	
@@ -316,7 +314,7 @@ this.Write("Appointments\";\r\n            gridExporter.WriteCsvToResponse();\r\
         #line default
         #line hidden
         
-        #line 135 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 133 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write(@"//------------------------------------------------------------------------------
 // <auto-generated>
 //     This code was generated by a tool.
@@ -335,14 +333,14 @@ namespace OnSite.WebUI.Reports {
         #line default
         #line hidden
         
-        #line 148 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 146 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 148 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 146 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write(@"Appointments {
 
 /// <summary>
@@ -388,7 +386,7 @@ this.Write(@"Appointments {
         #line default
         #line hidden
         
-        #line 187 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 185 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 
 	}
 
