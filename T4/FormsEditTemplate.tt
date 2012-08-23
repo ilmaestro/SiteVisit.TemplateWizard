@@ -76,7 +76,7 @@ switch (OutputType) {
 					<tr>
 						<td>Disposition:</td>
 						<td>
-							<dx:ASPxComboBox ID="cbDisposition" runat="server" ValueType="System.Int32" Width="125px" ClientInstanceName="cbDisposition">
+							<dx:ASPxComboBox ID="cbDisposition" runat="server" ValueType="System.Int32" Width="225px" ClientInstanceName="cbDisposition">
 								<ClientSideEvents SelectedIndexChanged="function(s,e) { window.setTimeout(function(){cpForms.PerformCallback('Disposition:'+cbDisposition.GetSelectedItem().value);}, 100); }" />
 							</dx:ASPxComboBox>
 						</td>
@@ -182,8 +182,6 @@ namespace OnSite.WebUI.SiteVisits
         {
 			cpForms.Callback += new DevExpress.Web.ASPxClasses.CallbackEventHandlerBase(cpForms_Callback);
 			
-
-
             if (!IsPostBack)
             {
                 BindControls();
@@ -238,7 +236,7 @@ namespace OnSite.WebUI.SiteVisits
 			    var form = getParentFormData();
 				if (form != null)
 				{
-					form.DispositionID = int.Parse(e.Parameter);
+					form.DispositionID = int.Parse(e.Parameter.Substring(12, e.Parameter.Length-12));
 					uc<#= parentForm.DBTableName #>.SaveForm(form);
 				}
             }

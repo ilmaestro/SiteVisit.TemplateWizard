@@ -223,7 +223,7 @@ this.Write("\r\n                            </Items>\r\n                        
         "nts ItemClick=\"OnMenuItemClick\" Init=\"OnTopMenuInit\" />\r\n                </dx:AS" +
         "PxMenu>\r\n\t\t\t\t<table>\r\n\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t<td>Disposition:</td>\r\n\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t" +
         "\t<dx:ASPxComboBox ID=\"cbDisposition\" runat=\"server\" ValueType=\"System.Int32\" Wid" +
-        "th=\"125px\" ClientInstanceName=\"cbDisposition\">\r\n\t\t\t\t\t\t\t\t<ClientSideEvents Select" +
+        "th=\"225px\" ClientInstanceName=\"cbDisposition\">\r\n\t\t\t\t\t\t\t\t<ClientSideEvents Select" +
         "edIndexChanged=\"function(s,e) { window.setTimeout(function(){cpForms.PerformCall" +
         "back(\'Disposition:\'+cbDisposition.GetSelectedItem().value);}, 100); }\" />\r\n\t\t\t\t\t" +
         "\t\t</dx:ASPxComboBox>\r\n\t\t\t\t\t\t</td>\r\n\t\t\t\t\t</tr>\r\n\t\t\t\t</table>\r\n\t\t\t\t<dx:ASPxCallbac" +
@@ -532,8 +532,6 @@ this.Write(@"Edit : System.Web.UI.Page
         {
 			cpForms.Callback += new DevExpress.Web.ASPxClasses.CallbackEventHandlerBase(cpForms_Callback);
 			
-
-
             if (!IsPostBack)
             {
                 BindControls();
@@ -550,14 +548,14 @@ this.Write(@"Edit : System.Web.UI.Page
         #line default
         #line hidden
         
-        #line 197 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 195 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(parentForm.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 197 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 195 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(".LoadForm(int.Parse(Request[\"ID\"]));\r\n\t\t\t\t\tcbDisposition.Items.FindByValue(formda" +
         "ta.DispositionID).Selected = true;\r\n\t\t\t\t\thfFormKey[\"");
 
@@ -565,56 +563,56 @@ this.Write(".LoadForm(int.Parse(Request[\"ID\"]));\r\n\t\t\t\t\tcbDisposition.It
         #line default
         #line hidden
         
-        #line 199 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 197 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 199 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 197 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write("\"] = uc");
 
         
         #line default
         #line hidden
         
-        #line 199 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 197 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(parentForm.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 199 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 197 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(".");
 
         
         #line default
         #line hidden
         
-        #line 199 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 197 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 199 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 197 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(";\r\n\t\t\t\t\tstring formHeader = \"\"");
 
         
         #line default
         #line hidden
         
-        #line 200 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 198 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(GenerateSummaryExpression(parentForm)));
 
         
         #line default
         #line hidden
         
-        #line 200 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 198 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(";\r\n\t\t\t\t\tPage.Title = formHeader;\r\n\t\t\t\t\tlblFormHeader.Text = formHeader;\r\n        " +
         "        }\r\n                else\r\n                {\r\n                    string f" +
         "ormHeader =\"New ");
@@ -623,14 +621,14 @@ this.Write(";\r\n\t\t\t\t\tPage.Title = formHeader;\r\n\t\t\t\t\tlblFormHeader.T
         #line default
         #line hidden
         
-        #line 206 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 204 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(parentForm.UIDisplayName));
 
         
         #line default
         #line hidden
         
-        #line 206 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 204 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write("\";\r\n\t\t\t\t\tPage.Title = formHeader;\r\n\t\t\t\t\tlblFormHeader.Text = formHeader;\r\n       " +
         "         }\r\n            }\t\r\n\t\t}\r\n\r\n\t\tprotected void BindControls()\r\n        {\t\t\t" +
         "\t\r\n");
@@ -639,14 +637,14 @@ this.Write("\";\r\n\t\t\t\t\tPage.Title = formHeader;\r\n\t\t\t\t\tlblFormHeader
         #line default
         #line hidden
         
-        #line 215 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 213 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(GenerateUserControlBinds(forms)));
 
         
         #line default
         #line hidden
         
-        #line 215 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 213 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write("\t\t\t\r\n\t\t}\r\n\r\n        protected int? getParentKey()\r\n        {\r\n\t\t\tint? retVal = nu" +
         "ll;\r\n            if (hfFormKey[\"");
 
@@ -654,56 +652,56 @@ this.Write("\t\t\t\r\n\t\t}\r\n\r\n        protected int? getParentKey()\r\n    
         #line default
         #line hidden
         
-        #line 221 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 219 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 221 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 219 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write("\"] != null)\r\n                retVal = (int?) hfFormKey[\"");
 
         
         #line default
         #line hidden
         
-        #line 222 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 220 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 222 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 220 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write("\"];\r\n            return retVal;\r\n        }\r\n\r\n        protected ");
 
         
         #line default
         #line hidden
         
-        #line 226 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 224 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(table));
 
         
         #line default
         #line hidden
         
-        #line 226 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 224 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(" getParentFormData()\r\n        {\r\n            ");
 
         
         #line default
         #line hidden
         
-        #line 228 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 226 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(table));
 
         
         #line default
         #line hidden
         
-        #line 228 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 226 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(" formdata = null;\r\n            if (getParentKey() != null)\r\n                formd" +
         "ata = uc");
 
@@ -711,14 +709,14 @@ this.Write(" formdata = null;\r\n            if (getParentKey() != null)\r\n    
         #line default
         #line hidden
         
-        #line 230 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 228 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(parentForm.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 230 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 228 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(@".GetFormData((int)getParentKey());
             return formdata;
         }
@@ -730,21 +728,21 @@ this.Write(@".GetFormData((int)getParentKey());
 			    var form = getParentFormData();
 				if (form != null)
 				{
-					form.DispositionID = int.Parse(e.Parameter);
+					form.DispositionID = int.Parse(e.Parameter.Substring(12, e.Parameter.Length-12));
 					uc");
 
         
         #line default
         #line hidden
         
-        #line 242 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 240 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(parentForm.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 242 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 240 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(@".SaveForm(form);
 				}
             }
@@ -769,84 +767,84 @@ this.Write(@".SaveForm(form);
         #line default
         #line hidden
         
-        #line 260 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 258 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(parentForm.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 260 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 258 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write("\":\r\n                    uc");
 
         
         #line default
         #line hidden
         
-        #line 261 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 259 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(parentForm.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 261 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 259 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(".SaveForm();\r\n                    hfFormKey[\"");
 
         
         #line default
         #line hidden
         
-        #line 262 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 260 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 262 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 260 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write("\"] = uc");
 
         
         #line default
         #line hidden
         
-        #line 262 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 260 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(parentForm.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 262 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 260 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(".");
 
         
         #line default
         #line hidden
         
-        #line 262 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 260 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 262 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 260 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(";\r\n                    break;\r\n");
 
         
         #line default
         #line hidden
         
-        #line 264 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 262 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(GenerateSaveSwitchCases(forms)));
 
         
         #line default
         #line hidden
         
-        #line 264 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 262 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write("\r\n\t\t\t}\r\n            SetNavbarItem(formName);\r\n        }\r\n\r\n        private void S" +
         "etNavbarItem(string ItemName)\r\n        {\r\n            hideControls();\r\n         " +
         "   switch (ItemName)\r\n            {\r\n                case \"");
@@ -855,56 +853,56 @@ this.Write("\r\n\t\t\t}\r\n            SetNavbarItem(formName);\r\n        }\r\n
         #line default
         #line hidden
         
-        #line 274 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 272 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(parentForm.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 274 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 272 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write("\":\r\n                    uc");
 
         
         #line default
         #line hidden
         
-        #line 275 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 273 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(parentForm.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 275 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 273 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(".Visible = true;\r\n\t\t\t\t\tif (getParentKey() != null)\r\n\t\t\t\t\t\tuc");
 
         
         #line default
         #line hidden
         
-        #line 277 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 275 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(parentForm.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 277 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 275 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(".LoadForm((int)getParentKey());\r\n                    break;\r\n");
 
         
         #line default
         #line hidden
         
-        #line 279 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 277 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(GenerateNavBarSwitchStatements(forms)));
 
         
         #line default
         #line hidden
         
-        #line 279 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 277 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write("\r\n                default:\r\n                    break;\r\n            }\r\n        }\r" +
         "\n\r\n        private void hideControls()\r\n        {\r\n");
 
@@ -912,21 +910,21 @@ this.Write("\r\n                default:\r\n                    break;\r\n      
         #line default
         #line hidden
         
-        #line 287 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 285 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(GenerateUserControlHides(forms)));
 
         
         #line default
         #line hidden
         
-        #line 287 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 285 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write("\r\n        }\r\n    }\r\n}\r\n");
 
         
         #line default
         #line hidden
         
-        #line 291 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 289 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 
     }
 	
@@ -938,42 +936,42 @@ this.Write("\r\n        }\r\n    }\r\n}\r\n");
         #line default
         #line hidden
         
-        #line 297 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 295 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(" + uc");
 
         
         #line default
         #line hidden
         
-        #line 297 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 295 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 297 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 295 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(".");
 
         
         #line default
         #line hidden
         
-        #line 297 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 295 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 297 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 295 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(" + \" \"");
 
         
         #line default
         #line hidden
         
-        #line 297 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 295 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
  
 		}
 		return "";
@@ -987,28 +985,28 @@ this.Write(" + \" \"");
         #line default
         #line hidden
         
-        #line 305 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 303 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write("\t\t\t\tuc");
 
         
         #line default
         #line hidden
         
-        #line 305 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 303 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 305 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 303 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(".BindListControls();\r\n");
 
         
         #line default
         #line hidden
         
-        #line 306 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 304 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
  
 		}
 		return "";
@@ -1025,28 +1023,28 @@ this.Write(".BindListControls();\r\n");
         #line default
         #line hidden
         
-        #line 317 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 315 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write("            nbFormNavigation.Items.FindByName(\"");
 
         
         #line default
         #line hidden
         
-        #line 317 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 315 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 317 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 315 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write("\").ClientEnabled = (getParentKey() != null); \r\n");
 
         
         #line default
         #line hidden
         
-        #line 318 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 316 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
  
 		}
 		return "";
@@ -1064,42 +1062,42 @@ this.Write("\").ClientEnabled = (getParentKey() != null); \r\n");
         #line default
         #line hidden
         
-        #line 330 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 328 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write("                case \"");
 
         
         #line default
         #line hidden
         
-        #line 330 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 328 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 330 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 328 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write("\":\r\n                    if (getParentKey() != null)\r\n                        uc");
 
         
         #line default
         #line hidden
         
-        #line 332 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 330 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 332 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 330 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(".SaveForm((int)getParentKey());\r\n                    break;\r\n");
 
         
         #line default
         #line hidden
         
-        #line 334 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 332 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 
 		}
 		return "";
@@ -1116,56 +1114,56 @@ this.Write(".SaveForm((int)getParentKey());\r\n                    break;\r\n");
         #line default
         #line hidden
         
-        #line 345 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 343 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write("                case \"");
 
         
         #line default
         #line hidden
         
-        #line 345 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 343 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 345 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 343 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write("\":\r\n                    uc");
 
         
         #line default
         #line hidden
         
-        #line 346 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 344 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 346 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 344 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(".Visible = true;\r\n\t\t\t\t\tif (getParentKey() != null)\r\n                        uc");
 
         
         #line default
         #line hidden
         
-        #line 348 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 346 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 348 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 346 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(".LoadForm(getParentFormData());\r\n                    break;  \r\n");
 
         
         #line default
         #line hidden
         
-        #line 350 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 348 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
  
 		}
 		return "";
@@ -1179,28 +1177,28 @@ this.Write(".LoadForm(getParentFormData());\r\n                    break;  \r\n"
         #line default
         #line hidden
         
-        #line 358 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 356 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write("\t\t\t\tuc");
 
         
         #line default
         #line hidden
         
-        #line 358 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 356 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 358 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 356 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(".Visible = false;       \r\n");
 
         
         #line default
         #line hidden
         
-        #line 359 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 357 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
  
 		}
 		return "";
@@ -1214,7 +1212,7 @@ this.Write(".Visible = false;       \r\n");
         #line default
         #line hidden
         
-        #line 367 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 365 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(@"//------------------------------------------------------------------------------
 // <auto-generated>
 //     This code was generated by a tool.
@@ -1233,14 +1231,14 @@ namespace OnSite.WebUI.SiteVisits {
         #line default
         #line hidden
         
-        #line 380 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 378 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisit.SiteVisitName));
 
         
         #line default
         #line hidden
         
-        #line 380 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 378 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write("Edit {\r\n\r\n\t\t/// <summary>\r\n        /// lblFormHeader control.\r\n        /// </summ" +
         "ary>\r\n        /// <remarks>\r\n        /// Auto-generated field.\r\n        /// To m" +
         "odify move field declaration from designer file to code-behind file.\r\n        //" +
@@ -1279,21 +1277,21 @@ this.Write("Edit {\r\n\r\n\t\t/// <summary>\r\n        /// lblFormHeader control
         #line default
         #line hidden
         
-        #line 454 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 452 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(GenerateDesignerProperties(forms)));
 
         
         #line default
         #line hidden
         
-        #line 454 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 452 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write("\r\n\r\n\t}\r\n}\r\n");
 
         
         #line default
         #line hidden
         
-        #line 458 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 456 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 
 	}
 
@@ -1305,21 +1303,21 @@ this.Write("\r\n\r\n\t}\r\n}\r\n");
         #line default
         #line hidden
         
-        #line 464 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 462 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write("        /// <summary>\r\n        /// uc");
 
         
         #line default
         #line hidden
         
-        #line 466 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 464 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 466 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 464 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(@" control.
         /// </summary>
         /// <remarks>
@@ -1332,35 +1330,35 @@ this.Write(@" control.
         #line default
         #line hidden
         
-        #line 472 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 470 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 472 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 470 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(" uc");
 
         
         #line default
         #line hidden
         
-        #line 472 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 470 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 472 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 470 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
 this.Write(";\r\n");
 
         
         #line default
         #line hidden
         
-        #line 473 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
+        #line 471 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
  
 		}
 		return "";

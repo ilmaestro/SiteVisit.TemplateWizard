@@ -75,11 +75,18 @@ switch (OutputType) {
 			var row = grid.GetRow(index);
 			if (row != null)
 			{
-				for (var x = 3; x < grid.columns.length; x++)
+				var cellCounter = 0;
+				for (var x = 0; x < grid.columns.length; x++)
 				{
-					if (grid.columns[x].visible == true && x < row.cells.length && x < 8) //limit to 5 fields
-					{
-						contentString += "<div><strong>"+grid.columns[x].fieldName+"</strong>: " + row.cells[x].innerHTML + "</div>"; //
+				    if (grid.columns[x].fieldName != null && grid.columns[x].fieldName != "DispositionID" && grid.columns[x].visible == true && x < row.cells.length && cellCounter < 8)
+				    {
+				        var actualHeaderLabel = grid.GetHeader(x).firstChild.rows[0].cells[0].innerHTML; //don't ask me how long it took to figure this out. //grid.columns[x].fieldName
+				        contentString += "<div><strong>" + actualHeaderLabel + "</strong>: " + row.cells[cellCounter].innerHTML + "</div>"; //
+					}
+
+					if (grid.columns[x].visible == true) {
+					    //only increment the cell counter for visible columns
+					    cellCounter++;
 					}
 				}
 			}
