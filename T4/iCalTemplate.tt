@@ -1,0 +1,242 @@
+﻿<#@ include file="includes.txt" #>
+<#
+switch (OutputType) {
+	case FileType.Page:
+		GeneratePage(SiteVisit, SiteVisit.SiteVisitForms);
+		break;
+	case FileType.Code:
+		GenerateCodeFile(SiteVisit, SiteVisit.SiteVisitForms);
+		break;
+	case FileType.Designer:
+		GenerateDesignerFile(SiteVisit, SiteVisit.SiteVisitForms);
+		break;
+	default:
+		break;
+}
+#><#+
+    void GeneratePage(SiteVisit sitevisit, IEnumerable<SiteVisitForm> forms)
+    {
+		string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
+		string siteVisitID = sitevisit.SiteVisitID.ToString();
+		var parentForm = SiteVisitDBHelper.GetParentForm(sitevisit);
+		string table = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBTableName;
+        string pkey = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBPrimaryKeyName;
+#>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="<#= sitevisitName #>Calendar.aspx.cs" Inherits="OnSite.WebUI.WebServices.<#= sitevisitName #>Calendar" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        Improper navigation.
+    </div>
+    </form>
+</body>
+</html>
+
+<#+
+    }  
+
+    void GenerateCodeFile(SiteVisit sitevisit, IEnumerable<SiteVisitForm> forms)
+    {
+		string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
+		string siteVisitID = sitevisit.SiteVisitID.ToString();
+		var parentForm = SiteVisitDBHelper.GetParentForm(sitevisit);
+		string table = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBTableName;
+        string pkey = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBPrimaryKeyName;
+		SiteVisitFormField reportViewerFilterField = SiteVisitDBHelper.GetSiteVisitReportViewerFilterField(parentForm);
+		string reportViewerFilterExpression = "";
+		if (reportViewerFilterField != null)
+		{
+			reportViewerFilterExpression = "&& (c." + table +"." + reportViewerFilterField.FieldName + " == reportViewerFilterValue || string.IsNullOrEmpty(reportViewerFilterValue))";
+		}
+#>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using DDay;
+using System.Xml.Serialization;
+using System.Web.Security;
+using System.Data;
+using OnSite.WebUI.Models;
+using CadmusUtility;
+using System.Configuration;
+using OnSite.WebUI.Classes;
+
+namespace OnSite.WebUI.WebServices
+{
+    public partial class <#= sitevisitName #>Calendar : System.Web.UI.Page
+    {
+        private SiteVisitDataEntities dataCtx = new SiteVisitDataEntities();
+        private SiteVisitMetaEntities metaCtx = new SiteVisitMetaEntities();
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            IEnumerable<SiteVisitAppointment> appointments = null;
+            int siteVisitID = 0;
+
+            if (!string.IsNullOrEmpty(Request["q"]))
+            {
+                var requestQuery = HttpUtility.ParseQueryString(Encoding.Base64Decode(Request["q"]));
+
+                Guid resourceUserKey;
+                Guid requestingUserKey;
+
+                Guid.TryParse(requestQuery["RID"], out resourceUserKey);
+                Guid.TryParse(requestQuery["UID"], out requestingUserKey);
+
+                siteVisitID = CadmusUtility.SafeConversion.IntParse(requestQuery["SID"], 0);
+
+                if (resourceUserKey != Guid.Empty && requestingUserKey != Guid.Empty && siteVisitID != 0)
+                    appointments = GetAppointmentsByResource(siteVisitID, requestingUserKey, resourceUserKey);
+                else if (resourceUserKey == Guid.Empty && requestingUserKey != Guid.Empty && siteVisitID != 0)
+                    appointments = GetAppointmentsBySiteVisit(siteVisitID, requestingUserKey);
+            }
+
+            if (appointments != null && siteVisitID != 0)
+                RenderAppointmentsICS(siteVisitID, appointments);
+            else
+                Response.Redirect(Page.ResolveClientUrl("~/"));
+        }
+
+        /** Get appointments for a given resource **/
+        private IEnumerable<SiteVisitAppointment> GetAppointmentsByResource(int siteVisitID, Guid requestingUserKey, Guid resourceUserKey)
+        {
+            IEnumerable<SiteVisitAppointment> appointments = null;
+            MembershipUser requestingUser = Membership.GetUser(requestingUserKey);
+            MembershipUser resourceUser = Membership.GetUser(resourceUserKey);
+
+            //Verify that users are okay to view calendar
+            if (requestingUser.IsApproved && Roles.IsUserInRole(requestingUser.UserName, "Resource") && Roles.IsUserInRole(resourceUser.UserName, "Resource"))
+            {
+                string resourceID = resourceUser.UserName;
+
+                //The username and the User GUID provided match.The fun begins.                
+                appointments = (from s in dataCtx.SiteVisitAppointments
+                                where s.ResourceID == resourceID && s.SiteVisitID == siteVisitID
+                                select s);
+
+            }
+            return appointments;
+        }
+
+        /** Get appointments for the entire site visit **/
+        private IEnumerable<SiteVisitAppointment> GetAppointmentsBySiteVisit(int siteVisitID, Guid requestingUserKey)
+        {
+            IEnumerable<SiteVisitAppointment> appointments = null;
+            MembershipUser requestingUser = Membership.GetUser(requestingUserKey);
+			ProfileHelper requestinUserProfile = ProfileHelper.GetUserProfile(requestingUser.UserName);
+
+			string reportViewerFilterValue = requestinUserProfile.ReportViewerFilterValue;
+
+            if (requestingUser.IsApproved)
+            {              
+                appointments = (from s in dataCtx.SiteVisitAppointments
+								join c in dataCtx.<#= table #>Appointments on s.SiteVisitAppointmentID equals c.SiteVisitAppointmentID
+                                where s.SiteVisitID == siteVisitID
+								<#= reportViewerFilterExpression #>
+                                select s);
+            }
+
+            return appointments;
+        }
+
+        private void RenderAppointmentsICS(int siteVisitID, IEnumerable<SiteVisitAppointment> appointments)
+        {
+            var siteVisit = (from sv in metaCtx.SiteVisits
+                             where sv.SiteVisitID == siteVisitID
+                             select sv).FirstOrDefault();
+
+            DDay.iCal.iCalendar onSiteCalendar = new DDay.iCal.iCalendar();
+            onSiteCalendar.Version = "2.0";
+            onSiteCalendar.AddProperty("X-WR-CALNAME", siteVisit.Project.Client.ClientName + " " + siteVisit.SiteVisitName + " Schedule");
+
+            //add possible timezones to calendar
+            foreach (string tz in getTimeZones())
+            {
+                System.TimeZoneInfo timezoneinfo = System.TimeZoneInfo.FindSystemTimeZoneById(tz);
+                DDay.iCal.iCalTimeZone timezone = DDay.iCal.iCalTimeZone.FromSystemTimeZone(timezoneinfo);
+                onSiteCalendar.AddTimeZone(timezone);
+            }
+
+            foreach (SiteVisitAppointment sva in appointments)
+            {
+                DDay.iCal.Event myEvent = onSiteCalendar.Create<DDay.iCal.Event>();
+                myEvent.Start = new DDay.iCal.iCalDateTime(sva.AppointmentStartDate, ConfigurationManager.AppSettings["ICalTimeZone"].ToString());
+                myEvent.End = new DDay.iCal.iCalDateTime(sva.AppointmentEndDate, ConfigurationManager.AppSettings["ICalTimeZone"].ToString());
+                myEvent.Summary = sva.Subject;
+                myEvent.Location = sva.AppointmentLocation;
+                myEvent.Description = sva.Description;
+                myEvent.Resources.Add(sva.ResourceID);
+            }
+
+            DDay.iCal.Serialization.iCalendar.iCalendarSerializer mySerializer = new DDay.iCal.Serialization.iCalendar.iCalendarSerializer();
+            Response.Clear();
+            Response.ContentType = "text/calendar";
+            Response.AppendHeader("Content-Disposition", "attachment; filename=" + siteVisit.Project.Client.ClientName + "." + siteVisit.SiteVisitName + ".ics");
+
+            string output = mySerializer.SerializeToString(onSiteCalendar);
+            Response.Write(output);
+            Response.End();
+        }
+
+        private List<string> getTimeZones()
+        {
+            string[] tz = 
+                { 
+                    "Eastern Standard Time",
+                    "Central Standard Time",
+                    "Mountain Standard Time",
+                    "Pacific Standard Time"
+                };
+
+            return tz.ToList<string>();
+        }
+
+    }
+}
+<#+
+    }
+
+	void GenerateDesignerFile(SiteVisit sitevisit, IEnumerable<SiteVisitForm> forms)
+	{
+		string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
+		var parentForm = SiteVisitDBHelper.GetParentForm(sitevisit);
+		string table = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBTableName;
+        string pkey = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBPrimaryKeyName;
+#>//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+namespace OnSite.WebUI.WebServices
+{
+
+
+    public partial class <#= sitevisitName #>Calendar
+    {
+
+        /// <summary>
+        /// form1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+    }
+}
+
+<#+
+	}
+#>

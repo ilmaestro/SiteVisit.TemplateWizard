@@ -20,6 +20,16 @@ switch (OutputType) {
 		var parentForm = SiteVisitDBHelper.GetParentForm(sitevisit);
 		string table = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBTableName;
         string pkey = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBPrimaryKeyName;
+
+		SiteVisitFormField reportViewerFilterField = SiteVisitDBHelper.GetSiteVisitReportViewerFilterField(parentForm);
+		string reportViewerFilterExpression = "", whereParameters = "";
+		if (reportViewerFilterField != null)
+		{
+			reportViewerFilterExpression = "it." + reportViewerFilterField.FieldName + " = @ReportViewerFilterValue OR @ReportViewerFilterValue IS NULL OR @ReportViewerFilterValue = ''";
+			whereParameters = @"<WhereParameters>
+            <asp:ProfileParameter Name=""ReportViewerFilterValue"" PropertyName=""ReportViewerFilterValue"" Type=""String"" />
+        </WhereParameters>";
+		}
 #><%@ Page Title="<#= parentForm.UIDisplayName #> Search" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="<#= sitevisitName #>Search.aspx.cs" Inherits="OnSite.WebUI.Reports.<#= sitevisitName #>Search" %>
 <%@ Register Assembly="DevExpress.Web.ASPxGridView.v12.1.Export, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxGridView.Export" TagPrefix="dx" %>
@@ -68,7 +78,8 @@ switch (OutputType) {
     <asp:EntityDataSource ID="<#= table #>DataSource" runat="server" 
         ConnectionString="name=SiteVisitDataEntities" 
         DefaultContainerName="SiteVisitDataEntities" EnableFlattening="False" 
-        EntitySetName="<#= table #>">
+        EntitySetName="<#= table #>" Where="<#= reportViewerFilterExpression #>">
+        <#= whereParameters #>
     </asp:EntityDataSource>
 	<asp:EntityDataSource ID="DispositionsDataSource" runat="server" 
 		ConnectionString="name=SiteVisitDataEntities" DefaultContainerName="SiteVisitDataEntities" 

@@ -191,6 +191,12 @@ switch (OutputType) {
 		var parentForm = SiteVisitDBHelper.GetParentForm(sitevisit);
 		string table = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBTableName;
         string pkey = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBPrimaryKeyName;
+		SiteVisitFormField reportViewerFilterField = SiteVisitDBHelper.GetSiteVisitReportViewerFilterField(parentForm);
+		string reportViewerFilterExpression = "";
+		if (reportViewerFilterField != null)
+		{
+			reportViewerFilterExpression = "where (c." + table +"." + reportViewerFilterField.FieldName + " == reportViewerFilterValue || string.IsNullOrEmpty(reportViewerFilterValue))";
+		}
 #>using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -284,9 +290,14 @@ namespace OnSite.WebUI.Reports
             schedulerStorage.Appointments.ResourceSharing = false;
 
             schedulerStorage.Resources.DataSource = MembershipHelper.GetResources();
+			string reportViewerFilterValue = ProfileHelper.GetUserProfile().ReportViewerFilterValue;
 
-            schedulerStorage.Appointments.DataSource = (from a in apptCtx.SiteVisitAppointments
-                                                        select a);                                                            
+            var appointments = (from a in apptCtx.SiteVisitAppointments
+                                join c in apptCtx.<#= table #>Appointments on a.SiteVisitAppointmentID equals c.SiteVisitAppointmentID
+                                <#= reportViewerFilterExpression #>
+                                select a);  
+          
+			schedulerStorage.Appointments.DataSource = appointments;                                               
             SchedulerStoragePrintAdapter adapter = new SchedulerStoragePrintAdapter(schedulerStorage);
             //adapter.TimeInterval = new TimeInterval(DateTime.Now, TimeSpan.FromDays(14));
             //adapter.EnableSmartSync = true;

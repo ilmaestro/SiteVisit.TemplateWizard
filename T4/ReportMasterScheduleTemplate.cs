@@ -62,26 +62,35 @@ switch (OutputType) {
 		var parentForm = SiteVisitDBHelper.GetParentForm(sitevisit);
 		string table = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBTableName;
         string pkey = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBPrimaryKeyName;
+				SiteVisitFormField reportViewerFilterField = SiteVisitDBHelper.GetSiteVisitReportViewerFilterField(parentForm);
+		string reportViewerFilterExpression = "", whereParameters = "";
+		if (reportViewerFilterField != null)
+		{
+			reportViewerFilterExpression = "(it." + table + "." + reportViewerFilterField.FieldName + " = @ReportViewerFilterValue OR @ReportViewerFilterValue IS NULL OR @ReportViewerFilterValue = '')";
+			whereParameters = @"<WhereParameters>
+            <asp:ProfileParameter Name=""ReportViewerFilterValue"" PropertyName=""ReportViewerFilterValue"" Type=""String"" />
+        </WhereParameters>";
+		}		
 
         
         #line default
         #line hidden
         
-        #line 23 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 32 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write("<%@ Page Title=\"");
 
         
         #line default
         #line hidden
         
-        #line 24 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 33 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisit.SiteVisitName));
 
         
         #line default
         #line hidden
         
-        #line 24 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 33 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write("\" Language=\"C#\" MasterPageFile=\"~/Site.master\" AutoEventWireup=\"true\" CodeBehind=" +
         "\"Master");
 
@@ -89,28 +98,28 @@ this.Write("\" Language=\"C#\" MasterPageFile=\"~/Site.master\" AutoEventWireup=
         #line default
         #line hidden
         
-        #line 24 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 33 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 24 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 33 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write("Schedule.aspx.cs\" Inherits=\"OnSite.WebUI.Reports.Master");
 
         
         #line default
         #line hidden
         
-        #line 24 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 33 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 24 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 33 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write("Schedule\" %>\r\n<%@ Register Assembly=\"DevExpress.Web.ASPxScheduler.v12.1, Version=" +
         "12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a\"\r\n    Namespace=\"DevE" +
         "xpress.Web.ASPxScheduler\" TagPrefix=\"dxwschs\" %>\r\n<%@ Register assembly=\"DevExpr" +
@@ -148,89 +157,146 @@ this.Write("Schedule\" %>\r\n<%@ Register Assembly=\"DevExpress.Web.ASPxSchedule
         "xtBox>\r\n    <dx:ASPxScheduler ID=\"ASPxScheduler1\" runat=\"server\" ActiveViewType=" +
         "\"Timeline\"\r\n        ClientIDMode=\"AutoID\" AppointmentDataSourceID=\"AppointmentsD" +
         "ataSource\"\r\n        ResourceDataSourceID=\"ResourceDataSource\" >\r\n        <Storag" +
-        "e>\r\n            <Appointments>\r\n                <Mappings AllDay=\"AppointmentAll" +
-        "Day\" AppointmentId=\"SiteVisitAppointmentID\" \r\n                    Label=\"Label\" " +
-        "Location=\"AppointmentLocation\" Status=\"Status\" \r\n                    Subject=\"Su" +
-        "bject\" Description=\"Description\" \r\n                    Start=\"AppointmentStartDa" +
-        "te\" End=\"AppointmentEndDate\"  \r\n                    RecurrenceInfo=\"RecurrenceIn" +
-        "fo\" ReminderInfo=\"ReminderInfo\" \r\n                    ResourceId=\"ResourceID\"   " +
-        "\r\n                    Type=\"Type\" />\r\n            </Appointments>\r\n            <" +
-        "Resources>\r\n                <Mappings Caption=\"ResourceName\" ResourceId=\"Resourc" +
-        "eID\" />\r\n            </Resources>\r\n        </Storage>\r\n        <Views>\r\n\t\t\t<DayV" +
-        "iew ResourcesPerPage=\"2\">\r\n                <TimeRulers>\r\n                    <dx" +
-        ":TimeRuler />\r\n                </TimeRulers>\r\n                <DayViewStyles Scr" +
-        "ollAreaHeight=\"200px\" />\r\n            </DayView>\r\n            <WorkWeekView Reso" +
-        "urcesPerPage=\"2\">\r\n                <TimeRulers>\r\n                    <dx:TimeRul" +
-        "er />\r\n                </TimeRulers>\r\n                <WorkWeekViewStyles Scroll" +
-        "AreaHeight=\"200px\" />\r\n            </WorkWeekView>\r\n            <WeekView Resour" +
-        "cesPerPage=\"2\">\r\n                <WeekViewStyles>\r\n                    <DateCell" +
-        "Body Height=\"50px\" />\r\n                </WeekViewStyles>\r\n            </WeekView" +
-        ">\r\n            <MonthView ResourcesPerPage=\"2\">\r\n                <MonthViewStyle" +
-        "s>\r\n                    <DateCellBody Height=\"50px\" />\r\n                </MonthV" +
-        "iewStyles>\r\n            </MonthView>\r\n            <TimelineView ResourcesPerPage" +
-        "=\"2\">\r\n                <TimelineViewStyles>\r\n                    <TimelineCellBo" +
-        "dy Height=\"250px\" />\r\n                </TimelineViewStyles>\r\n            </Timel" +
-        "ineView>\r\n        </Views>\r\n\t\t<OptionsCustomization AllowAppointmentCopy=\"None\" " +
-        "AllowAppointmentCreate=\"None\" AllowAppointmentDelete=\"None\" AllowAppointmentDrag" +
-        "=\"None\" AllowAppointmentEdit=\"None\" AllowDisplayAppointmentForm=\"Never\" />\r\n\t\t<C" +
-        "lientSideEvents AppointmentsSelectionChanged=\"function(s, e) { OnAppointmentsSel" +
-        "ectionChanged(s, e.appointmentIds); }\" />\r\n    </dx:ASPxScheduler>\r\n    <asp:Obj" +
-        "ectDataSource ID=\"ResourceDataSource\" runat=\"server\" \r\n        SelectMethod=\"Get" +
-        "Resources\" TypeName=\"OnSite.WebUI.Classes.MembershipHelper\">\r\n    </asp:ObjectDa" +
-        "taSource>\r\n    <asp:EntityDataSource ID=\"AppointmentsDataSource\" runat=\"server\" " +
-        "\r\n        ConnectionString=\"name=SiteVisitDataEntities\" DefaultContainerName=\"Si" +
-        "teVisitDataEntities\" \r\n        EnableDelete=\"True\" EnableFlattening=\"False\" Enab" +
-        "leInsert=\"True\" \r\n        EnableUpdate=\"True\" EntitySetName=\"SiteVisitAppointmen" +
-        "ts\" \r\n        StoreOriginalValuesInViewState=\"False\">\r\n    </asp:EntityDataSourc" +
-        "e> \r\n\t<br />\r\n    <table cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\r\n        " +
-        "<tr valign=\"top\">\r\n            <td>\r\n            </td>\r\n            <td style=\"w" +
-        "idth: 6px\">\r\n                &nbsp;\r\n            </td>\r\n            <td>\r\n      " +
-        "          <dx:ASPxRoundPanel ID=\"pnlAptSelection\" runat=\"server\" Width=\"100%\" He" +
-        "aderText=\"Appointment Details\">\r\n                    <ContentPaddings Padding=\"0" +
-        "px\" />\r\n                    <PanelCollection>\r\n                        <dx:Panel" +
-        "Content runat=\"server\">\r\n                            <div>\r\n                    " +
-        "            <table cellpadding=\"3\" cellspacing=\"2\" style=\"width: 100%\">\r\n       " +
-        "                             <tr>\r\n                                        <td s" +
-        "tyle=\"width: 20%\">\r\n                                            Subject:\r\n      " +
-        "                                  </td>\r\n                                       " +
-        " <td style=\"width: 80%\">\r\n                                            <div id=\"a" +
-        "ptsubj\" />\r\n                                        </td>\r\n                     " +
-        "               </tr>\r\n                                    <tr>\r\n                " +
-        "                        <td>\r\n                                            Locati" +
-        "on:\r\n                                        </td>\r\n                            " +
-        "            <td>\r\n                                            <div id=\"aptloc\" /" +
-        ">\r\n                                        </td>\r\n                              " +
-        "      </tr>\r\n                                    <tr>\r\n                         " +
-        "               <td>\r\n                                            Start time:\r\n  " +
-        "                                      </td>\r\n                                   " +
-        "     <td>\r\n                                            <div id=\"aptstart\" />\r\n  " +
-        "                                      </td>\r\n                                   " +
-        " </tr>\r\n                                    <tr>\r\n                              " +
-        "          <td>\r\n                                            End time:\r\n         " +
-        "                               </td>\r\n                                        <t" +
-        "d>\r\n                                            <div id=\"aptend\" />\r\n           " +
-        "                             </td>\r\n                                    </tr>\r\n " +
-        "                                   <tr>\r\n                                       " +
-        " <td>\r\n                                            Resource:\r\n                  " +
-        "                      </td>\r\n                                        <td>\r\n     " +
-        "                                       <div id=\"aptres\" />\r\n                    " +
-        "                    </td>\r\n                                    </tr>\r\n          " +
-        "                          <tr>\r\n                                        <td cols" +
-        "pan=\"2\">\r\n                                            Description:\r\n            " +
-        "                            </td>\r\n                                    </tr>\r\n  " +
-        "                                  <tr>\r\n                                        " +
-        "<td colspan=\"2\">\r\n                                            <div id=\"aptdesc\" " +
-        "/>\r\n                                        </td>\r\n                             " +
-        "       </tr>\r\n                                </table>\r\n                        " +
-        "    </div>\r\n                        </dx:PanelContent>\r\n                    </Pa" +
-        "nelCollection>\r\n                </dx:ASPxRoundPanel>\r\n            </td>\r\n       " +
-        " </tr>\r\n    </table>\r\n</asp:Content>\r\n\r\n");
+        "e>\r\n            <Appointments>\r\n                <Mappings AllDay=\"SiteVisitAppoi" +
+        "ntment.AppointmentAllDay\" AppointmentId=\"SiteVisitAppointment.SiteVisitAppointme" +
+        "ntID\" \r\n                    Label=\"SiteVisitAppointment.Label\" Location=\"SiteVis" +
+        "itAppointment.AppointmentLocation\" Status=\"SiteVisitAppointment.Status\" \r\n      " +
+        "              Subject=\"SiteVisitAppointment.Subject\" Description=\"SiteVisitAppoi" +
+        "ntment.Description\" \r\n                    Start=\"SiteVisitAppointment.Appointmen" +
+        "tStartDate\" End=\"SiteVisitAppointment.AppointmentEndDate\"  \r\n                   " +
+        " RecurrenceInfo=\"SiteVisitAppointment.RecurrenceInfo\" ReminderInfo=\"SiteVisitApp" +
+        "ointment.ReminderInfo\" \r\n                    ResourceId=\"SiteVisitAppointment.Re" +
+        "sourceID\"   \r\n                    Type=\"SiteVisitAppointment.Type\" />\r\n         " +
+        "   </Appointments>\r\n            <Resources>\r\n                <Mappings Caption=\"" +
+        "ResourceName\" ResourceId=\"ResourceID\" />\r\n            </Resources>\r\n        </St" +
+        "orage>\r\n        <Views>\r\n\t\t\t<DayView ResourcesPerPage=\"2\">\r\n                <Tim" +
+        "eRulers>\r\n                    <dx:TimeRuler />\r\n                </TimeRulers>\r\n " +
+        "               <DayViewStyles ScrollAreaHeight=\"200px\" />\r\n            </DayView" +
+        ">\r\n            <WorkWeekView ResourcesPerPage=\"2\">\r\n                <TimeRulers>" +
+        "\r\n                    <dx:TimeRuler />\r\n                </TimeRulers>\r\n         " +
+        "       <WorkWeekViewStyles ScrollAreaHeight=\"200px\" />\r\n            </WorkWeekVi" +
+        "ew>\r\n            <WeekView ResourcesPerPage=\"2\">\r\n                <WeekViewStyle" +
+        "s>\r\n                    <DateCellBody Height=\"50px\" />\r\n                </WeekVi" +
+        "ewStyles>\r\n            </WeekView>\r\n            <MonthView ResourcesPerPage=\"2\">" +
+        "\r\n                <MonthViewStyles>\r\n                    <DateCellBody Height=\"5" +
+        "0px\" />\r\n                </MonthViewStyles>\r\n            </MonthView>\r\n         " +
+        "   <TimelineView ResourcesPerPage=\"2\">\r\n                <TimelineViewStyles>\r\n  " +
+        "                  <TimelineCellBody Height=\"250px\" />\r\n                </Timelin" +
+        "eViewStyles>\r\n            </TimelineView>\r\n        </Views>\r\n\t\t<OptionsCustomiza" +
+        "tion AllowAppointmentCopy=\"None\" AllowAppointmentCreate=\"None\" AllowAppointmentD" +
+        "elete=\"None\" AllowAppointmentDrag=\"None\" AllowAppointmentEdit=\"None\" AllowDispla" +
+        "yAppointmentForm=\"Never\" />\r\n\t\t<ClientSideEvents AppointmentsSelectionChanged=\"f" +
+        "unction(s, e) { OnAppointmentsSelectionChanged(s, e.appointmentIds); }\" />\r\n    " +
+        "</dx:ASPxScheduler>\r\n    <asp:ObjectDataSource ID=\"ResourceDataSource\" runat=\"se" +
+        "rver\" \r\n        SelectMethod=\"GetResources\" TypeName=\"OnSite.WebUI.Classes.Membe" +
+        "rshipHelper\">\r\n    </asp:ObjectDataSource>\r\n    <asp:EntityDataSource ID=\"Appoin" +
+        "tmentsDataSource\" runat=\"server\" \r\n        ConnectionString=\"name=SiteVisitDataE" +
+        "ntities\" DefaultContainerName=\"SiteVisitDataEntities\" \r\n        EnableFlattening" +
+        "=\"False\" \r\n        EntitySetName=\"");
 
         
         #line default
         #line hidden
         
-        #line 215 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 146 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(table));
+
+        
+        #line default
+        #line hidden
+        
+        #line 146 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+this.Write("Appointments\" Include=\"");
+
+        
+        #line default
+        #line hidden
+        
+        #line 146 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(table));
+
+        
+        #line default
+        #line hidden
+        
+        #line 146 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+this.Write(",SiteVisitAppointment\" Where=\"");
+
+        
+        #line default
+        #line hidden
+        
+        #line 146 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(reportViewerFilterExpression));
+
+        
+        #line default
+        #line hidden
+        
+        #line 146 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+this.Write("\">\r\n        ");
+
+        
+        #line default
+        #line hidden
+        
+        #line 147 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(whereParameters));
+
+        
+        #line default
+        #line hidden
+        
+        #line 147 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+this.Write("\r\n    </asp:EntityDataSource> \r\n\t<br />\r\n    <table cellpadding=\"0\" cellspacing=\"" +
+        "0\" width=\"100%\">\r\n        <tr valign=\"top\">\r\n            <td>\r\n            </td>" +
+        "\r\n            <td style=\"width: 6px\">\r\n                &nbsp;\r\n            </td>" +
+        "\r\n            <td>\r\n                <dx:ASPxRoundPanel ID=\"pnlAptSelection\" runa" +
+        "t=\"server\" Width=\"100%\" HeaderText=\"Appointment Details\">\r\n                    <" +
+        "ContentPaddings Padding=\"0px\" />\r\n                    <PanelCollection>\r\n       " +
+        "                 <dx:PanelContent runat=\"server\">\r\n                            <" +
+        "div>\r\n                                <table cellpadding=\"3\" cellspacing=\"2\" sty" +
+        "le=\"width: 100%\">\r\n                                    <tr>\r\n                   " +
+        "                     <td style=\"width: 20%\">\r\n                                  " +
+        "          Subject:\r\n                                        </td>\r\n             " +
+        "                           <td style=\"width: 80%\">\r\n                            " +
+        "                <div id=\"aptsubj\" />\r\n                                        </" +
+        "td>\r\n                                    </tr>\r\n                                " +
+        "    <tr>\r\n                                        <td>\r\n                        " +
+        "                    Location:\r\n                                        </td>\r\n  " +
+        "                                      <td>\r\n                                    " +
+        "        <div id=\"aptloc\" />\r\n                                        </td>\r\n    " +
+        "                                </tr>\r\n                                    <tr>\r" +
+        "\n                                        <td>\r\n                                 " +
+        "           Start time:\r\n                                        </td>\r\n         " +
+        "                               <td>\r\n                                           " +
+        " <div id=\"aptstart\" />\r\n                                        </td>\r\n         " +
+        "                           </tr>\r\n                                    <tr>\r\n    " +
+        "                                    <td>\r\n                                      " +
+        "      End time:\r\n                                        </td>\r\n                " +
+        "                        <td>\r\n                                            <div i" +
+        "d=\"aptend\" />\r\n                                        </td>\r\n                  " +
+        "                  </tr>\r\n                                    <tr>\r\n             " +
+        "                           <td>\r\n                                            Res" +
+        "ource:\r\n                                        </td>\r\n                         " +
+        "               <td>\r\n                                            <div id=\"aptres" +
+        "\" />\r\n                                        </td>\r\n                           " +
+        "         </tr>\r\n                                    <tr>\r\n                      " +
+        "                  <td colspan=\"2\">\r\n                                            " +
+        "Description:\r\n                                        </td>\r\n                   " +
+        "                 </tr>\r\n                                    <tr>\r\n              " +
+        "                          <td colspan=\"2\">\r\n                                    " +
+        "        <div id=\"aptdesc\" />\r\n                                        </td>\r\n   " +
+        "                                 </tr>\r\n                                </table>" +
+        "\r\n                            </div>\r\n                        </dx:PanelContent>" +
+        "\r\n                    </PanelCollection>\r\n                </dx:ASPxRoundPanel>\r\n" +
+        "            </td>\r\n        </tr>\r\n    </table>\r\n</asp:Content>\r\n\r\n");
+
+        
+        #line default
+        #line hidden
+        
+        #line 224 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 
     }  
 
@@ -242,56 +308,56 @@ this.Write("Schedule\" %>\r\n<%@ Register Assembly=\"DevExpress.Web.ASPxSchedule
         #line default
         #line hidden
         
-        #line 221 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 230 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write("\t\t\t\t\t\t\t\t\t\t<dx:GridViewDataTextColumn FieldName=\"");
 
         
         #line default
         #line hidden
         
-        #line 221 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 230 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 221 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 230 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write("\" Caption=\"");
 
         
         #line default
         #line hidden
         
-        #line 221 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 230 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.FieldLabel));
 
         
         #line default
         #line hidden
         
-        #line 221 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 230 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write("\"\r\n\t\t\t\t\t\t\t\t\t\t\tReadOnly=\"True\" VisibleIndex=\"");
 
         
         #line default
         #line hidden
         
-        #line 222 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 231 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.FieldTabIndex));
 
         
         #line default
         #line hidden
         
-        #line 222 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 231 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write("\">\r\n\t\t\t\t\t\t\t\t\t\t</dx:GridViewDataTextColumn>\r\n");
 
         
         #line default
         #line hidden
         
-        #line 224 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 233 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
  
 		}
 		return "";
@@ -309,35 +375,35 @@ this.Write("\">\r\n\t\t\t\t\t\t\t\t\t\t</dx:GridViewDataTextColumn>\r\n");
         #line default
         #line hidden
         
-        #line 236 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 245 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write("\t\t\t\t                <dx:NavBarItem Text=\"");
 
         
         #line default
         #line hidden
         
-        #line 236 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 245 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.UIDisplayName));
 
         
         #line default
         #line hidden
         
-        #line 236 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 245 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write("\" Name=\"");
 
         
         #line default
         #line hidden
         
-        #line 236 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 245 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 236 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 245 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write("\" Image-Url=\"~/Images/application_form.png\">                        \r\n           " +
         "                     </dx:NavBarItem>\r\n");
 
@@ -345,7 +411,7 @@ this.Write("\" Image-Url=\"~/Images/application_form.png\">                     
         #line default
         #line hidden
         
-        #line 238 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 247 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
  
 		}
 		return "";
@@ -360,56 +426,56 @@ this.Write("\" Image-Url=\"~/Images/application_form.png\">                     
         #line default
         #line hidden
         
-        #line 247 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 256 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write("\t\t\t\t\t\t<uc:");
 
         
         #line default
         #line hidden
         
-        #line 247 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 256 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 247 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 256 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(" ID=\"uc");
 
         
         #line default
         #line hidden
         
-        #line 247 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 256 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 247 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 256 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write("\" runat=\"server\" Visible=\"");
 
         
         #line default
         #line hidden
         
-        #line 247 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 256 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(visible));
 
         
         #line default
         #line hidden
         
-        #line 247 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 256 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write("\" />\r\n");
 
         
         #line default
         #line hidden
         
-        #line 248 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 257 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
  
 		}
 		return "";
@@ -427,7 +493,7 @@ this.Write("\" />\r\n");
         #line default
         #line hidden
         
-        #line 260 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 269 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(@"
 using System;
 using System.Collections.Generic;
@@ -450,14 +516,14 @@ namespace OnSite.WebUI.Reports
         #line default
         #line hidden
         
-        #line 277 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 286 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 277 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 286 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write("Schedule : System.Web.UI.Page\r\n    {\r\n        private int lastInsertedAppointment" +
         "Id;\r\n\r\n        SiteVisitDataEntities dataCtx = new SiteVisitDataEntities();\r\n\r\n " +
         "       protected void Page_Load(object sender, EventArgs e)\r\n        {\r\n        " +
@@ -484,14 +550,14 @@ this.Write("Schedule : System.Web.UI.Page\r\n    {\r\n        private int lastIn
         #line default
         #line hidden
         
-        #line 307 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 316 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(siteVisitID));
 
         
         #line default
         #line hidden
         
-        #line 307 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 316 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(";\r\n            if (e.NewValues[\"CreateDate\"] == null)\r\n                e.NewValue" +
         "s[\"CreateDate\"] = DateTime.Now;\r\n            e.NewValues[\"LastModifiedDate\"] = D" +
         "ateTime.Now;\r\n        }\r\n\r\n        protected void ASPxScheduler1_AppointmentRowU" +
@@ -517,18 +583,45 @@ this.Write(";\r\n            if (e.NewValues[\"CreateDate\"] == null)\r\n       
         #line default
         #line hidden
         
-        #line 340 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 349 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(siteVisitID));
 
         
         #line default
         #line hidden
         
-        #line 340 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
-this.Write(@"&UID="" + onSiteUserGUID);
-            
-			string ICSNavigateUrl =  ""http://"" + rootURL + ResolveUrl(""~/WebServices/iCal.aspx?q="" + q);
-            string OutlookNavigateUrl = ""webcal://"" + rootURL + ResolveUrl(""~/WebServices/iCal.aspx?q="" + q);
+        #line 349 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+this.Write("&UID=\" + onSiteUserGUID);\r\n            \r\n\t\t\tstring ICSNavigateUrl =  \"http://\" + " +
+        "rootURL + ResolveUrl(\"~/WebServices/");
+
+        
+        #line default
+        #line hidden
+        
+        #line 351 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
+
+        
+        #line default
+        #line hidden
+        
+        #line 351 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+this.Write("Calendar.aspx?q=\" + q);\r\n            string OutlookNavigateUrl = \"webcal://\" + ro" +
+        "otURL + ResolveUrl(\"~/WebServices/");
+
+        
+        #line default
+        #line hidden
+        
+        #line 352 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
+
+        
+        #line default
+        #line hidden
+        
+        #line 352 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+this.Write(@"Calendar.aspx?q="" + q);
 
             CalendarMenu.Items.Add(""Open in Outlook"", ""Outlook"", ""~/Images/Outlook-icon.gif"", OutlookNavigateUrl, """");
             CalendarMenu.Items.Add(""Export to ICS"", ""ICS"", ""~/Images/ics_icon.gif"", ICSNavigateUrl, """");
@@ -541,7 +634,7 @@ this.Write(@"&UID="" + onSiteUserGUID);
         #line default
         #line hidden
         
-        #line 350 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 359 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 
     }
 
@@ -553,28 +646,28 @@ this.Write(@"&UID="" + onSiteUserGUID);
         #line default
         #line hidden
         
-        #line 356 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 365 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(" + contact.");
 
         
         #line default
         #line hidden
         
-        #line 356 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 365 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 356 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 365 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(" + \" \"");
 
         
         #line default
         #line hidden
         
-        #line 356 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 365 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
  
 		}
 		return "";
@@ -600,63 +693,63 @@ this.Write(" + \" \"");
         #line default
         #line hidden
         
-        #line 376 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 385 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write("contact.");
 
         
         #line default
         #line hidden
         
-        #line 376 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 385 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(addressField.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 376 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 385 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(" + \" \" + contact.");
 
         
         #line default
         #line hidden
         
-        #line 376 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 385 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(cityField.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 376 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 385 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(" + \", \" + contact.");
 
         
         #line default
         #line hidden
         
-        #line 376 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 385 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(stateField.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 376 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 385 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(" + \" \" + contact.");
 
         
         #line default
         #line hidden
         
-        #line 376 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 385 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(zipField.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 376 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 385 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
  
 		return "";
 	}
@@ -698,77 +791,77 @@ this.Write(this.ToStringHelper.ToStringWithCulture(zipField.FieldName));
         #line default
         #line hidden
         
-        #line 412 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 421 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(summaryExpression));
 
         
         #line default
         #line hidden
         
-        #line 412 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 421 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(phoneExpression));
 
         
         #line default
         #line hidden
         
-        #line 412 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 421 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write("\"Address:\\n\" + contact.");
 
         
         #line default
         #line hidden
         
-        #line 412 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 421 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(addressField.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 412 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 421 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(" + \"\\n\" + contact.");
 
         
         #line default
         #line hidden
         
-        #line 412 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 421 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(cityField.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 412 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 421 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(" + \", \" + contact.");
 
         
         #line default
         #line hidden
         
-        #line 412 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 421 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(stateField.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 412 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 421 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(" + \" \" + contact.");
 
         
         #line default
         #line hidden
         
-        #line 412 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 421 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(zipField.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 412 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 421 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
  
 		return "";
 	}
@@ -784,7 +877,7 @@ this.Write(this.ToStringHelper.ToStringWithCulture(zipField.FieldName));
         #line default
         #line hidden
         
-        #line 422 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 431 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(@"//------------------------------------------------------------------------------
 // <auto-generated>
 //     This code was generated by a tool.
@@ -803,14 +896,14 @@ namespace OnSite.WebUI.Reports {
         #line default
         #line hidden
         
-        #line 435 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 444 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 435 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 444 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write("Schedule {\r\n\r\n        /// <summary>\r\n        /// CalendarMenu control.\r\n        /" +
         "// </summary>\r\n        /// <remarks>\r\n        /// Auto-generated field.\r\n       " +
         " /// To modify move field declaration from designer file to code-behind file.\r\n " +
@@ -847,7 +940,7 @@ this.Write("Schedule {\r\n\r\n        /// <summary>\r\n        /// CalendarMenu 
         #line default
         #line hidden
         
-        #line 502 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 511 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 
 	}
 

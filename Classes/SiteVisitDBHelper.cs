@@ -157,6 +157,16 @@ namespace OnSite.TemplateWizard.Classes
             return fields;
         }
 
+        public static SiteVisitFormField GetSiteVisitReportViewerFilterField(SiteVisitForm form)
+        {
+            SiteVisitFormField field = (from f in form.SiteVisitFormFields
+                                        orderby f.FieldTabIndex
+                                        where f.IsReportViewerFilterField == true
+                                        select f).FirstOrDefault();
+
+            return field;
+        }
+
         public static bool FieldHasListItemOther(SiteVisitFormField field)
         {
             bool retval = false;

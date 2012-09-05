@@ -1,4 +1,5 @@
-﻿namespace OnSite.TemplateWizard
+﻿using System.Configuration;
+namespace OnSite.TemplateWizard
 {
     partial class Wizard
     {
@@ -56,7 +57,7 @@
             this.tbBasePath.Name = "tbBasePath";
             this.tbBasePath.Size = new System.Drawing.Size(257, 20);
             this.tbBasePath.TabIndex = 1;
-            this.tbBasePath.Text = "C:\\Apps";
+            this.tbBasePath.Text = ConfigurationManager.AppSettings["BasePath"].ToString();
             // 
             // label1
             // 

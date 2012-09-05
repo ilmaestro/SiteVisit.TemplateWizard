@@ -20,17 +20,137 @@ switch (OutputType) {
 		var parentForm = SiteVisitDBHelper.GetParentForm(sitevisit);
 		string table = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBTableName;
         string pkey = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBPrimaryKeyName;
+		SiteVisitFormField reportViewerFilterField = SiteVisitDBHelper.GetSiteVisitReportViewerFilterField(parentForm);
+		string reportViewerFilterExpression = "", whereParameters = "";
+		if (reportViewerFilterField != null)
+		{
+			reportViewerFilterExpression = "AND (it." + table + "." + reportViewerFilterField.FieldName + " = @ReportViewerFilterValue OR @ReportViewerFilterValue IS NULL OR @ReportViewerFilterValue = '')";
+			whereParameters = @"<WhereParameters>
+            <asp:ProfileParameter Name=""ReportViewerFilterValue"" PropertyName=""ReportViewerFilterValue"" Type=""String"" />
+        </WhereParameters>";
+		}
+
 #><%@ Page Title="<#= sitevisit.SiteVisitName #>" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="<#= sitevisitName #>Appointments.aspx.cs" Inherits="OnSite.WebUI.Reports.<#= sitevisitName #>Appointments" %>
 <%@ Register Assembly="DevExpress.Web.ASPxGridView.v12.1.Export, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxGridView.Export" TagPrefix="dx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-<script type="text/javascript">
-    // <![CDATA[
-    // ]]> 
-</script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyDg2r9hOucSc8Whgr-4-bfvbXBvzSEIAR0"></script>
+    <script type="text/javascript">
+        var map;
+        var markersArray = [];
+		var infowindowsArray = [];
+        var IsMapUpating = false;
+		var lastSelectedVisibleIndex = -1;
+
+        function initialize() {
+            var myLatlng = new google.maps.LatLng(45.5236, -122.6750);  
+            var myOptions = {
+                zoom: 12,
+                center: myLatlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById('map_canvas'),
+            myOptions);
+            UpdateMap();
+        }
+        //Since the GetPageRowValues function causes a Callback on the grid, the IsMapUpdating var keeps us from updating the map in an infinite loop.
+        function UpdateMap() {
+            if (!IsMapUpating) {
+                IsMapUpating = true;
+                grid.GetPageRowValues('<#= pkey #>;<#= table #>.LocationLatitude;<#= table #>.LocationLongitude;', function (values) {
+                    var bounds = new google.maps.LatLngBounds();
+                    deleteOverlays();
+                    for (var i = 0; i < values.length; i++) {
+						if (values[i][0])
+						{
+							addMarker(i, values[i][0], values[i][1], values[i][2]);
+							bounds.extend(new google.maps.LatLng(values[i][1], values[i][2]));
+						}
+                    }
+                    map.fitBounds(bounds);
+                    if (map.zoom > 12)
+                        map.setZoom(12);
+                    setTimeout(function () { IsMapUpating = false; }, 500);
+                });
+            }
+        }
+
+        function addMarker(index, id, latitude, longitude) {
+			var contentString = ""; //'<div><a href="../SiteVisits/VSDSchedulingEdit.aspx?ID='+ id +'">Edit Site</a></div>';
+			//loop through grid columns write content into info window
+			var row = grid.GetRow(index);
+			if (row != null)
+			{
+				var cellCounter = 0;
+				for (var x = 0; x < grid.columns.length; x++)
+				{
+				    if (grid.columns[x].fieldName != null && grid.columns[x].fieldName != "<#= pkey #>" && grid.columns[x].fieldName != "SiteVisitAppointmentID" && grid.columns[x].visible == true && x < row.cells.length && cellCounter < 8)
+				    {
+				        var actualHeaderLabel = grid.GetHeader(x).firstChild.rows[0].cells[0].innerHTML; //don't ask me how long it took to figure this out. //grid.columns[x].fieldName
+				        contentString += "<div><strong>" + actualHeaderLabel + "</strong>: " + row.cells[cellCounter].innerHTML + "</div>"; //
+					}
+
+					if (grid.columns[x].visible == true) {
+					    //only increment the cell counter for visible columns
+					    cellCounter++;
+					}
+				}
+			}
+			var infowindow = new google.maps.InfoWindow({
+				content: contentString
+			});
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(latitude, longitude),
+                map: map,
+                title: 'Site'
+            });
+            markersArray.push(marker);
+			infowindowsArray.push(infowindow);
+			google.maps.event.addListener(marker, 'click', function() {
+			  closeInfowindows();
+			  infowindow.open(map,marker);
+			  lastSelectedVisibleIndex = index;
+			  grid.SelectRowOnPage(index);
+			});
+        }
+
+        // Deletes all markers in the array by removing references to them
+        function deleteOverlays() {
+            if (markersArray) {
+                for (i in markersArray) {
+                    markersArray[i].setMap(null);
+                }
+                markersArray.length = 0;
+            }
+        }
+
+		function closeInfowindows() {
+			if (infowindowsArray) {
+                for (i in infowindowsArray) {
+                    infowindowsArray[i].close();
+                }
+            }
+		}
+
+        function OnGridRowClick(s, e) {
+			closeInfowindows();
+			lastSelectedVisibleIndex = e.visibleIndex;
+			infowindowsArray[e.visibleIndex].open(map,markersArray[e.visibleIndex])
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+    <style type="text/css">
+      #map_canvas {
+		height: 300px;
+		width: 100%;
+	  }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<h2>Appointments</h2>
+	<div id="map_canvas"></div>
+	<br /> <br />
 	<dx:ASPxButton ID="btnCsvExport" runat="server" Text="Export to Csv" UseSubmitBehavior="False" />
     <div style="margin-top: 5px; margin-bottom: 5px;">
     <dx:ASPxGridView ID="grid" runat="server" AutoGenerateColumns="False" ClientInstanceName="grid" 
@@ -48,9 +168,9 @@ switch (OutputType) {
             </dx:GridViewDataTextColumn>
             <dx:GridViewDataTextColumn FieldName="SiteVisitAppointment.Type" VisibleIndex="3" Visible="false">
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn FieldName="SiteVisitAppointment.Subject" VisibleIndex="4">
+            <dx:GridViewDataTextColumn FieldName="SiteVisitAppointment.Subject" VisibleIndex="4" Visible="false">
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn FieldName="SiteVisitAppointment.Description" VisibleIndex="5">
+            <dx:GridViewDataTextColumn FieldName="SiteVisitAppointment.Description" VisibleIndex="5" Visible="false">
             </dx:GridViewDataTextColumn>
             <dx:GridViewDataTextColumn FieldName="SiteVisitAppointment.AppointmentLocation" VisibleIndex="6">
             </dx:GridViewDataTextColumn>
@@ -62,22 +182,70 @@ switch (OutputType) {
             </dx:GridViewDataTextColumn>
             <dx:GridViewDataTextColumn FieldName="SiteVisitAppointment.Label" VisibleIndex="11" Visible="false">
             </dx:GridViewDataTextColumn>
+<#= GenerateGridViewColumns(table, parentForm, 11) #>
+<#= GenerateGridViewExportColumns(table, parentForm) #>
+			<dx:GridViewDataTextColumn FieldName="<#= table #>.SchedulerNotes" VisibleIndex="997">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="<#= table #>.LocationLatitude" 
+                ReadOnly="True" VisibleIndex="998" Visible="True">
+			</dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="<#= table #>.LocationLongitude" 
+                ReadOnly="True" VisibleIndex="999" Visible="True">
+			</dx:GridViewDataTextColumn>
         </Columns>
 		<Settings ShowFilterRow="True" />
+        <SettingsBehavior AllowSelectByRowClick="true" AllowSelectSingleRowOnly="true" />
+        <ClientSideEvents EndCallback="function(s,e){UpdateMap();}" RowClick="OnGridRowClick" />
     </dx:ASPxGridView>
     </div>
     <asp:EntityDataSource ID="AppointmentsDataSource" runat="server" 
         ConnectionString="name=SiteVisitDataEntities" 
         DefaultContainerName="SiteVisitDataEntities" EnableFlattening="False" 
-        EntitySetName="<#= table #>Appointments" Include="SiteVisitAppointment,AppointmentStatus" Where="it.SiteVisitAppointment.SiteVisitID = <#= sitevisit.SiteVisitID #>">
+        EntitySetName="<#= table #>Appointments" Include="<#= table #>,SiteVisitAppointment,AppointmentStatus" Where="it.SiteVisitAppointment.SiteVisitID = <#= sitevisit.SiteVisitID #> <#= reportViewerFilterExpression #>">
+        <#= whereParameters #>
     </asp:EntityDataSource>
     <dx:ASPxGridViewExporter ID="gridExporter" runat="server" GridViewID="grid">
     </dx:ASPxGridViewExporter>
-    
+    <br />
 </asp:Content>
 
 <#+
     }  
+
+	private string GenerateGridViewColumns(string tableName, SiteVisitForm form, int indexSeed)
+	{
+		foreach(SiteVisitFormField field in SiteVisitDBHelper.GetSiteVisitSearchableFields(form)) {
+			indexSeed++;
+#>			<dx:GridViewDataTextColumn FieldName="<#= tableName #>.<#= field.FieldName #>" Caption="<#= field.FieldLabel #>"
+                ReadOnly="True" VisibleIndex="<#= indexSeed #>">
+            </dx:GridViewDataTextColumn>
+<#+ 
+		}
+		return "";
+	}
+
+	private string GenerateGridViewExportColumns(string tableName,SiteVisitForm form)
+	{
+		foreach(SiteVisitFormField field in SiteVisitDBHelper.GetSiteVisitExportFields(form)) {
+			string output = "";
+			//checkbox columns
+			if (field.ControlType.ControlTypeID == 1)
+			{
+				foreach(SiteVisitFormFieldItem item in field.SiteVisitFormFieldItems)
+				{
+					output += "\t\t\t<dx:GridViewDataTextColumn FieldName=\"" + tableName +"."+ field.FieldName +"_"+item.ListItemValue +"\" Caption=\""+item.ListItemLabel+"\" ReadOnly=\"True\" VisibleIndex=\""+ field.FieldTabIndex +"\" Visible=\"False\">\r\n\t\t\t</dx:GridViewDataTextColumn>\r\n";
+				}
+			}
+			else 
+			{
+				output = "<dx:GridViewDataTextColumn FieldName=\"" + tableName +"."+ field.FieldName +"\" ReadOnly=\"True\" VisibleIndex=\""+ field.FieldTabIndex +"\" Visible=\"False\">\r\n\t\t\t</dx:GridViewDataTextColumn>";
+			}
+
+#>			<#= output #>
+<#+ 
+		}
+		return "";
+	}
 
     void GenerateCodeFile(SiteVisit sitevisit, IEnumerable<SiteVisitForm> forms)
     {
@@ -119,6 +287,8 @@ namespace OnSite.WebUI.Reports
 
         protected void btnCsvExport_Click(object sender, EventArgs e)
         {
+<#= GenerateExportColumns(table, parentForm) #>
+			grid.DataBind();
 			gridExporter.FileName = "<#= sitevisitName #>Appointments";
             gridExporter.WriteCsvToResponse();
         }
@@ -126,6 +296,30 @@ namespace OnSite.WebUI.Reports
 }
 <#+
     }
+
+	private string GenerateExportColumns(string tableName, SiteVisitForm form)
+	{
+
+		foreach(SiteVisitFormField field in SiteVisitDBHelper.GetSiteVisitExportFields(form)) {
+			string output = "";
+			//checkbox columns
+			if (field.ControlType.ControlTypeID == 1)
+			{
+				foreach(SiteVisitFormFieldItem item in field.SiteVisitFormFieldItems)
+				{
+					output += "grid.Columns[\"" + tableName +"."+ field.FieldName +"_"+item.ListItemValue +"\"].Visible = true;\r\n";
+				}
+			}
+			else 
+			{
+				output = "grid.Columns[\"" + tableName +"."+ field.FieldName +"\"].Visible = true;";
+			}
+#>			<#= output #>
+<#+ 
+		}
+		return "";
+	}
+	
 	
 	void GenerateDesignerFile(SiteVisit sitevisit, IEnumerable<SiteVisitForm> forms)
 	{

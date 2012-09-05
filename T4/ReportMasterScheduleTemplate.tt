@@ -20,6 +20,15 @@ switch (OutputType) {
 		var parentForm = SiteVisitDBHelper.GetParentForm(sitevisit);
 		string table = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBTableName;
         string pkey = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBPrimaryKeyName;
+				SiteVisitFormField reportViewerFilterField = SiteVisitDBHelper.GetSiteVisitReportViewerFilterField(parentForm);
+		string reportViewerFilterExpression = "", whereParameters = "";
+		if (reportViewerFilterField != null)
+		{
+			reportViewerFilterExpression = "(it." + table + "." + reportViewerFilterField.FieldName + " = @ReportViewerFilterValue OR @ReportViewerFilterValue IS NULL OR @ReportViewerFilterValue = '')";
+			whereParameters = @"<WhereParameters>
+            <asp:ProfileParameter Name=""ReportViewerFilterValue"" PropertyName=""ReportViewerFilterValue"" Type=""String"" />
+        </WhereParameters>";
+		}		
 #>
 <%@ Page Title="<#= sitevisit.SiteVisitName #>" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="Master<#= sitevisitName #>Schedule.aspx.cs" Inherits="OnSite.WebUI.Reports.Master<#= sitevisitName #>Schedule" %>
 <%@ Register Assembly="DevExpress.Web.ASPxScheduler.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
@@ -84,13 +93,13 @@ switch (OutputType) {
         ResourceDataSourceID="ResourceDataSource" >
         <Storage>
             <Appointments>
-                <Mappings AllDay="AppointmentAllDay" AppointmentId="SiteVisitAppointmentID" 
-                    Label="Label" Location="AppointmentLocation" Status="Status" 
-                    Subject="Subject" Description="Description" 
-                    Start="AppointmentStartDate" End="AppointmentEndDate"  
-                    RecurrenceInfo="RecurrenceInfo" ReminderInfo="ReminderInfo" 
-                    ResourceId="ResourceID"   
-                    Type="Type" />
+                <Mappings AllDay="SiteVisitAppointment.AppointmentAllDay" AppointmentId="SiteVisitAppointment.SiteVisitAppointmentID" 
+                    Label="SiteVisitAppointment.Label" Location="SiteVisitAppointment.AppointmentLocation" Status="SiteVisitAppointment.Status" 
+                    Subject="SiteVisitAppointment.Subject" Description="SiteVisitAppointment.Description" 
+                    Start="SiteVisitAppointment.AppointmentStartDate" End="SiteVisitAppointment.AppointmentEndDate"  
+                    RecurrenceInfo="SiteVisitAppointment.RecurrenceInfo" ReminderInfo="SiteVisitAppointment.ReminderInfo" 
+                    ResourceId="SiteVisitAppointment.ResourceID"   
+                    Type="SiteVisitAppointment.Type" />
             </Appointments>
             <Resources>
                 <Mappings Caption="ResourceName" ResourceId="ResourceID" />
@@ -133,9 +142,9 @@ switch (OutputType) {
     </asp:ObjectDataSource>
     <asp:EntityDataSource ID="AppointmentsDataSource" runat="server" 
         ConnectionString="name=SiteVisitDataEntities" DefaultContainerName="SiteVisitDataEntities" 
-        EnableDelete="True" EnableFlattening="False" EnableInsert="True" 
-        EnableUpdate="True" EntitySetName="SiteVisitAppointments" 
-        StoreOriginalValuesInViewState="False">
+        EnableFlattening="False" 
+        EntitySetName="<#= table #>Appointments" Include="<#= table #>,SiteVisitAppointment" Where="<#= reportViewerFilterExpression #>">
+        <#= whereParameters #>
     </asp:EntityDataSource> 
 	<br />
     <table cellpadding="0" cellspacing="0" width="100%">
@@ -339,8 +348,8 @@ namespace OnSite.WebUI.Reports
             rootURL = rootURL.Replace("http://", string.Empty);
 			string q = CadmusUtility.Encoding.Base64Encode("&SID=<#= siteVisitID #>&UID=" + onSiteUserGUID);
             
-			string ICSNavigateUrl =  "http://" + rootURL + ResolveUrl("~/WebServices/iCal.aspx?q=" + q);
-            string OutlookNavigateUrl = "webcal://" + rootURL + ResolveUrl("~/WebServices/iCal.aspx?q=" + q);
+			string ICSNavigateUrl =  "http://" + rootURL + ResolveUrl("~/WebServices/<#= sitevisitName #>Calendar.aspx?q=" + q);
+            string OutlookNavigateUrl = "webcal://" + rootURL + ResolveUrl("~/WebServices/<#= sitevisitName #>Calendar.aspx?q=" + q);
 
             CalendarMenu.Items.Add("Open in Outlook", "Outlook", "~/Images/Outlook-icon.gif", OutlookNavigateUrl, "");
             CalendarMenu.Items.Add("Export to ICS", "ICS", "~/Images/ics_icon.gif", ICSNavigateUrl, "");

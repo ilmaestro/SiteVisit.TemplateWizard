@@ -451,10 +451,37 @@ this.Write(this.ToStringHelper.ToStringWithCulture(siteVisitID));
         #line hidden
         
         #line 212 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
-this.Write(@"&UID="" + onSiteUserGUID);
-            
-			string ICSNavigateUrl =  ""http://"" + rootURL + ResolveUrl(""~/WebServices/iCal.aspx?q="" + q);
-            string OutlookNavigateUrl = ""webcal://"" + rootURL + ResolveUrl(""~/WebServices/iCal.aspx?q="" + q);
+this.Write("&UID=\" + onSiteUserGUID);\r\n            \r\n\t\t\tstring ICSNavigateUrl =  \"http://\" + " +
+        "rootURL + ResolveUrl(\"~/WebServices/");
+
+        
+        #line default
+        #line hidden
+        
+        #line 214 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
+
+        
+        #line default
+        #line hidden
+        
+        #line 214 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+this.Write("Calendar.aspx?q=\" + q);\r\n            string OutlookNavigateUrl = \"webcal://\" + ro" +
+        "otURL + ResolveUrl(\"~/WebServices/");
+
+        
+        #line default
+        #line hidden
+        
+        #line 215 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
+
+        
+        #line default
+        #line hidden
+        
+        #line 215 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+this.Write(@"Calendar.aspx?q="" + q);
 
             CalendarMenu.Items.Add(""Open in Outlook"", ""Outlook"", ""~/Images/Outlook-icon.gif"", OutlookNavigateUrl, """");
             CalendarMenu.Items.Add(""Export to ICS"", ""ICS"", ""~/Images/ics_icon.gif"", ICSNavigateUrl, """");

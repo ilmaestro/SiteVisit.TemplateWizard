@@ -211,8 +211,8 @@ namespace OnSite.WebUI.Scheduler
             rootURL = rootURL.Replace("http://", string.Empty);
 			string q = CadmusUtility.Encoding.Base64Encode("RID=" + resourceGUID + "&SID=<#= siteVisitID #>&UID=" + onSiteUserGUID);
             
-			string ICSNavigateUrl =  "http://" + rootURL + ResolveUrl("~/WebServices/iCal.aspx?q=" + q);
-            string OutlookNavigateUrl = "webcal://" + rootURL + ResolveUrl("~/WebServices/iCal.aspx?q=" + q);
+			string ICSNavigateUrl =  "http://" + rootURL + ResolveUrl("~/WebServices/<#= sitevisitName #>Calendar.aspx?q=" + q);
+            string OutlookNavigateUrl = "webcal://" + rootURL + ResolveUrl("~/WebServices/<#= sitevisitName #>Calendar.aspx?q=" + q);
 
             CalendarMenu.Items.Add("Open in Outlook", "Outlook", "~/Images/Outlook-icon.gif", OutlookNavigateUrl, "");
             CalendarMenu.Items.Add("Export to ICS", "ICS", "~/Images/ics_icon.gif", ICSNavigateUrl, "");

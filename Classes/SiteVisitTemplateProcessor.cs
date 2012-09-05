@@ -17,6 +17,7 @@ namespace OnSite.TemplateWizard.Classes
         public string ResourcePath { get; set; }
         public string DocumentsPath { get; set; }
         public string SitemapPath { get; set; }
+        public string iCalPath { get; set; }
 
         public SiteVisitTemplateProcessor(string basePath)
         {
@@ -28,6 +29,7 @@ namespace OnSite.TemplateWizard.Classes
             ResourcePath = Path.Combine(BasePath, @"Resource\");
             DocumentsPath = Path.Combine(BasePath, @"Documents\");
             SitemapPath = BasePath;
+            iCalPath = Path.Combine(BasePath, @"WebServices\");
         }
 
         public void CleanUpFolders()
@@ -93,6 +95,8 @@ namespace OnSite.TemplateWizard.Classes
                 GenerateResourceSchedule(sitevisit);
                 //generate report pages
                 GenerateReportSchedule(sitevisit);
+                //generate calendar service
+                GenerateICal(sitevisit);
             }
 
             //generate sitemap
@@ -366,6 +370,23 @@ namespace OnSite.TemplateWizard.Classes
             template.SaveOutput(template.TransformText());
             template.OutputType = DocumentsTemplate.FileType.GetDesigner;
             template.OutputFilePath = Path.Combine(DocumentsPath, "GetFile.aspx.designer.cs");
+            template.SaveOutput(template.TransformText());
+        }
+
+        private void GenerateICal(SiteVisit sitevisit)
+        {
+            iCalTemplate template = new iCalTemplate();
+            template.SiteVisit = sitevisit;
+            string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
+
+            template.OutputType = iCalTemplate.FileType.Page;
+            template.OutputFilePath = Path.Combine(iCalPath, sitevisitName + "Calendar.aspx");
+            template.SaveOutput(template.TransformText());
+            template.OutputType = iCalTemplate.FileType.Code;
+            template.OutputFilePath = Path.Combine(iCalPath, sitevisitName + "Calendar.aspx.cs");
+            template.SaveOutput(template.TransformText());
+            template.OutputType = iCalTemplate.FileType.Designer;
+            template.OutputFilePath = Path.Combine(iCalPath, sitevisitName + "Calendar.aspx.designer.cs");
             template.SaveOutput(template.TransformText());
         }
     }

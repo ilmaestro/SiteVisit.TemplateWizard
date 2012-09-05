@@ -8,27 +8,26 @@
 //------------------------------------------------------------------------------
 
 using System;
-using System.ComponentModel;
-using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Linq;
-using System.Runtime.Serialization;
+using System.Data.EntityClient;
+using System.ComponentModel;
 using System.Xml.Serialization;
+using System.Runtime.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
 [assembly: EdmRelationshipAttribute("SiteVisitMetaModel", "FK_Projects_Clients", "Clients", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OnSite.TemplateWizard.Models.Client), "Projects", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OnSite.TemplateWizard.Models.Project), true)]
-[assembly: EdmRelationshipAttribute("SiteVisitMetaModel", "FK_SiteVisitFormFields_ControlTypes", "ControlTypes", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OnSite.TemplateWizard.Models.ControlType), "SiteVisitFormFields", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OnSite.TemplateWizard.Models.SiteVisitFormField), true)]
 [assembly: EdmRelationshipAttribute("SiteVisitMetaModel", "FK_SiteVisits_Projects", "Projects", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OnSite.TemplateWizard.Models.Project), "SiteVisits", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OnSite.TemplateWizard.Models.SiteVisit), true)]
-[assembly: EdmRelationshipAttribute("SiteVisitMetaModel", "FK_SiteVisitFormFieldItems_SiteVisitFormFields", "SiteVisitFormFields", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OnSite.TemplateWizard.Models.SiteVisitFormField), "SiteVisitFormFieldItems", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OnSite.TemplateWizard.Models.SiteVisitFormFieldItem), true)]
-[assembly: EdmRelationshipAttribute("SiteVisitMetaModel", "FK_SiteVisitFormFields_SiteVisitForms", "SiteVisitForms", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OnSite.TemplateWizard.Models.SiteVisitForm), "SiteVisitFormFields", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OnSite.TemplateWizard.Models.SiteVisitFormField), true)]
-[assembly: EdmRelationshipAttribute("SiteVisitMetaModel", "FK_SiteVisitFormGroupFields_SiteVisitFormFields", "SiteVisitFormFields", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OnSite.TemplateWizard.Models.SiteVisitFormField), "SiteVisitFormGroupFields", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OnSite.TemplateWizard.Models.SiteVisitFormGroupField), true)]
 [assembly: EdmRelationshipAttribute("SiteVisitMetaModel", "FK_SiteVisitFormGroupFields_SiteVisitFormGroups", "SiteVisitFormGroups", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OnSite.TemplateWizard.Models.SiteVisitFormGroup), "SiteVisitFormGroupFields", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OnSite.TemplateWizard.Models.SiteVisitFormGroupField), true)]
 [assembly: EdmRelationshipAttribute("SiteVisitMetaModel", "FK_SiteVisitFormGroups_SiteVisitForms", "SiteVisitForms", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OnSite.TemplateWizard.Models.SiteVisitForm), "SiteVisitFormGroups", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OnSite.TemplateWizard.Models.SiteVisitFormGroup), true)]
 [assembly: EdmRelationshipAttribute("SiteVisitMetaModel", "FK_SiteVisitForms_SiteVisitForms", "SiteVisitForms", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(OnSite.TemplateWizard.Models.SiteVisitForm), "SiteVisitForms1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OnSite.TemplateWizard.Models.SiteVisitForm), true)]
 [assembly: EdmRelationshipAttribute("SiteVisitMetaModel", "FK_SiteVisitForms_SiteVisits", "SiteVisits", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OnSite.TemplateWizard.Models.SiteVisit), "SiteVisitForms", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OnSite.TemplateWizard.Models.SiteVisitForm), true)]
+[assembly: EdmRelationshipAttribute("SiteVisitMetaModel", "FK_SiteVisitFormFields_ControlTypes", "ControlType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OnSite.TemplateWizard.Models.ControlType), "SiteVisitFormField", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OnSite.TemplateWizard.Models.SiteVisitFormField), true)]
+[assembly: EdmRelationshipAttribute("SiteVisitMetaModel", "FK_SiteVisitFormFieldItems_SiteVisitFormFields", "SiteVisitFormField", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OnSite.TemplateWizard.Models.SiteVisitFormField), "SiteVisitFormFieldItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OnSite.TemplateWizard.Models.SiteVisitFormFieldItem), true)]
+[assembly: EdmRelationshipAttribute("SiteVisitMetaModel", "FK_SiteVisitFormFields_SiteVisitForms", "SiteVisitForm", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OnSite.TemplateWizard.Models.SiteVisitForm), "SiteVisitFormField", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OnSite.TemplateWizard.Models.SiteVisitFormField), true)]
+[assembly: EdmRelationshipAttribute("SiteVisitMetaModel", "FK_SiteVisitFormGroupFields_SiteVisitFormFields", "SiteVisitFormField", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OnSite.TemplateWizard.Models.SiteVisitFormField), "SiteVisitFormGroupField", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OnSite.TemplateWizard.Models.SiteVisitFormGroupField), true)]
 
 #endregion
 
@@ -147,22 +146,6 @@ namespace OnSite.TemplateWizard.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<SiteVisitFormField> SiteVisitFormFields
-        {
-            get
-            {
-                if ((_SiteVisitFormFields == null))
-                {
-                    _SiteVisitFormFields = base.CreateObjectSet<SiteVisitFormField>("SiteVisitFormFields");
-                }
-                return _SiteVisitFormFields;
-            }
-        }
-        private ObjectSet<SiteVisitFormField> _SiteVisitFormFields;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<SiteVisitFormGroupField> SiteVisitFormGroupFields
         {
             get
@@ -255,9 +238,24 @@ namespace OnSite.TemplateWizard.Models
             }
         }
         private ObjectSet<Disposition> _Dispositions;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<SiteVisitFormField> SiteVisitFormFields
+        {
+            get
+            {
+                if ((_SiteVisitFormFields == null))
+                {
+                    _SiteVisitFormFields = base.CreateObjectSet<SiteVisitFormField>("SiteVisitFormFields");
+                }
+                return _SiteVisitFormFields;
+            }
+        }
+        private ObjectSet<SiteVisitFormField> _SiteVisitFormFields;
 
         #endregion
-
         #region AddTo Methods
     
         /// <summary>
@@ -290,14 +288,6 @@ namespace OnSite.TemplateWizard.Models
         public void AddToSiteVisitFormFieldItems(SiteVisitFormFieldItem siteVisitFormFieldItem)
         {
             base.AddObject("SiteVisitFormFieldItems", siteVisitFormFieldItem);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the SiteVisitFormFields EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToSiteVisitFormFields(SiteVisitFormField siteVisitFormField)
-        {
-            base.AddObject("SiteVisitFormFields", siteVisitFormField);
         }
     
         /// <summary>
@@ -347,13 +337,21 @@ namespace OnSite.TemplateWizard.Models
         {
             base.AddObject("Dispositions", disposition);
         }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the SiteVisitFormFields EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToSiteVisitFormFields(SiteVisitFormField siteVisitFormField)
+        {
+            base.AddObject("SiteVisitFormFields", siteVisitFormField);
+        }
 
         #endregion
-
     }
+    
 
     #endregion
-
+    
     #region Entities
     
     /// <summary>
@@ -384,7 +382,6 @@ namespace OnSite.TemplateWizard.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -511,7 +508,6 @@ namespace OnSite.TemplateWizard.Models
         partial void OnIsDefaultChanged();
 
         #endregion
-
     
     }
     
@@ -545,7 +541,6 @@ namespace OnSite.TemplateWizard.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -696,7 +691,6 @@ namespace OnSite.TemplateWizard.Models
         partial void OnIsDeployedChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -723,7 +717,6 @@ namespace OnSite.TemplateWizard.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -752,7 +745,6 @@ namespace OnSite.TemplateWizard.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -879,7 +871,6 @@ namespace OnSite.TemplateWizard.Models
         partial void OnCSTypeNameChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -889,24 +880,23 @@ namespace OnSite.TemplateWizard.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("SiteVisitMetaModel", "FK_SiteVisitFormFields_ControlTypes", "SiteVisitFormFields")]
+        [EdmRelationshipNavigationPropertyAttribute("SiteVisitMetaModel", "FK_SiteVisitFormFields_ControlTypes", "SiteVisitFormField")]
         public EntityCollection<SiteVisitFormField> SiteVisitFormFields
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SiteVisitFormField>("SiteVisitMetaModel.FK_SiteVisitFormFields_ControlTypes", "SiteVisitFormFields");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SiteVisitFormField>("SiteVisitMetaModel.FK_SiteVisitFormFields_ControlTypes", "SiteVisitFormField");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SiteVisitFormField>("SiteVisitMetaModel.FK_SiteVisitFormFields_ControlTypes", "SiteVisitFormFields", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SiteVisitFormField>("SiteVisitMetaModel.FK_SiteVisitFormFields_ControlTypes", "SiteVisitFormField", value);
                 }
             }
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -937,7 +927,6 @@ namespace OnSite.TemplateWizard.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -1064,7 +1053,6 @@ namespace OnSite.TemplateWizard.Models
         partial void OnIsDefaultChanged();
 
         #endregion
-
     
     }
     
@@ -1094,7 +1082,6 @@ namespace OnSite.TemplateWizard.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -1197,7 +1184,6 @@ namespace OnSite.TemplateWizard.Models
         partial void OnProjectDescriptionChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -1262,7 +1248,6 @@ namespace OnSite.TemplateWizard.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -1291,7 +1276,6 @@ namespace OnSite.TemplateWizard.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -1394,7 +1378,6 @@ namespace OnSite.TemplateWizard.Models
         partial void OnSiteVisitDescriptionChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -1459,7 +1442,6 @@ namespace OnSite.TemplateWizard.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -1500,7 +1482,6 @@ namespace OnSite.TemplateWizard.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -1771,31 +1752,8 @@ namespace OnSite.TemplateWizard.Models
         partial void OnIsMultipleReponseChanged();
 
         #endregion
-
     
         #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("SiteVisitMetaModel", "FK_SiteVisitFormFields_SiteVisitForms", "SiteVisitFormFields")]
-        public EntityCollection<SiteVisitFormField> SiteVisitFormFields
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SiteVisitFormField>("SiteVisitMetaModel.FK_SiteVisitFormFields_SiteVisitForms", "SiteVisitFormFields");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SiteVisitFormField>("SiteVisitMetaModel.FK_SiteVisitFormFields_SiteVisitForms", "SiteVisitFormFields", value);
-                }
-            }
-        }
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1916,9 +1874,30 @@ namespace OnSite.TemplateWizard.Models
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SiteVisitMetaModel", "FK_SiteVisitFormFields_SiteVisitForms", "SiteVisitFormField")]
+        public EntityCollection<SiteVisitFormField> SiteVisitFormFields
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SiteVisitFormField>("SiteVisitMetaModel.FK_SiteVisitFormFields_SiteVisitForms", "SiteVisitFormField");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SiteVisitFormField>("SiteVisitMetaModel.FK_SiteVisitFormFields_SiteVisitForms", "SiteVisitFormField", value);
+                }
+            }
+        }
 
         #endregion
-
     }
     
     /// <summary>
@@ -1944,7 +1923,8 @@ namespace OnSite.TemplateWizard.Models
         /// <param name="isLabelVisible">Initial value of the IsLabelVisible property.</param>
         /// <param name="isSearchableField">Initial value of the IsSearchableField property.</param>
         /// <param name="isSummaryField">Initial value of the IsSummaryField property.</param>
-        public static SiteVisitFormField CreateSiteVisitFormField(global::System.Int32 siteVisitFormFieldID, global::System.Int32 siteVisitFormID, global::System.String fieldName, global::System.String fieldLabel, global::System.Int32 controlTypeID, global::System.Boolean isVisible, global::System.Boolean isRequired, global::System.Boolean isLabelVisible, global::System.Boolean isSearchableField, global::System.Boolean isSummaryField)
+        /// <param name="isReportViewerFilterField">Initial value of the IsReportViewerFilterField property.</param>
+        public static SiteVisitFormField CreateSiteVisitFormField(global::System.Int32 siteVisitFormFieldID, global::System.Int32 siteVisitFormID, global::System.String fieldName, global::System.String fieldLabel, global::System.Int32 controlTypeID, global::System.Boolean isVisible, global::System.Boolean isRequired, global::System.Boolean isLabelVisible, global::System.Boolean isSearchableField, global::System.Boolean isSummaryField, global::System.Boolean isReportViewerFilterField)
         {
             SiteVisitFormField siteVisitFormField = new SiteVisitFormField();
             siteVisitFormField.SiteVisitFormFieldID = siteVisitFormFieldID;
@@ -1957,11 +1937,11 @@ namespace OnSite.TemplateWizard.Models
             siteVisitFormField.IsLabelVisible = isLabelVisible;
             siteVisitFormField.IsSearchableField = isSearchableField;
             siteVisitFormField.IsSummaryField = isSummaryField;
+            siteVisitFormField.IsReportViewerFilterField = isReportViewerFilterField;
             return siteVisitFormField;
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -2302,9 +2282,32 @@ namespace OnSite.TemplateWizard.Models
         private global::System.Boolean _IsSummaryField;
         partial void OnIsSummaryFieldChanging(global::System.Boolean value);
         partial void OnIsSummaryFieldChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean IsReportViewerFilterField
+        {
+            get
+            {
+                return _IsReportViewerFilterField;
+            }
+            set
+            {
+                OnIsReportViewerFilterFieldChanging(value);
+                ReportPropertyChanging("IsReportViewerFilterField");
+                _IsReportViewerFilterField = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IsReportViewerFilterField");
+                OnIsReportViewerFilterFieldChanged();
+            }
+        }
+        private global::System.Boolean _IsReportViewerFilterField;
+        partial void OnIsReportViewerFilterFieldChanging(global::System.Boolean value);
+        partial void OnIsReportViewerFilterFieldChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -2314,16 +2317,16 @@ namespace OnSite.TemplateWizard.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("SiteVisitMetaModel", "FK_SiteVisitFormFields_ControlTypes", "ControlTypes")]
+        [EdmRelationshipNavigationPropertyAttribute("SiteVisitMetaModel", "FK_SiteVisitFormFields_ControlTypes", "ControlType")]
         public ControlType ControlType
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ControlType>("SiteVisitMetaModel.FK_SiteVisitFormFields_ControlTypes", "ControlTypes").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ControlType>("SiteVisitMetaModel.FK_SiteVisitFormFields_ControlTypes", "ControlType").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ControlType>("SiteVisitMetaModel.FK_SiteVisitFormFields_ControlTypes", "ControlTypes").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ControlType>("SiteVisitMetaModel.FK_SiteVisitFormFields_ControlTypes", "ControlType").Value = value;
             }
         }
         /// <summary>
@@ -2335,13 +2338,13 @@ namespace OnSite.TemplateWizard.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ControlType>("SiteVisitMetaModel.FK_SiteVisitFormFields_ControlTypes", "ControlTypes");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ControlType>("SiteVisitMetaModel.FK_SiteVisitFormFields_ControlTypes", "ControlType");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ControlType>("SiteVisitMetaModel.FK_SiteVisitFormFields_ControlTypes", "ControlTypes", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ControlType>("SiteVisitMetaModel.FK_SiteVisitFormFields_ControlTypes", "ControlType", value);
                 }
             }
         }
@@ -2352,18 +2355,18 @@ namespace OnSite.TemplateWizard.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("SiteVisitMetaModel", "FK_SiteVisitFormFieldItems_SiteVisitFormFields", "SiteVisitFormFieldItems")]
+        [EdmRelationshipNavigationPropertyAttribute("SiteVisitMetaModel", "FK_SiteVisitFormFieldItems_SiteVisitFormFields", "SiteVisitFormFieldItem")]
         public EntityCollection<SiteVisitFormFieldItem> SiteVisitFormFieldItems
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SiteVisitFormFieldItem>("SiteVisitMetaModel.FK_SiteVisitFormFieldItems_SiteVisitFormFields", "SiteVisitFormFieldItems");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SiteVisitFormFieldItem>("SiteVisitMetaModel.FK_SiteVisitFormFieldItems_SiteVisitFormFields", "SiteVisitFormFieldItem");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SiteVisitFormFieldItem>("SiteVisitMetaModel.FK_SiteVisitFormFieldItems_SiteVisitFormFields", "SiteVisitFormFieldItems", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SiteVisitFormFieldItem>("SiteVisitMetaModel.FK_SiteVisitFormFieldItems_SiteVisitFormFields", "SiteVisitFormFieldItem", value);
                 }
             }
         }
@@ -2374,16 +2377,16 @@ namespace OnSite.TemplateWizard.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("SiteVisitMetaModel", "FK_SiteVisitFormFields_SiteVisitForms", "SiteVisitForms")]
+        [EdmRelationshipNavigationPropertyAttribute("SiteVisitMetaModel", "FK_SiteVisitFormFields_SiteVisitForms", "SiteVisitForm")]
         public SiteVisitForm SiteVisitForm
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SiteVisitForm>("SiteVisitMetaModel.FK_SiteVisitFormFields_SiteVisitForms", "SiteVisitForms").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SiteVisitForm>("SiteVisitMetaModel.FK_SiteVisitFormFields_SiteVisitForms", "SiteVisitForm").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SiteVisitForm>("SiteVisitMetaModel.FK_SiteVisitFormFields_SiteVisitForms", "SiteVisitForms").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SiteVisitForm>("SiteVisitMetaModel.FK_SiteVisitFormFields_SiteVisitForms", "SiteVisitForm").Value = value;
             }
         }
         /// <summary>
@@ -2395,13 +2398,13 @@ namespace OnSite.TemplateWizard.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SiteVisitForm>("SiteVisitMetaModel.FK_SiteVisitFormFields_SiteVisitForms", "SiteVisitForms");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SiteVisitForm>("SiteVisitMetaModel.FK_SiteVisitFormFields_SiteVisitForms", "SiteVisitForm");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SiteVisitForm>("SiteVisitMetaModel.FK_SiteVisitFormFields_SiteVisitForms", "SiteVisitForms", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SiteVisitForm>("SiteVisitMetaModel.FK_SiteVisitFormFields_SiteVisitForms", "SiteVisitForm", value);
                 }
             }
         }
@@ -2412,24 +2415,23 @@ namespace OnSite.TemplateWizard.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("SiteVisitMetaModel", "FK_SiteVisitFormGroupFields_SiteVisitFormFields", "SiteVisitFormGroupFields")]
+        [EdmRelationshipNavigationPropertyAttribute("SiteVisitMetaModel", "FK_SiteVisitFormGroupFields_SiteVisitFormFields", "SiteVisitFormGroupField")]
         public EntityCollection<SiteVisitFormGroupField> SiteVisitFormGroupFields
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SiteVisitFormGroupField>("SiteVisitMetaModel.FK_SiteVisitFormGroupFields_SiteVisitFormFields", "SiteVisitFormGroupFields");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SiteVisitFormGroupField>("SiteVisitMetaModel.FK_SiteVisitFormGroupFields_SiteVisitFormFields", "SiteVisitFormGroupField");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SiteVisitFormGroupField>("SiteVisitMetaModel.FK_SiteVisitFormGroupFields_SiteVisitFormFields", "SiteVisitFormGroupFields", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SiteVisitFormGroupField>("SiteVisitMetaModel.FK_SiteVisitFormGroupFields_SiteVisitFormFields", "SiteVisitFormGroupField", value);
                 }
             }
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -2462,7 +2464,6 @@ namespace OnSite.TemplateWizard.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -2589,7 +2590,6 @@ namespace OnSite.TemplateWizard.Models
         partial void OnListItemOrderChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -2599,16 +2599,16 @@ namespace OnSite.TemplateWizard.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("SiteVisitMetaModel", "FK_SiteVisitFormFieldItems_SiteVisitFormFields", "SiteVisitFormFields")]
+        [EdmRelationshipNavigationPropertyAttribute("SiteVisitMetaModel", "FK_SiteVisitFormFieldItems_SiteVisitFormFields", "SiteVisitFormField")]
         public SiteVisitFormField SiteVisitFormField
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SiteVisitFormField>("SiteVisitMetaModel.FK_SiteVisitFormFieldItems_SiteVisitFormFields", "SiteVisitFormFields").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SiteVisitFormField>("SiteVisitMetaModel.FK_SiteVisitFormFieldItems_SiteVisitFormFields", "SiteVisitFormField").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SiteVisitFormField>("SiteVisitMetaModel.FK_SiteVisitFormFieldItems_SiteVisitFormFields", "SiteVisitFormFields").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SiteVisitFormField>("SiteVisitMetaModel.FK_SiteVisitFormFieldItems_SiteVisitFormFields", "SiteVisitFormField").Value = value;
             }
         }
         /// <summary>
@@ -2620,19 +2620,18 @@ namespace OnSite.TemplateWizard.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SiteVisitFormField>("SiteVisitMetaModel.FK_SiteVisitFormFieldItems_SiteVisitFormFields", "SiteVisitFormFields");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SiteVisitFormField>("SiteVisitMetaModel.FK_SiteVisitFormFieldItems_SiteVisitFormFields", "SiteVisitFormField");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SiteVisitFormField>("SiteVisitMetaModel.FK_SiteVisitFormFieldItems_SiteVisitFormFields", "SiteVisitFormFields", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SiteVisitFormField>("SiteVisitMetaModel.FK_SiteVisitFormFieldItems_SiteVisitFormFields", "SiteVisitFormField", value);
                 }
             }
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -2665,7 +2664,6 @@ namespace OnSite.TemplateWizard.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -2840,7 +2838,6 @@ namespace OnSite.TemplateWizard.Models
         partial void OnIsVisibleChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -2905,7 +2902,6 @@ namespace OnSite.TemplateWizard.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -2934,7 +2930,6 @@ namespace OnSite.TemplateWizard.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -3013,47 +3008,8 @@ namespace OnSite.TemplateWizard.Models
         partial void OnSiteVisitFormFieldIDChanged();
 
         #endregion
-
     
         #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("SiteVisitMetaModel", "FK_SiteVisitFormGroupFields_SiteVisitFormFields", "SiteVisitFormFields")]
-        public SiteVisitFormField SiteVisitFormField
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SiteVisitFormField>("SiteVisitMetaModel.FK_SiteVisitFormGroupFields_SiteVisitFormFields", "SiteVisitFormFields").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SiteVisitFormField>("SiteVisitMetaModel.FK_SiteVisitFormGroupFields_SiteVisitFormFields", "SiteVisitFormFields").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<SiteVisitFormField> SiteVisitFormFieldReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SiteVisitFormField>("SiteVisitMetaModel.FK_SiteVisitFormGroupFields_SiteVisitFormFields", "SiteVisitFormFields");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SiteVisitFormField>("SiteVisitMetaModel.FK_SiteVisitFormGroupFields_SiteVisitFormFields", "SiteVisitFormFields", value);
-                }
-            }
-        }
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -3092,12 +3048,48 @@ namespace OnSite.TemplateWizard.Models
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SiteVisitMetaModel", "FK_SiteVisitFormGroupFields_SiteVisitFormFields", "SiteVisitFormField")]
+        public SiteVisitFormField SiteVisitFormField
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SiteVisitFormField>("SiteVisitMetaModel.FK_SiteVisitFormGroupFields_SiteVisitFormFields", "SiteVisitFormField").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SiteVisitFormField>("SiteVisitMetaModel.FK_SiteVisitFormGroupFields_SiteVisitFormFields", "SiteVisitFormField").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<SiteVisitFormField> SiteVisitFormFieldReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SiteVisitFormField>("SiteVisitMetaModel.FK_SiteVisitFormGroupFields_SiteVisitFormFields", "SiteVisitFormField");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SiteVisitFormField>("SiteVisitMetaModel.FK_SiteVisitFormGroupFields_SiteVisitFormFields", "SiteVisitFormField", value);
+                }
+            }
+        }
 
         #endregion
-
     }
 
     #endregion
-
     
 }

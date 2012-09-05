@@ -422,12 +422,18 @@ this.Write("\" />\r\n");
 		var parentForm = SiteVisitDBHelper.GetParentForm(sitevisit);
 		string table = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBTableName;
         string pkey = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBPrimaryKeyName;
+		SiteVisitFormField reportViewerFilterField = SiteVisitDBHelper.GetSiteVisitReportViewerFilterField(parentForm);
+		string reportViewerFilterExpression = "";
+		if (reportViewerFilterField != null)
+		{
+			reportViewerFilterExpression = "where (c." + table +"." + reportViewerFilterField.FieldName + " == reportViewerFilterValue || string.IsNullOrEmpty(reportViewerFilterValue))";
+		}
 
         
         #line default
         #line hidden
         
-        #line 194 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 200 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write(@"using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -447,14 +453,14 @@ namespace OnSite.WebUI.Reports
         #line default
         #line hidden
         
-        #line 207 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 213 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 207 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 213 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write("Schedule : System.Web.UI.Page\r\n    {\r\n        private SiteVisitDataEntities apptC" +
         "tx = new SiteVisitDataEntities();\r\n        private DateTime Start { get { return" +
         " (DateTime)edtStart.Value; } }\r\n        private DateTime End { get { return (Dat" +
@@ -497,19 +503,57 @@ this.Write("Schedule : System.Web.UI.Page\r\n    {\r\n        private SiteVisitD
         "         appointmentMappings.Type = \"Type\";\r\n            appointmentMappings.Res" +
         "ourceId = \"ResourceID\";\r\n\r\n            schedulerStorage.Appointments.ResourceSha" +
         "ring = false;\r\n\r\n            schedulerStorage.Resources.DataSource = MembershipH" +
-        "elper.GetResources();\r\n\r\n            schedulerStorage.Appointments.DataSource = " +
-        "(from a in apptCtx.SiteVisitAppointments\r\n                                      " +
-        "                  select a);                                                    " +
-        "        \r\n            SchedulerStoragePrintAdapter adapter = new SchedulerStorag" +
-        "ePrintAdapter(schedulerStorage);\r\n            //adapter.TimeInterval = new TimeI" +
-        "nterval(DateTime.Now, TimeSpan.FromDays(14));\r\n            //adapter.EnableSmart" +
-        "Sync = true;\r\n\r\n            return adapter;\r\n        }\r\n    }\r\n}\r\n");
+        "elper.GetResources();\r\n\t\t\tstring reportViewerFilterValue = ProfileHelper.GetUser" +
+        "Profile().ReportViewerFilterValue;\r\n\r\n            var appointments = (from a in " +
+        "apptCtx.SiteVisitAppointments\r\n                                join c in apptCtx" +
+        ".");
 
         
         #line default
         #line hidden
         
-        #line 298 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 296 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(table));
+
+        
+        #line default
+        #line hidden
+        
+        #line 296 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+this.Write("Appointments on a.SiteVisitAppointmentID equals c.SiteVisitAppointmentID\r\n       " +
+        "                         ");
+
+        
+        #line default
+        #line hidden
+        
+        #line 297 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(reportViewerFilterExpression));
+
+        
+        #line default
+        #line hidden
+        
+        #line 297 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+this.Write(@"
+                                select a);  
+          
+			schedulerStorage.Appointments.DataSource = appointments;                                               
+            SchedulerStoragePrintAdapter adapter = new SchedulerStoragePrintAdapter(schedulerStorage);
+            //adapter.TimeInterval = new TimeInterval(DateTime.Now, TimeSpan.FromDays(14));
+            //adapter.EnableSmartSync = true;
+
+            return adapter;
+        }
+    }
+}
+");
+
+        
+        #line default
+        #line hidden
+        
+        #line 309 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 
     }
 
@@ -524,7 +568,7 @@ this.Write("Schedule : System.Web.UI.Page\r\n    {\r\n        private SiteVisitD
         #line default
         #line hidden
         
-        #line 307 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 318 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write(@"//------------------------------------------------------------------------------
 // <auto-generated>
 //     This code was generated by a tool.
@@ -543,14 +587,14 @@ namespace OnSite.WebUI.Reports {
         #line default
         #line hidden
         
-        #line 320 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 331 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 320 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 331 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write("Schedule {\r\n\r\n        /// <summary>\r\n        /// ASPxRoundPanel1 control.\r\n      " +
         "  /// </summary>\r\n        /// <remarks>\r\n        /// Auto-generated field.\r\n    " +
         "    /// To modify move field declaration from designer file to code-behind file." +
@@ -616,7 +660,7 @@ this.Write("Schedule {\r\n\r\n        /// <summary>\r\n        /// ASPxRoundPane
         #line default
         #line hidden
         
-        #line 449 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
+        #line 460 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 
 	}
 
