@@ -51,7 +51,11 @@ switch (OutputType) {
     DataSourceID="<#= form.DBTableName #>DataSource" KeyFieldName="Metering_LaundryCyclesID">
     <Columns>
         <dx:GridViewCommandColumn VisibleIndex="0">
-            <DeleteButton Visible="true"></DeleteButton>
+            <CustomButtons>
+                <dx:GridViewCommandColumnCustomButton ID="Delete" Text="Delete"></dx:GridViewCommandColumnCustomButton>
+            </CustomButtons>
+            <ClearFilterButton Visible="True">
+            </ClearFilterButton>
         </dx:GridViewCommandColumn>
         <dx:GridViewDataTextColumn FieldName="<#= pkey #>" Caption="<#= pkey #>" ReadOnly="True" Visible="false"
             VisibleIndex="1">
@@ -62,7 +66,7 @@ switch (OutputType) {
     </Columns>
     <Settings ShowFilterRow="True" ShowHeaderFilterButton="true" />
 	<SettingsBehavior AllowSelectByRowClick="true" AllowSelectSingleRowOnly="true" />
-	<ClientSideEvents RowClick="function(s,e){window.open('<#= form.DBTableName #>Edit.aspx?ID='+gv<#= form.DBTableName #>.GetRowKey(e.visibleIndex));}" />
+	<ClientSideEvents RowClick="function(s,e){window.open('<#= form.DBTableName #>Edit.aspx?ID='+gv<#= form.DBTableName #>.GetRowKey(e.visibleIndex));}" CustomButtonClick="OnCustomButtonClick" />
 </dx:ASPxGridView>
 
 <asp:EntityDataSource ID="<#= form.DBTableName #>DataSource" runat="server" 
@@ -147,11 +151,30 @@ namespace OnSite.WebUI.UserControls.GeneratedForms
         protected void Page_Load(object sender, EventArgs e)
         {
             gv<#= form.DBTableName #>.CustomCallback += new DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventHandler(gv<#= form.DBTableName #>_CustomCallback);
+			gv<#= form.DBTableName #>.CustomButtonCallback += new DevExpress.Web.ASPxGridView.ASPxGridViewCustomButtonCallbackEventHandler(gv<#= form.DBTableName #>_CustomButtonCallback);
         }
 
         protected void gv<#= form.DBTableName #>_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
         {
             gv<#= form.DBTableName #>.DataBind();
+        }
+
+		protected void gv<#= form.DBTableName #>_CustomButtonCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomButtonCallbackEventArgs e)
+        {
+            if (e.ButtonID == "Delete")
+            {
+                SiteVisitDataEntities ctx = new SiteVisitDataEntities();
+                int id = (int)gv<#= form.DBTableName #>.GetRowValues(e.VisibleIndex, "<#= pkey #>");
+
+                var record = (from b in ctx.<#= table #>
+                              where b.<#= pkey #> == id
+                              select b).FirstOrDefault();
+
+                ctx.DeleteObject(record);
+                ctx.SaveChanges();
+                gv<#= form.DBTableName #>.DataBind();
+            }
+   
         }
 
         protected void btnCsvExport_Click(object sender, EventArgs e)

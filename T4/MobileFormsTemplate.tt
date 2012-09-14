@@ -28,6 +28,7 @@ switch (OutputType) {
     Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dx" %>
 <%@ Register src="~/UserControls/FormControls/Text.ascx" tagname="Text" tagprefix="uc" %>
 <%@ Register src="~/UserControls/FormControls/Number.ascx" tagname="Number" tagprefix="uc" %>
+<%@ Register src="~/UserControls/FormControls/Integer.ascx" tagname="Integer" tagprefix="uc" %>
 <%@ Register src="~/UserControls/FormControls/Date.ascx" tagname="Date" tagprefix="uc" %>
 <%@ Register src="~/UserControls/FormControls/Time.ascx" tagname="Time" tagprefix="uc" %>
 <%@ Register src="~/UserControls/FormControls/PhoneNumber.ascx" tagname="PhoneNumber" tagprefix="uc" %>

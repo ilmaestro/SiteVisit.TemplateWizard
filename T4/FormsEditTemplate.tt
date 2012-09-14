@@ -32,6 +32,12 @@ switch (OutputType) {
 	function OnCloseClick(s,e) {
 		window.close();
 	}
+	
+	function OnCustomButtonClick(s,e) {
+		if (e.buttonID == 'Delete'){ 
+			e.processOnServer = confirm('Are you sure you want to delete this item?');
+		}
+	}
 </script>
 <script type="text/javascript" src="../Scripts/SiteVisitEdit.js"></script>
 </asp:Content>

@@ -176,12 +176,12 @@ this.Write(@"FormKey"" runat=""server"" />
     <table>
         <tr>
             <td>
+                <dx:ASPxButton ID=""btnSave"" runat=""server"" Text=""Save"" AutoPostBack=""true""></dx:ASPxButton>
+            </td>
+            <td>
                 <dx:ASPxButton ID=""btnClose"" runat=""server"" Text=""Close"" UseSubmitBehavior=""False"">
 	                <ClientSideEvents Click=""OnCloseClick"" />
                 </dx:ASPxButton>
-            </td>
-            <td>
-                <dx:ASPxButton ID=""btnSave"" runat=""server"" Text=""Save"" AutoPostBack=""true""></dx:ASPxButton>
             </td>
         </tr>
     </table>
