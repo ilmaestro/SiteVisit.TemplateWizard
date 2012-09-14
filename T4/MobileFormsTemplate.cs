@@ -96,92 +96,95 @@ this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
         #line hidden
         
         #line 24 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
-this.Write(@""" %>
-<%@ Register Assembly=""DevExpress.Web.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a""
-    Namespace=""DevExpress.Web.ASPxHiddenField"" TagPrefix=""dx"" %>
-<%@ Register Assembly=""DevExpress.Web.ASPxEditors.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a""
-    Namespace=""DevExpress.Web.ASPxEditors"" TagPrefix=""dx"" %>
-<%@ Register src=""~/UserControls/FormControls/Text.ascx"" tagname=""Text"" tagprefix=""uc"" %>
-<%@ Register src=""~/UserControls/FormControls/Number.ascx"" tagname=""Number"" tagprefix=""uc"" %>
-<%@ Register src=""~/UserControls/FormControls/Date.ascx"" tagname=""Date"" tagprefix=""uc"" %>
-<%@ Register src=""~/UserControls/FormControls/PhoneNumber.ascx"" tagname=""PhoneNumber"" tagprefix=""uc"" %>
-<%@ Register src=""~/UserControls/FormControls/RadioList.ascx"" tagname=""RadioList"" tagprefix=""uc"" %>
-<%@ Register src=""~/UserControls/FormControls/ZipCode.ascx"" tagname=""ZipCode"" tagprefix=""uc"" %>
-<%@ Register src=""~/UserControls/FormControls/Email.ascx"" tagname=""Email"" tagprefix=""uc"" %>
-<%@ Register src=""~/UserControls/FormControls/DropdownList.ascx"" tagname=""DropdownList"" tagprefix=""uc"" %>
-<%@ Register src=""~/UserControls/FormControls/CheckList.ascx"" tagname=""CheckList"" tagprefix=""uc"" %>
-<%@ Register src=""~/UserControls/FormControls/Label.ascx"" tagname=""Label"" tagprefix=""uc"" %>
-<%@ Register src=""~/UserControls/FormControls/Memo.ascx"" tagname=""Memo"" tagprefix=""uc"" %>
-<asp:Panel ID=""");
+this.Write("\" %>\r\n<%@ Register Assembly=\"DevExpress.Web.v12.1, Version=12.1.4.0, Culture=neut" +
+        "ral, PublicKeyToken=b88d1754d700e49a\"\r\n    Namespace=\"DevExpress.Web.ASPxHiddenF" +
+        "ield\" TagPrefix=\"dx\" %>\r\n<%@ Register Assembly=\"DevExpress.Web.ASPxEditors.v12.1" +
+        ", Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a\"\r\n    Names" +
+        "pace=\"DevExpress.Web.ASPxEditors\" TagPrefix=\"dx\" %>\r\n<%@ Register src=\"~/UserCon" +
+        "trols/FormControls/Text.ascx\" tagname=\"Text\" tagprefix=\"uc\" %>\r\n<%@ Register src" +
+        "=\"~/UserControls/FormControls/Number.ascx\" tagname=\"Number\" tagprefix=\"uc\" %>\r\n<" +
+        "%@ Register src=\"~/UserControls/FormControls/Date.ascx\" tagname=\"Date\" tagprefix" +
+        "=\"uc\" %>\r\n<%@ Register src=\"~/UserControls/FormControls/Time.ascx\" tagname=\"Time" +
+        "\" tagprefix=\"uc\" %>\r\n<%@ Register src=\"~/UserControls/FormControls/PhoneNumber.a" +
+        "scx\" tagname=\"PhoneNumber\" tagprefix=\"uc\" %>\r\n<%@ Register src=\"~/UserControls/F" +
+        "ormControls/RadioList.ascx\" tagname=\"RadioList\" tagprefix=\"uc\" %>\r\n<%@ Register " +
+        "src=\"~/UserControls/FormControls/ZipCode.ascx\" tagname=\"ZipCode\" tagprefix=\"uc\" " +
+        "%>\r\n<%@ Register src=\"~/UserControls/FormControls/Email.ascx\" tagname=\"Email\" ta" +
+        "gprefix=\"uc\" %>\r\n<%@ Register src=\"~/UserControls/FormControls/DropdownList.ascx" +
+        "\" tagname=\"DropdownList\" tagprefix=\"uc\" %>\r\n<%@ Register src=\"~/UserControls/For" +
+        "mControls/CheckList.ascx\" tagname=\"CheckList\" tagprefix=\"uc\" %>\r\n<%@ Register sr" +
+        "c=\"~/UserControls/FormControls/Label.ascx\" tagname=\"Label\" tagprefix=\"uc\" %>\r\n<%" +
+        "@ Register src=\"~/UserControls/FormControls/Memo.ascx\" tagname=\"Memo\" tagprefix=" +
+        "\"uc\" %>\r\n<asp:Panel ID=\"");
 
         
         #line default
         #line hidden
         
-        #line 40 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 41 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 40 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 41 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("Panel\" runat=\"server\">\r\n\t<dx:ASPxTextBox ID=\"hv");
 
         
         #line default
         #line hidden
         
-        #line 41 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 42 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 41 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 42 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\" runat=\"server\" ClientVisible=\"false\"></dx:ASPxTextBox>\r\n\t");
 
         
         #line default
         #line hidden
         
-        #line 42 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 43 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(!string.IsNullOrEmpty(fkey) ? "<dx:ASPxTextBox ID=\"hv" + fkey + "\" runat=\"server\" ClientVisible=\"false\"></dx:ASPxTextBox>" : ""));
 
         
         #line default
         #line hidden
         
-        #line 42 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 43 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\r\n\t<div class=\"formTitle\">\r\n\t\t<dx:ASPxLabel ID=\"");
 
         
         #line default
         #line hidden
         
-        #line 44 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 45 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 44 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 45 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("Caption\" runat=\"server\" text=\"");
 
         
         #line default
         #line hidden
         
-        #line 44 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 45 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.UIDisplayName));
 
         
         #line default
         #line hidden
         
-        #line 44 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 45 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\" ForeColor=\"Black\" CssClass=\"caption\">\r\n\t\t</dx:ASPxLabel>\r\n\t</div>\r\n\t<dx:ASPxPan" +
         "el ID=\"");
 
@@ -189,28 +192,28 @@ this.Write("\" ForeColor=\"Black\" CssClass=\"caption\">\r\n\t\t</dx:ASPxLabel>\
         #line default
         #line hidden
         
-        #line 47 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 48 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 47 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 48 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("Panel\" runat=\"server\" CssClass=\"formPanel\" ClientInstanceName=\"");
 
         
         #line default
         #line hidden
         
-        #line 47 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 48 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 47 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 48 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("PanelControl\" ScrollBars=\"none\">\r\n        <PanelCollection>\r\n            <dx:Pane" +
         "lContent ID=\"");
 
@@ -218,28 +221,28 @@ this.Write("PanelControl\" ScrollBars=\"none\">\r\n        <PanelCollection>\r\n
         #line default
         #line hidden
         
-        #line 49 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 50 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 49 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 50 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("PanelContent\" runat=\"server\" SupportsDisabledAttribute=\"True\">\r\n");
 
         
         #line default
         #line hidden
         
-        #line 50 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 51 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(GenerateGroups(form.SiteVisitFormID)));
 
         
         #line default
         #line hidden
         
-        #line 50 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 51 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\r\n\t\t\t</dx:PanelContent>\r\n        </PanelCollection>\r\n    </dx:ASPxPanel>\r\n</asp:P" +
         "anel>\r\n");
 
@@ -247,7 +250,7 @@ this.Write("\r\n\t\t\t</dx:PanelContent>\r\n        </PanelCollection>\r\n    </
         #line default
         #line hidden
         
-        #line 55 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 56 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 
     }  
 
@@ -277,35 +280,35 @@ this.Write("\r\n\t\t\t</dx:PanelContent>\r\n        </PanelCollection>\r\n    </
         #line default
         #line hidden
         
-        #line 79 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 80 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\t\t\t\t<dx:ASPxPanel ID=\"Grp");
 
         
         #line default
         #line hidden
         
-        #line 79 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 80 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(grp.SiteVisitFormGroupID));
 
         
         #line default
         #line hidden
         
-        #line 79 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 80 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("ContentPanel\" runat=\"server\" CssClass=\"groupPanel\" ClientInstanceName=\"Grp");
 
         
         #line default
         #line hidden
         
-        #line 79 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 80 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(grp.SiteVisitFormGroupID));
 
         
         #line default
         #line hidden
         
-        #line 79 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 80 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("ContentPanelControl\" ScrollBars=\"none\">\r\n\t\t\t\t\t<PanelCollection>\r\n\t\t\t\t\t\t<dx:PanelC" +
         "ontent ID=\"Grp");
 
@@ -313,14 +316,14 @@ this.Write("ContentPanelControl\" ScrollBars=\"none\">\r\n\t\t\t\t\t<PanelCollec
         #line default
         #line hidden
         
-        #line 81 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 82 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(grp.SiteVisitFormGroupID));
 
         
         #line default
         #line hidden
         
-        #line 81 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 82 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("ContentPanelContent\" runat=\"server\" SupportsDisabledAttribute=\"True\">\r\n\t\t\t\t\t\t\t<di" +
         "v class=\"groupToolbar\">\r\n\t\t\t\t\t\t\t\t<div class=\"groupName\">");
 
@@ -328,42 +331,42 @@ this.Write("ContentPanelContent\" runat=\"server\" SupportsDisabledAttribute=\"T
         #line default
         #line hidden
         
-        #line 83 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 84 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(groupName));
 
         
         #line default
         #line hidden
         
-        #line 83 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 84 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("</div>\r\n\t\t\t\t\t\t\t</div>\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t<div class=\"groupDescription\">");
 
         
         #line default
         #line hidden
         
-        #line 85 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 86 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(description));
 
         
         #line default
         #line hidden
         
-        #line 85 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 86 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("</div>\r\n");
 
         
         #line default
         #line hidden
         
-        #line 86 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 87 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(GenerateFieldGroups(grp.SiteVisitFormGroupID, fieldgroups)));
 
         
         #line default
         #line hidden
         
-        #line 86 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 87 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\r\n\t\t\t\t\t\t\t<div class=\"groupSeparator\">&nbsp;</div>\r\n                        </dx:P" +
         "anelContent>\r\n                    </PanelCollection>\r\n                </dx:ASPxP" +
         "anel>\r\n\t\t\t\t\r\n");
@@ -372,7 +375,7 @@ this.Write("\r\n\t\t\t\t\t\t\t<div class=\"groupSeparator\">&nbsp;</div>\r\n    
         #line default
         #line hidden
         
-        #line 92 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 93 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
  
 		}
 		return "";
@@ -388,7 +391,7 @@ this.Write("\r\n\t\t\t\t\t\t\t<div class=\"groupSeparator\">&nbsp;</div>\r\n    
         #line default
         #line hidden
         
-        #line 102 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 103 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\t\t\t\t\t\t\t<div class=\"fieldGroupToolbar\" style=\"display:none;\">\r\n\t\t\t\t\t\t\t\t<dx:ASPxLab" +
         "el ID=\"Field");
 
@@ -396,42 +399,42 @@ this.Write("\t\t\t\t\t\t\t<div class=\"fieldGroupToolbar\" style=\"display:none;
         #line default
         #line hidden
         
-        #line 103 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 104 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(fieldGroupID++));
 
         
         #line default
         #line hidden
         
-        #line 103 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 104 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("Grp");
 
         
         #line default
         #line hidden
         
-        #line 103 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 104 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(siteVisitGroupID));
 
         
         #line default
         #line hidden
         
-        #line 103 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 104 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("Caption\" runat=\"server\" text=\"");
 
         
         #line default
         #line hidden
         
-        #line 103 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 104 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(displayName));
 
         
         #line default
         #line hidden
         
-        #line 103 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 104 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\" ForeColor=\"Black\" CssClass=\"caption\">\r\n\t\t\t\t\t\t\t\t</dx:ASPxLabel>\r\n\t\t\t\t\t\t\t</div>\r\n" +
         "\t\t\t\t\t\t\t<div class=\"formFieldGroup\">\r\n\t\t\t\t\t\t\t\t<h3>");
 
@@ -439,35 +442,35 @@ this.Write("\" ForeColor=\"Black\" CssClass=\"caption\">\r\n\t\t\t\t\t\t\t\t</dx
         #line default
         #line hidden
         
-        #line 107 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 108 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(displayName));
 
         
         #line default
         #line hidden
         
-        #line 107 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 108 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("</h3>\r\n");
 
         
         #line default
         #line hidden
         
-        #line 108 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 109 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(GenerateGroupFields(siteVisitGroupID, fieldGroupName)));
 
         
         #line default
         #line hidden
         
-        #line 108 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 109 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\r\n\t\t\t\t\t\t\t</div>\r\n");
 
         
         #line default
         #line hidden
         
-        #line 110 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 111 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 	
 		}
 		return "";
@@ -497,140 +500,140 @@ this.Write("\r\n\t\t\t\t\t\t\t</div>\r\n");
         #line default
         #line hidden
         
-        #line 134 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 135 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\t\t\t\t\t\t\t\t<div class=\"formGroupField\">\r\n\t\t\t\t\t\t\t\t\t");
 
         
         #line default
         #line hidden
         
-        #line 135 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 136 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(label));
 
         
         #line default
         #line hidden
         
-        #line 135 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 136 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\r\n\t\t\t\t\t\t\t\t\t<uc:");
 
         
         #line default
         #line hidden
         
-        #line 136 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 137 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.ControlType.UITypeName));
 
         
         #line default
         #line hidden
         
-        #line 136 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 137 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(" ID=\"uc");
 
         
         #line default
         #line hidden
         
-        #line 136 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 137 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 136 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 137 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\" runat=\"server\" \r\n\t\t\t\t\t\t\t\t\t\tVisible=\"");
 
         
         #line default
         #line hidden
         
-        #line 137 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 138 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(IsVisible));
 
         
         #line default
         #line hidden
         
-        #line 137 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 138 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\" \r\n\t\t\t\t\t\t\t\t\t\tIsRequired=\"");
 
         
         #line default
         #line hidden
         
-        #line 138 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 139 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(IsRequired));
 
         
         #line default
         #line hidden
         
-        #line 138 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 139 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\"\r\n\t\t\t\t\t\t\t\t\t\tRequiredFieldErrorMessage=\"");
 
         
         #line default
         #line hidden
         
-        #line 139 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 140 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(RequiredFieldErrorMessage));
 
         
         #line default
         #line hidden
         
-        #line 139 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 140 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\"\r\n\t\t\t\t\t\t\t\t\t\t");
 
         
         #line default
         #line hidden
         
-        #line 140 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 141 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(string.IsNullOrEmpty(field.ControlAttributes) ? "" : field.ControlAttributes));
 
         
         #line default
         #line hidden
         
-        #line 140 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 141 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(">\r\n\t\t\t\t\t\t\t\t\t</uc:");
 
         
         #line default
         #line hidden
         
-        #line 141 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 142 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.ControlType.UITypeName));
 
         
         #line default
         #line hidden
         
-        #line 141 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 142 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(">\r\n\t\t\t\t\t\t\t\t\t");
 
         
         #line default
         #line hidden
         
-        #line 142 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 143 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(otherBox));
 
         
         #line default
         #line hidden
         
-        #line 142 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 143 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\r\n\t\t\t\t\t\t\t\t</div>\r\n");
 
         
         #line default
         #line hidden
         
-        #line 144 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 145 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
  
 		}
 		return "";
@@ -647,7 +650,7 @@ this.Write("\r\n\t\t\t\t\t\t\t\t</div>\r\n");
         #line default
         #line hidden
         
-        #line 155 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 156 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(@"
 using System;
 using System.Collections.Generic;
@@ -666,14 +669,14 @@ namespace OnSite.WebUI.UserControls.GeneratedForms
         #line default
         #line hidden
         
-        #line 168 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 169 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 168 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 169 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(" : System.Web.UI.UserControl\r\n    {\r\n        private SiteVisitDataEntities dataCt" +
         "x = new SiteVisitDataEntities();\r\n        private SiteVisitMetaEntities metaCtx " +
         "= new SiteVisitMetaEntities();\r\n\r\n\r\n\t\t#region Public Properties\r\n        public " +
@@ -683,224 +686,224 @@ this.Write(" : System.Web.UI.UserControl\r\n    {\r\n        private SiteVisitDa
         #line default
         #line hidden
         
-        #line 175 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 176 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 175 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 176 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\r\n        {\r\n            get\r\n            {\r\n                int? ");
 
         
         #line default
         #line hidden
         
-        #line 179 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 180 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 179 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 180 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(" = null;\r\n\r\n                if (!string.IsNullOrEmpty(hv");
 
         
         #line default
         #line hidden
         
-        #line 181 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 182 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 181 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 182 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(".Text))\r\n                {\r\n                    ");
 
         
         #line default
         #line hidden
         
-        #line 183 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 184 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 183 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 184 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(" = (int?)int.Parse(hv");
 
         
         #line default
         #line hidden
         
-        #line 183 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 184 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 183 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 184 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(".Text);\r\n                }\r\n                return ");
 
         
         #line default
         #line hidden
         
-        #line 185 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 186 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 185 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 186 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(";\r\n            }\r\n        }\r\n");
 
         
         #line default
         #line hidden
         
-        #line 188 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 189 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(GetForeignKeyProperty(fkey)));
 
         
         #line default
         #line hidden
         
-        #line 188 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 189 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\r\n");
 
         
         #line default
         #line hidden
         
-        #line 189 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 190 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(GenerateProperties(form.SiteVisitFormID)));
 
         
         #line default
         #line hidden
         
-        #line 189 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 190 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\r\n\t\t#endregion\r\n        \r\n\t\tpublic void BindListControls()\r\n        {\r\n");
 
         
         #line default
         #line hidden
         
-        #line 194 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 195 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(GenerateBindListControl(form.SiteVisitFormID)));
 
         
         #line default
         #line hidden
         
-        #line 194 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 195 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\r\n        }\r\n");
 
         
         #line default
         #line hidden
         
-        #line 196 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 197 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(GetForeignKeyLoadForm(table, fkeyTable)));
 
         
         #line default
         #line hidden
         
-        #line 196 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 197 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\r\n\r\n        public ");
 
         
         #line default
         #line hidden
         
-        #line 198 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 199 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(table));
 
         
         #line default
         #line hidden
         
-        #line 198 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 199 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(" LoadForm(int _");
 
         
         #line default
         #line hidden
         
-        #line 198 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 199 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 198 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 199 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(")\r\n        {\r\n            ");
 
         
         #line default
         #line hidden
         
-        #line 200 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 201 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(table));
 
         
         #line default
         #line hidden
         
-        #line 200 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 201 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(" formdata = (from f in dataCtx.");
 
         
         #line default
         #line hidden
         
-        #line 200 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 201 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(table));
 
         
         #line default
         #line hidden
         
-        #line 200 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 201 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\r\n\t\t\t\t\t\t\t\t   where f.");
 
         
         #line default
         #line hidden
         
-        #line 201 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 202 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 201 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 202 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(" == _");
 
         
         #line default
         #line hidden
         
-        #line 201 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 202 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 201 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 202 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\r\n\t\t\t\t\t\t\t\t   select f).SingleOrDefault();\r\n            if (formdata != null)\r\n   " +
         "         {\r\n\t\t\t\tPopulateForm(formdata);\r\n            }\r\n\t\t\treturn formdata;\r\n   " +
         "     }\r\n\r\n\t\tpublic ");
@@ -909,84 +912,84 @@ this.Write("\r\n\t\t\t\t\t\t\t\t   select f).SingleOrDefault();\r\n            i
         #line default
         #line hidden
         
-        #line 210 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 211 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(table));
 
         
         #line default
         #line hidden
         
-        #line 210 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 211 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(" GetFormData(int _");
 
         
         #line default
         #line hidden
         
-        #line 210 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 211 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 210 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 211 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(")\r\n        {\r\n            ");
 
         
         #line default
         #line hidden
         
-        #line 212 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 213 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(table));
 
         
         #line default
         #line hidden
         
-        #line 212 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 213 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(" formdata = (from f in dataCtx.");
 
         
         #line default
         #line hidden
         
-        #line 212 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 213 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(table));
 
         
         #line default
         #line hidden
         
-        #line 212 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 213 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\r\n\t\t\t\t\t\t\t\t   where f.");
 
         
         #line default
         #line hidden
         
-        #line 213 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 214 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 213 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 214 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(" == _");
 
         
         #line default
         #line hidden
         
-        #line 213 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 214 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 213 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 214 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\r\n\t\t\t\t\t\t\t\t   select f).SingleOrDefault();\r\n            return formdata;\r\n        " +
         "}\r\n\r\n\t\tpublic void PopulateForm(");
 
@@ -994,70 +997,70 @@ this.Write("\r\n\t\t\t\t\t\t\t\t   select f).SingleOrDefault();\r\n            r
         #line default
         #line hidden
         
-        #line 218 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 219 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(table));
 
         
         #line default
         #line hidden
         
-        #line 218 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 219 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(" formdata)\r\n        {\r\n            hv");
 
         
         #line default
         #line hidden
         
-        #line 220 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 221 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 220 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 221 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(".Text = formdata.");
 
         
         #line default
         #line hidden
         
-        #line 220 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 221 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 220 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 221 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(".ToString();\r\n");
 
         
         #line default
         #line hidden
         
-        #line 221 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 222 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(GenerateLoadFields(form.SiteVisitFormID)));
 
         
         #line default
         #line hidden
         
-        #line 221 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 222 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\r\n\t\t}\r\n\r\n\t\tpublic void SaveForm(");
 
         
         #line default
         #line hidden
         
-        #line 224 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 225 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(table));
 
         
         #line default
         #line hidden
         
-        #line 224 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 225 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(" form)\r\n\t\t{\r\n\t\t\tform.ModifiedDate = DateTime.Now;\r\n\t\t\tform.ModifiedUser = Members" +
         "hip.GetUser().UserName;\r\n\t\t\tdataCtx.SaveChanges();\r\n\t\t}\r\n\r\n        public void S" +
         "aveForm(");
@@ -1066,84 +1069,84 @@ this.Write(" form)\r\n\t\t{\r\n\t\t\tform.ModifiedDate = DateTime.Now;\r\n\t\t\t
         #line default
         #line hidden
         
-        #line 231 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 232 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(!string.IsNullOrEmpty(fkey) ? "int " + fkey : ""));
 
         
         #line default
         #line hidden
         
-        #line 231 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 232 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(")\r\n        {\r\n            ");
 
         
         #line default
         #line hidden
         
-        #line 233 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 234 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(table));
 
         
         #line default
         #line hidden
         
-        #line 233 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 234 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(" formdata;\r\n\r\n            if (");
 
         
         #line default
         #line hidden
         
-        #line 235 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 236 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 235 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 236 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(" != null)\r\n            {\r\n                formdata = (from f in dataCtx.");
 
         
         #line default
         #line hidden
         
-        #line 237 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 238 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(table));
 
         
         #line default
         #line hidden
         
-        #line 237 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 238 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\r\n                            where f.");
 
         
         #line default
         #line hidden
         
-        #line 238 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 239 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 238 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 239 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(" == ");
 
         
         #line default
         #line hidden
         
-        #line 238 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 239 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 238 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 239 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\r\n                            select f).SingleOrDefault();\r\n            }\r\n      " +
         "      else\r\n            {\r\n                formdata = new ");
 
@@ -1151,42 +1154,42 @@ this.Write("\r\n                            select f).SingleOrDefault();\r\n    
         #line default
         #line hidden
         
-        #line 243 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 244 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(table));
 
         
         #line default
         #line hidden
         
-        #line 243 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 244 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("();\r\n            }\r\n\t\t\t\r\n\t\t\t");
 
         
         #line default
         #line hidden
         
-        #line 246 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 247 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(!string.IsNullOrEmpty(fkey) ? "formdata." + fkey + " = " + fkey + "; //foreign key" : ""));
 
         
         #line default
         #line hidden
         
-        #line 246 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 247 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\r\n");
 
         
         #line default
         #line hidden
         
-        #line 247 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 248 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(GenerateSaveFields(form.SiteVisitFormID)));
 
         
         #line default
         #line hidden
         
-        #line 247 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 248 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\r\n\t\t\tformdata.ModifiedDate = DateTime.Now;\r\n            formdata.ModifiedUser = M" +
         "embership.GetUser().UserName;\r\n\r\n            if (");
 
@@ -1194,14 +1197,14 @@ this.Write("\r\n\t\t\tformdata.ModifiedDate = DateTime.Now;\r\n            formd
         #line default
         #line hidden
         
-        #line 251 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 252 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 251 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 252 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(" != null)\r\n            {\r\n                dataCtx.ObjectStateManager.ChangeObject" +
         "State(formdata, System.Data.EntityState.Modified);\r\n            }\r\n            e" +
         "lse\r\n            {\r\n\t\t\t\t");
@@ -1210,14 +1213,14 @@ this.Write(" != null)\r\n            {\r\n                dataCtx.ObjectStateMan
         #line default
         #line hidden
         
-        #line 257 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 258 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(string.IsNullOrEmpty(fkey) ? "formdata.DispositionID = " + SiteVisitDBHelper.GetDefaultDisposition().ToString() +"; //DEFAULT disposition ID for primary table" : ""));
 
         
         #line default
         #line hidden
         
-        #line 257 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 258 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\r\n                formdata.CreateDate = DateTime.Now;\r\n                formdata.C" +
         "reateUser = Membership.GetUser().UserName;\r\n                dataCtx.");
 
@@ -1225,14 +1228,14 @@ this.Write("\r\n                formdata.CreateDate = DateTime.Now;\r\n         
         #line default
         #line hidden
         
-        #line 260 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 261 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(table));
 
         
         #line default
         #line hidden
         
-        #line 260 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 261 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(".AddObject(formdata);\r\n            }\r\n\r\n            dataCtx.SaveChanges().ToStrin" +
         "g();\r\n\t\t\thv");
 
@@ -1240,49 +1243,49 @@ this.Write(".AddObject(formdata);\r\n            }\r\n\r\n            dataCtx.Sa
         #line default
         #line hidden
         
-        #line 264 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 265 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 264 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 265 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(".Text = formdata.");
 
         
         #line default
         #line hidden
         
-        #line 264 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 265 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 264 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 265 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(".ToString();\r\n\t\t\t");
 
         
         #line default
         #line hidden
         
-        #line 265 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 266 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(string.IsNullOrEmpty(fkey) ? "dataCtx."+ table + "UpdateGeography();" : ""));
 
         
         #line default
         #line hidden
         
-        #line 265 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 266 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\r\n        }\r\n    }\r\n}\r\n");
 
         
         #line default
         #line hidden
         
-        #line 269 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 270 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 
     }
 
@@ -1295,98 +1298,98 @@ this.Write("\r\n        }\r\n    }\r\n}\r\n");
         #line default
         #line hidden
         
-        #line 276 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 277 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("        public int? ");
 
         
         #line default
         #line hidden
         
-        #line 277 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 278 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(fkey));
 
         
         #line default
         #line hidden
         
-        #line 277 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 278 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\r\n        {\r\n            get\r\n            {\r\n                int? ");
 
         
         #line default
         #line hidden
         
-        #line 281 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 282 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(fkey));
 
         
         #line default
         #line hidden
         
-        #line 281 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 282 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(" = null;\r\n\r\n                if (!string.IsNullOrEmpty(hv");
 
         
         #line default
         #line hidden
         
-        #line 283 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 284 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(fkey));
 
         
         #line default
         #line hidden
         
-        #line 283 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 284 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(".Text))\r\n                {\r\n                    ");
 
         
         #line default
         #line hidden
         
-        #line 285 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 286 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(fkey));
 
         
         #line default
         #line hidden
         
-        #line 285 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 286 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(" = (int?)int.Parse(hv");
 
         
         #line default
         #line hidden
         
-        #line 285 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 286 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(fkey));
 
         
         #line default
         #line hidden
         
-        #line 285 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 286 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(".Text);\r\n                }\r\n                return ");
 
         
         #line default
         #line hidden
         
-        #line 287 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 288 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(fkey));
 
         
         #line default
         #line hidden
         
-        #line 287 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 288 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(";\r\n            }\r\n        }\r\n");
 
         
         #line default
         #line hidden
         
-        #line 290 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 291 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 
 		}
 		return "";
@@ -1401,49 +1404,49 @@ this.Write(";\r\n            }\r\n        }\r\n");
         #line default
         #line hidden
         
-        #line 299 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 300 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\t\tpublic void LoadForm(");
 
         
         #line default
         #line hidden
         
-        #line 299 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 300 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(fkeyTable));
 
         
         #line default
         #line hidden
         
-        #line 299 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 300 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(" parentForm)\r\n        {\r\n\t\t\t");
 
         
         #line default
         #line hidden
         
-        #line 301 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 302 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkeyTable));
 
         
         #line default
         #line hidden
         
-        #line 301 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 302 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(" formdata = parentForm.");
 
         
         #line default
         #line hidden
         
-        #line 301 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 302 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkeyTable));
 
         
         #line default
         #line hidden
         
-        #line 301 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 302 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(".FirstOrDefault();\r\n            if (formdata != null)\r\n            {             " +
         "   \r\n                PopulateForm(formdata);\r\n            }\r\n        }\r\n");
 
@@ -1451,7 +1454,7 @@ this.Write(".FirstOrDefault();\r\n            if (formdata != null)\r\n         
         #line default
         #line hidden
         
-        #line 307 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 308 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 
 		}
 		return "";
@@ -1474,98 +1477,98 @@ this.Write(".FirstOrDefault();\r\n            if (formdata != null)\r\n         
         #line default
         #line hidden
         
-        #line 324 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 325 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("        public ");
 
         
         #line default
         #line hidden
         
-        #line 325 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 326 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.ControlType.CSTypeName));
 
         
         #line default
         #line hidden
         
-        #line 325 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 326 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(" ");
 
         
         #line default
         #line hidden
         
-        #line 325 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 326 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 325 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 326 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(" \r\n\t\t{\r\n\t\t\tget\r\n\t\t\t{\r\n\t\t\t\treturn (");
 
         
         #line default
         #line hidden
         
-        #line 329 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 330 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.ControlType.CSTypeName));
 
         
         #line default
         #line hidden
         
-        #line 329 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 330 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(") uc");
 
         
         #line default
         #line hidden
         
-        #line 329 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 330 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 329 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 330 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(".Value;\r\n\t\t\t}\r\n\t\t\tset\r\n\t\t\t{\r\n\t\t\t\tuc");
 
         
         #line default
         #line hidden
         
-        #line 333 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 334 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 333 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 334 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(".Value = value;\r\n\t\t\t}\r\n\t\t}\r\n");
 
         
         #line default
         #line hidden
         
-        #line 336 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 337 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(otherProperty));
 
         
         #line default
         #line hidden
         
-        #line 336 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 337 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\r\n");
 
         
         #line default
         #line hidden
         
-        #line 337 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 338 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
  
 		}
 		return "";
@@ -1580,21 +1583,21 @@ this.Write("\r\n");
         #line default
         #line hidden
         
-        #line 346 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 347 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("            if (uc");
 
         
         #line default
         #line hidden
         
-        #line 347 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 348 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 347 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 348 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(".IsListControl)\r\n            {\r\n                var datasource = (from m in metaC" +
         "tx.SiteVisitFormFieldItems\r\n                                  where m.SiteVisitF" +
         "ormFieldID == ");
@@ -1603,14 +1606,14 @@ this.Write(".IsListControl)\r\n            {\r\n                var datasource =
         #line default
         #line hidden
         
-        #line 350 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 351 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.SiteVisitFormFieldID));
 
         
         #line default
         #line hidden
         
-        #line 350 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 351 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\r\n                                  orderby m.ListItemOrder\r\n                    " +
         "              select m);\r\n                uc");
 
@@ -1618,35 +1621,35 @@ this.Write("\r\n                                  orderby m.ListItemOrder\r\n   
         #line default
         #line hidden
         
-        #line 353 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 354 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 353 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 354 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(".BindDataSource(datasource, \"ListItemValue\", \"ListItemLabel\", typeof(");
 
         
         #line default
         #line hidden
         
-        #line 353 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 354 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.ControlType.CSTypeName));
 
         
         #line default
         #line hidden
         
-        #line 353 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 354 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("));\r\n            }\r\n");
 
         
         #line default
         #line hidden
         
-        #line 355 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 356 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
  
 		}
 		return "";
@@ -1676,28 +1679,28 @@ this.Write("));\r\n            }\r\n");
         #line default
         #line hidden
         
-        #line 379 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 380 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\t\t\t");
 
         
         #line default
         #line hidden
         
-        #line 379 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 380 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(output));
 
         
         #line default
         #line hidden
         
-        #line 379 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 380 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\r\n");
 
         
         #line default
         #line hidden
         
-        #line 380 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 381 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
  
 		}
 		return "";
@@ -1728,28 +1731,28 @@ this.Write("\r\n");
         #line default
         #line hidden
         
-        #line 405 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 406 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\t\t\t");
 
         
         #line default
         #line hidden
         
-        #line 405 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 406 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(output));
 
         
         #line default
         #line hidden
         
-        #line 405 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 406 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\r\n");
 
         
         #line default
         #line hidden
         
-        #line 406 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 407 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
  
 		}
 		return "";
@@ -1766,7 +1769,7 @@ this.Write("\r\n");
         #line default
         #line hidden
         
-        #line 417 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 418 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(@"//------------------------------------------------------------------------------
 // <auto-generated>
 //     This code was generated by a tool.
@@ -1785,28 +1788,28 @@ namespace OnSite.WebUI.UserControls.GeneratedForms {
         #line default
         #line hidden
         
-        #line 430 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 431 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 430 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 431 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(" {\r\n\r\n\t\t/// <summary>\r\n        /// ");
 
         
         #line default
         #line hidden
         
-        #line 433 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 434 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 433 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 434 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(@"Panel control.
         /// </summary>
         /// <remarks>
@@ -1819,14 +1822,14 @@ this.Write(@"Panel control.
         #line default
         #line hidden
         
-        #line 439 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 440 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 439 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 440 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(@"Panel;
 
 		/// <summary>
@@ -1842,42 +1845,42 @@ this.Write(@"Panel;
         #line default
         #line hidden
         
-        #line 448 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 449 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 448 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 449 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(";\r\n\t\t");
 
         
         #line default
         #line hidden
         
-        #line 449 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 450 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(!string.IsNullOrEmpty(fkey) ? "protected global::DevExpress.Web.ASPxEditors.ASPxTextBox hv" + fkey + ";" : ""));
 
         
         #line default
         #line hidden
         
-        #line 449 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 450 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\r\n\t\t\r\n\t\t/// <summary>\r\n        /// ");
 
         
         #line default
         #line hidden
         
-        #line 452 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 453 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 452 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 453 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(@"Caption control.
         /// </summary>
         /// <remarks>
@@ -1890,28 +1893,28 @@ this.Write(@"Caption control.
         #line default
         #line hidden
         
-        #line 458 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 459 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 458 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 459 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("Caption;\r\n\r\n\t\t/// <summary>\r\n        /// <");
 
         
         #line default
         #line hidden
         
-        #line 461 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 462 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 461 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 462 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(@"Panel control.
         /// </summary>
         /// <remarks>
@@ -1924,49 +1927,49 @@ this.Write(@"Panel control.
         #line default
         #line hidden
         
-        #line 467 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 468 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 467 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 468 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("Panel;\r\n\r\n");
 
         
         #line default
         #line hidden
         
-        #line 469 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 470 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(GenerateFieldDesignerProperties(form.SiteVisitFormID)));
 
         
         #line default
         #line hidden
         
-        #line 469 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 470 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\r\n");
 
         
         #line default
         #line hidden
         
-        #line 470 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 471 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(GenerateGroupDesignerProperties(form.SiteVisitFormID)));
 
         
         #line default
         #line hidden
         
-        #line 470 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 471 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\r\n\t}\r\n}\r\n");
 
         
         #line default
         #line hidden
         
-        #line 473 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 474 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 
 	}
 
@@ -1985,21 +1988,21 @@ this.Write("\r\n\t}\r\n}\r\n");
         #line default
         #line hidden
         
-        #line 486 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 487 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("        /// <summary>\r\n        /// uc");
 
         
         #line default
         #line hidden
         
-        #line 488 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 489 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 488 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 489 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(@" control.
         /// </summary>
         /// <remarks>
@@ -2012,49 +2015,49 @@ this.Write(@" control.
         #line default
         #line hidden
         
-        #line 494 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 495 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.ControlType.UITypeName));
 
         
         #line default
         #line hidden
         
-        #line 494 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 495 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(" uc");
 
         
         #line default
         #line hidden
         
-        #line 494 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 495 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 494 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 495 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(";\r\n");
 
         
         #line default
         #line hidden
         
-        #line 495 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 496 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(otherProperty));
 
         
         #line default
         #line hidden
         
-        #line 495 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 496 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\r\n");
 
         
         #line default
         #line hidden
         
-        #line 496 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 497 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
  
 		}
 		return "";
@@ -2071,21 +2074,21 @@ this.Write("\r\n");
         #line default
         #line hidden
         
-        #line 507 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 508 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\t\t/// <summary>\r\n        /// Grp");
 
         
         #line default
         #line hidden
         
-        #line 508 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 509 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(grp.SiteVisitFormGroupID));
 
         
         #line default
         #line hidden
         
-        #line 508 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 509 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(@"ContentPanel control.
         /// </summary>
         /// <remarks>
@@ -2098,28 +2101,28 @@ this.Write(@"ContentPanel control.
         #line default
         #line hidden
         
-        #line 514 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 515 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(grp.SiteVisitFormGroupID));
 
         
         #line default
         #line hidden
         
-        #line 514 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 515 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("ContentPanel;\r\n\r\n\t\t/// <summary>\r\n        /// Grp");
 
         
         #line default
         #line hidden
         
-        #line 517 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 518 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(grp.SiteVisitFormGroupID));
 
         
         #line default
         #line hidden
         
-        #line 517 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 518 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(@"Caption control.
         /// </summary>
         /// <remarks>
@@ -2132,35 +2135,35 @@ this.Write(@"Caption control.
         #line default
         #line hidden
         
-        #line 523 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 524 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(grp.SiteVisitFormGroupID));
 
         
         #line default
         #line hidden
         
-        #line 523 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 524 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("Caption;\r\n\r\n");
 
         
         #line default
         #line hidden
         
-        #line 525 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 526 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(GenerateFieldGroupDesignerProperties(grp.SiteVisitFormGroupID, fieldgroups)));
 
         
         #line default
         #line hidden
         
-        #line 525 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 526 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\r\n");
 
         
         #line default
         #line hidden
         
-        #line 526 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 527 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
  
 		}
 		return "";
@@ -2175,35 +2178,35 @@ this.Write("\r\n");
         #line default
         #line hidden
         
-        #line 535 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 536 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\t\t/// <summary>\r\n        /// Field");
 
         
         #line default
         #line hidden
         
-        #line 536 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 537 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(fieldGroupID++));
 
         
         #line default
         #line hidden
         
-        #line 536 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 537 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("Grp");
 
         
         #line default
         #line hidden
         
-        #line 536 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 537 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(siteVisitGroupID));
 
         
         #line default
         #line hidden
         
-        #line 536 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 537 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(@"Caption control.
         /// </summary>
         /// <remarks>
@@ -2216,35 +2219,35 @@ this.Write(@"Caption control.
         #line default
         #line hidden
         
-        #line 542 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 543 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(fieldGroupID++));
 
         
         #line default
         #line hidden
         
-        #line 542 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 543 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("Grp");
 
         
         #line default
         #line hidden
         
-        #line 542 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 543 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(siteVisitGroupID));
 
         
         #line default
         #line hidden
         
-        #line 542 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 543 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("Caption;\r\n");
 
         
         #line default
         #line hidden
         
-        #line 543 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+        #line 544 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 	
 		}
 		return "";

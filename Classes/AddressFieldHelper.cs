@@ -40,7 +40,7 @@ namespace OnSite.TemplateWizard.Classes
             if (this.Address1 != null)
                 expression.Append(containerName + "." + this.Address1.FieldName + " + \"\\n\" + ");
             if (this.Address2 != null)
-                expression.Append(containerName + "." + this.Address2.FieldName + " + \"\\n\" + ");
+                expression.Append("(!string.IsNullOrEmpty("+ containerName + "." + this.Address2.FieldName+") ? " + containerName + "." + this.Address2.FieldName + " + \"\\n\" : \"\") + ");
             if (this.City != null)
                 expression.Append(containerName + "." + this.City.FieldName + " + \", \" + ");
             if (this.State != null)

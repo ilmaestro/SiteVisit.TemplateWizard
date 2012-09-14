@@ -738,9 +738,9 @@ namespace OnSite.WebUI.Scheduler
 
 		
 		string summaryExpression = "";
-		foreach (SiteVisitFormField phoneField in summaryFields)
+		foreach (SiteVisitFormField summaryField in summaryFields)
 		{
-			summaryExpression += "\"" + StringSanitizer.SanitizeForWeb(phoneField.FieldLabel) + ":\" + contact." + phoneField.FieldName + " + \"\\n\" + ";
+			summaryExpression += "\"" + StringSanitizer.SanitizeForWeb(summaryField.FieldLabel) + ":\" + contact." + summaryField.FieldName + " + \"\\n\" + ";
 		}
 
 		string phoneExpression = "";
@@ -749,7 +749,9 @@ namespace OnSite.WebUI.Scheduler
 			phoneExpression += "\"" + StringSanitizer.SanitizeForWeb(phoneField.FieldLabel) + ":\" + contact." + phoneField.FieldName + " + \"\\n\" + ";
 		}
 
-#><#= summaryExpression #><#= phoneExpression #>"\nAddress:\n" + <#= addressHelper.GetAddressFormatted("contact") #> + "\n\nGoogle Map:\n" + "http://maps.google.com/maps?q=" + Server.UrlEncode(<#= addressHelper.GetAddressSingleLine("contact") #>) + "\n\nSite Visit:\n" + "http://"+Request.Url.Authority+(string.IsNullOrEmpty(Request.ApplicationPath) ? "" : Request.ApplicationPath+"/") +"SiteVisits/<#= sitevisitName #>Edit.aspx?ID="+contactId<#+ 
+		string addressExpression = "\"Address:\\n\" + " + addressHelper.GetAddressFormatted("contact");
+
+#><#= summaryExpression #><#= phoneExpression #>"\n"+ <#= addressExpression #> + "\n\nScheduler Notes:\n" + contact.SchedulerNotes + "\n\nGoogle Map:\n" + "http://maps.google.com/maps?q=" + Server.UrlEncode(<#= addressHelper.GetAddressSingleLine("contact") #>) + "\n\nSite Visit:\n" + "http://"+Request.Url.Authority+(string.IsNullOrEmpty(Request.ApplicationPath) ? "" : Request.ApplicationPath+"/") +"SiteVisits/<#= sitevisitName #>Edit.aspx?ID="+contactId<#+ 
 		return "";
 	}
 

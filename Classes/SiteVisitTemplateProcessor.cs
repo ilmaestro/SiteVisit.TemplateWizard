@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using OnSite.TemplateWizard.Models;
+using OnSite.TemplateWizard.Classes;
 
 namespace OnSite.TemplateWizard.Classes
 {
@@ -82,6 +83,20 @@ namespace OnSite.TemplateWizard.Classes
                 {
                     //GenerateForm(form);
                     GenerateMobileForm(form);
+
+                    //check if we need to generate search/edit pages for other parents - DOES not appy to the top-level parent.
+                    if (form.SiteVisitParentFormID != null)
+                    {
+                        var formChildren = from f in sitevisit.SiteVisitForms
+                                         where f.SiteVisitParentFormID == form.SiteVisitFormID
+                                         select f;
+                        if (formChildren.Count() > 0 || form.IsMultipleReponse == true)
+                        {
+                            GenerateChildEditTemplate(form);
+                            GenerateChildSearchTemplate(form);
+                        }
+                    }
+                    
                 }
                 //generate site visit pages
                 GenerateFormsEdit(sitevisit);
@@ -156,6 +171,42 @@ namespace OnSite.TemplateWizard.Classes
 
             template.OutputType = FormsEditTemplate.FileType.Designer;
             template.OutputFilePath = Path.Combine(SiteVisitsPath, sitevisitName + "Edit.aspx.designer.cs");
+            template.SaveOutput(template.TransformText());
+        }
+
+        private void GenerateChildEditTemplate(SiteVisitForm form)
+        {
+            FormsChildEditTemplate template = new FormsChildEditTemplate();
+            template.SiteVisitForm = form;
+
+            template.OutputType = FormsChildEditTemplate.FileType.Page;
+            template.OutputFilePath = Path.Combine(SiteVisitsPath, form.DBTableName + "Edit.aspx");
+            template.SaveOutput(template.TransformText());
+
+            template.OutputType = FormsChildEditTemplate.FileType.Code;
+            template.OutputFilePath = Path.Combine(SiteVisitsPath, form.DBTableName + "Edit.aspx.cs");
+            template.SaveOutput(template.TransformText());
+
+            template.OutputType = FormsChildEditTemplate.FileType.Designer;
+            template.OutputFilePath = Path.Combine(SiteVisitsPath, form.DBTableName + "Edit.aspx.designer.cs");
+            template.SaveOutput(template.TransformText());
+        }
+
+        private void GenerateChildSearchTemplate(SiteVisitForm form)
+        {
+            FormsChildSearchTemplate template = new FormsChildSearchTemplate();
+            template.SiteVisitForm = form;
+
+            template.OutputType = FormsChildSearchTemplate.FileType.Page;
+            template.OutputFilePath = Path.Combine(FormsPath, form.DBTableName + "Search.ascx");
+            template.SaveOutput(template.TransformText());
+
+            template.OutputType = FormsChildSearchTemplate.FileType.Code;
+            template.OutputFilePath = Path.Combine(FormsPath, form.DBTableName + "Search.ascx.cs");
+            template.SaveOutput(template.TransformText());
+
+            template.OutputType = FormsChildSearchTemplate.FileType.Designer;
+            template.OutputFilePath = Path.Combine(FormsPath, form.DBTableName + "Search.ascx.designer.cs");
             template.SaveOutput(template.TransformText());
         }
 

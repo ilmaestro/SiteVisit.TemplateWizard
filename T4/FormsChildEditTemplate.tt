@@ -1,0 +1,283 @@
+﻿<#@ include file="includes.txt" #>
+<#
+switch (OutputType) {
+	case FileType.Page:
+		GeneratePage(SiteVisitForm);
+		break;
+	case FileType.Code:
+		GenerateCodeFile(SiteVisitForm);
+		break;
+	case FileType.Designer:
+		GenerateDesignerFile(SiteVisitForm);
+		break;
+	default:
+		break;
+}
+#><#+
+    void GeneratePage(SiteVisitForm form)
+    {
+		string sitevisitname = form.SiteVisit.SiteVisitName.Replace(" ", "");
+		string formName = form.SiteVisitFormName.Replace(" ", "");
+		var parentForm = form.SiteVisitForm1;
+		string table = sitevisitname + "_" + form.DBTableName;
+        string pkey = sitevisitname + "_" + form.DBPrimaryKeyName;
+		string ftable = sitevisitname + "_" + parentForm.DBTableName;
+		string fkey = sitevisitname + "_" + parentForm.DBPrimaryKeyName;
+#>
+<%@ Page Title="<#= form.SiteVisitFormName #>" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="<#= form.DBTableName #>Edit.aspx.cs" Inherits="OnSite.WebUI.SiteVisits.<#= form.DBTableName #>Edit" %>
+<%@ Register src="~/UserControls/GeneratedForms/<#= form.DBTableName #>.ascx" tagname="<#= form.DBTableName #>" tagprefix="uc" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <script type="text/javascript">
+        function OnCloseClick(s, e) {
+            window.close();
+        }
+    </script>
+    <script type="text/javascript" src="../Scripts/SiteVisitEdit.js"></script>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <asp:HiddenField ID="hf<#= form.DBTableName #>FormKey" runat="server" />
+    <div class="formsEditHeader">
+	    <h2>
+		    <asp:Label ID="lblFormHeader" runat="server" />
+	    </h2>
+    </div>
+    <table>
+        <tr>
+            <td>
+                <dx:ASPxButton ID="btnClose" runat="server" Text="Close" UseSubmitBehavior="False">
+	                <ClientSideEvents Click="OnCloseClick" />
+                </dx:ASPxButton>
+            </td>
+            <td>
+                <dx:ASPxButton ID="btnSave" runat="server" Text="Save" AutoPostBack="true"></dx:ASPxButton>
+            </td>
+        </tr>
+    </table>
+       
+    <div style="padding: 5px;">
+        <dx:ASPxCallbackPanel ID="cp<#= form.DBTableName #>Form" runat="server" Width="100%" ClientInstanceName="cp<#= form.DBTableName #>Form" EnableAnimation="false" ShowLoadingPanel="true" EnableViewState="true" ViewStateMode="Enabled">
+            <PanelCollection>
+                <dx:PanelContent>
+                    <uc:LaundryCycles ID="uc<#= form.DBTableName #>" runat="server" />            
+                </dx:PanelContent>
+            </PanelCollection>
+        </dx:ASPxCallbackPanel>
+    </div>
+</asp:Content>
+<#+
+    } 
+
+    void GenerateCodeFile(SiteVisitForm form)
+    {
+		string sitevisitname = form.SiteVisit.SiteVisitName.Replace(" ", "");
+		string formName = form.SiteVisitFormName.Replace(" ", "");
+		var parentForm = form.SiteVisitForm1;
+		string table = sitevisitname + "_" + form.DBTableName;
+        string pkey = sitevisitname + "_" + form.DBPrimaryKeyName;
+		string ftable = sitevisitname + "_" + parentForm.DBTableName;
+		string fkey = sitevisitname + "_" + parentForm.DBPrimaryKeyName;
+#>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using OnSite.WebUI.Models;
+
+namespace OnSite.WebUI.SiteVisits
+{
+    public partial class <#= form.DBTableName #>Edit : System.Web.UI.Page
+    {
+		private SiteVisitDataEntities dataCtx = new SiteVisitDataEntities();
+
+        #region Public Methods
+        public void BindListControls()
+        {
+            uc<#= form.DBTableName #>.BindListControls();
+        }
+
+        #endregion
+
+		protected int? getParentKey()
+        {
+            int? retVal = null;
+            if (!string.IsNullOrEmpty(hf<#= form.DBTableName #>FormKey.Value))
+                retVal = (int?)int.Parse(hf<#= form.DBTableName #>FormKey.Value);
+            return retVal;
+        }
+
+		protected void Page_Load(object sender, EventArgs e)
+        {
+            cp<#= form.DBTableName #>Form.Callback += new DevExpress.Web.ASPxClasses.CallbackEventHandlerBase(cp<#= form.DBTableName #>Form_Callback);
+            btnSave.Click += new EventHandler(btnSave_Click);
+            if (!IsPostBack)
+            {
+                BindListControls();
+                if (!string.IsNullOrEmpty(Request["ID"]))
+                {
+                    if (!loadExistingForm(int.Parse(Request["ID"])))
+                    {
+                        throw new Exception("Record not found.");
+                    }
+                }
+                else if (!string.IsNullOrEmpty(Request["PID"]))
+                {
+                    if (!loadNewForm(int.Parse(Request["PID"])))
+                    {
+                        throw new Exception("Parent record not found.");
+                    }
+                }
+                else
+                {
+                    throw new Exception("No parent was supplied.");
+                }
+            }
+        }
+
+		private bool loadExistingForm(int <#= pkey #>)
+        {
+            bool retVal = false;
+            var formData = uc<#= form.DBTableName #>.LoadForm(<#= pkey #>);
+
+            if (formData != null)
+            {
+                retVal = true;
+                <#= ftable #> parent = formData.<#= ftable #>;
+                hf<#= form.DBTableName #>FormKey.Value = formData.<#= fkey #>.ToString();
+                string formHeader = ""<#= GenerateSummaryExpression(form) #>;
+                Page.Title = formHeader;
+                lblFormHeader.Text = formHeader;
+            }
+            return retVal;
+        }
+
+		private bool loadNewForm(int <#= fkey #>)
+        {
+            bool retVal = false;
+            hf<#= form.DBTableName #>FormKey.Value = <#= fkey #>.ToString();
+            var parentFormData = (from c in dataCtx.<#= ftable #>
+                                  where c.<#= fkey #> == <#= fkey #>
+                                  select c).FirstOrDefault();
+
+            if (parentFormData != null)
+            {
+                retVal = true;
+                string formHeader = "New <#= form.UIDisplayName #>";
+                Page.Title = formHeader;
+                lblFormHeader.Text = formHeader;
+            }
+
+            return retVal;
+        }
+
+		protected void btnSave_Click(object sender, EventArgs e)
+        {
+            if (getParentKey() != null)
+                uc<#= form.DBTableName #>.SaveForm((int)getParentKey());
+        }
+
+		protected void cp<#= form.DBTableName #>Form_Callback(object sender, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+        {
+            if (e.Parameter == "save")
+            {
+                if (getParentKey() != null)
+                    uc<#= form.DBTableName #>.SaveForm((int)getParentKey());
+            }
+        }
+	}
+}
+<#+
+    }
+	
+	private string GenerateSummaryExpression(SiteVisitForm form)
+	{
+		foreach(SiteVisitFormField field in SiteVisitDBHelper.GetSiteVisitSummaryFields(form)) {
+#> + uc<#= form.DBTableName #>.<#= field.FieldName #> + " "<#+ 
+		}
+		return "";
+	}
+	void GenerateDesignerFile(SiteVisitForm form)
+    {
+		string sitevisitname = form.SiteVisit.SiteVisitName.Replace(" ", "");
+		string formName = form.SiteVisitFormName.Replace(" ", "");
+		var parentForm = form.SiteVisitForm1;
+		string table = sitevisitname + "_" + form.DBTableName;
+        string pkey = sitevisitname + "_" + form.DBPrimaryKeyName;
+		string ftable = sitevisitname + "_" + parentForm.DBTableName;
+		string fkey = sitevisitname + "_" + parentForm.DBPrimaryKeyName;
+#>
+//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated. 
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+namespace OnSite.WebUI.SiteVisits {
+    
+    
+    public partial class <#= form.DBTableName #>Edit {
+
+		/// <summary>
+        /// hfLaundyCyclesFormKey control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hf<#= form.DBTableName #>FormKey;
+        
+        /// <summary>
+        /// lblFormHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFormHeader;
+        
+        /// <summary>
+        /// btnClose control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnClose;
+        
+        /// <summary>
+        /// btnSave control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnSave;
+        
+        /// <summary>
+        /// cpLaundryCycleForm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCallbackPanel.ASPxCallbackPanel cp<#= form.DBTableName #>Form;
+        
+        /// <summary>
+        /// ucLaundryCycles control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::OnSite.WebUI.UserControls.GeneratedForms.<#= form.DBTableName #> uc<#= form.DBTableName #>;
+
+	}
+}
+<#+
+	}
+#>

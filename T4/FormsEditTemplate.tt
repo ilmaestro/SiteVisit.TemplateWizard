@@ -21,7 +21,7 @@ switch (OutputType) {
 		string table = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBTableName;
         string pkey = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBPrimaryKeyName;
 #>
-<%@ Page Title="<#= sitevisit.SiteVisitName #>" Language="C#" MasterPageFile="~/Fullscreen.master" AutoEventWireup="true" CodeBehind="<#= sitevisit.SiteVisitName #>Edit.aspx.cs" Inherits="OnSite.WebUI.SiteVisits.<#= sitevisit.SiteVisitName #>Edit" %>
+<%@ Page Title="<#= sitevisit.SiteVisitName #>" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="<#= sitevisit.SiteVisitName #>Edit.aspx.cs" Inherits="OnSite.WebUI.SiteVisits.<#= sitevisit.SiteVisitName #>Edit" %>
 <#= GenerateUserControlReferences(forms) #>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
@@ -113,7 +113,14 @@ switch (OutputType) {
 	private string GenerateUserControlReferences(IEnumerable<SiteVisitForm> forms)
 	{
 		foreach(SiteVisitForm form in forms) {
-#><%@ Register src="~/UserControls/GeneratedForms/<#= form.DBTableName #>.ascx" tagname="<#= form.DBTableName #>" tagprefix="uc" %>
+			string formName = form.DBTableName;
+
+			var formChildren = from f in forms
+                                where f.SiteVisitParentFormID == form.SiteVisitFormID
+                                select f;
+            if (form.SiteVisitParentFormID != null && (formChildren.Count() > 0 || form.IsMultipleReponse == true))
+				formName = form.DBTableName + "Search";
+#><%@ Register src="~/UserControls/GeneratedForms/<#= formName #>.ascx" tagname="<#= form.DBTableName #>" tagprefix="uc" %>
 <#+ 
 		}
 		return "";
@@ -459,6 +466,13 @@ namespace OnSite.WebUI.SiteVisits {
 	private string GenerateDesignerProperties(IEnumerable<SiteVisitForm> forms)
 	{
 		foreach(SiteVisitForm form in forms) {
+			string formName = form.DBTableName;
+
+			var formChildren = from f in forms
+                                where f.SiteVisitParentFormID == form.SiteVisitFormID
+                                select f;
+            if (form.SiteVisitParentFormID != null && (formChildren.Count() > 0 || form.IsMultipleReponse == true))
+				formName = form.DBTableName + "Search";
 #>
         /// <summary>
         /// uc<#= form.DBTableName #> control.
@@ -467,7 +481,7 @@ namespace OnSite.WebUI.SiteVisits {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::OnSite.WebUI.UserControls.GeneratedForms.<#= form.DBTableName #> uc<#= form.DBTableName #>;
+        protected global::OnSite.WebUI.UserControls.GeneratedForms.<#= formName #> uc<#= form.DBTableName #>;
 <#+ 
 		}
 		return "";

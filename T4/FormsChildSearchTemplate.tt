@@ -1,0 +1,255 @@
+﻿<#@ include file="includes.txt" #>
+<#
+switch (OutputType) {
+	case FileType.Page:
+		GeneratePage(SiteVisitForm);
+		break;
+	case FileType.Code:
+		GenerateCodeFile(SiteVisitForm);
+		break;
+	case FileType.Designer:
+		GenerateDesignerFile(SiteVisitForm);
+		break;
+	default:
+		break;
+}
+#><#+
+    void GeneratePage(SiteVisitForm form)
+    {
+		string sitevisitname = form.SiteVisit.SiteVisitName.Replace(" ", "");
+		string formName = form.SiteVisitFormName.Replace(" ", "");
+		var parentForm = form.SiteVisitForm1;
+		string table = sitevisitname + "_" + form.DBTableName;
+        string pkey = sitevisitname + "_" + form.DBPrimaryKeyName;
+		string ftable = sitevisitname + "_" + parentForm.DBTableName;
+		string fkey = sitevisitname + "_" + parentForm.DBPrimaryKeyName;
+#>
+<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="<#= form.DBTableName #>Search.ascx.cs" Inherits="OnSite.WebUI.UserControls.GeneratedForms.<#= form.DBTableName #>Search" %>
+<%@ Register Assembly="DevExpress.Web.ASPxGridView.v12.1.Export, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+    Namespace="DevExpress.Web.ASPxGridView.Export" TagPrefix="dx" %>
+
+<asp:HiddenField ID="hf<#= form.DBTableName #>FormKey" runat="server" />
+
+<table>
+    <tr>
+        <td>
+            <dx:ASPxButton ID="btnCreate" runat="server" Text="Create <#= form.SiteVisitFormName #>" AutoPostBack="false">
+            </dx:ASPxButton>
+        </td>
+        <td>
+            <dx:ASPxButton ID="btnRefresh" runat="server" Text="Refresh" AutoPostBack="false">
+                <ClientSideEvents Click="function(s,e){gv<#= form.DBTableName #>.PerformCallback();}" />
+            </dx:ASPxButton>
+        </td><%--
+		<td>
+			<dx:ASPxButton ID="btnCsvExport" runat="server" Text="Export to Csv" UseSubmitBehavior="False" />
+		</td>--%>
+    </tr>
+</table>
+
+<dx:ASPxGridView ID="gv<#= form.DBTableName #>" runat="server" AutoGenerateColumns="False" ClientInstanceName="gv<#= form.DBTableName #>" 
+    DataSourceID="<#= form.DBTableName #>DataSource" KeyFieldName="Metering_LaundryCyclesID">
+    <Columns>
+        <dx:GridViewCommandColumn VisibleIndex="0">
+            <DeleteButton Visible="true"></DeleteButton>
+        </dx:GridViewCommandColumn>
+        <dx:GridViewDataTextColumn FieldName="<#= pkey #>" Caption="<#= pkey #>" ReadOnly="True" Visible="false"
+            VisibleIndex="1">
+        </dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="<#= fkey #>" Caption="<#= fkey #>" VisibleIndex="2" Visible="false">
+        </dx:GridViewDataTextColumn>
+<#= GenerateGridViewColumns(form, 3) #>
+    </Columns>
+    <Settings ShowFilterRow="True" ShowHeaderFilterButton="true" />
+	<SettingsBehavior AllowSelectByRowClick="true" AllowSelectSingleRowOnly="true" />
+	<ClientSideEvents RowClick="function(s,e){window.open('<#= form.DBTableName #>Edit.aspx?ID='+gv<#= form.DBTableName #>.GetRowKey(e.visibleIndex));}" />
+</dx:ASPxGridView>
+
+<asp:EntityDataSource ID="<#= form.DBTableName #>DataSource" runat="server" 
+    ConnectionString="name=SiteVisitDataEntities" 
+    DefaultContainerName="SiteVisitDataEntities" EnableDelete="True" 
+    EnableFlattening="False" EntitySetName="<#= table #>" 
+    EntityTypeFilter="" Select="" Where="it.<#= fkey #> = @<#= fkey #>">
+    <WhereParameters>
+        <asp:ControlParameter ControlID="hf<#= form.DBTableName #>FormKey" DefaultValue="0" 
+            Name="<#= fkey #>" PropertyName="Value" Type="Int16" />
+    </WhereParameters>
+</asp:EntityDataSource>
+ 
+<dx:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="gv<#= form.DBTableName #>">
+</dx:ASPxGridViewExporter>
+<br />
+<#+
+    } 
+	
+	private string GenerateGridViewColumns(SiteVisitForm form, int startIndex)
+	{
+		foreach(SiteVisitFormField field in SiteVisitDBHelper.GetSiteVisitSearchableFields(form)) {
+#>			<dx:GridViewDataTextColumn FieldName="<#= field.FieldName #>" Caption="<#= field.FieldLabel #>"
+                ReadOnly="True" VisibleIndex="<#= startIndex++ #>">
+            </dx:GridViewDataTextColumn>
+<#+ 
+		}
+		return "";
+	}
+
+    void GenerateCodeFile(SiteVisitForm form)
+    {
+		string sitevisitname = form.SiteVisit.SiteVisitName.Replace(" ", "");
+		string formName = form.SiteVisitFormName.Replace(" ", "");
+		var parentForm = form.SiteVisitForm1;
+		string table = sitevisitname + "_" + form.DBTableName;
+        string pkey = sitevisitname + "_" + form.DBPrimaryKeyName;
+		string ftable = sitevisitname + "_" + parentForm.DBTableName;
+		string fkey = sitevisitname + "_" + parentForm.DBPrimaryKeyName;
+#>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using DevExpress.Web.ASPxClasses;
+using OnSite.WebUI.Models;
+
+namespace OnSite.WebUI.UserControls.GeneratedForms
+{
+    public partial class <#= form.DBTableName #>Search : System.Web.UI.UserControl
+    {
+		#region Public Methods
+        public void BindListControls()
+        {
+            //nothing to bind.
+        }
+
+        public void LoadForm(<#= ftable #> parentForm)
+        {
+            hf<#= form.DBTableName #>FormKey.Value = parentForm.<#= fkey #>.ToString();
+            btnCreate.ClientSideEvents.Click = "function(s,e){window.open('<#= form.DBTableName #>Edit.aspx?PID=" + hf<#= form.DBTableName #>FormKey.Value + "');}";
+            gv<#= form.DBTableName #>.DataBind();
+        }
+
+        public void SaveForm(int id)
+        {
+            //nothing to save.
+        }
+        #endregion
+
+        protected int? getParentKey()
+        {
+            int? retVal = null;
+            if (!string.IsNullOrEmpty(hf<#= form.DBTableName #>FormKey.Value))
+                retVal = (int?)int.Parse(hf<#= form.DBTableName #>FormKey.Value);
+            return retVal;
+        }
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            gv<#= form.DBTableName #>.CustomCallback += new DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventHandler(gv<#= form.DBTableName #>_CustomCallback);
+        }
+
+        protected void gv<#= form.DBTableName #>_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
+        {
+            gv<#= form.DBTableName #>.DataBind();
+        }
+
+        protected void btnCsvExport_Click(object sender, EventArgs e)
+        {
+            gv<#= form.DBTableName #>.Columns["<#= fkey #>"].Visible = true;
+            gv<#= form.DBTableName #>.Columns["<#= pkey #>"].Visible = true;
+
+            gv<#= form.DBTableName #>.DataBind();
+            gridExport.FileName = "<#= table #>";
+            gridExport.WriteCsvToResponse();
+        }   
+
+	}
+}
+<#+
+    }
+
+
+	void GenerateDesignerFile(SiteVisitForm form)
+    {
+		string sitevisitname = form.SiteVisit.SiteVisitName.Replace(" ", "");
+		string formName = form.SiteVisitFormName.Replace(" ", "");
+		var parentForm = form.SiteVisitForm1;
+		string table = sitevisitname + "_" + form.DBTableName;
+        string pkey = sitevisitname + "_" + form.DBPrimaryKeyName;
+		string ftable = sitevisitname + "_" + parentForm.DBTableName;
+		string fkey = sitevisitname + "_" + parentForm.DBPrimaryKeyName;
+#>
+//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated. 
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+namespace OnSite.WebUI.UserControls.GeneratedForms {
+    
+    
+    public partial class <#= form.DBTableName #>Search {
+
+		/// <summary>
+        /// hfLaundyCyclesFormKey control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hf<#= form.DBTableName #>FormKey;
+        
+        /// <summary>
+        /// btnCreate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnCreate;
+        
+        /// <summary>
+        /// btnRefresh control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnRefresh;
+        
+        /// <summary>
+        /// gvLaundryCycles control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gv<#= form.DBTableName #>;
+        
+        /// <summary>
+        /// LaundryCyclesDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.EntityDataSource <#= form.DBTableName #>DataSource;
+        
+        /// <summary>
+        /// gridExport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView.Export.ASPxGridViewExporter gridExport;
+
+	}
+}
+<#+
+	}
+#>

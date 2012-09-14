@@ -82,11 +82,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\AddressFieldHelper.cs" />
+    <Compile Include="T4\FormsChildEditTemplate.cs">
+      <DependentUpon>FormsChildEditTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="T4\FormsChildSearchTemplate.cs">
+      <DependentUpon>FormsChildSearchTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="T4\iCalTemplate.cs">
       <DependentUpon>iCalTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="T4\Partials\FormsChildEditTemplate.cs" />
+    <Compile Include="T4\Partials\FormsChildSearchTemplate.cs" />
     <Compile Include="T4\Partials\iCalTemplate.cs" />
     <Compile Include="T4\ReportMasterScheduleTemplate.cs">
       <DependentUpon>ReportMasterScheduleTemplate.tt</DependentUpon>
@@ -219,6 +231,16 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="T4\FormsChildEditTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>FormsChildEditTemplate.cs</LastGenOutput>
+      <CustomToolNamespace>OnSite.TemplateWizard.Classes</CustomToolNamespace>
+    </None>
+    <None Include="T4\FormsChildSearchTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>FormsChildSearchTemplate.cs</LastGenOutput>
+      <CustomToolNamespace>OnSite.TemplateWizard.Classes</CustomToolNamespace>
+    </None>
     <None Include="T4\iCalTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>iCalTemplate.cs</LastGenOutput>
