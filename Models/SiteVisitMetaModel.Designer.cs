@@ -28,6 +28,7 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("SiteVisitMetaModel", "FK_SiteVisitFormFieldItems_SiteVisitFormFields", "SiteVisitFormField", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OnSite.TemplateWizard.Models.SiteVisitFormField), "SiteVisitFormFieldItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OnSite.TemplateWizard.Models.SiteVisitFormFieldItem), true)]
 [assembly: EdmRelationshipAttribute("SiteVisitMetaModel", "FK_SiteVisitFormFields_SiteVisitForms", "SiteVisitForm", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OnSite.TemplateWizard.Models.SiteVisitForm), "SiteVisitFormField", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OnSite.TemplateWizard.Models.SiteVisitFormField), true)]
 [assembly: EdmRelationshipAttribute("SiteVisitMetaModel", "FK_SiteVisitFormGroupFields_SiteVisitFormFields", "SiteVisitFormField", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OnSite.TemplateWizard.Models.SiteVisitFormField), "SiteVisitFormGroupField", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OnSite.TemplateWizard.Models.SiteVisitFormGroupField), true)]
+[assembly: EdmRelationshipAttribute("SiteVisitMetaModel", "FK_ClientTemplateSettings_Clients", "Client", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OnSite.TemplateWizard.Models.Client), "ClientTemplateSetting", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OnSite.TemplateWizard.Models.ClientTemplateSetting), true)]
 
 #endregion
 
@@ -254,6 +255,22 @@ namespace OnSite.TemplateWizard.Models
             }
         }
         private ObjectSet<SiteVisitFormField> _SiteVisitFormFields;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ClientTemplateSetting> ClientTemplateSettings
+        {
+            get
+            {
+                if ((_ClientTemplateSettings == null))
+                {
+                    _ClientTemplateSettings = base.CreateObjectSet<ClientTemplateSetting>("ClientTemplateSettings");
+                }
+                return _ClientTemplateSettings;
+            }
+        }
+        private ObjectSet<ClientTemplateSetting> _ClientTemplateSettings;
 
         #endregion
         #region AddTo Methods
@@ -344,6 +361,14 @@ namespace OnSite.TemplateWizard.Models
         public void AddToSiteVisitFormFields(SiteVisitFormField siteVisitFormField)
         {
             base.AddObject("SiteVisitFormFields", siteVisitFormField);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ClientTemplateSettings EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToClientTemplateSettings(ClientTemplateSetting clientTemplateSetting)
+        {
+            base.AddObject("ClientTemplateSettings", clientTemplateSetting);
         }
 
         #endregion
@@ -712,6 +737,202 @@ namespace OnSite.TemplateWizard.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Project>("SiteVisitMetaModel.FK_Projects_Clients", "Projects", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SiteVisitMetaModel", "FK_ClientTemplateSettings_Clients", "ClientTemplateSetting")]
+        public EntityCollection<ClientTemplateSetting> ClientTemplateSettings
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ClientTemplateSetting>("SiteVisitMetaModel.FK_ClientTemplateSettings_Clients", "ClientTemplateSetting");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ClientTemplateSetting>("SiteVisitMetaModel.FK_ClientTemplateSettings_Clients", "ClientTemplateSetting", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="SiteVisitMetaModel", Name="ClientTemplateSetting")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ClientTemplateSetting : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ClientTemplateSetting object.
+        /// </summary>
+        /// <param name="clientTemplateSettingID">Initial value of the ClientTemplateSettingID property.</param>
+        /// <param name="clientID">Initial value of the ClientID property.</param>
+        /// <param name="templateName">Initial value of the TemplateName property.</param>
+        /// <param name="canGenerate">Initial value of the CanGenerate property.</param>
+        public static ClientTemplateSetting CreateClientTemplateSetting(global::System.Int32 clientTemplateSettingID, global::System.Int32 clientID, global::System.String templateName, global::System.Boolean canGenerate)
+        {
+            ClientTemplateSetting clientTemplateSetting = new ClientTemplateSetting();
+            clientTemplateSetting.ClientTemplateSettingID = clientTemplateSettingID;
+            clientTemplateSetting.ClientID = clientID;
+            clientTemplateSetting.TemplateName = templateName;
+            clientTemplateSetting.CanGenerate = canGenerate;
+            return clientTemplateSetting;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ClientTemplateSettingID
+        {
+            get
+            {
+                return _ClientTemplateSettingID;
+            }
+            set
+            {
+                if (_ClientTemplateSettingID != value)
+                {
+                    OnClientTemplateSettingIDChanging(value);
+                    ReportPropertyChanging("ClientTemplateSettingID");
+                    _ClientTemplateSettingID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ClientTemplateSettingID");
+                    OnClientTemplateSettingIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ClientTemplateSettingID;
+        partial void OnClientTemplateSettingIDChanging(global::System.Int32 value);
+        partial void OnClientTemplateSettingIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ClientID
+        {
+            get
+            {
+                return _ClientID;
+            }
+            set
+            {
+                OnClientIDChanging(value);
+                ReportPropertyChanging("ClientID");
+                _ClientID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ClientID");
+                OnClientIDChanged();
+            }
+        }
+        private global::System.Int32 _ClientID;
+        partial void OnClientIDChanging(global::System.Int32 value);
+        partial void OnClientIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String TemplateName
+        {
+            get
+            {
+                return _TemplateName;
+            }
+            set
+            {
+                OnTemplateNameChanging(value);
+                ReportPropertyChanging("TemplateName");
+                _TemplateName = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("TemplateName");
+                OnTemplateNameChanged();
+            }
+        }
+        private global::System.String _TemplateName;
+        partial void OnTemplateNameChanging(global::System.String value);
+        partial void OnTemplateNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean CanGenerate
+        {
+            get
+            {
+                return _CanGenerate;
+            }
+            set
+            {
+                OnCanGenerateChanging(value);
+                ReportPropertyChanging("CanGenerate");
+                _CanGenerate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CanGenerate");
+                OnCanGenerateChanged();
+            }
+        }
+        private global::System.Boolean _CanGenerate;
+        partial void OnCanGenerateChanging(global::System.Boolean value);
+        partial void OnCanGenerateChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SiteVisitMetaModel", "FK_ClientTemplateSettings_Clients", "Client")]
+        public Client Client
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Client>("SiteVisitMetaModel.FK_ClientTemplateSettings_Clients", "Client").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Client>("SiteVisitMetaModel.FK_ClientTemplateSettings_Clients", "Client").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Client> ClientReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Client>("SiteVisitMetaModel.FK_ClientTemplateSettings_Clients", "Client");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Client>("SiteVisitMetaModel.FK_ClientTemplateSettings_Clients", "Client", value);
                 }
             }
         }

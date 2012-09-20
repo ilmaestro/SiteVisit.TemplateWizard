@@ -45,6 +45,11 @@ switch (OutputType) {
 			<td>
 				<dx:ASPxButton ID="btnCsvExport" runat="server" Text="Export to Csv" UseSubmitBehavior="False" />
 			</td>
+            <td>            
+                <dx:ASPxButton ID="btnResetToDefault" AutoPostBack="false" runat="server" Text="Reset Columns">
+                    <ClientSideEvents Click="function(s,e){ASPxClientUtils.DeleteCookie('<#= table #>ContactsReportCookie'); window.location = window.location;}" />
+                </dx:ASPxButton>
+            </td>
 		</tr>
 	</table>
     <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" 
@@ -73,6 +78,8 @@ switch (OutputType) {
         </Columns>
         <Settings ShowFilterRow="True" ShowHeaderFilterButton="true" />
 		<SettingsBehavior />
+		<SettingsPager PageSizeItemSettings-Visible="true"></SettingsPager>
+        <SettingsCookies CookiesID="<#= table #>ContactsReportCookie" Enabled="true" StoreColumnsVisiblePosition="true" StoreFiltering="false" StoreGroupingAndSorting="false" StorePaging="false" />
 		<ClientSideEvents />
     </dx:ASPxGridView>
     <asp:EntityDataSource ID="<#= table #>DataSource" runat="server" 

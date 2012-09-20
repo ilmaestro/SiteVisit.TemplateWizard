@@ -188,5 +188,19 @@ namespace OnSite.TemplateWizard.Classes
         {
             return ctx.AppointmentStatus.Where(d => d.IsDefault == true).FirstOrDefault().AppointmentStatusID;
         }
+
+
+        public static bool CanGenerateTemplate(int clientID, string templateName)
+        {
+            bool retval = false;
+
+            var result = (from c in ctx.ClientTemplateSettings
+                          where c.TemplateName == templateName && c.ClientID == clientID
+                          select c.CanGenerate).FirstOrDefault();
+            if (result != null)
+                retval = result;
+
+            return retval;
+        }
     }
 }

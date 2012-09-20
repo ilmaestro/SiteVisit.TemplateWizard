@@ -8,6 +8,7 @@
         <EntityContainer Name="SiteVisitMetaModelStoreContainer">
           <EntitySet Name="AppointmentStatus" EntityType="SiteVisitMetaModel.Store.AppointmentStatus" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Clients" EntityType="SiteVisitMetaModel.Store.Clients" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ClientTemplateSettings" EntityType="SiteVisitMetaModel.Store.ClientTemplateSettings" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ControlTypes" EntityType="SiteVisitMetaModel.Store.ControlTypes" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Dispositions" EntityType="SiteVisitMetaModel.Store.Dispositions" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Projects" EntityType="SiteVisitMetaModel.Store.Projects" store:Type="Tables" Schema="dbo" />
@@ -17,6 +18,10 @@
           <EntitySet Name="SiteVisitFormGroups" EntityType="SiteVisitMetaModel.Store.SiteVisitFormGroups" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SiteVisitForms" EntityType="SiteVisitMetaModel.Store.SiteVisitForms" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SiteVisits" EntityType="SiteVisitMetaModel.Store.SiteVisits" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_ClientTemplateSettings_Clients" Association="SiteVisitMetaModel.Store.FK_ClientTemplateSettings_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="ClientTemplateSettings" EntitySet="ClientTemplateSettings" />
+          </AssociationSet>
           <AssociationSet Name="FK_Projects_Clients" Association="SiteVisitMetaModel.Store.FK_Projects_Clients">
             <End Role="Clients" EntitySet="Clients" />
             <End Role="Projects" EntitySet="Projects" />
@@ -78,6 +83,15 @@
           <Property Name="ServerName" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="DatabaseName" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="IsDeployed" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClientTemplateSettings">
+          <Key>
+            <PropertyRef Name="ClientTemplateSettingID" />
+          </Key>
+          <Property Name="ClientTemplateSettingID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ClientID" Type="int" Nullable="false" />
+          <Property Name="TemplateName" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="CanGenerate" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="ControlTypes">
           <Key>
@@ -183,6 +197,18 @@
           <Property Name="SiteVisitName" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="SiteVisitDescription" Type="varchar" MaxLength="255" />
         </EntityType>
+        <Association Name="FK_ClientTemplateSettings_Clients">
+          <End Role="Clients" Type="SiteVisitMetaModel.Store.Clients" Multiplicity="1" />
+          <End Role="ClientTemplateSettings" Type="SiteVisitMetaModel.Store.ClientTemplateSettings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="ClientTemplateSettings">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Projects_Clients">
           <End Role="Clients" Type="SiteVisitMetaModel.Store.Clients" Multiplicity="1" />
           <End Role="Projects" Type="SiteVisitMetaModel.Store.Projects" Multiplicity="*" />
@@ -367,6 +393,11 @@
             <End Role="SiteVisitFormField" EntitySet="SiteVisitFormFields" />
             <End Role="SiteVisitFormGroupField" EntitySet="SiteVisitFormGroupFields" />
           </AssociationSet>
+          <EntitySet Name="ClientTemplateSettings" EntityType="SiteVisitMetaModel.ClientTemplateSetting" />
+          <AssociationSet Name="FK_ClientTemplateSettings_Clients" Association="SiteVisitMetaModel.FK_ClientTemplateSettings_Clients">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="ClientTemplateSetting" EntitySet="ClientTemplateSettings" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Client">
           <Key>
@@ -379,6 +410,7 @@
           <Property Name="DatabaseName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="IsDeployed" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Projects" Relationship="SiteVisitMetaModel.FK_Projects_Clients" FromRole="Clients" ToRole="Projects" />
+          <NavigationProperty Name="ClientTemplateSettings" Relationship="SiteVisitMetaModel.FK_ClientTemplateSettings_Clients" FromRole="Client" ToRole="ClientTemplateSetting" />
         </EntityType>
         <EntityType Name="ControlType">
           <Key>
@@ -633,6 +665,28 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ClientTemplateSetting">
+          <Key>
+            <PropertyRef Name="ClientTemplateSettingID" />
+          </Key>
+          <Property Type="Int32" Name="ClientTemplateSettingID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ClientID" Nullable="false" />
+          <Property Type="String" Name="TemplateName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="CanGenerate" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="SiteVisitMetaModel.FK_ClientTemplateSettings_Clients" FromRole="ClientTemplateSetting" ToRole="Client" />
+        </EntityType>
+        <Association Name="FK_ClientTemplateSettings_Clients">
+          <End Type="SiteVisitMetaModel.Client" Role="Client" Multiplicity="1" />
+          <End Type="SiteVisitMetaModel.ClientTemplateSetting" Role="ClientTemplateSetting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="ClientTemplateSetting">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -775,6 +829,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ClientTemplateSettings">
+            <EntityTypeMapping TypeName="SiteVisitMetaModel.ClientTemplateSetting">
+              <MappingFragment StoreEntitySet="ClientTemplateSettings">
+                <ScalarProperty Name="CanGenerate" ColumnName="CanGenerate" />
+                <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="ClientTemplateSettingID" ColumnName="ClientTemplateSettingID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -852,6 +916,12 @@
           <ConnectorPoint PointX="11.625" PointY="7.0463516642628212" />
           <ConnectorPoint PointX="11.625" PointY="8.9901432291666659" />
           <ConnectorPoint PointX="12" PointY="8.9901432291666659" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="SiteVisitMetaModel.ClientTemplateSetting" Width="1.5" PointX="3" PointY="7.875" Height="1.9802864583333317" />
+        <AssociationConnector Association="SiteVisitMetaModel.FK_ClientTemplateSettings_Clients" >
+          <ConnectorPoint PointX="1.5" PointY="7.1821907552083326" />
+          <ConnectorPoint PointX="1.5" PointY="8.8651432291666659" />
+          <ConnectorPoint PointX="3" PointY="8.8651432291666659" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

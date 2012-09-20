@@ -151,7 +151,18 @@ switch (OutputType) {
 	<h2>Appointments</h2>
 	<div id="map_canvas"></div>
 	<br /> <br />
-	<dx:ASPxButton ID="btnCsvExport" runat="server" Text="Export to Csv" UseSubmitBehavior="False" />
+    <table>
+        <tr>
+            <td>
+                <dx:ASPxButton ID="btnCsvExport" runat="server" Text="Export to Csv" UseSubmitBehavior="False" />
+            </td>
+            <td>            
+                <dx:ASPxButton ID="btnResetToDefault" AutoPostBack="false" runat="server" Text="Reset Columns">
+                    <ClientSideEvents Click="function(s,e){ASPxClientUtils.DeleteCookie('<#= table #>AppointmentsCookie'); window.location = window.location;}" />
+                </dx:ASPxButton>
+            </td>
+        </tr>
+    </table>
     <div style="margin-top: 5px; margin-bottom: 5px;">
     <dx:ASPxGridView ID="grid" runat="server" AutoGenerateColumns="False" ClientInstanceName="grid" 
         DataSourceID="AppointmentsDataSource" KeyFieldName="<#= table #>AppointmentID">
@@ -172,12 +183,14 @@ switch (OutputType) {
             </dx:GridViewDataTextColumn>
             <dx:GridViewDataTextColumn FieldName="SiteVisitAppointment.Description" VisibleIndex="5" Visible="false">
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn FieldName="SiteVisitAppointment.AppointmentLocation" VisibleIndex="6">
-            </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn FieldName="SiteVisitAppointment.AppointmentStartDate" VisibleIndex="7">
-            </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn FieldName="SiteVisitAppointment.AppointmentEndDate" VisibleIndex="8">
-            </dx:GridViewDataTextColumn>
+			<dx:GridViewDataColumn FieldName="SiteVisitAppointment.AppointmentStartDate" Caption="Start Date" VisibleIndex="7">
+            </dx:GridViewDataColumn>            
+            <dx:GridViewDataTimeEditColumn FieldName="SiteVisitAppointment.AppointmentStartDate" Caption="Start Time" VisibleIndex="7">
+            </dx:GridViewDataTimeEditColumn>
+			<dx:GridViewDataColumn FieldName="SiteVisitAppointment.AppointmentEndDate" Caption="End Date" VisibleIndex="8">
+            </dx:GridViewDataColumn>            
+            <dx:GridViewDataTimeEditColumn FieldName="SiteVisitAppointment.AppointmentEndDate" Caption="End Time" VisibleIndex="8">
+            </dx:GridViewDataTimeEditColumn>
             <dx:GridViewDataTextColumn FieldName="SiteVisitAppointment.Status" VisibleIndex="10" Visible="false">
             </dx:GridViewDataTextColumn>
             <dx:GridViewDataTextColumn FieldName="SiteVisitAppointment.Label" VisibleIndex="11" Visible="false">
@@ -195,6 +208,8 @@ switch (OutputType) {
         </Columns>
 		<Settings ShowFilterRow="True" />
         <SettingsBehavior AllowSelectByRowClick="true" AllowSelectSingleRowOnly="true" />
+		<SettingsPager PageSizeItemSettings-Visible="true"></SettingsPager>
+        <SettingsCookies CookiesID="<#= table #>AppointmentsCookie" Enabled="true" StoreColumnsVisiblePosition="true" StoreFiltering="false" StoreGroupingAndSorting="false" StorePaging="false" />
         <ClientSideEvents EndCallback="function(s,e){UpdateMap();}" RowClick="OnGridRowClick" />
     </dx:ASPxGridView>
     </div>

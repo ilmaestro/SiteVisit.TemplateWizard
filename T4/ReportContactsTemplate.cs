@@ -136,37 +136,52 @@ this.Write(@"Search"" %>
 			<td>
 				<dx:ASPxButton ID=""btnCsvExport"" runat=""server"" Text=""Export to Csv"" UseSubmitBehavior=""False"" />
 			</td>
-		</tr>
-	</table>
-    <dx:ASPxGridView ID=""ASPxGridView1"" runat=""server"" AutoGenerateColumns=""False"" 
-		DataSourceID=""");
+            <td>            
+                <dx:ASPxButton ID=""btnResetToDefault"" AutoPostBack=""false"" runat=""server"" Text=""Reset Columns"">
+                    <ClientSideEvents Click=""function(s,e){ASPxClientUtils.DeleteCookie('");
 
         
         #line default
         #line hidden
         
-        #line 51 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 50 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(table));
 
         
         #line default
         #line hidden
         
-        #line 51 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 50 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+this.Write("ContactsReportCookie\'); window.location = window.location;}\" />\r\n                " +
+        "</dx:ASPxButton>\r\n            </td>\r\n\t\t</tr>\r\n\t</table>\r\n    <dx:ASPxGridView ID" +
+        "=\"ASPxGridView1\" runat=\"server\" AutoGenerateColumns=\"False\" \r\n\t\tDataSourceID=\"");
+
+        
+        #line default
+        #line hidden
+        
+        #line 56 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(table));
+
+        
+        #line default
+        #line hidden
+        
+        #line 56 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write("DataSource\" \r\n\t\tKeyFieldName=\"");
 
         
         #line default
         #line hidden
         
-        #line 52 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 57 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 52 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 57 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(@"""
 		ClientInstanceName=""grid"">
         <Columns>
@@ -180,28 +195,28 @@ this.Write(@"""
         #line default
         #line hidden
         
-        #line 59 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 64 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 59 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 64 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write("\" Caption=\"");
 
         
         #line default
         #line hidden
         
-        #line 59 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 64 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 59 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 64 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(@"""
                 ReadOnly=""True"" VisibleIndex=""0"" Visible=""False"">
 			</dx:GridViewDataTextColumn>
@@ -214,28 +229,28 @@ this.Write(@"""
         #line default
         #line hidden
         
-        #line 65 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 70 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(GenerateGridViewColumns(parentForm)));
 
         
         #line default
         #line hidden
         
-        #line 65 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 70 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write("\r\n");
 
         
         #line default
         #line hidden
         
-        #line 66 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 71 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(GenerateGridViewExportColumns(parentForm)));
 
         
         #line default
         #line hidden
         
-        #line 66 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 71 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(@"
             <dx:GridViewDataTextColumn FieldName=""LocationLatitude"" 
                 ReadOnly=""True"" VisibleIndex=""0"" Visible=""False"">
@@ -246,22 +261,37 @@ this.Write(@"
         </Columns>
         <Settings ShowFilterRow=""True"" ShowHeaderFilterButton=""true"" />
 		<SettingsBehavior />
-		<ClientSideEvents />
-    </dx:ASPxGridView>
-    <asp:EntityDataSource ID=""");
+		<SettingsPager PageSizeItemSettings-Visible=""true""></SettingsPager>
+        <SettingsCookies CookiesID=""");
 
         
         #line default
         #line hidden
         
-        #line 78 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 82 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(table));
 
         
         #line default
         #line hidden
         
-        #line 78 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 82 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+this.Write("ContactsReportCookie\" Enabled=\"true\" StoreColumnsVisiblePosition=\"true\" StoreFilt" +
+        "ering=\"false\" StoreGroupingAndSorting=\"false\" StorePaging=\"false\" />\r\n\t\t<ClientS" +
+        "ideEvents />\r\n    </dx:ASPxGridView>\r\n    <asp:EntityDataSource ID=\"");
+
+        
+        #line default
+        #line hidden
+        
+        #line 85 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(table));
+
+        
+        #line default
+        #line hidden
+        
+        #line 85 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write("DataSource\" runat=\"server\" \r\n        ConnectionString=\"name=SiteVisitDataEntities" +
         "\" \r\n        DefaultContainerName=\"SiteVisitDataEntities\" EnableFlattening=\"False" +
         "\" \r\n        EntitySetName=\"");
@@ -270,42 +300,42 @@ this.Write("DataSource\" runat=\"server\" \r\n        ConnectionString=\"name=Si
         #line default
         #line hidden
         
-        #line 81 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 88 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(table));
 
         
         #line default
         #line hidden
         
-        #line 81 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 88 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write("\" Where=\"");
 
         
         #line default
         #line hidden
         
-        #line 81 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 88 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(reportViewerFilterExpression));
 
         
         #line default
         #line hidden
         
-        #line 81 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 88 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write("\">\r\n        ");
 
         
         #line default
         #line hidden
         
-        #line 82 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 89 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(whereParameters));
 
         
         #line default
         #line hidden
         
-        #line 82 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 89 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(@"
     </asp:EntityDataSource>
 	<asp:EntityDataSource ID=""DispositionsDataSource"" runat=""server"" 
@@ -322,7 +352,7 @@ this.Write(@"
         #line default
         #line hidden
         
-        #line 92 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 99 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 
     }  
 
@@ -334,56 +364,56 @@ this.Write(@"
         #line default
         #line hidden
         
-        #line 98 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 105 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write("\t\t\t<dx:GridViewDataTextColumn FieldName=\"");
 
         
         #line default
         #line hidden
         
-        #line 98 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 105 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 98 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 105 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write("\" Caption=\"");
 
         
         #line default
         #line hidden
         
-        #line 98 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 105 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.FieldLabel));
 
         
         #line default
         #line hidden
         
-        #line 98 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 105 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write("\"\r\n                ReadOnly=\"True\" VisibleIndex=\"");
 
         
         #line default
         #line hidden
         
-        #line 99 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 106 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.FieldTabIndex));
 
         
         #line default
         #line hidden
         
-        #line 99 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 106 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write("\">\r\n            </dx:GridViewDataTextColumn>\r\n");
 
         
         #line default
         #line hidden
         
-        #line 101 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 108 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
  
 		}
 		return "";
@@ -411,28 +441,28 @@ this.Write("\">\r\n            </dx:GridViewDataTextColumn>\r\n");
         #line default
         #line hidden
         
-        #line 123 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 130 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write("\t\t\t");
 
         
         #line default
         #line hidden
         
-        #line 123 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 130 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(output));
 
         
         #line default
         #line hidden
         
-        #line 123 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 130 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write("\r\n");
 
         
         #line default
         #line hidden
         
-        #line 124 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 131 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
  
 		}
 		return "";
@@ -449,7 +479,7 @@ this.Write("\r\n");
         #line default
         #line hidden
         
-        #line 135 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 142 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(@"
 using System;
 using System.Collections.Generic;
@@ -468,14 +498,14 @@ namespace OnSite.WebUI.Reports
         #line default
         #line hidden
         
-        #line 148 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 155 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 148 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 155 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(@"Search : System.Web.UI.Page
     {
         SiteVisitDataEntities ctx = new SiteVisitDataEntities();
@@ -494,49 +524,49 @@ this.Write(@"Search : System.Web.UI.Page
         #line default
         #line hidden
         
-        #line 160 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 167 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 160 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 167 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write("\"].Visible = true;\r\n");
 
         
         #line default
         #line hidden
         
-        #line 161 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 168 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(GenerateExportColumns(parentForm)));
 
         
         #line default
         #line hidden
         
-        #line 161 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 168 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write("\r\n\t\t\tASPxGridView1.DataBind();\r\n\t\t\tgridExport.FileName = \"");
 
         
         #line default
         #line hidden
         
-        #line 163 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 170 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(table));
 
         
         #line default
         #line hidden
         
-        #line 163 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 170 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write("\";\r\n            gridExport.WriteCsvToResponse();\r\n        }\r\n    }\r\n}\r\n");
 
         
         #line default
         #line hidden
         
-        #line 168 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 175 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 
     }
 
@@ -562,28 +592,28 @@ this.Write("\";\r\n            gridExport.WriteCsvToResponse();\r\n        }\r\n
         #line default
         #line hidden
         
-        #line 188 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 195 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write("\t\t\t");
 
         
         #line default
         #line hidden
         
-        #line 188 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 195 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(output));
 
         
         #line default
         #line hidden
         
-        #line 188 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 195 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write("\r\n");
 
         
         #line default
         #line hidden
         
-        #line 189 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 196 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
  
 		}
 		return "";
@@ -598,7 +628,7 @@ this.Write("\r\n");
         #line default
         #line hidden
         
-        #line 198 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 205 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(@"//------------------------------------------------------------------------------
 // <auto-generated>
 //     This code was generated by a tool.
@@ -617,14 +647,14 @@ namespace OnSite.WebUI.Reports {
         #line default
         #line hidden
         
-        #line 211 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 218 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 211 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 218 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write("Search {\r\n        \r\n\t\t/// <summary>\r\n        /// btnXLSExport control.\r\n        /" +
         "// </summary>\r\n        /// <remarks>\r\n        /// Auto-generated field.\r\n       " +
         " /// To modify move field declaration from designer file to code-behind file.\r\n " +
@@ -653,7 +683,7 @@ this.Write("Search {\r\n        \r\n\t\t/// <summary>\r\n        /// btnXLSExpor
         #line default
         #line hidden
         
-        #line 263 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 270 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 
 	}
 
@@ -665,21 +695,21 @@ this.Write("Search {\r\n        \r\n\t\t/// <summary>\r\n        /// btnXLSExpor
         #line default
         #line hidden
         
-        #line 269 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 276 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write("        /// <summary>\r\n        /// uc");
 
         
         #line default
         #line hidden
         
-        #line 271 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 278 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 271 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 278 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(" control.\r\n        /// </summary>\r\n        /// <remarks>\r\n        /// Auto-genera" +
         "ted field.\r\n        /// To modify move field declaration from designer file to c" +
         "ode-behind file.\r\n        /// </remarks>\r\n        protected global::OnSite.WebUI" +
@@ -689,35 +719,35 @@ this.Write(" control.\r\n        /// </summary>\r\n        /// <remarks>\r\n    
         #line default
         #line hidden
         
-        #line 277 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 284 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 277 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 284 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(" uc");
 
         
         #line default
         #line hidden
         
-        #line 277 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 284 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 277 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 284 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(";\r\n");
 
         
         #line default
         #line hidden
         
-        #line 278 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
+        #line 285 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
  
 		}
 		return "";
