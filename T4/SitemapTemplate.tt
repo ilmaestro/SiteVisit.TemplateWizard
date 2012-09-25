@@ -8,14 +8,14 @@ GenerateSitemap(SiteVisit);
 #>
 <?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
-	<siteMapNode url="~/Default.aspx?id=1" title="Home"  description="Home Page">
-	  <siteMapNode url="~/Default.aspx" title="Home"  description="Home Page"></siteMapNode>
+	<siteMapNode url="~/Default.aspx?id=1" routeName="DefaultRoute" title="<#= sitevisit.SiteVisitName #>" description="<#= sitevisit.SiteVisitDescription #>">
+		<siteMapNode url="~/Default.aspx" routeName="DefaultRoute" title="Home"  description="Home Page"></siteMapNode>
 <#= GenerateAuditorMap(sitevisit) #>
 <#= GenerateSchedulerMap(sitevisit) #>
 <#= GenerateReportMap(sitevisit) #>
 <#= GenerateResourceMap(sitevisit) #>
-	  <siteMapNode url="~/Documents/Default.aspx" title="Documents"  description="Documents" roles="Administrator,Auditor,ReportViewer,Scheduler,Resource" />
-      <siteMapNode url="~/Admin/ManageUsers.aspx" title="Admin"  description="Administrative Manager" roles="Administrator" />
+		<siteMapNode url="~/Documents/Default.aspx" routeName="DocumentsRoute" title="Documents"  description="Documents" roles="Administrator,Auditor,ReportViewer,Scheduler,Resource" />      
+		<siteMapNode url="~/Admin/ManageUsers.aspx" title="Admin"  description="Administrative Manager" roles="Administrator" />
 	</siteMapNode>
 </siteMap>
 <#+
@@ -25,10 +25,10 @@ GenerateSitemap(SiteVisit);
 	private string GenerateAuditorMap(SiteVisit sitevisit)
 	{
 		string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
-#>			<siteMapNode url="~/SiteVisits/<#= sitevisitName #>Search.aspx?id=1" title="Site Visit"  description="<#= sitevisitName #> Site Visit" roles="Auditor">
-        <siteMapNode url="~/SiteVisits/<#= sitevisitName #>Search.aspx" title="Search"  description="Search <#= sitevisitName #>" />
-        <siteMapNode url="~/SiteVisits/<#= sitevisitName #>Preview.aspx" title="Preview"  description="Preview <#= sitevisitName #>" />
-		<siteMapNode url="~/SiteVisits/<#= sitevisitName #>Print.aspx" title="Print"  description="Print <#= sitevisitName #>" />
+#>			<siteMapNode url="~/SiteVisits/<#= sitevisitName #>Search.aspx?id=1" routeName="SiteVisitsRoute" title="Site Visit"  description="<#= sitevisitName #> Site Visit" roles="Auditor">
+        <siteMapNode url="~/SiteVisits/<#= sitevisitName #>Search.aspx" routeName="SiteVisitsRoute" title="Search"  description="Search <#= sitevisitName #>" />
+        <siteMapNode url="~/SiteVisits/<#= sitevisitName #>Preview.aspx" routeName="SiteVisitsRoute" title="Preview"  description="Preview <#= sitevisitName #>" />
+		<siteMapNode url="~/SiteVisits/<#= sitevisitName #>Print.aspx" routeName="SiteVisitsRoute" title="Print"  description="Print <#= sitevisitName #>" />
       </siteMapNode>
 <#+ 
 
@@ -37,9 +37,9 @@ GenerateSitemap(SiteVisit);
 	private string GenerateSchedulerMap(SiteVisit sitevisit)
 	{
 		string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
-#>			<siteMapNode url="~/Scheduler/<#= sitevisitName #>Edit.aspx?id=1" title="Scheduler"  description="<#= sitevisitName #> Schedule" roles="Scheduler">
-        <siteMapNode url="~/Scheduler/<#= sitevisitName #>Edit.aspx" title="Calendar"  description="Checklist Calendar" />
-        <siteMapNode url="~/Scheduler/<#= sitevisitName #>Data.aspx" title="Data Import/Export"  description="Data Import/Export" />
+#>			<siteMapNode url="~/Scheduler/<#= sitevisitName #>Edit.aspx?id=1" routeName="SchedulerRoute" title="Scheduler"  description="<#= sitevisitName #> Schedule" roles="Scheduler">
+        <siteMapNode url="~/Scheduler/<#= sitevisitName #>Edit.aspx" routeName="SchedulerRoute" title="Calendar"  description="Checklist Calendar" />
+        <siteMapNode url="~/Scheduler/<#= sitevisitName #>Data.aspx" routeName="SchedulerRoute" title="Data Import/Export"  description="Data Import/Export" />
       </siteMapNode>
 <#+ 
 		return "";
@@ -47,11 +47,11 @@ GenerateSitemap(SiteVisit);
 	private string GenerateReportMap(SiteVisit sitevisit)
 	{
 		string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
-#>			<siteMapNode url="~/Reports/<#= sitevisitName #>Schedule.aspx?id=1" title="Reports"  description="<#= sitevisitName #> Reports" roles="ReportViewer">
-        <siteMapNode url="~/Reports/Master<#= sitevisitName #>Schedule.aspx" title="Master Calendar"  description="<#= sitevisitName #> Master Calendar" />
-		<siteMapNode url="~/Reports/<#= sitevisitName #>Schedule.aspx" title="Print Schedule"  description="<#= sitevisitName #> Schedule Report" />        
-        <siteMapNode url="~/Reports/<#= sitevisitName #>Appointments.aspx" title="Appointments"  description="<#= sitevisitName #> Appointments Report" />
-        <siteMapNode url="~/Reports/<#= sitevisitName #>Contacts.aspx" title="Contacts"  description="<#= sitevisitName #> Contacts Report" />
+#>			<siteMapNode url="~/Reports/<#= sitevisitName #>Schedule.aspx?id=1" routeName="ReportsRoute" title="Reports"  description="<#= sitevisitName #> Reports" roles="ReportViewer">
+        <siteMapNode url="~/Reports/Master<#= sitevisitName #>Schedule.aspx" routeName="ReportsRoute" title="Master Calendar"  description="<#= sitevisitName #> Master Calendar" />
+		<siteMapNode url="~/Reports/<#= sitevisitName #>Schedule.aspx" routeName="ReportsRoute" title="Print Schedule"  description="<#= sitevisitName #> Schedule Report" />        
+        <siteMapNode url="~/Reports/<#= sitevisitName #>Appointments.aspx" routeName="ReportsRoute" title="Appointments"  description="<#= sitevisitName #> Appointments Report" />
+        <siteMapNode url="~/Reports/<#= sitevisitName #>Contacts.aspx" routeName="ReportsRoute" title="Contacts"  description="<#= sitevisitName #> Contacts Report" />
       </siteMapNode>
 <#+ 
 		return "";
@@ -59,8 +59,8 @@ GenerateSitemap(SiteVisit);
 	private string GenerateResourceMap(SiteVisit sitevisit)
 	{
 		string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
-#>			<siteMapNode url="~/Resource/My<#= sitevisitName #>Schedule.aspx?id=1" title="Resource"  description="<#= sitevisitName #> Resource" roles="Resource">
-        <siteMapNode url="~/Resource/My<#= sitevisitName #>Schedule.aspx" title="My Schedule"  description="My Schedule" />
+#>			<siteMapNode url="~/Resource/My<#= sitevisitName #>Schedule.aspx?id=1" routeName="ResourceRoute" title="Resource"  description="<#= sitevisitName #> Resource" roles="Resource">
+        <siteMapNode url="~/Resource/My<#= sitevisitName #>Schedule.aspx" routeName="ResourceRoute" title="My Schedule"  description="My Schedule" />
       </siteMapNode>
 <#+ 
 		return "";

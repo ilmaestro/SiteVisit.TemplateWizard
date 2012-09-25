@@ -21,7 +21,7 @@ switch (OutputType) {
 		string table = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBTableName;
         string pkey = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBPrimaryKeyName;
 #>
-<%@ Page Title="<#= sitevisit.SiteVisitName #>" Language="C#" MasterPageFile="~/Fullscreen.master" AutoEventWireup="true" CodeBehind="<#= sitevisitName #>Edit.aspx.cs" Inherits="OnSite.WebUI.Scheduler.<#= sitevisitName #>Edit" %>
+<%@ Page Title="<#= sitevisit.SiteVisitName #>" Language="C#" MasterPageFile="~/Fullscreen.master" AutoEventWireup="true" CodeBehind="<#= sitevisitName #>Edit.aspx.cs" Inherits="OnSite.WebUI.ClientCode.Scheduler.<#= sitevisitName #>Edit" %>
 <%@ Register Assembly="DevExpress.Web.ASPxScheduler.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxScheduler" TagPrefix="dxwschs" %>
 <%@ Register assembly="DevExpress.XtraScheduler.v12.1.Core, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.XtraScheduler" tagprefix="dx" %>
@@ -472,9 +472,10 @@ using DevExpress.Web.ASPxClasses;
 using XtraScheduler = DevExpress.XtraScheduler;
 using DevExpress.Web.ASPxScheduler;
 using System.Configuration;
+using OnSite.WebUI.ClientCode.Models;
 using OnSite.WebUI.Models;
 
-namespace OnSite.WebUI.Scheduler
+namespace OnSite.WebUI.ClientCode.Scheduler
 {
     public partial class <#= sitevisitName #>Edit : System.Web.UI.Page
     {
@@ -771,7 +772,7 @@ namespace OnSite.WebUI.Scheduler
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OnSite.WebUI.Scheduler {
+namespace OnSite.WebUI.ClientCode.Scheduler {
     
     
     public partial class <#= sitevisitName #>Edit {

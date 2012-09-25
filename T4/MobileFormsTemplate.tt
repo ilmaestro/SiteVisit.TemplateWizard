@@ -21,7 +21,7 @@ switch (OutputType) {
 		string fkey = form.SiteVisitForm1 != null ? form.SiteVisit.SiteVisitName.Replace(" ", "") + "_" + form.SiteVisitForm1.DBPrimaryKeyName : string.Empty;
 		string fkeyTable = form.SiteVisitForm1 != null ? form.SiteVisit.SiteVisitName.Replace(" ", "") + "_" + form.SiteVisitForm1.DBTableName : string.Empty;
 #>
-<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="<#= form.DBTableName #>.ascx.cs" Inherits="OnSite.WebUI.UserControls.GeneratedForms.<#= form.DBTableName #>" %>
+<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="<#= form.DBTableName #>.ascx.cs" Inherits="OnSite.WebUI.ClientCode.UserControls.<#= form.DBTableName #>" %>
 <%@ Register Assembly="DevExpress.Web.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxHiddenField" TagPrefix="dx" %>
 <%@ Register Assembly="DevExpress.Web.ASPxEditors.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
@@ -163,9 +163,10 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Security;
+using OnSite.WebUI.ClientCode.Models;
 using OnSite.WebUI.Models;
 
-namespace OnSite.WebUI.UserControls.GeneratedForms
+namespace OnSite.WebUI.ClientCode.UserControls
 {
     public partial class <#= form.DBTableName #> : System.Web.UI.UserControl
     {
@@ -426,7 +427,7 @@ namespace OnSite.WebUI.UserControls.GeneratedForms
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OnSite.WebUI.UserControls.GeneratedForms {
+namespace OnSite.WebUI.ClientCode.UserControls {
     
     
     public partial class <#= form.DBTableName #> {

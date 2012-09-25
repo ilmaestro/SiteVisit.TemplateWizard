@@ -107,7 +107,7 @@ this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
         #line hidden
         
         #line 33 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
-this.Write("Appointments.aspx.cs\" Inherits=\"OnSite.WebUI.Reports.");
+this.Write("Appointments.aspx.cs\" Inherits=\"OnSite.WebUI.ClientCode.Reports.");
 
         
         #line default
@@ -674,10 +674,11 @@ using DevExpress.Web.ASPxUploadControl;
 using System.IO;
 using CadmusUtility;
 using System.Data;
+using OnSite.WebUI.ClientCode.Models;
 using OnSite.WebUI.Models;
 using System.Web.Security;
 
-namespace OnSite.WebUI.Reports
+namespace OnSite.WebUI.ClientCode.Reports
 {
     public partial class ");
 
@@ -685,14 +686,14 @@ namespace OnSite.WebUI.Reports
         #line default
         #line hidden
         
-        #line 288 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 289 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 288 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 289 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write(@"Appointments : System.Web.UI.Page
     {
         private SiteVisitDataEntities dataCtx = new SiteVisitDataEntities();
@@ -716,28 +717,28 @@ this.Write(@"Appointments : System.Web.UI.Page
         #line default
         #line hidden
         
-        #line 305 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 306 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(GenerateExportColumns(table, parentForm)));
 
         
         #line default
         #line hidden
         
-        #line 305 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 306 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write("\r\n\t\t\tgrid.DataBind();\r\n\t\t\tgridExporter.FileName = \"");
 
         
         #line default
         #line hidden
         
-        #line 307 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 308 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 307 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 308 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write("Appointments\";\r\n            gridExporter.WriteCsvToResponse();\r\n        }\r\n    }\r" +
         "\n}\r\n");
 
@@ -745,7 +746,7 @@ this.Write("Appointments\";\r\n            gridExporter.WriteCsvToResponse();\r\
         #line default
         #line hidden
         
-        #line 312 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 313 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 
     }
 
@@ -771,28 +772,28 @@ this.Write("Appointments\";\r\n            gridExporter.WriteCsvToResponse();\r\
         #line default
         #line hidden
         
-        #line 332 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 333 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write("\t\t\t");
 
         
         #line default
         #line hidden
         
-        #line 332 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 333 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(output));
 
         
         #line default
         #line hidden
         
-        #line 332 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 333 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write("\r\n");
 
         
         #line default
         #line hidden
         
-        #line 333 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 334 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
  
 		}
 		return "";
@@ -807,7 +808,7 @@ this.Write("\r\n");
         #line default
         #line hidden
         
-        #line 342 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 343 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write(@"//------------------------------------------------------------------------------
 // <auto-generated>
 //     This code was generated by a tool.
@@ -817,7 +818,7 @@ this.Write(@"//-----------------------------------------------------------------
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OnSite.WebUI.Reports {
+namespace OnSite.WebUI.ClientCode.Reports {
     
     
     public partial class ");
@@ -826,14 +827,14 @@ namespace OnSite.WebUI.Reports {
         #line default
         #line hidden
         
-        #line 355 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 356 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 355 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 356 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write(@"Appointments {
 
 /// <summary>
@@ -879,7 +880,7 @@ this.Write(@"Appointments {
         #line default
         #line hidden
         
-        #line 394 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 395 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 
 	}
 

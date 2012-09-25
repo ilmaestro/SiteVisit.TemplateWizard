@@ -25,14 +25,14 @@ namespace OnSite.TemplateWizard.Classes
     using System.Data.EntityClient;
     
     
-    #line 1 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+    #line 1 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "10.0.0.0")]
     public partial class FormsPreviewTemplate : FormsPreviewTemplateBase
     {
         public virtual string TransformText()
         {
             
-            #line 2 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+            #line 2 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 
 switch (OutputType) {
 	case FileType.Page:
@@ -54,7 +54,7 @@ switch (OutputType) {
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 16 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 16 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 
     void GeneratePage(SiteVisit sitevisit, IEnumerable<SiteVisitForm> forms)
 	{
@@ -64,21 +64,21 @@ switch (OutputType) {
         #line default
         #line hidden
         
-        #line 20 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 20 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write("<%@ Page Title=\"");
 
         
         #line default
         #line hidden
         
-        #line 21 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 21 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 21 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 21 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write(" Preview\" Language=\"C#\" MasterPageFile=\"~/Site.master\" AutoEventWireup=\"true\" Cod" +
         "eBehind=\"");
 
@@ -86,42 +86,42 @@ this.Write(" Preview\" Language=\"C#\" MasterPageFile=\"~/Site.master\" AutoEven
         #line default
         #line hidden
         
-        #line 21 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 21 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 21 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
-this.Write("Preview.aspx.cs\" Inherits=\"OnSite.WebUI.SiteVisits.");
+        #line 21 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+this.Write("Preview.aspx.cs\" Inherits=\"OnSite.WebUI.ClientCode.SiteVisits.");
 
         
         #line default
         #line hidden
         
-        #line 21 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 21 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 21 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 21 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write("Preview\" %>\r\n");
 
         
         #line default
         #line hidden
         
-        #line 22 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 22 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(GenerateUserControlReferences(forms)));
 
         
         #line default
         #line hidden
         
-        #line 22 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 22 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write(@"
 
 <asp:Content ID=""HeaderContent"" runat=""server"" ContentPlaceHolderID=""HeadContent"">
@@ -144,14 +144,14 @@ this.Write(@"
         #line default
         #line hidden
         
-        #line 38 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 38 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(GenerateNavBarItems(forms)));
 
         
         #line default
         #line hidden
         
-        #line 38 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 38 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write("\r\n                            </Items>\r\n                        </dx:NavBarGroup>" +
         "        \r\n                    </Groups>\r\n                </dx:ASPxNavBar>\r\n     " +
         "       </td>\r\n            <td valign=\"top\">\r\n");
@@ -160,21 +160,21 @@ this.Write("\r\n                            </Items>\r\n                        
         #line default
         #line hidden
         
-        #line 45 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 45 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(GenerateUserControls(forms)));
 
         
         #line default
         #line hidden
         
-        #line 45 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 45 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write("\r\n            </td>\r\n        </tr>\r\n    </table>\r\n\r\n</asp:Content>\r\n");
 
         
         #line default
         #line hidden
         
-        #line 51 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 51 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 
     }  
 
@@ -186,42 +186,42 @@ this.Write("\r\n            </td>\r\n        </tr>\r\n    </table>\r\n\r\n</asp:
         #line default
         #line hidden
         
-        #line 57 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
-this.Write("<%@ Register src=\"~/UserControls/GeneratedForms/");
+        #line 57 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+this.Write("<%@ Register src=\"~/ClientCode/UserControls/");
 
         
         #line default
         #line hidden
         
-        #line 57 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 57 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 57 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 57 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write(".ascx\" tagname=\"");
 
         
         #line default
         #line hidden
         
-        #line 57 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 57 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 57 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 57 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write("\" tagprefix=\"uc\" %>\r\n");
 
         
         #line default
         #line hidden
         
-        #line 58 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 58 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
  
 		}
 		return "";
@@ -236,42 +236,42 @@ this.Write("\" tagprefix=\"uc\" %>\r\n");
         #line default
         #line hidden
         
-        #line 67 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 67 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write("\t\t\t\t                <dx:NavBarItem Text=\"");
 
         
         #line default
         #line hidden
         
-        #line 67 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 67 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.UIDisplayName));
 
         
         #line default
         #line hidden
         
-        #line 67 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 67 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write("\" Name=\"");
 
         
         #line default
         #line hidden
         
-        #line 67 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 67 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 67 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 67 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write("\">                        \r\n                                </dx:NavBarItem>\r\n");
 
         
         #line default
         #line hidden
         
-        #line 69 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 69 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
  
 		}
 		return "";
@@ -286,56 +286,56 @@ this.Write("\">                        \r\n                                </dx:
         #line default
         #line hidden
         
-        #line 78 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 78 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write("\t\t\t\t<uc:");
 
         
         #line default
         #line hidden
         
-        #line 78 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 78 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 78 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 78 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write(" ID=\"uc");
 
         
         #line default
         #line hidden
         
-        #line 78 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 78 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 78 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 78 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write("\" runat=\"server\" Visible=\"");
 
         
         #line default
         #line hidden
         
-        #line 78 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 78 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(visible));
 
         
         #line default
         #line hidden
         
-        #line 78 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 78 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write("\" />\r\n");
 
         
         #line default
         #line hidden
         
-        #line 79 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 79 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
  
 		}
 		return "";
@@ -349,23 +349,33 @@ this.Write("\" />\r\n");
         #line default
         #line hidden
         
-        #line 87 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
-this.Write("\r\nusing System;\r\nusing System.Collections.Generic;\r\nusing System.Linq;\r\nusing Sys" +
-        "tem.Web;\r\nusing System.Web.UI;\r\nusing System.Web.UI.WebControls;\r\nusing OnSite.W" +
-        "ebUI.Models;\r\n\r\nnamespace OnSite.WebUI.SiteVisits\r\n{\r\n    public partial class ");
+        #line 87 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+this.Write(@"
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using OnSite.WebUI.ClientCode.Models;
+using OnSite.WebUI.Models;
+
+namespace OnSite.WebUI.ClientCode.SiteVisits
+{
+    public partial class ");
 
         
         #line default
         #line hidden
         
-        #line 99 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 100 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 99 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 100 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write("Preview : System.Web.UI.Page\r\n    {\r\n        protected void Page_Load(object send" +
         "er, EventArgs e)\r\n        {\r\n            if (!IsPostBack)\r\n            {\t\t\t\t\t\t\r\n" +
         "");
@@ -374,14 +384,14 @@ this.Write("Preview : System.Web.UI.Page\r\n    {\r\n        protected void Page
         #line default
         #line hidden
         
-        #line 105 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 106 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(GenerateUserControlBinds(forms)));
 
         
         #line default
         #line hidden
         
-        #line 105 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 106 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write(@"
 			}
 		}
@@ -402,14 +412,14 @@ this.Write(@"
         #line default
         #line hidden
         
-        #line 119 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 120 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(GenerateNavBarSwitchStatements(forms)));
 
         
         #line default
         #line hidden
         
-        #line 119 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 120 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write("\r\n                default:\r\n                    break;\r\n            }\r\n        }\r" +
         "\n\r\n        private void hideControls()\r\n        {\r\n");
 
@@ -417,21 +427,21 @@ this.Write("\r\n                default:\r\n                    break;\r\n      
         #line default
         #line hidden
         
-        #line 127 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 128 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(GenerateUserControlHides(forms)));
 
         
         #line default
         #line hidden
         
-        #line 127 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 128 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write("\r\n        }\r\n    }\r\n}\r\n");
 
         
         #line default
         #line hidden
         
-        #line 131 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 132 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 
     }
 
@@ -443,28 +453,28 @@ this.Write("\r\n        }\r\n    }\r\n}\r\n");
         #line default
         #line hidden
         
-        #line 137 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 138 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write("\t\t\t\tuc");
 
         
         #line default
         #line hidden
         
-        #line 137 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 138 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 137 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 138 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write(".BindListControls();        \r\n");
 
         
         #line default
         #line hidden
         
-        #line 138 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 139 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
  
 		}
 		return "";
@@ -478,42 +488,42 @@ this.Write(".BindListControls();        \r\n");
         #line default
         #line hidden
         
-        #line 146 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 147 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write("                case \"");
 
         
         #line default
         #line hidden
         
-        #line 146 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 147 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 146 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 147 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write("\":\r\n                    uc");
 
         
         #line default
         #line hidden
         
-        #line 147 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 148 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 147 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 148 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write(".Visible = true;\r\n                    break;  \r\n");
 
         
         #line default
         #line hidden
         
-        #line 149 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 150 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
  
 		}
 		return "";
@@ -527,28 +537,28 @@ this.Write(".Visible = true;\r\n                    break;  \r\n");
         #line default
         #line hidden
         
-        #line 157 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 158 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write("\t\t\t\tuc");
 
         
         #line default
         #line hidden
         
-        #line 157 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 158 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 157 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 158 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write(".Visible = false;       \r\n");
 
         
         #line default
         #line hidden
         
-        #line 158 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 159 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
  
 		}
 		return "";
@@ -562,7 +572,7 @@ this.Write(".Visible = false;       \r\n");
         #line default
         #line hidden
         
-        #line 166 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 167 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write(@"//------------------------------------------------------------------------------
 // <auto-generated>
 //     This code was generated by a tool.
@@ -572,7 +582,7 @@ this.Write(@"//-----------------------------------------------------------------
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OnSite.WebUI.SiteVisits {
+namespace OnSite.WebUI.ClientCode.SiteVisits {
     
     
     public partial class ");
@@ -581,14 +591,14 @@ namespace OnSite.WebUI.SiteVisits {
         #line default
         #line hidden
         
-        #line 179 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 180 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 179 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 180 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write(@"Preview {
 
         /// <summary>
@@ -606,21 +616,21 @@ this.Write(@"Preview {
         #line default
         #line hidden
         
-        #line 190 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 191 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(GenerateDesignerProperties(forms)));
 
         
         #line default
         #line hidden
         
-        #line 190 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 191 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write("\r\n\r\n\t}\r\n}\r\n");
 
         
         #line default
         #line hidden
         
-        #line 194 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 195 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 
 	}
 
@@ -632,62 +642,62 @@ this.Write("\r\n\r\n\t}\r\n}\r\n");
         #line default
         #line hidden
         
-        #line 200 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 201 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write("        /// <summary>\r\n        /// uc");
 
         
         #line default
         #line hidden
         
-        #line 202 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 203 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 202 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 203 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write(@" control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::OnSite.WebUI.UserControls.GeneratedForms.");
+        protected global::OnSite.WebUI.ClientCode.UserControls.");
 
         
         #line default
         #line hidden
         
-        #line 208 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 209 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 208 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 209 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write(" uc");
 
         
         #line default
         #line hidden
         
-        #line 208 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 209 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 208 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 209 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
 this.Write(";\r\n");
 
         
         #line default
         #line hidden
         
-        #line 209 "C:\Apps\On-Site\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
+        #line 210 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsPreviewTemplate.tt"
  
 		}
 		return "";

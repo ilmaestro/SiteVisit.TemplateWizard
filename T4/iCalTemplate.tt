@@ -22,7 +22,7 @@ switch (OutputType) {
 		string table = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBTableName;
         string pkey = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBPrimaryKeyName;
 #>
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="<#= sitevisitName #>Calendar.aspx.cs" Inherits="OnSite.WebUI.WebServices.<#= sitevisitName #>Calendar" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="<#= sitevisitName #>Calendar.aspx.cs" Inherits="OnSite.WebUI.ClientCode.WebServices.<#= sitevisitName #>Calendar" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -65,12 +65,13 @@ using DDay;
 using System.Xml.Serialization;
 using System.Web.Security;
 using System.Data;
+using OnSite.WebUI.ClientCode.Models;
 using OnSite.WebUI.Models;
 using CadmusUtility;
 using System.Configuration;
 using OnSite.WebUI.Classes;
 
-namespace OnSite.WebUI.WebServices
+namespace OnSite.WebUI.ClientCode.WebServices
 {
     public partial class <#= sitevisitName #>Calendar : System.Web.UI.Page
     {
@@ -219,7 +220,7 @@ namespace OnSite.WebUI.WebServices
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OnSite.WebUI.WebServices
+namespace OnSite.WebUI.ClientCode.WebServices
 {
 
 

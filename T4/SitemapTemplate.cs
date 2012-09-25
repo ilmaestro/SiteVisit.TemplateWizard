@@ -52,11 +52,38 @@ GenerateSitemap(SiteVisit);
         #line hidden
         
         #line 8 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write(@"<?xml version=""1.0"" encoding=""utf-8"" ?>
-<siteMap xmlns=""http://schemas.microsoft.com/AspNet/SiteMap-File-1.0"" >
-	<siteMapNode url=""~/Default.aspx?id=1"" title=""Home""  description=""Home Page"">
-	  <siteMapNode url=""~/Default.aspx"" title=""Home""  description=""Home Page""></siteMapNode>
-");
+this.Write("<?xml version=\"1.0\" encoding=\"utf-8\" ?>\r\n<siteMap xmlns=\"http://schemas.microsoft" +
+        ".com/AspNet/SiteMap-File-1.0\" >\r\n\t<siteMapNode url=\"~/Default.aspx?id=1\" routeNa" +
+        "me=\"DefaultRoute\" title=\"");
+
+        
+        #line default
+        #line hidden
+        
+        #line 11 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(sitevisit.SiteVisitName));
+
+        
+        #line default
+        #line hidden
+        
+        #line 11 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
+this.Write("\" description=\"");
+
+        
+        #line default
+        #line hidden
+        
+        #line 11 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(sitevisit.SiteVisitDescription));
+
+        
+        #line default
+        #line hidden
+        
+        #line 11 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
+this.Write("\">\r\n\t\t<siteMapNode url=\"~/Default.aspx\" routeName=\"DefaultRoute\" title=\"Home\"  de" +
+        "scription=\"Home Page\"></siteMapNode>\r\n");
 
         
         #line default
@@ -113,8 +140,8 @@ this.Write(this.ToStringHelper.ToStringWithCulture(GenerateResourceMap(sitevisit
         
         #line 16 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
 this.Write(@"
-	  <siteMapNode url=""~/Documents/Default.aspx"" title=""Documents""  description=""Documents"" roles=""Administrator,Auditor,ReportViewer,Scheduler,Resource"" />
-      <siteMapNode url=""~/Admin/ManageUsers.aspx"" title=""Admin""  description=""Administrative Manager"" roles=""Administrator"" />
+		<siteMapNode url=""~/Documents/Default.aspx"" routeName=""DocumentsRoute"" title=""Documents""  description=""Documents"" roles=""Administrator,Auditor,ReportViewer,Scheduler,Resource"" />      
+		<siteMapNode url=""~/Admin/ManageUsers.aspx"" title=""Admin""  description=""Administrative Manager"" roles=""Administrator"" />
 	</siteMapNode>
 </siteMap>
 ");
@@ -151,7 +178,7 @@ this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
         #line hidden
         
         #line 28 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write("Search.aspx?id=1\" title=\"Site Visit\"  description=\"");
+this.Write("Search.aspx?id=1\" routeName=\"SiteVisitsRoute\" title=\"Site Visit\"  description=\"");
 
         
         #line default
@@ -179,7 +206,7 @@ this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
         #line hidden
         
         #line 29 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write("Search.aspx\" title=\"Search\"  description=\"Search ");
+this.Write("Search.aspx\" routeName=\"SiteVisitsRoute\" title=\"Search\"  description=\"Search ");
 
         
         #line default
@@ -207,7 +234,7 @@ this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
         #line hidden
         
         #line 30 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write("Preview.aspx\" title=\"Preview\"  description=\"Preview ");
+this.Write("Preview.aspx\" routeName=\"SiteVisitsRoute\" title=\"Preview\"  description=\"Preview ");
 
         
         #line default
@@ -235,7 +262,7 @@ this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
         #line hidden
         
         #line 31 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write("Print.aspx\" title=\"Print\"  description=\"Print ");
+this.Write("Print.aspx\" routeName=\"SiteVisitsRoute\" title=\"Print\"  description=\"Print ");
 
         
         #line default
@@ -283,7 +310,7 @@ this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
         #line hidden
         
         #line 40 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write("Edit.aspx?id=1\" title=\"Scheduler\"  description=\"");
+this.Write("Edit.aspx?id=1\" routeName=\"SchedulerRoute\" title=\"Scheduler\"  description=\"");
 
         
         #line default
@@ -311,8 +338,8 @@ this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
         #line hidden
         
         #line 41 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write("Edit.aspx\" title=\"Calendar\"  description=\"Checklist Calendar\" />\r\n        <siteMa" +
-        "pNode url=\"~/Scheduler/");
+this.Write("Edit.aspx\" routeName=\"SchedulerRoute\" title=\"Calendar\"  description=\"Checklist Ca" +
+        "lendar\" />\r\n        <siteMapNode url=\"~/Scheduler/");
 
         
         #line default
@@ -326,8 +353,8 @@ this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
         #line hidden
         
         #line 42 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write("Data.aspx\" title=\"Data Import/Export\"  description=\"Data Import/Export\" />\r\n     " +
-        " </siteMapNode>\r\n");
+this.Write("Data.aspx\" routeName=\"SchedulerRoute\" title=\"Data Import/Export\"  description=\"Da" +
+        "ta Import/Export\" />\r\n      </siteMapNode>\r\n");
 
         
         #line default
@@ -360,7 +387,7 @@ this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
         #line hidden
         
         #line 50 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write("Schedule.aspx?id=1\" title=\"Reports\"  description=\"");
+this.Write("Schedule.aspx?id=1\" routeName=\"ReportsRoute\" title=\"Reports\"  description=\"");
 
         
         #line default
@@ -388,7 +415,7 @@ this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
         #line hidden
         
         #line 51 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write("Schedule.aspx\" title=\"Master Calendar\"  description=\"");
+this.Write("Schedule.aspx\" routeName=\"ReportsRoute\" title=\"Master Calendar\"  description=\"");
 
         
         #line default
@@ -416,7 +443,7 @@ this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
         #line hidden
         
         #line 52 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write("Schedule.aspx\" title=\"Print Schedule\"  description=\"");
+this.Write("Schedule.aspx\" routeName=\"ReportsRoute\" title=\"Print Schedule\"  description=\"");
 
         
         #line default
@@ -444,7 +471,7 @@ this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
         #line hidden
         
         #line 53 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write("Appointments.aspx\" title=\"Appointments\"  description=\"");
+this.Write("Appointments.aspx\" routeName=\"ReportsRoute\" title=\"Appointments\"  description=\"");
 
         
         #line default
@@ -472,7 +499,7 @@ this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
         #line hidden
         
         #line 54 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write("Contacts.aspx\" title=\"Contacts\"  description=\"");
+this.Write("Contacts.aspx\" routeName=\"ReportsRoute\" title=\"Contacts\"  description=\"");
 
         
         #line default
@@ -519,7 +546,7 @@ this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
         #line hidden
         
         #line 62 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write("Schedule.aspx?id=1\" title=\"Resource\"  description=\"");
+this.Write("Schedule.aspx?id=1\" routeName=\"ResourceRoute\" title=\"Resource\"  description=\"");
 
         
         #line default
@@ -547,8 +574,8 @@ this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
         #line hidden
         
         #line 63 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SitemapTemplate.tt"
-this.Write("Schedule.aspx\" title=\"My Schedule\"  description=\"My Schedule\" />\r\n      </siteMap" +
-        "Node>\r\n");
+this.Write("Schedule.aspx\" routeName=\"ResourceRoute\" title=\"My Schedule\"  description=\"My Sch" +
+        "edule\" />\r\n      </siteMapNode>\r\n");
 
         
         #line default

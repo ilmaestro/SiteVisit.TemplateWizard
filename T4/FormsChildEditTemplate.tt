@@ -24,8 +24,8 @@ switch (OutputType) {
 		string ftable = sitevisitname + "_" + parentForm.DBTableName;
 		string fkey = sitevisitname + "_" + parentForm.DBPrimaryKeyName;
 #>
-<%@ Page Title="<#= form.SiteVisitFormName #>" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="<#= form.DBTableName #>Edit.aspx.cs" Inherits="OnSite.WebUI.SiteVisits.<#= form.DBTableName #>Edit" %>
-<%@ Register src="~/UserControls/GeneratedForms/<#= form.DBTableName #>.ascx" tagname="<#= form.DBTableName #>" tagprefix="uc" %>
+<%@ Page Title="<#= form.SiteVisitFormName #>" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="<#= form.DBTableName #>Edit.aspx.cs" Inherits="OnSite.WebUI.ClientCode.SiteVisits.<#= form.DBTableName #>Edit" %>
+<%@ Register src="~/ClientCode/UserControls/<#= form.DBTableName #>.ascx" tagname="<#= form.DBTableName #>" tagprefix="uc" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <script type="text/javascript">
@@ -84,9 +84,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using OnSite.WebUI.ClientCode.Models;
 using OnSite.WebUI.Models;
 
-namespace OnSite.WebUI.SiteVisits
+namespace OnSite.WebUI.ClientCode.SiteVisits
 {
     public partial class <#= form.DBTableName #>Edit : System.Web.UI.Page
     {
@@ -217,7 +218,7 @@ namespace OnSite.WebUI.SiteVisits
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OnSite.WebUI.SiteVisits {
+namespace OnSite.WebUI.ClientCode.SiteVisits {
     
     
     public partial class <#= form.DBTableName #>Edit {
@@ -274,7 +275,7 @@ namespace OnSite.WebUI.SiteVisits {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::OnSite.WebUI.UserControls.GeneratedForms.<#= form.DBTableName #> uc<#= form.DBTableName #>;
+        protected global::OnSite.WebUI.ClientCode.UserControls.<#= form.DBTableName #> uc<#= form.DBTableName #>;
 
 	}
 }

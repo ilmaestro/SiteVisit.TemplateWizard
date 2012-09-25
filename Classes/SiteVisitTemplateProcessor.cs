@@ -23,14 +23,14 @@ namespace OnSite.TemplateWizard.Classes
         public SiteVisitTemplateProcessor(string basePath)
         {
             BasePath = basePath;
-            FormsPath = Path.Combine(BasePath, @"UserControls\GeneratedForms\");
-            SiteVisitsPath = Path.Combine(BasePath,  @"SiteVisits\");
-            ReportsPath = Path.Combine(BasePath, @"Reports\");
-            SchedulerPath = Path.Combine(BasePath, @"Scheduler\");
-            ResourcePath = Path.Combine(BasePath, @"Resource\");
-            DocumentsPath = Path.Combine(BasePath, @"Documents\");
-            SitemapPath = BasePath;
-            iCalPath = Path.Combine(BasePath, @"WebServices\");
+            FormsPath = Path.Combine(BasePath, @"ClientCode\UserControls\");
+            SiteVisitsPath = Path.Combine(BasePath, @"ClientCode\SiteVisits\");
+            ReportsPath = Path.Combine(BasePath, @"ClientCode\Reports\");
+            SchedulerPath = Path.Combine(BasePath, @"ClientCode\Scheduler\");
+            ResourcePath = Path.Combine(BasePath, @"ClientCode\Resource\");
+            DocumentsPath = Path.Combine(BasePath, @"ClientCode\Documents\");
+            SitemapPath = Path.Combine(BasePath, @"ClientCode\");
+            iCalPath = Path.Combine(BasePath, @"ClientCode\WebServices\");
         }
 
         public void CleanUpFolders()

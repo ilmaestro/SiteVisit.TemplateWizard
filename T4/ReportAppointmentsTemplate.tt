@@ -30,7 +30,7 @@ switch (OutputType) {
         </WhereParameters>";
 		}
 
-#><%@ Page Title="<#= sitevisit.SiteVisitName #>" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="<#= sitevisitName #>Appointments.aspx.cs" Inherits="OnSite.WebUI.Reports.<#= sitevisitName #>Appointments" %>
+#><%@ Page Title="<#= sitevisit.SiteVisitName #>" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="<#= sitevisitName #>Appointments.aspx.cs" Inherits="OnSite.WebUI.ClientCode.Reports.<#= sitevisitName #>Appointments" %>
 <%@ Register Assembly="DevExpress.Web.ASPxGridView.v12.1.Export, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxGridView.Export" TagPrefix="dx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
@@ -280,10 +280,11 @@ using DevExpress.Web.ASPxUploadControl;
 using System.IO;
 using CadmusUtility;
 using System.Data;
+using OnSite.WebUI.ClientCode.Models;
 using OnSite.WebUI.Models;
 using System.Web.Security;
 
-namespace OnSite.WebUI.Reports
+namespace OnSite.WebUI.ClientCode.Reports
 {
     public partial class <#= sitevisitName #>Appointments : System.Web.UI.Page
     {
@@ -349,7 +350,7 @@ namespace OnSite.WebUI.Reports
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OnSite.WebUI.Reports {
+namespace OnSite.WebUI.ClientCode.Reports {
     
     
     public partial class <#= sitevisitName #>Appointments {

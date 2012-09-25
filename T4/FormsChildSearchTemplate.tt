@@ -24,7 +24,7 @@ switch (OutputType) {
 		string ftable = sitevisitname + "_" + parentForm.DBTableName;
 		string fkey = sitevisitname + "_" + parentForm.DBPrimaryKeyName;
 #>
-<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="<#= form.DBTableName #>Search.ascx.cs" Inherits="OnSite.WebUI.UserControls.GeneratedForms.<#= form.DBTableName #>Search" %>
+<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="<#= form.DBTableName #>Search.ascx.cs" Inherits="OnSite.WebUI.ClientCode.UserControls.<#= form.DBTableName #>Search" %>
 <%@ Register Assembly="DevExpress.Web.ASPxGridView.v12.1.Export, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxGridView.Export" TagPrefix="dx" %>
 
@@ -115,9 +115,10 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using DevExpress.Web.ASPxClasses;
+using OnSite.WebUI.ClientCode.Models;
 using OnSite.WebUI.Models;
 
-namespace OnSite.WebUI.UserControls.GeneratedForms
+namespace OnSite.WebUI.ClientCode.UserControls
 {
     public partial class <#= form.DBTableName #>Search : System.Web.UI.UserControl
     {
@@ -212,7 +213,7 @@ namespace OnSite.WebUI.UserControls.GeneratedForms
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OnSite.WebUI.UserControls.GeneratedForms {
+namespace OnSite.WebUI.ClientCode.UserControls {
     
     
     public partial class <#= form.DBTableName #>Search {

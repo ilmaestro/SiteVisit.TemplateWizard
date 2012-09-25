@@ -97,7 +97,7 @@ this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
         #line hidden
         
         #line 24 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
-this.Write("Schedule.aspx.cs\" Inherits=\"OnSite.WebUI.Scheduler.My");
+this.Write("Schedule.aspx.cs\" Inherits=\"OnSite.WebUI.ClientCode.Scheduler.My");
 
         
         #line default
@@ -365,9 +365,10 @@ using DevExpress.Web.ASPxClasses;
 using XtraScheduler = DevExpress.XtraScheduler;
 using DevExpress.Web.ASPxScheduler;
 using System.Configuration;
+using OnSite.WebUI.ClientCode.Models;
 using OnSite.WebUI.Models;
 
-namespace OnSite.WebUI.Scheduler
+namespace OnSite.WebUI.ClientCode.Scheduler
 {
     public partial class My");
 
@@ -375,14 +376,14 @@ namespace OnSite.WebUI.Scheduler
         #line default
         #line hidden
         
-        #line 148 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+        #line 149 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 148 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+        #line 149 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
 this.Write("Schedule : System.Web.UI.Page\r\n    {\r\n        private int lastInsertedAppointment" +
         "Id;\r\n\r\n        SiteVisitDataEntities dataCtx = new SiteVisitDataEntities();\r\n\r\n " +
         "       protected void Page_Load(object sender, EventArgs e)\r\n        {\r\n        " +
@@ -409,14 +410,14 @@ this.Write("Schedule : System.Web.UI.Page\r\n    {\r\n        private int lastIn
         #line default
         #line hidden
         
-        #line 178 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+        #line 179 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(siteVisitID));
 
         
         #line default
         #line hidden
         
-        #line 178 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+        #line 179 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
 this.Write(";\r\n            if (e.NewValues[\"CreateDate\"] == null)\r\n                e.NewValue" +
         "s[\"CreateDate\"] = DateTime.Now;\r\n            e.NewValues[\"LastModifiedDate\"] = D" +
         "ateTime.Now;\r\n        }\r\n\r\n        protected void ASPxScheduler1_AppointmentRowU" +
@@ -443,14 +444,14 @@ this.Write(";\r\n            if (e.NewValues[\"CreateDate\"] == null)\r\n       
         #line default
         #line hidden
         
-        #line 212 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+        #line 213 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(siteVisitID));
 
         
         #line default
         #line hidden
         
-        #line 212 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+        #line 213 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
 this.Write("&UID=\" + onSiteUserGUID);\r\n            \r\n\t\t\tstring ICSNavigateUrl =  \"http://\" + " +
         "rootURL + ResolveUrl(\"~/WebServices/");
 
@@ -458,14 +459,14 @@ this.Write("&UID=\" + onSiteUserGUID);\r\n            \r\n\t\t\tstring ICSNaviga
         #line default
         #line hidden
         
-        #line 214 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+        #line 215 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 214 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+        #line 215 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
 this.Write("Calendar.aspx?q=\" + q);\r\n            string OutlookNavigateUrl = \"webcal://\" + ro" +
         "otURL + ResolveUrl(\"~/WebServices/");
 
@@ -473,14 +474,14 @@ this.Write("Calendar.aspx?q=\" + q);\r\n            string OutlookNavigateUrl = 
         #line default
         #line hidden
         
-        #line 215 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+        #line 216 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 215 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+        #line 216 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
 this.Write(@"Calendar.aspx?q="" + q);
 
             CalendarMenu.Items.Add(""Open in Outlook"", ""Outlook"", ""~/Images/Outlook-icon.gif"", OutlookNavigateUrl, """");
@@ -494,7 +495,7 @@ this.Write(@"Calendar.aspx?q="" + q);
         #line default
         #line hidden
         
-        #line 222 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+        #line 223 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
 
     }
 
@@ -506,28 +507,28 @@ this.Write(@"Calendar.aspx?q="" + q);
         #line default
         #line hidden
         
-        #line 228 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+        #line 229 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
 this.Write(" + contact.");
 
         
         #line default
         #line hidden
         
-        #line 228 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+        #line 229 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 228 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+        #line 229 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
 this.Write(" + \" \"");
 
         
         #line default
         #line hidden
         
-        #line 228 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+        #line 229 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
  
 		}
 		return "";
@@ -553,63 +554,63 @@ this.Write(" + \" \"");
         #line default
         #line hidden
         
-        #line 248 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+        #line 249 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
 this.Write("contact.");
 
         
         #line default
         #line hidden
         
-        #line 248 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+        #line 249 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(addressField.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 248 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+        #line 249 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
 this.Write(" + \" \" + contact.");
 
         
         #line default
         #line hidden
         
-        #line 248 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+        #line 249 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(cityField.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 248 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+        #line 249 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
 this.Write(" + \", \" + contact.");
 
         
         #line default
         #line hidden
         
-        #line 248 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+        #line 249 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(stateField.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 248 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+        #line 249 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
 this.Write(" + \" \" + contact.");
 
         
         #line default
         #line hidden
         
-        #line 248 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+        #line 249 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(zipField.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 248 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+        #line 249 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
  
 		return "";
 	}
@@ -651,77 +652,77 @@ this.Write(this.ToStringHelper.ToStringWithCulture(zipField.FieldName));
         #line default
         #line hidden
         
-        #line 284 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+        #line 285 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(summaryExpression));
 
         
         #line default
         #line hidden
         
-        #line 284 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+        #line 285 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(phoneExpression));
 
         
         #line default
         #line hidden
         
-        #line 284 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+        #line 285 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
 this.Write("\"Address:\\n\" + contact.");
 
         
         #line default
         #line hidden
         
-        #line 284 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+        #line 285 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(addressField.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 284 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+        #line 285 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
 this.Write(" + \"\\n\" + contact.");
 
         
         #line default
         #line hidden
         
-        #line 284 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+        #line 285 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(cityField.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 284 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+        #line 285 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
 this.Write(" + \", \" + contact.");
 
         
         #line default
         #line hidden
         
-        #line 284 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+        #line 285 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(stateField.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 284 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+        #line 285 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
 this.Write(" + \" \" + contact.");
 
         
         #line default
         #line hidden
         
-        #line 284 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+        #line 285 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(zipField.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 284 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+        #line 285 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
  
 		return "";
 	}
@@ -737,7 +738,7 @@ this.Write(this.ToStringHelper.ToStringWithCulture(zipField.FieldName));
         #line default
         #line hidden
         
-        #line 294 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+        #line 295 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
 this.Write(@"//------------------------------------------------------------------------------
 // <auto-generated>
 //     This code was generated by a tool.
@@ -747,7 +748,7 @@ this.Write(@"//-----------------------------------------------------------------
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OnSite.WebUI.Scheduler {
+namespace OnSite.WebUI.ClientCode.Scheduler {
     
     
     public partial class My");
@@ -756,14 +757,14 @@ namespace OnSite.WebUI.Scheduler {
         #line default
         #line hidden
         
-        #line 307 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+        #line 308 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 307 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+        #line 308 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
 this.Write("Schedule {\r\n\r\n        /// <summary>\r\n        /// CalendarMenu control.\r\n        /" +
         "// </summary>\r\n        /// <remarks>\r\n        /// Auto-generated field.\r\n       " +
         " /// To modify move field declaration from designer file to code-behind file.\r\n " +
@@ -795,7 +796,7 @@ this.Write("Schedule {\r\n\r\n        /// <summary>\r\n        /// CalendarMenu 
         #line default
         #line hidden
         
-        #line 364 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
+        #line 365 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ResourceScheduleTemplate.tt"
 
 	}
 

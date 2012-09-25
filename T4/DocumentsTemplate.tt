@@ -26,7 +26,7 @@ switch (OutputType) {
     void GenerateDocumentPage()
 	{
 #>
-<%@ Page Title="Documents" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="OnSite.WebUI.Documents.Default" %>
+<%@ Page Title="Documents" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="OnSite.WebUI.ClientCode.Documents.Default" %>
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 <script type="text/javascript">
     // <![CDATA[
@@ -156,7 +156,7 @@ using OnSite.WebUI.Classes;
 using System.Web.Security;
 using DevExpress.Web.ASPxClasses;
 
-namespace OnSite.WebUI.Documents
+namespace OnSite.WebUI.ClientCode.Documents
 {
     public partial class Default : System.Web.UI.Page
     {
@@ -352,7 +352,7 @@ namespace OnSite.WebUI.Documents
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OnSite.WebUI.Documents {
+namespace OnSite.WebUI.ClientCode.Documents {
     
     
     public partial class Default {
@@ -443,7 +443,7 @@ namespace OnSite.WebUI.Documents {
 	void GenerateGetFilePage()
 	{
 #>
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="GetFile.aspx.cs" Inherits="OnSite.WebUI.Documents.GetFile" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="GetFile.aspx.cs" Inherits="OnSite.WebUI.ClientCode.Documents.GetFile" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -472,7 +472,7 @@ using System.Web.UI.WebControls;
 using OnSite.WebUI.Models;
 using System.IO;
 
-namespace OnSite.WebUI.Documents
+namespace OnSite.WebUI.ClientCode.Documents
 {
     public partial class GetFile : System.Web.UI.Page
     {
@@ -526,7 +526,7 @@ namespace OnSite.WebUI.Documents
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OnSite.WebUI.Documents {   
+namespace OnSite.WebUI.ClientCode.Documents {   
     
     public partial class Default {
         /// <summary>

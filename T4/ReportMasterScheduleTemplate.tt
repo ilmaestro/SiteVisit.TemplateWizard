@@ -30,7 +30,7 @@ switch (OutputType) {
         </WhereParameters>";
 		}		
 #>
-<%@ Page Title="<#= sitevisit.SiteVisitName #>" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="Master<#= sitevisitName #>Schedule.aspx.cs" Inherits="OnSite.WebUI.Reports.Master<#= sitevisitName #>Schedule" %>
+<%@ Page Title="<#= sitevisit.SiteVisitName #>" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="Master<#= sitevisitName #>Schedule.aspx.cs" Inherits="OnSite.WebUI.ClientCode.Reports.Master<#= sitevisitName #>Schedule" %>
 <%@ Register Assembly="DevExpress.Web.ASPxScheduler.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxScheduler" TagPrefix="dxwschs" %>
 <%@ Register assembly="DevExpress.XtraScheduler.v12.1.Core, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.XtraScheduler" tagprefix="dx" %>
@@ -279,9 +279,10 @@ using DevExpress.Web.ASPxClasses;
 using XtraScheduler = DevExpress.XtraScheduler;
 using DevExpress.Web.ASPxScheduler;
 using System.Configuration;
+using OnSite.WebUI.ClientCode.Models;
 using OnSite.WebUI.Models;
 
-namespace OnSite.WebUI.Reports
+namespace OnSite.WebUI.ClientCode.Reports
 {
     public partial class Master<#= sitevisitName #>Schedule : System.Web.UI.Page
     {
@@ -438,7 +439,7 @@ namespace OnSite.WebUI.Reports
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OnSite.WebUI.Reports {
+namespace OnSite.WebUI.ClientCode.Reports {
     
     
     public partial class Master<#= sitevisitName #>Schedule {

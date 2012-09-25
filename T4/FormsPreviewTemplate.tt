@@ -18,7 +18,7 @@ switch (OutputType) {
 	{
 		string sitevisitName = sitevisit.SiteVisitName.Replace(" ", "");
 #>
-<%@ Page Title="<#= sitevisitName #> Preview" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="<#= sitevisitName #>Preview.aspx.cs" Inherits="OnSite.WebUI.SiteVisits.<#= sitevisitName #>Preview" %>
+<%@ Page Title="<#= sitevisitName #> Preview" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="<#= sitevisitName #>Preview.aspx.cs" Inherits="OnSite.WebUI.ClientCode.SiteVisits.<#= sitevisitName #>Preview" %>
 <#= GenerateUserControlReferences(forms) #>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
@@ -54,7 +54,7 @@ switch (OutputType) {
 	private string GenerateUserControlReferences(IEnumerable<SiteVisitForm> forms)
 	{
 		foreach(SiteVisitForm form in forms) {
-#><%@ Register src="~/UserControls/GeneratedForms/<#= form.DBTableName #>.ascx" tagname="<#= form.DBTableName #>" tagprefix="uc" %>
+#><%@ Register src="~/ClientCode/UserControls/<#= form.DBTableName #>.ascx" tagname="<#= form.DBTableName #>" tagprefix="uc" %>
 <#+ 
 		}
 		return "";
@@ -92,9 +92,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using OnSite.WebUI.ClientCode.Models;
 using OnSite.WebUI.Models;
 
-namespace OnSite.WebUI.SiteVisits
+namespace OnSite.WebUI.ClientCode.SiteVisits
 {
     public partial class <#= sitevisitName #>Preview : System.Web.UI.Page
     {
@@ -173,7 +174,7 @@ namespace OnSite.WebUI.SiteVisits
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OnSite.WebUI.SiteVisits {
+namespace OnSite.WebUI.ClientCode.SiteVisits {
     
     
     public partial class <#= sitevisitName #>Preview {
@@ -205,7 +206,7 @@ namespace OnSite.WebUI.SiteVisits {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::OnSite.WebUI.UserControls.GeneratedForms.<#= form.DBTableName #> uc<#= form.DBTableName #>;
+        protected global::OnSite.WebUI.ClientCode.UserControls.<#= form.DBTableName #> uc<#= form.DBTableName #>;
 <#+ 
 		}
 		return "";

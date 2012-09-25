@@ -21,7 +21,7 @@ switch (OutputType) {
 		string table = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBTableName;
         string pkey = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBPrimaryKeyName;
 #>
-<%@ Page Title="<#= sitevisit.SiteVisitName #>" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="<#= sitevisit.SiteVisitName #>Edit.aspx.cs" Inherits="OnSite.WebUI.SiteVisits.<#= sitevisit.SiteVisitName #>Edit" %>
+<%@ Page Title="<#= sitevisit.SiteVisitName #>" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="<#= sitevisit.SiteVisitName #>Edit.aspx.cs" Inherits="OnSite.WebUI.ClientCode.SiteVisits.<#= sitevisit.SiteVisitName #>Edit" %>
 <#= GenerateUserControlReferences(forms) #>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
@@ -126,7 +126,7 @@ switch (OutputType) {
                                 select f;
             if (form.SiteVisitParentFormID != null && (formChildren.Count() > 0 || form.IsMultipleReponse == true))
 				formName = form.DBTableName + "Search";
-#><%@ Register src="~/UserControls/GeneratedForms/<#= formName #>.ascx" tagname="<#= form.DBTableName #>" tagprefix="uc" %>
+#><%@ Register src="~/ClientCode/UserControls/<#= formName #>.ascx" tagname="<#= form.DBTableName #>" tagprefix="uc" %>
 <#+ 
 		}
 		return "";
@@ -183,9 +183,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using OnSite.WebUI.ClientCode.Models;
 using OnSite.WebUI.Models;
 
-namespace OnSite.WebUI.SiteVisits
+namespace OnSite.WebUI.ClientCode.SiteVisits
 {
     public partial class <#= sitevisit.SiteVisitName #>Edit : System.Web.UI.Page
     {
@@ -385,7 +386,7 @@ namespace OnSite.WebUI.SiteVisits
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OnSite.WebUI.SiteVisits {
+namespace OnSite.WebUI.ClientCode.SiteVisits {
     
     
     public partial class <#= sitevisit.SiteVisitName #>Edit {
@@ -487,7 +488,7 @@ namespace OnSite.WebUI.SiteVisits {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::OnSite.WebUI.UserControls.GeneratedForms.<#= formName #> uc<#= form.DBTableName #>;
+        protected global::OnSite.WebUI.ClientCode.UserControls.<#= formName #> uc<#= form.DBTableName #>;
 <#+ 
 		}
 		return "";

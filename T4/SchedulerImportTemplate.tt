@@ -20,7 +20,7 @@ switch (OutputType) {
 		var parentForm = SiteVisitDBHelper.GetParentForm(sitevisit);
 		string table = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBTableName;
         string pkey = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBPrimaryKeyName;
-#><%@ Page Title="<#= sitevisit.SiteVisitName #>" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="<#= sitevisitName #>Data.aspx.cs" Inherits="OnSite.WebUI.SiteVisits.<#= sitevisitName #>Data" %>
+#><%@ Page Title="<#= sitevisit.SiteVisitName #>" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="<#= sitevisitName #>Data.aspx.cs" Inherits="OnSite.WebUI.ClientCode.SiteVisits.<#= sitevisitName #>Data" %>
 <%@ Register Assembly="DevExpress.Web.ASPxGridView.v12.1.Export, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxGridView.Export" TagPrefix="dx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
@@ -156,10 +156,11 @@ using DevExpress.Web.ASPxUploadControl;
 using System.IO;
 using CadmusUtility;
 using System.Data;
+using OnSite.WebUI.ClientCode.Models;
 using OnSite.WebUI.Models;
 using System.Web.Security;
 
-namespace OnSite.WebUI.SiteVisits
+namespace OnSite.WebUI.ClientCode.SiteVisits
 {
     public partial class <#= sitevisitName #>Data : System.Web.UI.Page
     {
@@ -293,7 +294,7 @@ namespace OnSite.WebUI.SiteVisits
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OnSite.WebUI.SiteVisits {
+namespace OnSite.WebUI.ClientCode.SiteVisits {
     
     
     public partial class <#= sitevisitName #>Data {

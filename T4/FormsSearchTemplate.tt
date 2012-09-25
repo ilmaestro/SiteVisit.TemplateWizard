@@ -20,7 +20,7 @@ switch (OutputType) {
 		var parentForm = SiteVisitDBHelper.GetParentForm(sitevisit);
 		string table = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBTableName;
         string pkey = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBPrimaryKeyName;
-#><%@ Page Title="<#= parentForm.UIDisplayName #> Search" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="<#= sitevisitName #>Search.aspx.cs" Inherits="OnSite.WebUI.SiteVisits.<#= sitevisitName #>Search" %>
+#><%@ Page Title="<#= parentForm.UIDisplayName #> Search" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="<#= sitevisitName #>Search.aspx.cs" Inherits="OnSite.WebUI.ClientCode.SiteVisits.<#= sitevisitName #>Search" %>
 <%@ Register Assembly="DevExpress.Web.ASPxGridView.v12.1.Export, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxGridView.Export" TagPrefix="dx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
@@ -157,9 +157,10 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using DevExpress.Web.ASPxClasses;
+using OnSite.WebUI.ClientCode.Models;
 using OnSite.WebUI.Models;
 
-namespace OnSite.WebUI.SiteVisits
+namespace OnSite.WebUI.ClientCode.SiteVisits
 {
     public partial class <#= sitevisitName #>Search : System.Web.UI.Page
     {
@@ -252,7 +253,7 @@ namespace OnSite.WebUI.SiteVisits
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OnSite.WebUI.SiteVisits {
+namespace OnSite.WebUI.ClientCode.SiteVisits {
     
     
     public partial class <#= sitevisitName #>Search {
@@ -320,28 +321,9 @@ namespace OnSite.WebUI.SiteVisits {
         /// </remarks>
         protected global::DevExpress.Web.ASPxGridView.Export.ASPxGridViewExporter gridExport;
 
-//GenerateDesignerProperties(forms) 
-
 
 	}
 }
 <#+
-	}
-
-	private string GenerateDesignerProperties(IEnumerable<SiteVisitForm> forms)
-	{
-		foreach(SiteVisitForm form in forms) {
-#>
-        /// <summary>
-        /// uc<#= form.DBTableName #> control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::OnSite.WebUI.ClientForms.<#= form.DBTableName #> uc<#= form.DBTableName #>;
-<#+ 
-		}
-		return "";
 	}
 #>

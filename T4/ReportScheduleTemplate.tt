@@ -21,7 +21,7 @@ switch (OutputType) {
 		string table = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBTableName;
         string pkey = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBPrimaryKeyName;
 #>
-<%@ Page Title="<#= sitevisit.SiteVisitName #>" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="<#= sitevisitName #>Schedule.aspx.cs" Inherits="OnSite.WebUI.Reports.<#= sitevisitName #>Schedule" %>
+<%@ Page Title="<#= sitevisit.SiteVisitName #>" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="<#= sitevisitName #>Schedule.aspx.cs" Inherits="OnSite.WebUI.ClientCode.Reports.<#= sitevisitName #>Schedule" %>
 <%@ Register Assembly="DevExpress.XtraReports.v12.1.Web, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.XtraReports.Web" TagPrefix="dx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
@@ -206,9 +206,10 @@ using System.Web.UI.WebControls;
 using DevExpress.XtraScheduler;
 using DevExpress.XtraScheduler.Reporting;
 using OnSite.WebUI.Classes;
+using OnSite.WebUI.ClientCode.Models;
 using OnSite.WebUI.Models;
 
-namespace OnSite.WebUI.Reports
+namespace OnSite.WebUI.ClientCode.Reports
 {
     public partial class <#= sitevisitName #>Schedule : System.Web.UI.Page
     {
@@ -325,7 +326,7 @@ namespace OnSite.WebUI.Reports
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OnSite.WebUI.Reports {
+namespace OnSite.WebUI.ClientCode.Reports {
     
     
     public partial class <#= sitevisitName #>Schedule {
