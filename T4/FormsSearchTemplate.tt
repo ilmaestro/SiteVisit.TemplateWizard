@@ -21,7 +21,7 @@ switch (OutputType) {
 		string table = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBTableName;
         string pkey = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBPrimaryKeyName;
 #><%@ Page Title="<#= parentForm.UIDisplayName #> Search" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="<#= sitevisitName #>Search.aspx.cs" Inherits="OnSite.WebUI.ClientCode.SiteVisits.<#= sitevisitName #>Search" %>
-<%@ Register Assembly="DevExpress.Web.ASPxGridView.v12.1.Export, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+<%@ Register Assembly="DevExpress.Web.ASPxGridView.v12.1.Export, Version=12.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxGridView.Export" TagPrefix="dx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 <script type="text/javascript">
@@ -32,17 +32,17 @@ switch (OutputType) {
 		} else {
 			e.processOnServer = false;
 			var id = grid.GetRowKey(e.visibleIndex);
-			window.open("<#= sitevisit.SiteVisitName #>Edit.aspx?ID="+id);
+			window.open("<#= sitevisitName #>Edit.aspx?ID="+id);
 		}
 	}
 
 	function OnRowClick(s,e) {
 		var id = grid.GetRowKey(e.visibleIndex);
-		window.open("<#= sitevisit.SiteVisitName #>Edit.aspx?ID="+id);
+		window.open("<#= sitevisitName #>Edit.aspx?ID="+id);
 	}
 
 	function OnCreateClick(s,e) {
-		window.open("<#= sitevisit.SiteVisitName #>Edit.aspx");
+		window.open("<#= sitevisitName #>Edit.aspx");
 	}
 </script>
 </asp:Content>
@@ -185,7 +185,7 @@ namespace OnSite.WebUI.ClientCode.SiteVisits
             if (e.ButtonID == "Edit")
             {
                 string id = ASPxGridView1.GetRowValues(e.VisibleIndex, "<#= pkey #>").ToString();
-                ASPxWebControl.RedirectOnCallback("<#= sitevisit.SiteVisitName #>Edit.aspx?ID="+id);
+                ASPxWebControl.RedirectOnCallback("<#= sitevisitName #>Edit.aspx?ID="+id);
             } 
             else if (e.ButtonID == "Delete")
             {

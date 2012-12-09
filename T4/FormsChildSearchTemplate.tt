@@ -25,7 +25,7 @@ switch (OutputType) {
 		string fkey = sitevisitname + "_" + parentForm.DBPrimaryKeyName;
 #>
 <%@ Control Language="C#" AutoEventWireup="true" CodeBehind="<#= form.DBTableName #>Search.ascx.cs" Inherits="OnSite.WebUI.ClientCode.UserControls.<#= form.DBTableName #>Search" %>
-<%@ Register Assembly="DevExpress.Web.ASPxGridView.v12.1.Export, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+<%@ Register Assembly="DevExpress.Web.ASPxGridView.v12.1.Export, Version=12.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxGridView.Export" TagPrefix="dx" %>
 
 <asp:HiddenField ID="hf<#= form.DBTableName #>FormKey" runat="server" />
@@ -48,7 +48,7 @@ switch (OutputType) {
 </table>
 
 <dx:ASPxGridView ID="gv<#= form.DBTableName #>" runat="server" AutoGenerateColumns="False" ClientInstanceName="gv<#= form.DBTableName #>" 
-    DataSourceID="<#= form.DBTableName #>DataSource" KeyFieldName="Metering_LaundryCyclesID">
+    DataSourceID="<#= form.DBTableName #>DataSource" KeyFieldName="<#= pkey #>">
     <Columns>
         <dx:GridViewCommandColumn VisibleIndex="0">
             <CustomButtons>

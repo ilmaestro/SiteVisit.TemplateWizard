@@ -217,7 +217,21 @@ this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
         #line 59 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildEditTemplate.tt"
 this.Write("Form\" EnableAnimation=\"false\" ShowLoadingPanel=\"true\" EnableViewState=\"true\" View" +
         "StateMode=\"Enabled\">\r\n            <PanelCollection>\r\n                <dx:PanelCo" +
-        "ntent>\r\n                    <uc:LaundryCycles ID=\"uc");
+        "ntent>\r\n                    <uc:");
+
+        
+        #line default
+        #line hidden
+        
+        #line 62 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildEditTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
+
+        
+        #line default
+        #line hidden
+        
+        #line 62 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildEditTemplate.tt"
+this.Write(" ID=\"uc");
 
         
         #line default

@@ -112,7 +112,7 @@ this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
         
         #line 24 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportScheduleTemplate.tt"
 this.Write(@"Schedule"" %>
-<%@ Register Assembly=""DevExpress.XtraReports.v12.1.Web, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a""
+<%@ Register Assembly=""DevExpress.XtraReports.v12.1.Web, Version=12.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a""
     Namespace=""DevExpress.XtraReports.Web"" TagPrefix=""dx"" %>
 <asp:Content ID=""Content1"" ContentPlaceHolderID=""HeadContent"" runat=""server"">
 </asp:Content>

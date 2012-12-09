@@ -121,9 +121,9 @@ this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
         
         #line 33 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write("Schedule\" %>\r\n<%@ Register Assembly=\"DevExpress.Web.ASPxScheduler.v12.1, Version=" +
-        "12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a\"\r\n    Namespace=\"DevE" +
+        "12.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a\"\r\n    Namespace=\"DevE" +
         "xpress.Web.ASPxScheduler\" TagPrefix=\"dxwschs\" %>\r\n<%@ Register assembly=\"DevExpr" +
-        "ess.XtraScheduler.v12.1.Core, Version=12.1.4.0, Culture=neutral, PublicKeyToken=" +
+        "ess.XtraScheduler.v12.1.Core, Version=12.1.8.0, Culture=neutral, PublicKeyToken=" +
         "b88d1754d700e49a\" namespace=\"DevExpress.XtraScheduler\" tagprefix=\"dx\" %>\r\n<asp:C" +
         "ontent ID=\"Content1\" ContentPlaceHolderID=\"HeadContent\" runat=\"server\">\r\n<script" +
         " type=\"text/javascript\">\r\n    // <![CDATA[\r\n        function OnAppointmentsSelec" +

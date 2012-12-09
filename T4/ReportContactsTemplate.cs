@@ -122,7 +122,7 @@ this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
         
         #line 33 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\ReportContactsTemplate.tt"
 this.Write(@"Search"" %>
-<%@ Register Assembly=""DevExpress.Web.ASPxGridView.v12.1.Export, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a""
+<%@ Register Assembly=""DevExpress.Web.ASPxGridView.v12.1.Export, Version=12.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a""
     Namespace=""DevExpress.Web.ASPxGridView.Export"" TagPrefix=""dx"" %>
 <asp:Content ID=""Content1"" ContentPlaceHolderID=""HeadContent"" runat=""server"">
 <script type=""text/javascript"">

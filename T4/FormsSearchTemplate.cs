@@ -112,7 +112,7 @@ this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
         
         #line 23 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
 this.Write(@"Search"" %>
-<%@ Register Assembly=""DevExpress.Web.ASPxGridView.v12.1.Export, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a""
+<%@ Register Assembly=""DevExpress.Web.ASPxGridView.v12.1.Export, Version=12.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a""
     Namespace=""DevExpress.Web.ASPxGridView.Export"" TagPrefix=""dx"" %>
 <asp:Content ID=""Content1"" ContentPlaceHolderID=""HeadContent"" runat=""server"">
 <script type=""text/javascript"">
@@ -130,7 +130,7 @@ this.Write(@"Search"" %>
         #line hidden
         
         #line 35 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(sitevisit.SiteVisitName));
+this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
@@ -145,7 +145,7 @@ this.Write("Edit.aspx?ID=\"+id);\r\n\t\t}\r\n\t}\r\n\r\n\tfunction OnRowClick(s,
         #line hidden
         
         #line 41 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(sitevisit.SiteVisitName));
+this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
@@ -159,7 +159,7 @@ this.Write("Edit.aspx?ID=\"+id);\r\n\t}\r\n\r\n\tfunction OnCreateClick(s,e) {\r
         #line hidden
         
         #line 45 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(sitevisit.SiteVisitName));
+this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
@@ -577,7 +577,7 @@ this.Write("\").ToString();\r\n                ASPxWebControl.RedirectOnCallback
         #line hidden
         
         #line 188 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(sitevisit.SiteVisitName));
+this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default

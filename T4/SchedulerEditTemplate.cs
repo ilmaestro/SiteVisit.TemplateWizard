@@ -112,9 +112,9 @@ this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
         
         #line 24 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\SchedulerEditTemplate.tt"
 this.Write("Edit\" %>\r\n<%@ Register Assembly=\"DevExpress.Web.ASPxScheduler.v12.1, Version=12.1" +
-        ".4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a\"\r\n    Namespace=\"DevExpre" +
+        ".8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a\"\r\n    Namespace=\"DevExpre" +
         "ss.Web.ASPxScheduler\" TagPrefix=\"dxwschs\" %>\r\n<%@ Register assembly=\"DevExpress." +
-        "XtraScheduler.v12.1.Core, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d" +
+        "XtraScheduler.v12.1.Core, Version=12.1.8.0, Culture=neutral, PublicKeyToken=b88d" +
         "1754d700e49a\" namespace=\"DevExpress.XtraScheduler\" tagprefix=\"dx\" %>\r\n<%@ Regist" +
         "er src=\"~/UserControls/FormControls/ZipCode.ascx\" tagname=\"ZipCode\" tagprefix=\"u" +
         "c\" %>\r\n<%@ Register src=\"~/UserControls/FormControls/PhoneNumber.ascx\" tagname=\"" +

@@ -22,13 +22,15 @@ switch (OutputType) {
 		string fkeyTable = form.SiteVisitForm1 != null ? form.SiteVisit.SiteVisitName.Replace(" ", "") + "_" + form.SiteVisitForm1.DBTableName : string.Empty;
 #>
 <%@ Control Language="C#" AutoEventWireup="true" CodeBehind="<#= form.DBTableName #>.ascx.cs" Inherits="OnSite.WebUI.ClientCode.UserControls.<#= form.DBTableName #>" %>
-<%@ Register Assembly="DevExpress.Web.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+<%@ Register Assembly="DevExpress.Web.v12.1, Version=12.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxHiddenField" TagPrefix="dx" %>
-<%@ Register Assembly="DevExpress.Web.ASPxEditors.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+<%@ Register Assembly="DevExpress.Web.ASPxEditors.v12.1, Version=12.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dx" %>
 <%@ Register src="~/UserControls/FormControls/Text.ascx" tagname="Text" tagprefix="uc" %>
 <%@ Register src="~/UserControls/FormControls/Number.ascx" tagname="Number" tagprefix="uc" %>
 <%@ Register src="~/UserControls/FormControls/Integer.ascx" tagname="Integer" tagprefix="uc" %>
+<%@ Register src="~/UserControls/FormControls/Currency.ascx" tagname="Currency" tagprefix="uc" %>
+<%@ Register src="~/UserControls/FormControls/Percent.ascx" tagname="Percent" tagprefix="uc" %>
 <%@ Register src="~/UserControls/FormControls/Date.ascx" tagname="Date" tagprefix="uc" %>
 <%@ Register src="~/UserControls/FormControls/Time.ascx" tagname="Time" tagprefix="uc" %>
 <%@ Register src="~/UserControls/FormControls/PhoneNumber.ascx" tagname="PhoneNumber" tagprefix="uc" %>

@@ -59,7 +59,7 @@ switch (OutputType) {
         <dx:ASPxCallbackPanel ID="cp<#= form.DBTableName #>Form" runat="server" Width="100%" ClientInstanceName="cp<#= form.DBTableName #>Form" EnableAnimation="false" ShowLoadingPanel="true" EnableViewState="true" ViewStateMode="Enabled">
             <PanelCollection>
                 <dx:PanelContent>
-                    <uc:LaundryCycles ID="uc<#= form.DBTableName #>" runat="server" />            
+                    <uc:<#= form.DBTableName #> ID="uc<#= form.DBTableName #>" runat="server" />            
                 </dx:PanelContent>
             </PanelCollection>
         </dx:ASPxCallbackPanel>

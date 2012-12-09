@@ -100,7 +100,7 @@ this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
         
         #line 27 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write("Search\" %>\r\n<%@ Register Assembly=\"DevExpress.Web.ASPxGridView.v12.1.Export, Vers" +
-        "ion=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a\"\r\n    Namespace=\"" +
+        "ion=12.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a\"\r\n    Namespace=\"" +
         "DevExpress.Web.ASPxGridView.Export\" TagPrefix=\"dx\" %>\r\n\r\n<asp:HiddenField ID=\"hf" +
         "");
 
@@ -192,7 +192,21 @@ this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
         #line hidden
         
         #line 51 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
-this.Write(@"DataSource"" KeyFieldName=""Metering_LaundryCyclesID"">
+this.Write("DataSource\" KeyFieldName=\"");
+
+        
+        #line default
+        #line hidden
+        
+        #line 51 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
+
+        
+        #line default
+        #line hidden
+        
+        #line 51 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+this.Write(@""">
     <Columns>
         <dx:GridViewCommandColumn VisibleIndex=""0"">
             <CustomButtons>

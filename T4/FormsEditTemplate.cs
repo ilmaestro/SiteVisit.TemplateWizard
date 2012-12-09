@@ -90,7 +90,7 @@ this.Write("\" Language=\"C#\" MasterPageFile=\"~/Site.master\" AutoEventWireup=
         #line hidden
         
         #line 24 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(sitevisit.SiteVisitName));
+this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
@@ -104,7 +104,7 @@ this.Write("Edit.aspx.cs\" Inherits=\"OnSite.WebUI.ClientCode.SiteVisits.");
         #line hidden
         
         #line 24 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(sitevisit.SiteVisitName));
+this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
@@ -540,7 +540,7 @@ namespace OnSite.WebUI.ClientCode.SiteVisits
         #line hidden
         
         #line 191 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(sitevisit.SiteVisitName));
+this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
@@ -1255,7 +1255,7 @@ namespace OnSite.WebUI.ClientCode.SiteVisits {
         #line hidden
         
         #line 392 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsEditTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(sitevisit.SiteVisitName));
+this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
