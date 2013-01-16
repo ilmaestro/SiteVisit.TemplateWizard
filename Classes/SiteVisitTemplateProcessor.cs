@@ -18,6 +18,7 @@ namespace OnSite.TemplateWizard.Classes
         public string ResourcePath { get; set; }
         public string DocumentsPath { get; set; }
         public string SitemapPath { get; set; }
+        public string JavascriptPath { get; set; }
         public string iCalPath { get; set; }
 
         public SiteVisitTemplateProcessor(string basePath)
@@ -31,6 +32,7 @@ namespace OnSite.TemplateWizard.Classes
             DocumentsPath = Path.Combine(BasePath, @"ClientCode\Documents\");
             SitemapPath = Path.Combine(BasePath, @"ClientCode\");
             iCalPath = Path.Combine(BasePath, @"ClientCode\WebServices\");
+            JavascriptPath = Path.Combine(BasePath, @"ClientCode\Javascript\");
         }
 
         public void CleanUpFolders()
@@ -70,6 +72,12 @@ namespace OnSite.TemplateWizard.Classes
                 if (file.EndsWith(".sitemap"))
                     File.Delete(file);
             }
+
+            foreach (string file in Directory.EnumerateFiles(JavascriptPath))
+            {
+                if (file.EndsWith(".js"))
+                    File.Delete(file);
+            }
         }
 
         private int clientID;
@@ -86,7 +94,7 @@ namespace OnSite.TemplateWizard.Classes
                 {
                     //GenerateForm(form);
                     GenerateMobileForm(form);
-
+                    GenerateFormJavascript(form);
                     //check if we need to generate search/edit pages for other parents - DOES not appy to the top-level parent.
                     if (form.SiteVisitParentFormID != null)
                     {
@@ -157,6 +165,18 @@ namespace OnSite.TemplateWizard.Classes
 
                 template.OutputType = MobileFormsTemplate.FileType.Designer;
                 template.OutputFilePath = Path.Combine(FormsPath, form.DBTableName + ".ascx.designer.cs");
+                template.SaveOutput(template.TransformText());
+            }
+        }
+
+        private void GenerateFormJavascript(SiteVisitForm form)
+        {
+            if (SiteVisitDBHelper.CanGenerateTemplate(this.clientID, "FormsJavascriptTemplate"))
+            {
+                FormsJavascriptTemplate template = new FormsJavascriptTemplate();
+                template.Form = form;
+
+                template.OutputFilePath = Path.Combine(JavascriptPath, form.DBTableName + ".js");
                 template.SaveOutput(template.TransformText());
             }
         }

@@ -163,7 +163,6 @@ namespace OnSite.TemplateWizard.Classes
                                         orderby f.FieldTabIndex
                                         where f.IsReportViewerFilterField == true
                                         select f).FirstOrDefault();
-
             return field;
         }
 

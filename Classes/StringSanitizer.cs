@@ -26,6 +26,10 @@ namespace OnSite.TemplateWizard.Classes
                                  .Replace("¼", "&frac14;")
                                  .Replace("½", "&frac12;")
                                  .Replace("¾", "&frac34;")
+                                 .Replace("‘", "&#8216;")
+                                 .Replace("’", "&#8217;")
+                                 .Replace("“", "&#8221;")
+                                 .Replace("”", "&#8222;")                                 
                                  //.Replace("\n", "<br />"); //<BR> must be last (since it has <> chars)
                                  .Replace("\n", "&nbsp;");
             return output;

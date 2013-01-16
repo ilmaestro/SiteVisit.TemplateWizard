@@ -107,7 +107,7 @@ switch (OutputType) {
 								<dx:ASPxLabel ID="Field<#= fieldGroupID++ #>Grp<#= siteVisitGroupID #>Caption" runat="server" text="<#= displayName #>" ForeColor="Black" CssClass="caption">
 								</dx:ASPxLabel>
 							</div>
-							<div class="formFieldGroup">
+							<div class="formFieldGroup" id="SiteVisitGroupID_<#= siteVisitGroupID #>">
 								<h3><#= displayName #></h3>
 <#= GenerateGroupFields(siteVisitGroupID, fieldGroupName) #>
 							</div>
@@ -135,7 +135,7 @@ switch (OutputType) {
 			{
 				otherBox = "<span>If Other:</span><uc:Text ID=\"uc" + field.FieldName + "_Other\" runat=\"server\"></uc:Text>";
 			}
-#>								<div class="formGroupField">
+#>								<div class="formGroupField" id="Field_<#= field.FieldName #>">
 									<#= label #>
 									<uc:<#= field.ControlType.UITypeName #> ID="uc<#= field.FieldName #>" runat="server" 
 										Visible="<#= IsVisible #>" 

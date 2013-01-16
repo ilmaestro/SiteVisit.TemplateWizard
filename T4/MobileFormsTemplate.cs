@@ -439,7 +439,21 @@ this.Write(this.ToStringHelper.ToStringWithCulture(displayName));
         
         #line 107 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
 this.Write("\" ForeColor=\"Black\" CssClass=\"caption\">\r\n\t\t\t\t\t\t\t\t</dx:ASPxLabel>\r\n\t\t\t\t\t\t\t</div>\r\n" +
-        "\t\t\t\t\t\t\t<div class=\"formFieldGroup\">\r\n\t\t\t\t\t\t\t\t<h3>");
+        "\t\t\t\t\t\t\t<div class=\"formFieldGroup\" id=\"SiteVisitGroupID_");
+
+        
+        #line default
+        #line hidden
+        
+        #line 110 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(siteVisitGroupID));
+
+        
+        #line default
+        #line hidden
+        
+        #line 110 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+this.Write("\">\r\n\t\t\t\t\t\t\t\t<h3>");
 
         
         #line default
@@ -504,7 +518,21 @@ this.Write("\r\n\t\t\t\t\t\t\t</div>\r\n");
         #line hidden
         
         #line 138 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
-this.Write("\t\t\t\t\t\t\t\t<div class=\"formGroupField\">\r\n\t\t\t\t\t\t\t\t\t");
+this.Write("\t\t\t\t\t\t\t\t<div class=\"formGroupField\" id=\"Field_");
+
+        
+        #line default
+        #line hidden
+        
+        #line 138 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(field.FieldName));
+
+        
+        #line default
+        #line hidden
+        
+        #line 138 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\MobileFormsTemplate.tt"
+this.Write("\">\r\n\t\t\t\t\t\t\t\t\t");
 
         
         #line default

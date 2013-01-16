@@ -82,6 +82,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\AddressFieldHelper.cs" />
+    <Compile Include="Classes\DevExpressHelper.cs" />
+    <Compile Include="T4\FormsJavascriptTemplate.cs">
+      <DependentUpon>FormsJavascriptTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="T4\FormsChildEditTemplate.cs">
       <DependentUpon>FormsChildEditTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -97,6 +103,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="T4\Partials\FormsJavascriptTemplate.cs" />
     <Compile Include="T4\Partials\FormsChildEditTemplate.cs" />
     <Compile Include="T4\Partials\FormsChildSearchTemplate.cs" />
     <Compile Include="T4\Partials\iCalTemplate.cs" />
@@ -231,6 +238,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="T4\FormsJavascriptTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>FormsJavascriptTemplate.cs</LastGenOutput>
+      <CustomToolNamespace>OnSite.TemplateWizard.Classes</CustomToolNamespace>
+    </None>
     <None Include="T4\FormsChildEditTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>FormsChildEditTemplate.cs</LastGenOutput>
