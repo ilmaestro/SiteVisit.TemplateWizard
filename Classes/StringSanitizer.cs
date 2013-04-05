@@ -13,6 +13,20 @@ namespace OnSite.TemplateWizard.Classes
          */
         public static string SanitizeForWeb(string input)
         {
+            string output = ReplaceStandardSymbols(input)
+                                 .Replace("\n", "&nbsp;");
+            return output;
+        }
+
+        public static string SanitizeForHtml(string input)
+        {
+            string output = ReplaceStandardSymbols(input)
+                                 .Replace("\n", "<br />");
+            return output;
+        }
+
+        public static string ReplaceStandardSymbols(string input)
+        {
             string output = input.Replace("°", "&deg;")
                                  .Replace(">", "&gt;")
                                  .Replace("<", "&lt;")
@@ -28,11 +42,37 @@ namespace OnSite.TemplateWizard.Classes
                                  .Replace("¾", "&frac34;")
                                  .Replace("‘", "&#8216;")
                                  .Replace("’", "&#8217;")
-                                 .Replace("“", "&#8221;")
-                                 .Replace("”", "&#8222;")                                 
-                                 //.Replace("\n", "<br />"); //<BR> must be last (since it has <> chars)
-                                 .Replace("\n", "&nbsp;");
+                                 .Replace("“", "&#8220;")
+                                 .Replace("”", "&#8221;")
+                                 .Replace("•", "&#8226;");
             return output;
         }
+
+        public static string SanitizeForCode(string input)
+        {
+            string output = input.Replace("°", "")
+                                 .Replace(" ", "")
+                                 .Replace("-", "")
+                                 .Replace(">", "")
+                                 .Replace("<", "")
+                                 .Replace("/", "")
+                                 .Replace("²", "")
+                                 .Replace("³", "")
+                                 .Replace("¶", "")
+                                 .Replace("®", "")
+                                 .Replace("©", "")
+                                 .Replace("µ", "")
+                                 .Replace("¼", "")
+                                 .Replace("½", "")
+                                 .Replace("¾", "")
+                                 .Replace("‘", "")
+                                 .Replace("’", "")
+                                 .Replace("“", "")
+                                 .Replace("”", "")
+                                 .Replace("•", "")
+                                 .Replace("\n", "");
+            return output;
+        }
+
     }
 }

@@ -1,0 +1,84 @@
+﻿<#@ include file="includes.txt" #>
+<#
+switch (OutputType) {
+	case FileType.CheckState:
+		GenerateCheckState(Form);
+		break;
+	case FileType.OnChange:
+		GenerateOnChange(Form);
+		break;
+	default:
+		break;
+}
+
+#><#+
+    void GenerateCheckState(SiteVisitForm form)
+    {
+		string siteVisitName = StringSanitizer.SanitizeForCode(form.SiteVisit.SiteVisitName);
+		string pkeyTable = siteVisitName + "_" + form.DBTableName;
+        string pkey = siteVisitName + "_" + form.DBPrimaryKeyName;
+		string fkey = form.SiteVisitForm1 != null ? siteVisitName + "_" + form.SiteVisitForm1.DBPrimaryKeyName : string.Empty;
+		string fkeyTable = form.SiteVisitForm1 != null ? siteVisitName + "_" + form.SiteVisitForm1.DBTableName : string.Empty;
+#>
+/** <#= pkeyTable #> CheckState Functions **/
+function Check<#= pkeyTable #>State() {
+	if (typeof <#= pkeyTable #>PanelControl == 'undefined' || <#= pkeyTable #>PanelControl == null)
+		return;
+
+<#= GenerateFieldValues(form.SiteVisitFormID) #>
+}
+
+<#+
+    }  
+
+	private string GenerateFieldValues(int siteVisitFormID)
+	{
+		var fields = SiteVisitDBHelper.GetSiteVisitFormFields(siteVisitFormID, null, false);
+		
+		foreach(SiteVisitFormField field in fields) {
+			string valueFunction = DevExpressHelper.GetValueExpression(field.ControlType.UITypeName);
+
+#>
+	if (typeof uc<#= field.FieldName #> == 'undefined' || uc<#= field.FieldName #> == null) {
+	}
+	else {
+		var <#= field.FieldName #> = uc<#= field.FieldName #>.<#= valueFunction #>;
+		if (<#= field.FieldName #> != null) {
+			switch (<#= field.FieldName #>) {
+				default:
+					break;
+			}
+		}
+	}
+<#+ 
+		}
+		return "";
+	}
+
+	void GenerateOnChange(SiteVisitForm form)
+    {
+		string siteVisitName = StringSanitizer.SanitizeForCode(form.SiteVisit.SiteVisitName);
+		string pkeyTable =siteVisitName + "_" + form.DBTableName;
+        string pkey = siteVisitName + "_" + form.DBPrimaryKeyName;
+		string fkey = form.SiteVisitForm1 != null ? siteVisitName + "_" + form.SiteVisitForm1.DBPrimaryKeyName : string.Empty;
+		string fkeyTable = form.SiteVisitForm1 != null ? siteVisitName + "_" + form.SiteVisitForm1.DBTableName : string.Empty;
+#>
+/** <#= pkeyTable #> OnChange Functions **/
+<#= GenerateFieldFunctions(form.SiteVisitFormID, pkeyTable) #>
+
+<#+
+    } 
+	private string GenerateFieldFunctions(int siteVisitFormID, string pkeyTable)
+	{
+		var fields = SiteVisitDBHelper.GetSiteVisitFormFields(siteVisitFormID, null, false);
+		
+		foreach(SiteVisitFormField field in fields) {
+#>	
+function On<#= pkeyTable #>Change_uc<#= field.FieldName #>() {
+	Check<#= pkeyTable #>State();
+}
+<#+ 
+		}
+		return "";
+	}
+#>

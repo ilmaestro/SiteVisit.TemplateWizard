@@ -16,28 +16,28 @@ switch (OutputType) {
 #><#+
     void GeneratePage(SiteVisitForm form)
     {
-		string sitevisitname = form.SiteVisit.SiteVisitName.Replace(" ", "");
-		string formName = form.SiteVisitFormName.Replace(" ", "");
+		string siteVisitName = StringSanitizer.SanitizeForCode(form.SiteVisit.SiteVisitName);
+		string formName = siteVisitName;
 		var parentForm = form.SiteVisitForm1;
-		string table = sitevisitname + "_" + form.DBTableName;
-        string pkey = sitevisitname + "_" + form.DBPrimaryKeyName;
-		string ftable = sitevisitname + "_" + parentForm.DBTableName;
-		string fkey = sitevisitname + "_" + parentForm.DBPrimaryKeyName;
+		string table = siteVisitName + "_" + form.DBTableName;
+        string pkey = siteVisitName + "_" + form.DBPrimaryKeyName;
+		string ftable = siteVisitName + "_" + parentForm.DBTableName;
+		string fkey = siteVisitName + "_" + parentForm.DBPrimaryKeyName;
 #>
 <%@ Control Language="C#" AutoEventWireup="true" CodeBehind="<#= form.DBTableName #>Search.ascx.cs" Inherits="OnSite.WebUI.ClientCode.UserControls.<#= form.DBTableName #>Search" %>
 <%@ Register Assembly="DevExpress.Web.ASPxGridView.v12.1.Export, Version=12.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxGridView.Export" TagPrefix="dx" %>
 
 <asp:HiddenField ID="hf<#= form.DBTableName #>FormKey" runat="server" />
-
+<div class="formGroupFieldLabel"><#= form.UIDisplayName #></div>
 <table>
     <tr>
         <td>
-            <dx:ASPxButton ID="btnCreate" runat="server" Text="Create <#= form.SiteVisitFormName #>" AutoPostBack="false">
+            <dx:ASPxButton ID="btnCreate" runat="server" Text="Add New Row" Image-Url="~/Images/add.png" AutoPostBack="false">
             </dx:ASPxButton>
         </td>
         <td>
-            <dx:ASPxButton ID="btnRefresh" runat="server" Text="Refresh" AutoPostBack="false">
+            <dx:ASPxButton ID="btnRefresh" runat="server" Text="Refresh" AutoPostBack="false" Image-Url="~/Images/arrow_refresh.png">
                 <ClientSideEvents Click="function(s,e){gv<#= form.DBTableName #>.PerformCallback();}" />
             </dx:ASPxButton>
         </td><%--
@@ -52,21 +52,26 @@ switch (OutputType) {
     <Columns>
         <dx:GridViewCommandColumn VisibleIndex="0">
             <CustomButtons>
+                <dx:GridViewCommandColumnCustomButton ID="Edit" Text="Edit"></dx:GridViewCommandColumnCustomButton>
                 <dx:GridViewCommandColumnCustomButton ID="Delete" Text="Delete"></dx:GridViewCommandColumnCustomButton>
             </CustomButtons>
             <ClearFilterButton Visible="True">
             </ClearFilterButton>
         </dx:GridViewCommandColumn>
-        <dx:GridViewDataTextColumn FieldName="<#= pkey #>" Caption="<#= pkey #>" ReadOnly="True" Visible="false"
-            VisibleIndex="1">
+        <dx:GridViewDataTextColumn FieldName="<#= pkey #>" Caption="ID" ReadOnly="True" Visible="false" VisibleIndex="0">
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="<#= fkey #>" Caption="<#= fkey #>" VisibleIndex="2" Visible="false">
+        <dx:GridViewDataTextColumn FieldName="<#= fkey #>" Caption="<#= fkey #>" VisibleIndex="1" Visible="false">
+        </dx:GridViewDataTextColumn>
+		<dx:GridViewDataTextColumn Caption="Row" ReadOnly="True" UnboundType="String" VisibleIndex="2">
+            <Settings AllowAutoFilter="False" AllowAutoFilterTextInputTimer="False" 
+                AllowDragDrop="False" AllowGroup="False" AllowHeaderFilter="False" 
+                AllowSort="False" />
         </dx:GridViewDataTextColumn>
 <#= GenerateGridViewColumns(form, 3) #>
     </Columns>
     <Settings ShowFilterRow="True" ShowHeaderFilterButton="true" />
 	<SettingsBehavior AllowSelectByRowClick="true" AllowSelectSingleRowOnly="true" />
-	<ClientSideEvents RowClick="function(s,e){window.open('<#= form.DBTableName #>Edit.aspx?ID='+gv<#= form.DBTableName #>.GetRowKey(e.visibleIndex));}" CustomButtonClick="OnCustomButtonClick" />
+	<ClientSideEvents RowClick="function(s,e){window.open('<#= form.DBTableName #>Edit.aspx?ID='+gv<#= form.DBTableName #>.GetRowKey(e.visibleIndex));}" CustomButtonClick="function(s,e) {if (e.buttonID == 'Delete'){e.processOnServer = confirm('Are you sure you want to delete this item?');} else {e.processOnServer = false;var id = gv<#= form.DBTableName #>.GetRowKey(e.visibleIndex);window.open('<#= form.DBTableName #>Edit.aspx?ID='+id);} }" />
 </dx:ASPxGridView>
 
 <asp:EntityDataSource ID="<#= form.DBTableName #>DataSource" runat="server" 
@@ -88,9 +93,23 @@ switch (OutputType) {
 	
 	private string GenerateGridViewColumns(SiteVisitForm form, int startIndex)
 	{
-		foreach(SiteVisitFormField field in SiteVisitDBHelper.GetSiteVisitSearchableFields(form)) {
+		foreach(SiteVisitFormField field in SiteVisitDBHelper.GetSiteVisitSearchableFields(form)) 
+		{
+			ControlType.UIType uiType = (ControlType.UIType)Enum.Parse(typeof(ControlType.UIType), field.ControlType.UITypeName);
+			string dataItemTemplate = "";
+			if (uiType == ControlType.UIType.RadioList)
+            {
+				dataItemTemplate = "<DataItemTemplate><dx:ASPxLabel ID=\"label\" runat=\"server\" Text=\"<%# GetFieldLabel(Container,&quot;" + field.FieldName + "&quot;) %>\"></dx:ASPxLabel></DataItemTemplate>";
+            }
+			else if (uiType == ControlType.UIType.Currency)
+            {
+				//format for currency
+				dataItemTemplate = "<PropertiesTextEdit DisplayFormatString=\"c\" />";
+            }
+
 #>			<dx:GridViewDataTextColumn FieldName="<#= field.FieldName #>" Caption="<#= field.FieldLabel #>"
                 ReadOnly="True" VisibleIndex="<#= startIndex++ #>">
+				<#= dataItemTemplate #>
             </dx:GridViewDataTextColumn>
 <#+ 
 		}
@@ -99,13 +118,13 @@ switch (OutputType) {
 
     void GenerateCodeFile(SiteVisitForm form)
     {
-		string sitevisitname = form.SiteVisit.SiteVisitName.Replace(" ", "");
-		string formName = form.SiteVisitFormName.Replace(" ", "");
+		string siteVisitName = StringSanitizer.SanitizeForCode(form.SiteVisit.SiteVisitName);
+		string formName = siteVisitName;
 		var parentForm = form.SiteVisitForm1;
-		string table = sitevisitname + "_" + form.DBTableName;
-        string pkey = sitevisitname + "_" + form.DBPrimaryKeyName;
-		string ftable = sitevisitname + "_" + parentForm.DBTableName;
-		string fkey = sitevisitname + "_" + parentForm.DBPrimaryKeyName;
+		string table = siteVisitName + "_" + form.DBTableName;
+        string pkey = siteVisitName + "_" + form.DBPrimaryKeyName;
+		string ftable = siteVisitName + "_" + parentForm.DBTableName;
+		string fkey = siteVisitName + "_" + parentForm.DBPrimaryKeyName;
 #>
 
 using System;
@@ -114,14 +133,28 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.Objects;
 using DevExpress.Web.ASPxClasses;
+using DevExpress.Web.ASPxGridView;
+using DevExpress.Web.ASPxEditors;
 using OnSite.WebUI.ClientCode.Models;
 using OnSite.WebUI.Models;
+using OnSite.WebUI.Classes;
 
 namespace OnSite.WebUI.ClientCode.UserControls
 {
     public partial class <#= form.DBTableName #>Search : System.Web.UI.UserControl
     {
+		SiteVisitDataEntities ctx = new SiteVisitDataEntities();
+
+		#region Unused Properties
+		public string OnChangeFunctionName { get; set; }
+        public string CheckStateFunctionName { get; set; }
+        public bool IsRequired { get; set; }
+        public bool IsEnabled { get; set; }
+		public string RequiredFieldErrorMessage { get; set; }
+		#endregion
+
 		#region Public Methods
         public void BindListControls()
         {
@@ -149,10 +182,11 @@ namespace OnSite.WebUI.ClientCode.UserControls
             return retVal;
         }
 
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Init(object sender, EventArgs e)
         {
             gv<#= form.DBTableName #>.CustomCallback += new DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventHandler(gv<#= form.DBTableName #>_CustomCallback);
 			gv<#= form.DBTableName #>.CustomButtonCallback += new DevExpress.Web.ASPxGridView.ASPxGridViewCustomButtonCallbackEventHandler(gv<#= form.DBTableName #>_CustomButtonCallback);
+			gv<#= form.DBTableName #>.CustomColumnDisplayText += new ASPxGridViewColumnDisplayTextEventHandler(gv<#= form.DBTableName #>_CustomColumnDisplayText);
         }
 
         protected void gv<#= form.DBTableName #>_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
@@ -164,7 +198,6 @@ namespace OnSite.WebUI.ClientCode.UserControls
         {
             if (e.ButtonID == "Delete")
             {
-                SiteVisitDataEntities ctx = new SiteVisitDataEntities();
                 int id = (int)gv<#= form.DBTableName #>.GetRowValues(e.VisibleIndex, "<#= pkey #>");
 
                 var record = (from b in ctx.<#= table #>
@@ -178,6 +211,14 @@ namespace OnSite.WebUI.ClientCode.UserControls
    
         }
 
+		protected void gv<#= form.DBTableName #>_CustomColumnDisplayText(object sender, ASPxGridViewColumnDisplayTextEventArgs e)
+        {
+            if (e.Column.Caption == "Row")
+            {
+                e.DisplayText = (e.VisibleRowIndex + 1).ToString();
+            }
+        }
+
         protected void btnCsvExport_Click(object sender, EventArgs e)
         {
             gv<#= form.DBTableName #>.Columns["<#= fkey #>"].Visible = true;
@@ -188,6 +229,17 @@ namespace OnSite.WebUI.ClientCode.UserControls
             gridExport.WriteCsvToResponse();
         }   
 
+		protected string GetFieldLabel(GridViewDataItemTemplateContainer container, string fieldName)
+        {
+            int id = (int)gv<#= form.DBTableName #>.GetRowValues(container.VisibleIndex, "<#= pkey #>");
+            string fieldValue = (string)gv<#= form.DBTableName #>.GetRowValues(container.VisibleIndex, fieldName);
+            string fieldLabel = "";
+
+            var sql = "SELECT VALUE SiteVisitDataModel.Store.ListItemGetFieldLabel('<#= form.DBTableName #>','" + fieldName + "',@FieldItemValue) FROM {1}";
+            fieldLabel = ctx.CreateQuery<string>(sql, new ObjectParameter("FieldItemValue", fieldValue)).FirstOrDefault();
+
+            return fieldLabel;
+        }
 	}
 }
 <#+

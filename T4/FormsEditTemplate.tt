@@ -22,7 +22,7 @@ switch (OutputType) {
         string pkey = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBPrimaryKeyName;
 #>
 <%@ Page Title="<#= sitevisit.SiteVisitName #>" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="<#= sitevisitName #>Edit.aspx.cs" Inherits="OnSite.WebUI.ClientCode.SiteVisits.<#= sitevisitName #>Edit" %>
-<#= GenerateUserControlReferences(forms) #>
+<#= GenerateUserControlReferences(parentForm, forms) #>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 <script type="text/javascript">
@@ -47,7 +47,7 @@ switch (OutputType) {
 			<asp:Label ID="lblFormHeader" runat="server" />
 		</h2>
 	</div>
-	<dx:ASPxButton ID="btnClose" runat="server" Text="Close" UseSubmitBehavior="False">
+	<dx:ASPxButton ID="btnClose" runat="server" Text="Close" Image-Url="~/Images/cancel.png" UseSubmitBehavior="False">
 		<ClientSideEvents Click="OnCloseClick" />
 	</dx:ASPxButton>
     <table>
@@ -59,7 +59,7 @@ switch (OutputType) {
                             <Items>
 								<dx:NavBarItem Text="<#= parentForm.UIDisplayName #>" Name="<#= parentForm.DBTableName #>" Image-Url="~/Images/application_home.png" Selected="true">                        
                                 </dx:NavBarItem>
-<#= GenerateNavBarItems(forms) #>
+<#= GenerateNavBarItems(parentForm, forms) #>
                             </Items>
                         </dx:NavBarGroup>        
                     </Groups>
@@ -92,7 +92,7 @@ switch (OutputType) {
                     <PanelCollection>
                         <dx:PanelContent>
 							<dx:ASPxHiddenField ID="hfFormKey" runat="server" ClientInstanceName="hfFormKey"></dx:ASPxHiddenField>
-<#= GenerateUserControls(forms) #>
+<#= GenerateUserControls(parentForm, forms) #>
                         </dx:PanelContent>
                     </PanelCollection>
 					<ClientSideEvents EndCallback="OnFormsCallback" />
@@ -116,55 +116,63 @@ switch (OutputType) {
 <#+
     }  
 
-	private string GenerateUserControlReferences(IEnumerable<SiteVisitForm> forms)
+	private string GenerateUserControlReferences(SiteVisitForm parentForm, IEnumerable<SiteVisitForm> forms)
 	{
-		foreach(SiteVisitForm form in forms) {
+		var query = from f in forms
+					where f.SiteVisitParentFormID == parentForm.SiteVisitFormID || f.SiteVisitFormID == parentForm.SiteVisitFormID
+					select f;
+		foreach(SiteVisitForm form in query) {
 			string formName = form.DBTableName;
 
 			var formChildren = from f in forms
                                 where f.SiteVisitParentFormID == form.SiteVisitFormID
                                 select f;
             if (form.SiteVisitParentFormID != null && (formChildren.Count() > 0 || form.IsMultipleReponse == true))
-				formName = form.DBTableName + "Search";
+            {
+				formName += "Search";
+            }
+
 #><%@ Register src="~/ClientCode/UserControls/<#= formName #>.ascx" tagname="<#= form.DBTableName #>" tagprefix="uc" %>
 <#+ 
 		}
 		return "";
 	}
 	
-	private string GenerateNavBarItems(IEnumerable<SiteVisitForm> forms)
+	private string GenerateNavBarItems(SiteVisitForm parentForm, IEnumerable<SiteVisitForm> forms)
 	{
 		var query = from f in forms
-					where f.SiteVisitParentFormID != null
+					where f.SiteVisitParentFormID == parentForm.SiteVisitFormID || f.SiteVisitFormID == parentForm.SiteVisitFormID
 					select f;
-		foreach(SiteVisitForm form in query) {
-			string visible = form.SiteVisitParentFormID == null ? "True" : "False";
+		foreach(SiteVisitForm form in query) 
+		{
 #>				                <dx:NavBarItem Text="<#= form.UIDisplayName #>" Name="<#= form.DBTableName #>" Image-Url="~/Images/application_form.png">                        
                                 </dx:NavBarItem>
-<#+ 
+<#+
 		}
 		return "";
 	}
 	
-	private string GenerateMenuItems(IEnumerable<SiteVisitForm> forms)
+	private string GenerateMenuItems(SiteVisitForm parentForm, IEnumerable<SiteVisitForm> forms)
 	{
 		var query = from f in forms
-					where f.SiteVisitParentFormID != null
+					where f.SiteVisitParentFormID == parentForm.SiteVisitFormID
 					select f;
 		foreach(SiteVisitForm form in query) {
-			string visible = form.SiteVisitParentFormID == null ? "True" : "False";
 #>				                <dx:MenuItem Text="<#= form.UIDisplayName #>" Name="<#= form.DBTableName #>" Image-Url="~/Images/application_form.png">                        
                                 </dx:MenuItem>
-<#+ 
+<#+
 		}
 		return "";
 	}
-	private string GenerateUserControls(IEnumerable<SiteVisitForm> forms)
+	private string GenerateUserControls(SiteVisitForm parentForm, IEnumerable<SiteVisitForm> forms)
 	{
-		foreach(SiteVisitForm form in forms) {
+		var query = from f in forms
+					where f.SiteVisitParentFormID == parentForm.SiteVisitFormID || f.SiteVisitFormID == parentForm.SiteVisitFormID
+					select f;
+		foreach(SiteVisitForm form in query) {
 			string visible = form.SiteVisitParentFormID == null ? "True" : "False";
 #>						<uc:<#= form.DBTableName #> ID="uc<#= form.DBTableName #>" runat="server" Visible="<#= visible #>" />
-<#+ 
+<#+
 		}
 		return "";
 	}
@@ -224,7 +232,7 @@ namespace OnSite.WebUI.ClientCode.SiteVisits
 
 		protected void BindControls()
         {				
-<#= GenerateUserControlBinds(forms) #>			
+<#= GenerateUserControlBinds(parentForm, forms) #>			
 		}
 
         protected int? getParentKey()
@@ -273,7 +281,7 @@ namespace OnSite.WebUI.ClientCode.SiteVisits
                     uc<#= parentForm.DBTableName #>.SaveForm();
                     hfFormKey["<#= pkey #>"] = uc<#= parentForm.DBTableName #>.<#= pkey #>;
                     break;
-<#= GenerateSaveSwitchCases(forms) #>
+<#= GenerateSaveSwitchCases(parentForm, forms) #>
 			}
             SetNavbarItem(formName);
         }
@@ -288,7 +296,7 @@ namespace OnSite.WebUI.ClientCode.SiteVisits
 					if (getParentKey() != null)
 						uc<#= parentForm.DBTableName #>.LoadForm((int)getParentKey());
                     break;
-<#= GenerateNavBarSwitchStatements(forms) #>
+<#= GenerateNavBarSwitchStatements(parentForm, forms) #>
                 default:
                     break;
             }
@@ -296,7 +304,7 @@ namespace OnSite.WebUI.ClientCode.SiteVisits
 
         private void hideControls()
         {
-<#= GenerateUserControlHides(forms) #>
+<#= GenerateUserControlHides(parentForm, forms) #>
         }
     }
 }
@@ -311,19 +319,22 @@ namespace OnSite.WebUI.ClientCode.SiteVisits
 		return "";
 	}
 
-	private string GenerateUserControlBinds(IEnumerable<SiteVisitForm> forms)
+	private string GenerateUserControlBinds(SiteVisitForm parentForm, IEnumerable<SiteVisitForm> forms)
 	{
-		foreach(SiteVisitForm form in forms) {
+		var query = from f in forms
+					where f.SiteVisitParentFormID == parentForm.SiteVisitFormID || f.SiteVisitFormID == parentForm.SiteVisitFormID
+					select f;
+		foreach(SiteVisitForm form in query) {
 #>				uc<#= form.DBTableName #>.BindListControls();
 <#+ 
 		}
 		return "";
 	}
 
-	private string GenerateClientEnabledCode(IEnumerable<SiteVisitForm> forms)
+	private string GenerateClientEnabledCode(SiteVisitForm parentForm, IEnumerable<SiteVisitForm> forms)
 	{
 		var query = from f in forms
-					where f.SiteVisitParentFormID != null
+					where f.SiteVisitParentFormID == parentForm.SiteVisitFormID
 					select f;
 		foreach(SiteVisitForm form in query) {
 #>            nbFormNavigation.Items.FindByName("<#= form.DBTableName #>").ClientEnabled = (getParentKey() != null); 
@@ -333,10 +344,10 @@ namespace OnSite.WebUI.ClientCode.SiteVisits
 	}
 
 	
-	private string GenerateSaveSwitchCases(IEnumerable<SiteVisitForm> forms)
+	private string GenerateSaveSwitchCases(SiteVisitForm parentForm, IEnumerable<SiteVisitForm> forms)
 	{
 		var query = from f in forms
-					where f.SiteVisitParentFormID != null
+					where f.SiteVisitParentFormID == parentForm.SiteVisitFormID
 					select f;
 		foreach(SiteVisitForm form in query) {
 #>                case "<#= form.DBTableName #>":
@@ -348,10 +359,10 @@ namespace OnSite.WebUI.ClientCode.SiteVisits
 		return "";
 	}
 	
-	private string GenerateNavBarSwitchStatements(IEnumerable<SiteVisitForm> forms)
+	private string GenerateNavBarSwitchStatements(SiteVisitForm parentForm, IEnumerable<SiteVisitForm> forms)
 	{
 		var query = from f in forms
-					where f.SiteVisitParentFormID != null
+					where f.SiteVisitParentFormID == parentForm.SiteVisitFormID
 					select f;
 		foreach(SiteVisitForm form in query) {
 #>                case "<#= form.DBTableName #>":
@@ -364,9 +375,12 @@ namespace OnSite.WebUI.ClientCode.SiteVisits
 		return "";
 	}
 
-	private string GenerateUserControlHides(IEnumerable<SiteVisitForm> forms)
+	private string GenerateUserControlHides(SiteVisitForm parentForm, IEnumerable<SiteVisitForm> forms)
 	{
-		foreach(SiteVisitForm form in forms) {
+		var query = from f in forms
+					where f.SiteVisitParentFormID == parentForm.SiteVisitFormID || f.SiteVisitFormID == parentForm.SiteVisitFormID
+					select f;
+		foreach(SiteVisitForm form in query) {
 #>				uc<#= form.DBTableName #>.Visible = false;       
 <#+ 
 		}

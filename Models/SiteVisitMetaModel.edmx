@@ -102,6 +102,8 @@
           <Property Name="DBTypeName" Type="varchar" MaxLength="50" />
           <Property Name="UITypeName" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="CSTypeName" Type="varchar" MaxLength="50" />
+          <Property Name="HasMultipleFields" Type="bit" Nullable="false" />
+          <Property Name="ControlTypeDescription" Type="varchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="Dispositions">
           <Key>
@@ -139,7 +141,7 @@
           <Property Name="SiteVisitFormFieldID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="SiteVisitFormID" Type="int" Nullable="false" />
           <Property Name="FieldName" Type="varchar" Nullable="false" MaxLength="150" />
-          <Property Name="FieldLabel" Type="varchar" Nullable="false" MaxLength="150" />
+          <Property Name="FieldLabel" Type="varchar" Nullable="false" MaxLength="1000" />
           <Property Name="FieldGroupName" Type="varchar" MaxLength="150" />
           <Property Name="FieldGroupOrder" Type="int" />
           <Property Name="FieldTabIndex" Type="int" />
@@ -147,6 +149,7 @@
           <Property Name="ControlAttributes" Type="varchar" MaxLength="150" />
           <Property Name="IsVisible" Type="bit" Nullable="false" />
           <Property Name="IsRequired" Type="bit" Nullable="false" />
+          <Property Name="IsEnabled" Type="bit" Nullable="false" />
           <Property Name="IsLabelVisible" Type="bit" Nullable="false" />
           <Property Name="IsSearchableField" Type="bit" Nullable="false" />
           <Property Name="IsSummaryField" Type="bit" Nullable="false" />
@@ -166,8 +169,8 @@
           </Key>
           <Property Name="SiteVisitFormGroupID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="SiteVisitFormID" Type="int" Nullable="false" />
-          <Property Name="SiteVisitFormGroupName" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="SiteVisitFormGroupDisplayName" Type="varchar" MaxLength="50" />
+          <Property Name="SiteVisitFormGroupName" Type="varchar" Nullable="false" MaxLength="150" />
+          <Property Name="SiteVisitFormGroupDisplayName" Type="varchar" MaxLength="150" />
           <Property Name="SiteVisitFormGroupDescription" Type="varchar(max)" />
           <Property Name="SiteVisitFormGroupOrder" Type="int" Nullable="false" />
           <Property Name="IsVisible" Type="bit" Nullable="false" />
@@ -179,12 +182,13 @@
           <Property Name="SiteVisitFormID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="SiteVisitID" Type="int" Nullable="false" />
           <Property Name="SiteVisitParentFormID" Type="int" />
-          <Property Name="SiteVisitFormName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="SiteVisitFormName" Type="varchar" Nullable="false" MaxLength="150" />
+          <Property Name="SiteVisitFormIntroduction" Type="varchar(max)" />
           <Property Name="DBTableName" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="DBPrimaryKeyName" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="DBForeignKeyName" Type="varchar" MaxLength="50" />
           <Property Name="UIPanelID" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="UIDisplayName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="UIDisplayName" Type="varchar" Nullable="false" MaxLength="150" />
           <Property Name="UIDisplayOrder" Type="int" Nullable="false" />
           <Property Name="IsMultipleReponse" Type="bit" Nullable="false" />
         </EntityType>
@@ -343,12 +347,10 @@
       <Schema Namespace="SiteVisitMetaModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="SiteVisitMetaEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Clients" EntityType="SiteVisitMetaModel.Client" />
-          <EntitySet Name="ControlTypes" EntityType="SiteVisitMetaModel.ControlType" />
           <EntitySet Name="Projects" EntityType="SiteVisitMetaModel.Project" />
           <EntitySet Name="SiteVisitFormFieldItems" EntityType="SiteVisitMetaModel.SiteVisitFormFieldItem" />
           <EntitySet Name="SiteVisitFormGroupFields" EntityType="SiteVisitMetaModel.SiteVisitFormGroupField" />
           <EntitySet Name="SiteVisitFormGroups" EntityType="SiteVisitMetaModel.SiteVisitFormGroup" />
-          <EntitySet Name="SiteVisitForms" EntityType="SiteVisitMetaModel.SiteVisitForm" />
           <EntitySet Name="SiteVisits" EntityType="SiteVisitMetaModel.SiteVisit" />
           <AssociationSet Name="FK_Projects_Clients" Association="SiteVisitMetaModel.FK_Projects_Clients">
             <End Role="Clients" EntitySet="Clients" />
@@ -362,25 +364,27 @@
             <End Role="SiteVisitFormGroups" EntitySet="SiteVisitFormGroups" />
             <End Role="SiteVisitFormGroupFields" EntitySet="SiteVisitFormGroupFields" />
           </AssociationSet>
-          <AssociationSet Name="FK_SiteVisitFormGroups_SiteVisitForms" Association="SiteVisitMetaModel.FK_SiteVisitFormGroups_SiteVisitForms">
-            <End Role="SiteVisitForms" EntitySet="SiteVisitForms" />
-            <End Role="SiteVisitFormGroups" EntitySet="SiteVisitFormGroups" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SiteVisitForms_SiteVisitForms" Association="SiteVisitMetaModel.FK_SiteVisitForms_SiteVisitForms">
-            <End Role="SiteVisitForms" EntitySet="SiteVisitForms" />
-            <End Role="SiteVisitForms1" EntitySet="SiteVisitForms" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SiteVisitForms_SiteVisits" Association="SiteVisitMetaModel.FK_SiteVisitForms_SiteVisits">
-            <End Role="SiteVisits" EntitySet="SiteVisits" />
-            <End Role="SiteVisitForms" EntitySet="SiteVisitForms" />
-          </AssociationSet>
           <EntitySet Name="AppointmentStatus" EntityType="SiteVisitMetaModel.AppointmentStatus" />
           <EntitySet Name="Dispositions" EntityType="SiteVisitMetaModel.Disposition" />
-          <EntitySet Name="SiteVisitFormFields" EntityType="SiteVisitMetaModel.SiteVisitFormField" />
-          <AssociationSet Name="FK_SiteVisitFormFields_ControlTypes" Association="SiteVisitMetaModel.FK_SiteVisitFormFields_ControlTypes">
-            <End Role="ControlType" EntitySet="ControlTypes" />
-            <End Role="SiteVisitFormField" EntitySet="SiteVisitFormFields" />
+          <EntitySet Name="ClientTemplateSettings" EntityType="SiteVisitMetaModel.ClientTemplateSetting" />
+          <AssociationSet Name="FK_ClientTemplateSettings_Clients" Association="SiteVisitMetaModel.FK_ClientTemplateSettings_Clients">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="ClientTemplateSetting" EntitySet="ClientTemplateSettings" />
           </AssociationSet>
+          <EntitySet Name="SiteVisitForms" EntityType="SiteVisitMetaModel.SiteVisitForm" />
+          <AssociationSet Name="FK_SiteVisitFormGroups_SiteVisitForms" Association="SiteVisitMetaModel.FK_SiteVisitFormGroups_SiteVisitForms">
+            <End Role="SiteVisitForm" EntitySet="SiteVisitForms" />
+            <End Role="SiteVisitFormGroup" EntitySet="SiteVisitFormGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiteVisitForms_SiteVisitForms" Association="SiteVisitMetaModel.FK_SiteVisitForms_SiteVisitForms">
+            <End Role="SiteVisitForm" EntitySet="SiteVisitForms" />
+            <End Role="SiteVisitForm1" EntitySet="SiteVisitForms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiteVisitForms_SiteVisits" Association="SiteVisitMetaModel.FK_SiteVisitForms_SiteVisits">
+            <End Role="SiteVisit" EntitySet="SiteVisits" />
+            <End Role="SiteVisitForm" EntitySet="SiteVisitForms" />
+          </AssociationSet>
+          <EntitySet Name="SiteVisitFormFields" EntityType="SiteVisitMetaModel.SiteVisitFormField" />
           <AssociationSet Name="FK_SiteVisitFormFieldItems_SiteVisitFormFields" Association="SiteVisitMetaModel.FK_SiteVisitFormFieldItems_SiteVisitFormFields">
             <End Role="SiteVisitFormField" EntitySet="SiteVisitFormFields" />
             <End Role="SiteVisitFormFieldItem" EntitySet="SiteVisitFormFieldItems" />
@@ -393,10 +397,10 @@
             <End Role="SiteVisitFormField" EntitySet="SiteVisitFormFields" />
             <End Role="SiteVisitFormGroupField" EntitySet="SiteVisitFormGroupFields" />
           </AssociationSet>
-          <EntitySet Name="ClientTemplateSettings" EntityType="SiteVisitMetaModel.ClientTemplateSetting" />
-          <AssociationSet Name="FK_ClientTemplateSettings_Clients" Association="SiteVisitMetaModel.FK_ClientTemplateSettings_Clients">
-            <End Role="Client" EntitySet="Clients" />
-            <End Role="ClientTemplateSetting" EntitySet="ClientTemplateSettings" />
+          <EntitySet Name="ControlTypes" EntityType="SiteVisitMetaModel.ControlType" />
+          <AssociationSet Name="FK_SiteVisitFormFields_ControlTypes" Association="SiteVisitMetaModel.FK_SiteVisitFormFields_ControlTypes">
+            <End Role="ControlType" EntitySet="ControlTypes" />
+            <End Role="SiteVisitFormField" EntitySet="SiteVisitFormFields" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Client">
@@ -411,17 +415,6 @@
           <Property Name="IsDeployed" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Projects" Relationship="SiteVisitMetaModel.FK_Projects_Clients" FromRole="Clients" ToRole="Projects" />
           <NavigationProperty Name="ClientTemplateSettings" Relationship="SiteVisitMetaModel.FK_ClientTemplateSettings_Clients" FromRole="Client" ToRole="ClientTemplateSetting" />
-        </EntityType>
-        <EntityType Name="ControlType">
-          <Key>
-            <PropertyRef Name="ControlTypeID" />
-          </Key>
-          <Property Name="ControlTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ControlTypeName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="DBTypeName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="UITypeName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="CSTypeName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-          <NavigationProperty Name="SiteVisitFormFields" Relationship="SiteVisitMetaModel.FK_SiteVisitFormFields_ControlTypes" FromRole="ControlType" ToRole="SiteVisitFormField" />
         </EntityType>
         <EntityType Name="Project">
           <Key>
@@ -467,28 +460,7 @@
           <Property Name="SiteVisitFormGroupOrder" Type="Int32" Nullable="false" />
           <Property Name="IsVisible" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="SiteVisitFormGroupFields" Relationship="SiteVisitMetaModel.FK_SiteVisitFormGroupFields_SiteVisitFormGroups" FromRole="SiteVisitFormGroups" ToRole="SiteVisitFormGroupFields" />
-          <NavigationProperty Name="SiteVisitForm" Relationship="SiteVisitMetaModel.FK_SiteVisitFormGroups_SiteVisitForms" FromRole="SiteVisitFormGroups" ToRole="SiteVisitForms" />
-        </EntityType>
-        <EntityType Name="SiteVisitForm">
-          <Key>
-            <PropertyRef Name="SiteVisitFormID" />
-          </Key>
-          <Property Name="SiteVisitFormID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SiteVisitID" Type="Int32" Nullable="false" />
-          <Property Name="SiteVisitParentFormID" Type="Int32" />
-          <Property Name="SiteVisitFormName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="DBTableName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="DBPrimaryKeyName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="DBForeignKeyName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="UIPanelID" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="UIDisplayName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="UIDisplayOrder" Type="Int32" Nullable="false" />
-          <Property Name="IsMultipleReponse" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="SiteVisitFormGroups" Relationship="SiteVisitMetaModel.FK_SiteVisitFormGroups_SiteVisitForms" FromRole="SiteVisitForms" ToRole="SiteVisitFormGroups" />
-          <NavigationProperty Name="SiteVisitForms1" Relationship="SiteVisitMetaModel.FK_SiteVisitForms_SiteVisitForms" FromRole="SiteVisitForms" ToRole="SiteVisitForms1" />
-          <NavigationProperty Name="SiteVisitForm1" Relationship="SiteVisitMetaModel.FK_SiteVisitForms_SiteVisitForms" FromRole="SiteVisitForms1" ToRole="SiteVisitForms" />
-          <NavigationProperty Name="SiteVisit" Relationship="SiteVisitMetaModel.FK_SiteVisitForms_SiteVisits" FromRole="SiteVisitForms" ToRole="SiteVisits" />
-          <NavigationProperty Name="SiteVisitFormFields" Relationship="SiteVisitMetaModel.FK_SiteVisitFormFields_SiteVisitForms" FromRole="SiteVisitForm" ToRole="SiteVisitFormField" />
+          <NavigationProperty Name="SiteVisitForm" Relationship="SiteVisitMetaModel.FK_SiteVisitFormGroups_SiteVisitForms" FromRole="SiteVisitFormGroup" ToRole="SiteVisitForm" />
         </EntityType>
         <EntityType Name="SiteVisit">
           <Key>
@@ -499,7 +471,7 @@
           <Property Name="SiteVisitName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="SiteVisitDescription" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="Project" Relationship="SiteVisitMetaModel.FK_SiteVisits_Projects" FromRole="SiteVisits" ToRole="Projects" />
-          <NavigationProperty Name="SiteVisitForms" Relationship="SiteVisitMetaModel.FK_SiteVisitForms_SiteVisits" FromRole="SiteVisits" ToRole="SiteVisitForms" />
+          <NavigationProperty Name="SiteVisitForms" Relationship="SiteVisitMetaModel.FK_SiteVisitForms_SiteVisits" FromRole="SiteVisit" ToRole="SiteVisitForm" />
         </EntityType>
         <Association Name="FK_Projects_Clients">
           <End Role="Clients" Type="SiteVisitMetaModel.Client" Multiplicity="1" />
@@ -537,42 +509,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_SiteVisitFormGroups_SiteVisitForms">
-          <End Role="SiteVisitForms" Type="SiteVisitMetaModel.SiteVisitForm" Multiplicity="1" />
-          <End Role="SiteVisitFormGroups" Type="SiteVisitMetaModel.SiteVisitFormGroup" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SiteVisitForms">
-              <PropertyRef Name="SiteVisitFormID" />
-            </Principal>
-            <Dependent Role="SiteVisitFormGroups">
-              <PropertyRef Name="SiteVisitFormID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SiteVisitForms_SiteVisitForms">
-          <End Role="SiteVisitForms" Type="SiteVisitMetaModel.SiteVisitForm" Multiplicity="0..1" />
-          <End Role="SiteVisitForms1" Type="SiteVisitMetaModel.SiteVisitForm" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SiteVisitForms">
-              <PropertyRef Name="SiteVisitFormID" />
-            </Principal>
-            <Dependent Role="SiteVisitForms1">
-              <PropertyRef Name="SiteVisitParentFormID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SiteVisitForms_SiteVisits">
-          <End Role="SiteVisits" Type="SiteVisitMetaModel.SiteVisit" Multiplicity="1" />
-          <End Role="SiteVisitForms" Type="SiteVisitMetaModel.SiteVisitForm" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SiteVisits">
-              <PropertyRef Name="SiteVisitID" />
-            </Principal>
-            <Dependent Role="SiteVisitForms">
-              <PropertyRef Name="SiteVisitID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="AppointmentStatus">
           <Key>
             <PropertyRef Name="AppointmentStatusID" />
@@ -593,6 +529,86 @@
           <Property Type="Int32" Name="DisplayOrder" Nullable="false" />
           <Property Type="Boolean" Name="IsDefault" Nullable="false" />
         </EntityType>
+        <EntityType Name="ClientTemplateSetting">
+          <Key>
+            <PropertyRef Name="ClientTemplateSettingID" />
+          </Key>
+          <Property Type="Int32" Name="ClientTemplateSettingID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ClientID" Nullable="false" />
+          <Property Type="String" Name="TemplateName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="CanGenerate" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="SiteVisitMetaModel.FK_ClientTemplateSettings_Clients" FromRole="ClientTemplateSetting" ToRole="Client" />
+        </EntityType>
+        <Association Name="FK_ClientTemplateSettings_Clients">
+          <End Type="SiteVisitMetaModel.Client" Role="Client" Multiplicity="1" />
+          <End Type="SiteVisitMetaModel.ClientTemplateSetting" Role="ClientTemplateSetting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="ClientTemplateSetting">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SiteVisitForm">
+          <Key>
+            <PropertyRef Name="SiteVisitFormID" />
+          </Key>
+          <Property Type="Int32" Name="SiteVisitFormID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="SiteVisitID" Nullable="false" />
+          <Property Type="Int32" Name="SiteVisitParentFormID" />
+          <Property Type="String" Name="SiteVisitFormName" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SiteVisitFormIntroduction" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DBTableName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DBPrimaryKeyName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DBForeignKeyName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UIPanelID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UIDisplayName" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="UIDisplayOrder" Nullable="false" />
+          <Property Type="Boolean" Name="IsMultipleReponse" Nullable="false" />
+          <NavigationProperty Name="SiteVisitFormGroups" Relationship="SiteVisitMetaModel.FK_SiteVisitFormGroups_SiteVisitForms" FromRole="SiteVisitForm" ToRole="SiteVisitFormGroup" />
+          <NavigationProperty Name="SiteVisitForms1" Relationship="SiteVisitMetaModel.FK_SiteVisitForms_SiteVisitForms" FromRole="SiteVisitForm" ToRole="SiteVisitForm1" />
+          <NavigationProperty Name="SiteVisitForm1" Relationship="SiteVisitMetaModel.FK_SiteVisitForms_SiteVisitForms" FromRole="SiteVisitForm1" ToRole="SiteVisitForm" />
+          <NavigationProperty Name="SiteVisit" Relationship="SiteVisitMetaModel.FK_SiteVisitForms_SiteVisits" FromRole="SiteVisitForm" ToRole="SiteVisit" />
+          <NavigationProperty Name="SiteVisitFormFields" Relationship="SiteVisitMetaModel.FK_SiteVisitFormFields_SiteVisitForms" FromRole="SiteVisitForm" ToRole="SiteVisitFormField" />
+        </EntityType>
+        <Association Name="FK_SiteVisitFormGroups_SiteVisitForms">
+          <End Type="SiteVisitMetaModel.SiteVisitForm" Role="SiteVisitForm" Multiplicity="1" />
+          <End Type="SiteVisitMetaModel.SiteVisitFormGroup" Role="SiteVisitFormGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SiteVisitForm">
+              <PropertyRef Name="SiteVisitFormID" />
+            </Principal>
+            <Dependent Role="SiteVisitFormGroup">
+              <PropertyRef Name="SiteVisitFormID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiteVisitForms_SiteVisitForms">
+          <End Type="SiteVisitMetaModel.SiteVisitForm" Role="SiteVisitForm" Multiplicity="0..1" />
+          <End Type="SiteVisitMetaModel.SiteVisitForm" Role="SiteVisitForm1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SiteVisitForm">
+              <PropertyRef Name="SiteVisitFormID" />
+            </Principal>
+            <Dependent Role="SiteVisitForm1">
+              <PropertyRef Name="SiteVisitParentFormID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiteVisitForms_SiteVisits">
+          <End Type="SiteVisitMetaModel.SiteVisit" Role="SiteVisit" Multiplicity="1" />
+          <End Type="SiteVisitMetaModel.SiteVisitForm" Role="SiteVisitForm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SiteVisit">
+              <PropertyRef Name="SiteVisitID" />
+            </Principal>
+            <Dependent Role="SiteVisitForm">
+              <PropertyRef Name="SiteVisitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityType Name="SiteVisitFormField">
           <Key>
             <PropertyRef Name="SiteVisitFormFieldID" />
@@ -600,7 +616,7 @@
           <Property Type="Int32" Name="SiteVisitFormFieldID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="SiteVisitFormID" Nullable="false" />
           <Property Type="String" Name="FieldName" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="FieldLabel" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FieldLabel" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="FieldGroupName" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="FieldGroupOrder" />
           <Property Type="Int32" Name="FieldTabIndex" />
@@ -608,27 +624,16 @@
           <Property Type="String" Name="ControlAttributes" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Type="Boolean" Name="IsVisible" Nullable="false" />
           <Property Type="Boolean" Name="IsRequired" Nullable="false" />
+          <Property Type="Boolean" Name="IsEnabled" Nullable="false" />
           <Property Type="Boolean" Name="IsLabelVisible" Nullable="false" />
           <Property Type="Boolean" Name="IsSearchableField" Nullable="false" />
           <Property Type="Boolean" Name="IsSummaryField" Nullable="false" />
           <Property Type="Boolean" Name="IsReportViewerFilterField" Nullable="false" />
-          <NavigationProperty Name="ControlType" Relationship="SiteVisitMetaModel.FK_SiteVisitFormFields_ControlTypes" FromRole="SiteVisitFormField" ToRole="ControlType" />
           <NavigationProperty Name="SiteVisitFormFieldItems" Relationship="SiteVisitMetaModel.FK_SiteVisitFormFieldItems_SiteVisitFormFields" FromRole="SiteVisitFormField" ToRole="SiteVisitFormFieldItem" />
           <NavigationProperty Name="SiteVisitForm" Relationship="SiteVisitMetaModel.FK_SiteVisitFormFields_SiteVisitForms" FromRole="SiteVisitFormField" ToRole="SiteVisitForm" />
           <NavigationProperty Name="SiteVisitFormGroupFields" Relationship="SiteVisitMetaModel.FK_SiteVisitFormGroupFields_SiteVisitFormFields" FromRole="SiteVisitFormField" ToRole="SiteVisitFormGroupField" />
+          <NavigationProperty Name="ControlType" Relationship="SiteVisitMetaModel.FK_SiteVisitFormFields_ControlTypes" FromRole="SiteVisitFormField" ToRole="ControlType" />
         </EntityType>
-        <Association Name="FK_SiteVisitFormFields_ControlTypes">
-          <End Type="SiteVisitMetaModel.ControlType" Role="ControlType" Multiplicity="1" />
-          <End Type="SiteVisitMetaModel.SiteVisitFormField" Role="SiteVisitFormField" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ControlType">
-              <PropertyRef Name="ControlTypeID" />
-            </Principal>
-            <Dependent Role="SiteVisitFormField">
-              <PropertyRef Name="ControlTypeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_SiteVisitFormFieldItems_SiteVisitFormFields">
           <End Type="SiteVisitMetaModel.SiteVisitFormField" Role="SiteVisitFormField" Multiplicity="1" />
           <End Type="SiteVisitMetaModel.SiteVisitFormFieldItem" Role="SiteVisitFormFieldItem" Multiplicity="*" />
@@ -665,25 +670,28 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="ClientTemplateSetting">
+        <EntityType Name="ControlType">
           <Key>
-            <PropertyRef Name="ClientTemplateSettingID" />
+            <PropertyRef Name="ControlTypeID" />
           </Key>
-          <Property Type="Int32" Name="ClientTemplateSettingID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="ClientID" Nullable="false" />
-          <Property Type="String" Name="TemplateName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Type="Boolean" Name="CanGenerate" Nullable="false" />
-          <NavigationProperty Name="Client" Relationship="SiteVisitMetaModel.FK_ClientTemplateSettings_Clients" FromRole="ClientTemplateSetting" ToRole="Client" />
+          <Property Type="Int32" Name="ControlTypeID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ControlTypeName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DBTypeName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UITypeName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CSTypeName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="HasMultipleFields" Nullable="false" />
+          <Property Type="String" Name="ControlTypeDescription" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SiteVisitFormFields" Relationship="SiteVisitMetaModel.FK_SiteVisitFormFields_ControlTypes" FromRole="ControlType" ToRole="SiteVisitFormField" />
         </EntityType>
-        <Association Name="FK_ClientTemplateSettings_Clients">
-          <End Type="SiteVisitMetaModel.Client" Role="Client" Multiplicity="1" />
-          <End Type="SiteVisitMetaModel.ClientTemplateSetting" Role="ClientTemplateSetting" Multiplicity="*" />
+        <Association Name="FK_SiteVisitFormFields_ControlTypes">
+          <End Type="SiteVisitMetaModel.ControlType" Role="ControlType" Multiplicity="1" />
+          <End Type="SiteVisitMetaModel.SiteVisitFormField" Role="SiteVisitFormField" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Client">
-              <PropertyRef Name="ClientID" />
+            <Principal Role="ControlType">
+              <PropertyRef Name="ControlTypeID" />
             </Principal>
-            <Dependent Role="ClientTemplateSetting">
-              <PropertyRef Name="ClientID" />
+            <Dependent Role="SiteVisitFormField">
+              <PropertyRef Name="ControlTypeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -702,17 +710,6 @@
                 <ScalarProperty Name="ServerName" ColumnName="ServerName" />
                 <ScalarProperty Name="DatabaseName" ColumnName="DatabaseName" />
                 <ScalarProperty Name="IsDeployed" ColumnName="IsDeployed" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ControlTypes">
-            <EntityTypeMapping TypeName="SiteVisitMetaModel.ControlType">
-              <MappingFragment StoreEntitySet="ControlTypes">
-                <ScalarProperty Name="ControlTypeID" ColumnName="ControlTypeID" />
-                <ScalarProperty Name="ControlTypeName" ColumnName="ControlTypeName" />
-                <ScalarProperty Name="DBTypeName" ColumnName="DBTypeName" />
-                <ScalarProperty Name="UITypeName" ColumnName="UITypeName" />
-                <ScalarProperty Name="CSTypeName" ColumnName="CSTypeName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -759,23 +756,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SiteVisitForms">
-            <EntityTypeMapping TypeName="SiteVisitMetaModel.SiteVisitForm">
-              <MappingFragment StoreEntitySet="SiteVisitForms">
-                <ScalarProperty Name="SiteVisitFormID" ColumnName="SiteVisitFormID" />
-                <ScalarProperty Name="SiteVisitID" ColumnName="SiteVisitID" />
-                <ScalarProperty Name="SiteVisitParentFormID" ColumnName="SiteVisitParentFormID" />
-                <ScalarProperty Name="SiteVisitFormName" ColumnName="SiteVisitFormName" />
-                <ScalarProperty Name="DBTableName" ColumnName="DBTableName" />
-                <ScalarProperty Name="DBPrimaryKeyName" ColumnName="DBPrimaryKeyName" />
-                <ScalarProperty Name="DBForeignKeyName" ColumnName="DBForeignKeyName" />
-                <ScalarProperty Name="UIPanelID" ColumnName="UIPanelID" />
-                <ScalarProperty Name="UIDisplayName" ColumnName="UIDisplayName" />
-                <ScalarProperty Name="UIDisplayOrder" ColumnName="UIDisplayOrder" />
-                <ScalarProperty Name="IsMultipleReponse" ColumnName="IsMultipleReponse" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="SiteVisits">
             <EntityTypeMapping TypeName="SiteVisitMetaModel.SiteVisit">
               <MappingFragment StoreEntitySet="SiteVisits">
@@ -808,6 +788,34 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ClientTemplateSettings">
+            <EntityTypeMapping TypeName="SiteVisitMetaModel.ClientTemplateSetting">
+              <MappingFragment StoreEntitySet="ClientTemplateSettings">
+                <ScalarProperty Name="CanGenerate" ColumnName="CanGenerate" />
+                <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="ClientTemplateSettingID" ColumnName="ClientTemplateSettingID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SiteVisitForms">
+            <EntityTypeMapping TypeName="SiteVisitMetaModel.SiteVisitForm">
+              <MappingFragment StoreEntitySet="SiteVisitForms">
+                <ScalarProperty Name="IsMultipleReponse" ColumnName="IsMultipleReponse" />
+                <ScalarProperty Name="UIDisplayOrder" ColumnName="UIDisplayOrder" />
+                <ScalarProperty Name="UIDisplayName" ColumnName="UIDisplayName" />
+                <ScalarProperty Name="UIPanelID" ColumnName="UIPanelID" />
+                <ScalarProperty Name="DBForeignKeyName" ColumnName="DBForeignKeyName" />
+                <ScalarProperty Name="DBPrimaryKeyName" ColumnName="DBPrimaryKeyName" />
+                <ScalarProperty Name="DBTableName" ColumnName="DBTableName" />
+                <ScalarProperty Name="SiteVisitFormIntroduction" ColumnName="SiteVisitFormIntroduction" />
+                <ScalarProperty Name="SiteVisitFormName" ColumnName="SiteVisitFormName" />
+                <ScalarProperty Name="SiteVisitParentFormID" ColumnName="SiteVisitParentFormID" />
+                <ScalarProperty Name="SiteVisitID" ColumnName="SiteVisitID" />
+                <ScalarProperty Name="SiteVisitFormID" ColumnName="SiteVisitFormID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="SiteVisitFormFields">
             <EntityTypeMapping TypeName="SiteVisitMetaModel.SiteVisitFormField">
               <MappingFragment StoreEntitySet="SiteVisitFormFields">
@@ -815,6 +823,7 @@
                 <ScalarProperty Name="IsSummaryField" ColumnName="IsSummaryField" />
                 <ScalarProperty Name="IsSearchableField" ColumnName="IsSearchableField" />
                 <ScalarProperty Name="IsLabelVisible" ColumnName="IsLabelVisible" />
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
                 <ScalarProperty Name="IsRequired" ColumnName="IsRequired" />
                 <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
                 <ScalarProperty Name="ControlAttributes" ColumnName="ControlAttributes" />
@@ -829,13 +838,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ClientTemplateSettings">
-            <EntityTypeMapping TypeName="SiteVisitMetaModel.ClientTemplateSetting">
-              <MappingFragment StoreEntitySet="ClientTemplateSettings">
-                <ScalarProperty Name="CanGenerate" ColumnName="CanGenerate" />
-                <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
-                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
-                <ScalarProperty Name="ClientTemplateSettingID" ColumnName="ClientTemplateSettingID" />
+          <EntitySetMapping Name="ControlTypes">
+            <EntityTypeMapping TypeName="SiteVisitMetaModel.ControlType">
+              <MappingFragment StoreEntitySet="ControlTypes">
+                <ScalarProperty Name="ControlTypeDescription" ColumnName="ControlTypeDescription" />
+                <ScalarProperty Name="HasMultipleFields" ColumnName="HasMultipleFields" />
+                <ScalarProperty Name="CSTypeName" ColumnName="CSTypeName" />
+                <ScalarProperty Name="UITypeName" ColumnName="UITypeName" />
+                <ScalarProperty Name="DBTypeName" ColumnName="DBTypeName" />
+                <ScalarProperty Name="ControlTypeName" ColumnName="ControlTypeName" />
+                <ScalarProperty Name="ControlTypeID" ColumnName="ControlTypeID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -859,14 +871,12 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="SiteVisitMetaModel">
+      <Diagram Name="SiteVisitMetaModel" ZoomLevel="80">
         <EntityTypeShape EntityType="SiteVisitMetaModel.Client" Width="1.5" PointX="0.75" PointY="4.625" Height="2.3648893229166674" IsExpanded="true" />
-        <EntityTypeShape EntityType="SiteVisitMetaModel.ControlType" Width="1.5" PointX="7.5" PointY="0.75" Height="2.1725878906249996" IsExpanded="true" />
         <EntityTypeShape EntityType="SiteVisitMetaModel.Project" Width="1.5" PointX="3" PointY="4.75" Height="2.1725878906249996" IsExpanded="true" />
         <EntityTypeShape EntityType="SiteVisitMetaModel.SiteVisitFormFieldItem" Width="1.5" PointX="12" PointY="4.75" Height="2.1725878906249996" IsExpanded="true" />
         <EntityTypeShape EntityType="SiteVisitMetaModel.SiteVisitFormGroupField" Width="1.5" PointX="12" PointY="8" Height="1.9802864583333317" IsExpanded="true" />
         <EntityTypeShape EntityType="SiteVisitMetaModel.SiteVisitFormGroup" Width="1.5" PointX="9.75" PointY="9.75" Height="2.7494921874999996" IsExpanded="true" />
-        <EntityTypeShape EntityType="SiteVisitMetaModel.SiteVisitForm" Width="1.5" PointX="7.5" PointY="3.75" Height="4.0956022135416674" IsExpanded="true" />
         <EntityTypeShape EntityType="SiteVisitMetaModel.SiteVisit" Width="1.5" PointX="5.25" PointY="4.75" Height="2.1725878906249996" IsExpanded="true" />
         <AssociationConnector Association="SiteVisitMetaModel.FK_Projects_Clients" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="5.8362939453125" />
@@ -881,47 +891,49 @@
           <ConnectorPoint PointX="12.75" PointY="11.239889822916666" />
           <ConnectorPoint PointX="12.75" PointY="9.9802864583333335" />
         </AssociationConnector>
-        <AssociationConnector Association="SiteVisitMetaModel.FK_SiteVisitFormGroups_SiteVisitForms" ManuallyRouted="false">
-          <ConnectorPoint PointX="8.25" PointY="7.8456022135416656" />
-          <ConnectorPoint PointX="8.25" PointY="11.12474609375" />
-          <ConnectorPoint PointX="9.75" PointY="11.12474609375" />
-        </AssociationConnector>
-        <AssociationConnector Association="SiteVisitMetaModel.FK_SiteVisitForms_SiteVisitForms" ManuallyRouted="false">
-          <ConnectorPoint PointX="8.0319230769230767" PointY="3.75" />
-          <ConnectorPoint PointX="8.0319230769230767" PointY="3.5" />
-          <ConnectorPoint PointX="8.47846153846154" PointY="3.5" />
-          <ConnectorPoint PointX="8.47846153846154" PointY="3.75" />
-        </AssociationConnector>
-        <AssociationConnector Association="SiteVisitMetaModel.FK_SiteVisitForms_SiteVisits" ManuallyRouted="false">
-          <ConnectorPoint PointX="6.75" PointY="5.8362939453125" />
-          <ConnectorPoint PointX="7.5" PointY="5.8362939453125" />
-        </AssociationConnector>
         <EntityTypeShape EntityType="SiteVisitMetaModel.AppointmentStatus" Width="1.5" PointX="0.75" PointY="0.75" Height="1.9802864583333317" />
         <EntityTypeShape EntityType="SiteVisitMetaModel.Disposition" Width="1.5" PointX="3.375" PointY="0.75" Height="1.9802864583333353" />
-        <EntityTypeShape EntityType="SiteVisitMetaModel.SiteVisitFormField" Width="1.5" PointX="9.75" PointY="2" Height="4.6725065104166674" />
-        <AssociationConnector Association="SiteVisitMetaModel.FK_SiteVisitFormFields_ControlTypes" >
-          <ConnectorPoint PointX="9" PointY="2.4612939453125" />
-          <ConnectorPoint PointX="9.75" PointY="2.4612939453125" />
-        </AssociationConnector>
-        <AssociationConnector Association="SiteVisitMetaModel.FK_SiteVisitFormFieldItems_SiteVisitFormFields" >
-          <ConnectorPoint PointX="11.25" PointY="5.7112532552083337" />
-          <ConnectorPoint PointX="12" PointY="5.7112532552083337" />
-        </AssociationConnector>
-        <AssociationConnector Association="SiteVisitMetaModel.FK_SiteVisitFormFields_SiteVisitForms" >
-          <ConnectorPoint PointX="9" PointY="5.2112532552083337" />
-          <ConnectorPoint PointX="9.75" PointY="5.2112532552083337" />
-        </AssociationConnector>
-        <AssociationConnector Association="SiteVisitMetaModel.FK_SiteVisitFormGroupFields_SiteVisitFormFields" >
-          <ConnectorPoint PointX="11.25" PointY="6.6713516642628212" />
-          <ConnectorPoint PointX="11.625" PointY="7.0463516642628212" />
-          <ConnectorPoint PointX="11.625" PointY="8.9901432291666659" />
-          <ConnectorPoint PointX="12" PointY="8.9901432291666659" />
-        </AssociationConnector>
         <EntityTypeShape EntityType="SiteVisitMetaModel.ClientTemplateSetting" Width="1.5" PointX="3" PointY="7.875" Height="1.9802864583333317" />
         <AssociationConnector Association="SiteVisitMetaModel.FK_ClientTemplateSettings_Clients" >
           <ConnectorPoint PointX="1.5" PointY="7.1821907552083326" />
           <ConnectorPoint PointX="1.5" PointY="8.8651432291666659" />
           <ConnectorPoint PointX="3" PointY="8.8651432291666659" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="SiteVisitMetaModel.SiteVisitForm" Width="1.5" PointX="7.5" PointY="3.75" Height="4.2879036458333388" />
+        <AssociationConnector Association="SiteVisitMetaModel.FK_SiteVisitFormGroups_SiteVisitForms" >
+          <ConnectorPoint PointX="8.25" PointY="8.0379036458333335" />
+          <ConnectorPoint PointX="8.25" PointY="11.12474609375" />
+          <ConnectorPoint PointX="9.75" PointY="11.12474609375" />
+        </AssociationConnector>
+        <AssociationConnector Association="SiteVisitMetaModel.FK_SiteVisitForms_SiteVisitForms" >
+          <ConnectorPoint PointX="8.0319230769230767" PointY="3.75" />
+          <ConnectorPoint PointX="8.0319230769230767" PointY="3.5" />
+          <ConnectorPoint PointX="8.47846153846154" PointY="3.5" />
+          <ConnectorPoint PointX="8.47846153846154" PointY="3.75" />
+        </AssociationConnector>
+        <AssociationConnector Association="SiteVisitMetaModel.FK_SiteVisitForms_SiteVisits" >
+          <ConnectorPoint PointX="6.75" PointY="5.8362939453125" />
+          <ConnectorPoint PointX="7.5" PointY="5.8362939453125" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="SiteVisitMetaModel.SiteVisitFormField" Width="1.5" PointX="9.75" PointY="2" Height="4.8648079427083317" />
+        <AssociationConnector Association="SiteVisitMetaModel.FK_SiteVisitFormFieldItems_SiteVisitFormFields" >
+          <ConnectorPoint PointX="11.25" PointY="5.7274749258105357" />
+          <ConnectorPoint PointX="12" PointY="5.7274749258105357" />
+        </AssociationConnector>
+        <AssociationConnector Association="SiteVisitMetaModel.FK_SiteVisitFormFields_SiteVisitForms" >
+          <ConnectorPoint PointX="9" PointY="5.3074039713541659" />
+          <ConnectorPoint PointX="9.75" PointY="5.3074039713541659" />
+        </AssociationConnector>
+        <AssociationConnector Association="SiteVisitMetaModel.FK_SiteVisitFormGroupFields_SiteVisitFormFields" >
+          <ConnectorPoint PointX="11.25" PointY="6.8636530965544855" />
+          <ConnectorPoint PointX="11.625" PointY="7.2386530965544855" />
+          <ConnectorPoint PointX="11.625" PointY="8.9901432291666659" />
+          <ConnectorPoint PointX="12" PointY="8.9901432291666659" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="SiteVisitMetaModel.ControlType" Width="1.5" PointX="7.875" PointY="0.75" Height="2.5571907552083388" />
+        <AssociationConnector Association="SiteVisitMetaModel.FK_SiteVisitFormFields_ControlTypes" >
+          <ConnectorPoint PointX="9.375" PointY="2.6535953776041694" />
+          <ConnectorPoint PointX="9.75" PointY="2.6535953776041694" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

@@ -182,7 +182,7 @@ this.Write(this.ToStringHelper.ToStringWithCulture(parentForm.UIDisplayName));
         
         #line 50 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
 this.Write("s</h2>\r\n\t<table>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t\t<dx:ASPxButton ID=\"lnkCreate\" runat=\"serve" +
-        "r\" Text=\"Create ");
+        "r\" Text=\"Add New ");
 
         
         #line default
@@ -196,12 +196,12 @@ this.Write(this.ToStringHelper.ToStringWithCulture(parentForm.UIDisplayName));
         #line hidden
         
         #line 54 "C:\Apps\On-Site\Admin\OnSite.TemplateWizard\T4\FormsSearchTemplate.tt"
-this.Write(@""" UseSubmitBehavior=""False"">
+this.Write(@""" UseSubmitBehavior=""False"" Image-Url=""~/Images/add.png"">
 					<ClientSideEvents Click=""OnCreateClick"" />
 				</dx:ASPxButton>
 			</td>
 			<td>
-				<dx:ASPxButton ID=""btnCsvExport"" runat=""server"" Text=""Export to Csv"" UseSubmitBehavior=""False"" />
+				<dx:ASPxButton ID=""btnCsvExport"" runat=""server"" Text=""Export to Csv"" Image-Url=""~/Images/page_excel.png"" UseSubmitBehavior=""False"" />
 			</td>
 		</tr>
 	</table>

@@ -51,12 +51,12 @@ switch (OutputType) {
 	<table>
 		<tr>
 			<td>
-				<dx:ASPxButton ID="lnkCreate" runat="server" Text="Create <#= parentForm.UIDisplayName #>" UseSubmitBehavior="False">
+				<dx:ASPxButton ID="lnkCreate" runat="server" Text="Add New <#= parentForm.UIDisplayName #>" UseSubmitBehavior="False" Image-Url="~/Images/add.png">
 					<ClientSideEvents Click="OnCreateClick" />
 				</dx:ASPxButton>
 			</td>
 			<td>
-				<dx:ASPxButton ID="btnCsvExport" runat="server" Text="Export to Csv" UseSubmitBehavior="False" />
+				<dx:ASPxButton ID="btnCsvExport" runat="server" Text="Export to Csv" Image-Url="~/Images/page_excel.png" UseSubmitBehavior="False" />
 			</td>
 		</tr>
 	</table>

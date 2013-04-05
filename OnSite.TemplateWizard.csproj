@@ -82,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\AddressFieldHelper.cs" />
+    <Compile Include="Classes\ControlType.cs" />
     <Compile Include="Classes\DevExpressHelper.cs" />
     <Compile Include="T4\FormsJavascriptTemplate.cs">
       <DependentUpon>FormsJavascriptTemplate.tt</DependentUpon>

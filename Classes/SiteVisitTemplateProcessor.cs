@@ -138,9 +138,9 @@ namespace OnSite.TemplateWizard.Classes
         //    template.OutputType = FormsTemplate.FileType.Page;
         //    template.OutputFilePath = Path.Combine(FormsPath, form.DBTableName + ".ascx");
         //    template.SaveOutput(template.TransformText());
-            
+
         //    template.OutputType = FormsTemplate.FileType.Code;
-        //    template.OutputFilePath = Path.Combine(FormsPath, form.DBTableName + ".ascx.cs");            
+        //    template.OutputFilePath = Path.Combine(FormsPath, form.DBTableName + ".ascx.cs");
         //    template.SaveOutput(template.TransformText());
 
         //    template.OutputType = FormsTemplate.FileType.Designer;
@@ -176,7 +176,12 @@ namespace OnSite.TemplateWizard.Classes
                 FormsJavascriptTemplate template = new FormsJavascriptTemplate();
                 template.Form = form;
 
-                template.OutputFilePath = Path.Combine(JavascriptPath, form.DBTableName + ".js");
+                template.OutputType = FormsJavascriptTemplate.FileType.CheckState;
+                template.OutputFilePath = Path.Combine(JavascriptPath, form.DBTableName + "_CheckState.js");
+                template.SaveOutput(template.TransformText());
+
+                template.OutputType = FormsJavascriptTemplate.FileType.OnChange;
+                template.OutputFilePath = Path.Combine(JavascriptPath, form.DBTableName + "_OnChange.js");
                 template.SaveOutput(template.TransformText());
             }
         }

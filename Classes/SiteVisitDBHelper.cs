@@ -157,6 +157,18 @@ namespace OnSite.TemplateWizard.Classes
             return fields;
         }
 
+        public static IEnumerable<SiteVisitFormField> GetSiteVisitEditableTableFields(SiteVisitForm form)
+        {
+            IEnumerable<SiteVisitFormField> fields;
+
+            fields = (from f in form.SiteVisitFormFields
+                      orderby f.FieldTabIndex
+                      where ControlType.IsUIType(ControlType.UIType.EditableTable, f.ControlType.UITypeName)
+                      select f);
+
+            return fields;
+        }
+
         public static SiteVisitFormField GetSiteVisitReportViewerFilterField(SiteVisitForm form)
         {
             SiteVisitFormField field = (from f in form.SiteVisitFormFields

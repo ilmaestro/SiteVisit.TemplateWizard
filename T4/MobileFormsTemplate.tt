@@ -16,10 +16,13 @@ switch (OutputType) {
 #><#+
     void GeneratePage(SiteVisitForm form)
     {
-		string pkeyTable = form.SiteVisit.SiteVisitName.Replace(" ", "") + "_" + form.DBTableName;
-        string pkey = form.SiteVisit.SiteVisitName.Replace(" ", "") + "_" + form.DBPrimaryKeyName;
-		string fkey = form.SiteVisitForm1 != null ? form.SiteVisit.SiteVisitName.Replace(" ", "") + "_" + form.SiteVisitForm1.DBPrimaryKeyName : string.Empty;
-		string fkeyTable = form.SiteVisitForm1 != null ? form.SiteVisit.SiteVisitName.Replace(" ", "") + "_" + form.SiteVisitForm1.DBTableName : string.Empty;
+		string siteVisitName = StringSanitizer.SanitizeForCode(form.SiteVisit.SiteVisitName);
+		string pkeyTable = siteVisitName + "_" + form.DBTableName;
+        string pkey = siteVisitName + "_" + form.DBPrimaryKeyName;
+		string fkey = form.SiteVisitForm1 != null ? siteVisitName + "_" + form.SiteVisitForm1.DBPrimaryKeyName : string.Empty;
+		string fkeyTable = form.SiteVisitForm1 != null ? siteVisitName + "_" + form.SiteVisitForm1.DBTableName : string.Empty;
+		string introText = !string.IsNullOrEmpty(form.SiteVisitFormIntroduction) ? StringSanitizer.SanitizeForHtml(form.SiteVisitFormIntroduction) : "";
+
 #>
 <%@ Control Language="C#" AutoEventWireup="true" CodeBehind="<#= form.DBTableName #>.ascx.cs" Inherits="OnSite.WebUI.ClientCode.UserControls.<#= form.DBTableName #>" %>
 <%@ Register Assembly="DevExpress.Web.v12.1, Version=12.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
@@ -28,9 +31,12 @@ switch (OutputType) {
     Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dx" %>
 <%@ Register src="~/UserControls/FormControls/Text.ascx" tagname="Text" tagprefix="uc" %>
 <%@ Register src="~/UserControls/FormControls/Number.ascx" tagname="Number" tagprefix="uc" %>
+<%@ Register src="~/UserControls/FormControls/NumberList.ascx" tagname="NumberList" tagprefix="uc" %>
 <%@ Register src="~/UserControls/FormControls/Integer.ascx" tagname="Integer" tagprefix="uc" %>
+<%@ Register src="~/UserControls/FormControls/IntegerList.ascx" tagname="IntegerList" tagprefix="uc" %>
 <%@ Register src="~/UserControls/FormControls/Currency.ascx" tagname="Currency" tagprefix="uc" %>
 <%@ Register src="~/UserControls/FormControls/Percent.ascx" tagname="Percent" tagprefix="uc" %>
+<%@ Register src="~/UserControls/FormControls/PercentList.ascx" tagname="PercentList" tagprefix="uc" %>
 <%@ Register src="~/UserControls/FormControls/Date.ascx" tagname="Date" tagprefix="uc" %>
 <%@ Register src="~/UserControls/FormControls/Time.ascx" tagname="Time" tagprefix="uc" %>
 <%@ Register src="~/UserControls/FormControls/PhoneNumber.ascx" tagname="PhoneNumber" tagprefix="uc" %>
@@ -41,17 +47,21 @@ switch (OutputType) {
 <%@ Register src="~/UserControls/FormControls/CheckList.ascx" tagname="CheckList" tagprefix="uc" %>
 <%@ Register src="~/UserControls/FormControls/Label.ascx" tagname="Label" tagprefix="uc" %>
 <%@ Register src="~/UserControls/FormControls/Memo.ascx" tagname="Memo" tagprefix="uc" %>
+<#= GenerateEditableTableSrc(form) #>
 <asp:Panel ID="<#= form.DBTableName #>Panel" runat="server">
 	<dx:ASPxTextBox ID="hv<#= pkey #>" runat="server" ClientVisible="false"></dx:ASPxTextBox>
 	<#= !string.IsNullOrEmpty(fkey) ? "<dx:ASPxTextBox ID=\"hv" + fkey + "\" runat=\"server\" ClientVisible=\"false\"></dx:ASPxTextBox>" : "" #>
 	<div class="formTitle">
-		<dx:ASPxLabel ID="<#= pkey #>Caption" runat="server" text="<#= form.UIDisplayName #>" ForeColor="Black" CssClass="caption">
+		<dx:ASPxLabel ID="<#= pkeyTable #>Caption" runat="server" text="<#= form.UIDisplayName #>" ForeColor="Black" CssClass="caption">
 		</dx:ASPxLabel>
 	</div>
-	<dx:ASPxPanel ID="<#= pkey #>Panel" runat="server" CssClass="formPanel" ClientInstanceName="<#= pkey #>PanelControl" ScrollBars="none">
+	<div class="formIntroduction">
+<#= introText #>
+	</div>
+	<dx:ASPxPanel ID="<#= pkeyTable #>Panel" runat="server" CssClass="formPanel" ClientInstanceName="<#= pkeyTable #>PanelControl" ScrollBars="none">
         <PanelCollection>
-            <dx:PanelContent ID="<#= pkey #>PanelContent" runat="server" SupportsDisabledAttribute="True">
-<#= GenerateGroups(form.SiteVisitFormID) #>
+            <dx:PanelContent ID="<#= pkeyTable #>PanelContent" runat="server" SupportsDisabledAttribute="True">
+<#= GenerateGroups(form.SiteVisitFormID, pkeyTable) #>
 			</dx:PanelContent>
         </PanelCollection>
     </dx:ASPxPanel>
@@ -59,7 +69,19 @@ switch (OutputType) {
 <#+
     }  
 
-	private string GenerateGroups(int siteVisitFormID)
+	private string GenerateEditableTableSrc(SiteVisitForm form)
+    {
+		var fields = SiteVisitDBHelper.GetSiteVisitEditableTableFields(form);
+		foreach (SiteVisitFormField field in fields)
+        {
+			string controlName = StringSanitizer.SanitizeForCode(field.FieldLabel) + "Search";
+
+#><%@ Register Src="~/ClientCode/UserControls/<#= controlName #>.ascx" TagPrefix="uc" TagName="<#= controlName #>" %>
+<#+		}
+		return "";
+    }
+
+	private string GenerateGroups(int siteVisitFormID, string pkeytable)
 	{
 		var groups = SiteVisitDBHelper.GetSiteVisitFormGroups(siteVisitFormID);
 		IList<string> fieldgroups = SiteVisitDBHelper.GetFieldGroups(siteVisitFormID, null);
@@ -67,10 +89,11 @@ switch (OutputType) {
 			string displayName = (grp.SiteVisitFormGroupDisplayName == null ? string.Empty : StringSanitizer.SanitizeForWeb(grp.SiteVisitFormGroupDisplayName));
 			string groupName = (grp.SiteVisitFormGroupName == null ? string.Empty : StringSanitizer.SanitizeForWeb(grp.SiteVisitFormGroupName));
 			string description = (grp.SiteVisitFormGroupDescription == null ? string.Empty : StringSanitizer.SanitizeForWeb(grp.SiteVisitFormGroupDescription));
-
+			string groupID = StringSanitizer.SanitizeForCode(groupName);
+			
 			if (groupName != displayName && groupName.Length > 0)
 			{
-				groupName = displayName + " ["+groupName+"]";
+				groupName = displayName; // + " ["+groupName+"]";
 			} else {
 				groupName = displayName;
 			}
@@ -80,14 +103,14 @@ switch (OutputType) {
 				description = "";
 			}
 			
-#>				<dx:ASPxPanel ID="Grp<#= grp.SiteVisitFormGroupID #>ContentPanel" runat="server" CssClass="groupPanel" ClientInstanceName="Grp<#= grp.SiteVisitFormGroupID #>ContentPanelControl" ScrollBars="none">
+#>				<dx:ASPxPanel ID="Grp<#= groupID #>ContentPanel" runat="server" CssClass="groupPanel" ClientInstanceName="Grp<#= groupID #>ContentPanelControl" ScrollBars="none">
 					<PanelCollection>
-						<dx:PanelContent ID="Grp<#= grp.SiteVisitFormGroupID #>ContentPanelContent" runat="server" SupportsDisabledAttribute="True">
+						<dx:PanelContent ID="Grp<#= groupID #>ContentPanelContent" runat="server" SupportsDisabledAttribute="True">
 							<div class="groupToolbar">
 								<div class="groupName"><#= groupName #></div>
 							</div>							
 							<div class="groupDescription"><#= description #></div>
-<#= GenerateFieldGroups(grp.SiteVisitFormGroupID, fieldgroups) #>
+<#= GenerateFieldGroups(grp.SiteVisitFormGroupID, fieldgroups, pkeytable) #>
 							<div class="groupSeparator">&nbsp;</div>
                         </dx:PanelContent>
                     </PanelCollection>
@@ -98,25 +121,26 @@ switch (OutputType) {
 		return "";
 	}
 	
-	private string GenerateFieldGroups(int siteVisitGroupID, IList<string> fieldgroups)
+	private string GenerateFieldGroups(int siteVisitGroupID, IList<string> fieldgroups, string pkeytable)
 	{
 		int fieldGroupID = 0;
 		foreach(string fieldGroupName in fieldgroups) {
 			string displayName = fieldGroupName == null ? string.Empty : fieldGroupName;
+			string title = fieldGroupName == null ? string.Empty : "<h3>" + fieldGroupName + "</h3>";
 #>							<div class="fieldGroupToolbar" style="display:none;">
 								<dx:ASPxLabel ID="Field<#= fieldGroupID++ #>Grp<#= siteVisitGroupID #>Caption" runat="server" text="<#= displayName #>" ForeColor="Black" CssClass="caption">
 								</dx:ASPxLabel>
 							</div>
 							<div class="formFieldGroup" id="SiteVisitGroupID_<#= siteVisitGroupID #>">
-								<h3><#= displayName #></h3>
-<#= GenerateGroupFields(siteVisitGroupID, fieldGroupName) #>
+								<#= title #>
+<#= GenerateGroupFields(siteVisitGroupID, fieldGroupName, pkeytable) #>
 							</div>
 <#+	
 		}
 		return "";
 	}
 
-	private string GenerateGroupFields(int siteVisitGroupID, string fieldGroupName)
+	private string GenerateGroupFields(int siteVisitGroupID, string fieldGroupName, string pkeytable)
 	{
 		var fields = SiteVisitDBHelper.GetSiteVisitFormFieldsByFieldGroup(siteVisitGroupID, fieldGroupName);
 		
@@ -125,24 +149,35 @@ switch (OutputType) {
 			string fieldLabel = string.IsNullOrEmpty(field.FieldLabel) ? string.Empty : StringSanitizer.SanitizeForWeb(field.FieldLabel);
 			string IsVisible = field.IsVisible ? "True" : "False";
 			string IsRequired = field.IsRequired ? "True" : "False";
+			string IsEnabled = field.IsEnabled ? "True" : "False";
 			string RequiredFieldErrorMessage = field.FieldLabel + " is required.";
+			string ControlAttributes = string.IsNullOrEmpty(field.ControlAttributes) ? "" : field.ControlAttributes;
+			string controlType = field.ControlType.UITypeName;
+			string otherBox = "";
+
+			if (ControlType.IsUIType(ControlType.UIType.EditableTable, field.ControlType.UITypeName))
+				controlType = StringSanitizer.SanitizeForCode(field.FieldLabel) + "Search";
+
 			if (field.IsLabelVisible && !string.IsNullOrEmpty(fieldLabel))
 			{
 				label = "<div class=\"formGroupFieldLabel\">"+fieldLabel+"</div>";
 			}
-			string otherBox = "";
+			
 			if (SiteVisitDBHelper.FieldHasListItemOther(field))
 			{
 				otherBox = "<span>If Other:</span><uc:Text ID=\"uc" + field.FieldName + "_Other\" runat=\"server\"></uc:Text>";
 			}
 #>								<div class="formGroupField" id="Field_<#= field.FieldName #>">
 									<#= label #>
-									<uc:<#= field.ControlType.UITypeName #> ID="uc<#= field.FieldName #>" runat="server" 
+									<uc:<#= controlType #> ID="uc<#= field.FieldName #>" runat="server" 
 										Visible="<#= IsVisible #>" 
 										IsRequired="<#= IsRequired #>"
+										IsEnabled="<#= IsEnabled #>"
+										OnChangeFunctionName="On<#= pkeytable #>Change_uc<#= field.FieldName #>"
+										CheckStateFunctionName="Check<#= pkeytable #>State"
 										RequiredFieldErrorMessage="<#= RequiredFieldErrorMessage #>"
-										<#= string.IsNullOrEmpty(field.ControlAttributes) ? "" : field.ControlAttributes #>>
-									</uc:<#= field.ControlType.UITypeName #>>
+										<#= ControlAttributes #>>
+									</uc:<#= controlType #>>
 									<#= otherBox #>
 								</div>
 <#+ 
@@ -152,10 +187,18 @@ switch (OutputType) {
 
     void GenerateCodeFile(SiteVisitForm form)
     {
-		string table = form.SiteVisit.SiteVisitName.Replace(" ", "") + "_" + form.DBTableName;
-        string pkey = form.SiteVisit.SiteVisitName.Replace(" ", "") + "_" + form.DBPrimaryKeyName;
-		string fkey = form.SiteVisitForm1 != null ? form.SiteVisit.SiteVisitName.Replace(" ", "") + "_" + form.SiteVisitForm1.DBPrimaryKeyName : string.Empty;
-		string fkeyTable = form.SiteVisitForm1 != null ? form.SiteVisit.SiteVisitName.Replace(" ", "") + "_" + form.SiteVisitForm1.DBTableName : string.Empty;
+		string siteVisitName = StringSanitizer.SanitizeForCode(form.SiteVisit.SiteVisitName);
+		string table = siteVisitName + "_" + form.DBTableName;
+        string pkey = siteVisitName + "_" + form.DBPrimaryKeyName;
+		string fkey = form.SiteVisitForm1 != null ? siteVisitName + "_" + form.SiteVisitForm1.DBPrimaryKeyName : string.Empty;
+		string fkeyTable = form.SiteVisitForm1 != null ? siteVisitName + "_" + form.SiteVisitForm1.DBTableName : string.Empty;
+		string interfaceClass = form.SiteVisitForm1 == null ? "IParentFormControl" : "IChildFormControl";
+		string editableTableLoads = "";
+		var fields = SiteVisitDBHelper.GetSiteVisitEditableTableFields(form);
+		foreach (SiteVisitFormField field in fields)
+        {
+			editableTableLoads += "\t\t\t\tuc"+ field.FieldName +".LoadForm(formdata);\n";
+        }
 #>
 
 using System;
@@ -167,16 +210,19 @@ using System.Web.UI.WebControls;
 using System.Web.Security;
 using OnSite.WebUI.ClientCode.Models;
 using OnSite.WebUI.Models;
+using OnSite.WebUI.Classes;
 
 namespace OnSite.WebUI.ClientCode.UserControls
 {
-    public partial class <#= form.DBTableName #> : System.Web.UI.UserControl
+    public partial class <#= form.DBTableName #> : System.Web.UI.UserControl, <#= interfaceClass #>
     {
         private SiteVisitDataEntities dataCtx = new SiteVisitDataEntities();
         private SiteVisitMetaEntities metaCtx = new SiteVisitMetaEntities();
 
 
 		#region Public Properties
+		public int SiteVisitFormID = <#= form.SiteVisitFormID #>;
+
         public int? <#= pkey #>
         {
             get
@@ -190,6 +236,12 @@ namespace OnSite.WebUI.ClientCode.UserControls
                 return <#= pkey #>;
             }
         }
+
+		public int? GetFormKey()
+        {
+            return <#= pkey #>;
+        }
+
 <#= GetForeignKeyProperty(fkey) #>
 <#= GenerateProperties(form.SiteVisitFormID) #>
 		#endregion
@@ -198,7 +250,7 @@ namespace OnSite.WebUI.ClientCode.UserControls
         {
 <#= GenerateBindListControl(form.SiteVisitFormID) #>
         }
-<#= GetForeignKeyLoadForm(table, fkeyTable) #>
+<#= GetForeignKeyLoadForm(table, fkeyTable, editableTableLoads) #>
 
         public <#= table #> LoadForm(int _<#= pkey #>)
         {
@@ -208,6 +260,7 @@ namespace OnSite.WebUI.ClientCode.UserControls
             if (formdata != null)
             {
 				PopulateForm(formdata);
+<#= editableTableLoads #>
             }
 			return formdata;
         }
@@ -265,7 +318,7 @@ namespace OnSite.WebUI.ClientCode.UserControls
                 dataCtx.<#= table #>.AddObject(formdata);
             }
 
-            dataCtx.SaveChanges().ToString();
+            dataCtx.SaveChanges();
 			hv<#= pkey #>.Text = formdata.<#= pkey #>.ToString();
 			<#= string.IsNullOrEmpty(fkey) ? "dataCtx."+ table + "UpdateGeography();" : "" #>
         }
@@ -297,7 +350,7 @@ namespace OnSite.WebUI.ClientCode.UserControls
 		return "";
 	}
 	
-	private string GetForeignKeyLoadForm(string pkeyTable, string fkeyTable)
+	private string GetForeignKeyLoadForm(string pkeyTable, string fkeyTable, string editableTableLoads)
 	{		
 		if (!string.IsNullOrEmpty(pkeyTable) && !string.IsNullOrEmpty(fkeyTable))
 		{
@@ -307,7 +360,16 @@ namespace OnSite.WebUI.ClientCode.UserControls
             if (formdata != null)
             {                
                 PopulateForm(formdata);
+<#= editableTableLoads #>
             }
+        }
+
+		public void LoadForm(object parentForm)
+        {
+            if (parentForm.GetType() == typeof(<#= fkeyTable #>))
+                LoadForm((<#= fkeyTable #>)parentForm);
+            else
+                throw new Exception("Can't load form of type " + parentForm.GetType().Name);
         }
 <#+
 		}
@@ -319,6 +381,25 @@ namespace OnSite.WebUI.ClientCode.UserControls
 
 		foreach(SiteVisitFormField field in fields) {
 			string otherProperty = "";
+			ControlType.UIType uiType = (ControlType.UIType)Enum.Parse(typeof(ControlType.UIType), field.ControlType.UITypeName);
+			string controlType = "";
+			string setOperation = "";
+			if (uiType == ControlType.UIType.CheckList)
+            {
+				controlType = "List<string>";
+				setOperation = "//not implemented";
+            }
+			else if (field.ControlType.HasMultipleFields)
+			{
+				controlType = "List<" + field.ControlType.CSTypeName +">";
+				setOperation = "//not implemented";
+            } 
+			else 
+			{
+				controlType = field.ControlType.CSTypeName;
+				setOperation = "uc" + field.FieldName + ".Value = value;";
+            }
+
 			if (SiteVisitDBHelper.FieldHasListItemOther(field))
 			{
 				otherProperty = "\t\tpublic "+ field.ControlType.CSTypeName+ " " + field.FieldName + "_Other {\r\n";
@@ -326,16 +407,18 @@ namespace OnSite.WebUI.ClientCode.UserControls
 				otherProperty += "\t\t\tset { uc" + field.FieldName + "_Other.Value = value;}\r\n";
 				otherProperty += "\t\t}\r\n";
 			}
+
+			
 #>
-        public <#= field.ControlType.CSTypeName #> <#= field.FieldName #> 
+        public <#= controlType #> <#= field.FieldName #> 
 		{
 			get
 			{
-				return (<#= field.ControlType.CSTypeName #>) uc<#= field.FieldName #>.Value;
+				return (<#= controlType #>) uc<#= field.FieldName #>.Value;
 			}
 			set
 			{
-				uc<#= field.FieldName #>.Value = value;
+				<#= setOperation #>
 			}
 		}
 <#= otherProperty #>
@@ -348,6 +431,17 @@ namespace OnSite.WebUI.ClientCode.UserControls
 		var fields = SiteVisitDBHelper.GetSiteVisitFormFields(siteVisitFormID, null, false);
 
 		foreach(SiteVisitFormField field in fields) {
+			ControlType.UIType uiType = (ControlType.UIType)Enum.Parse(typeof(ControlType.UIType), field.ControlType.UITypeName);
+			string controlType = "";
+
+			if (uiType == ControlType.UIType.CheckList)
+            {
+				controlType = "string";
+            }
+			else 
+			{
+				controlType = field.ControlType.CSTypeName;
+            }
 #>
             if (uc<#= field.FieldName #>.IsListControl)
             {
@@ -355,7 +449,7 @@ namespace OnSite.WebUI.ClientCode.UserControls
                                   where m.SiteVisitFormFieldID == <#= field.SiteVisitFormFieldID #>
                                   orderby m.ListItemOrder
                                   select m);
-                uc<#= field.FieldName #>.BindDataSource(datasource, "ListItemValue", "ListItemLabel", typeof(<#= field.ControlType.CSTypeName #>));
+                uc<#= field.FieldName #>.BindDataSource(datasource, "ListItemValue", "ListItemLabel", typeof(<#= controlType #>));
             }
 <#+ 
 		}
@@ -367,16 +461,20 @@ namespace OnSite.WebUI.ClientCode.UserControls
 
 		foreach(SiteVisitFormField field in fields) {
 			string output = "";
-			if (field.ControlType.ControlTypeID == 1)
+			//ControlType.UIType uiType = (ControlType.UIType)Enum.Parse(typeof(ControlType.UIType), field.ControlType.UITypeName);
+			if (field.ControlType.HasMultipleFields)
 			{
 				//grab all the fields list item values
 				foreach(SiteVisitFormFieldItem item in field.SiteVisitFormFieldItems)
 				{
-					output += "if (formdata."+field.FieldName+"_"+item.ListItemValue+" != null) uc" + field.FieldName+ ".SetValue(\""+item.ListItemValue+"\", (bool)formdata."+field.FieldName+"_"+item.ListItemValue+");\r\n\t\t\t";
+					output += "if (formdata."+field.FieldName+"_"+item.ListItemValue+" != null) uc" + field.FieldName+ ".SetListItemValue(\""+item.ListItemValue+"\", formdata."+field.FieldName+"_"+item.ListItemValue+");\r\n\t\t\t";
 				}
-			} else {
+			}
+			else 
+			{
 				output = "uc" + field.FieldName+ ".Value = formdata." + field.FieldName + ";";
 			}
+
 			if (SiteVisitDBHelper.FieldHasListItemOther(field))
 			{
 				output += "\r\n\t\t\tuc" + field.FieldName+ "_Other.Value = formdata." + field.FieldName + "_Other;";
@@ -393,19 +491,23 @@ namespace OnSite.WebUI.ClientCode.UserControls
 
 		foreach(SiteVisitFormField field in fields) {
 			string output = "";
-			if (field.ControlType.ControlTypeID == 1)
+			//ControlType.UIType uiType = (ControlType.UIType)Enum.Parse(typeof(ControlType.UIType), field.ControlType.UITypeName);
+			if (field.ControlType.HasMultipleFields)
 			{
 				//grab all the fields list item values
 				foreach(SiteVisitFormFieldItem item in field.SiteVisitFormFieldItems)
 				{
-					output += "formdata." + field.FieldName + "_"+item.ListItemValue+" = uc" + field.FieldName+ ".IsValueSelected(\""+item.ListItemValue+"\");\r\n\t\t\t";
+					output += "formdata." + field.FieldName + "_"+item.ListItemValue+" = (" + field.ControlType.CSTypeName + ")uc" + field.FieldName+ ".GetListItemValue(\""+item.ListItemValue+"\");\r\n\t\t\t";
 				}
-			} else {
+			} 
+			else 
+			{
 				output = "formdata." + field.FieldName + " = (" + field.ControlType.CSTypeName + ") uc" + field.FieldName+ ".Value;";
 			}
+
 			if (SiteVisitDBHelper.FieldHasListItemOther(field))
 			{
-				output += "\r\n\t\t\tformdata." + field.FieldName + "_Other = (" + field.ControlType.CSTypeName + ") uc" + field.FieldName+ "_Other.Value;";
+				output += "\r\n\t\t\tformdata." + field.FieldName + "_Other = (string) uc" + field.FieldName+ "_Other.Value;";
 			}
 #>			<#= output #>
 <#+ 
@@ -415,10 +517,11 @@ namespace OnSite.WebUI.ClientCode.UserControls
 
 	void GenerateDesignerFile(SiteVisitForm form)
 	{
-		string pkeyTable = form.SiteVisit.SiteVisitName.Replace(" ", "") + "_" + form.DBTableName;
-        string pkey = form.SiteVisit.SiteVisitName.Replace(" ", "") + "_" + form.DBPrimaryKeyName;
-		string fkey = form.SiteVisitForm1 != null ? form.SiteVisit.SiteVisitName.Replace(" ", "") + "_" + form.SiteVisitForm1.DBPrimaryKeyName : string.Empty;
-		string fkeyTable = form.SiteVisitForm1 != null ? form.SiteVisit.SiteVisitName.Replace(" ", "") + "_" + form.SiteVisitForm1.DBTableName : string.Empty;
+		string siteVisitName = StringSanitizer.SanitizeForCode(form.SiteVisit.SiteVisitName);
+		string pkeyTable = siteVisitName + "_" + form.DBTableName;
+        string pkey = siteVisitName + "_" + form.DBPrimaryKeyName;
+		string fkey = form.SiteVisitForm1 != null ? siteVisitName + "_" + form.SiteVisitForm1.DBPrimaryKeyName : string.Empty;
+		string fkeyTable = form.SiteVisitForm1 != null ? siteVisitName + "_" + form.SiteVisitForm1.DBTableName : string.Empty;
 #>
 //------------------------------------------------------------------------------
 // <auto-generated>
@@ -471,6 +574,7 @@ namespace OnSite.WebUI.ClientCode.UserControls {
         /// </remarks>
         protected global::DevExpress.Web.ASPxPanel.ASPxPanel <#= pkey #>Panel;
 
+<#= GenerateEditableTableFieldDesignerProperties(form) #>
 <#= GenerateFieldDesignerProperties(form.SiteVisitFormID) #>
 <#= GenerateGroupDesignerProperties(form.SiteVisitFormID) #>
 	}
@@ -483,7 +587,9 @@ namespace OnSite.WebUI.ClientCode.UserControls {
 		var fields = SiteVisitDBHelper.GetSiteVisitFormFields(siteVisitFormID, null, false);
 
 		foreach(SiteVisitFormField field in fields) {
+			string controlType = field.ControlType.UITypeName;
 			string otherProperty = "";
+									
 			if (SiteVisitDBHelper.FieldHasListItemOther(field))
 			{
 				otherProperty = "\t\tprotected global::OnSite.WebUI.UserControls.FormControls.Text uc" + field.FieldName + "_Other;\r\n";
@@ -496,8 +602,28 @@ namespace OnSite.WebUI.ClientCode.UserControls {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::OnSite.WebUI.UserControls.FormControls.<#= field.ControlType.UITypeName #> uc<#= field.FieldName #>;
+        protected global::OnSite.WebUI.UserControls.FormControls.<#= controlType #> uc<#= field.FieldName #>;
 <#= otherProperty #>
+<#+ 
+		}
+		return "";
+	}
+
+	private string GenerateEditableTableFieldDesignerProperties(SiteVisitForm form)
+	{
+		var fields = SiteVisitDBHelper.GetSiteVisitEditableTableFields(form);
+		foreach (SiteVisitFormField field in fields)
+        {
+			string controlType = StringSanitizer.SanitizeForCode(field.FieldLabel) + "Search";
+#>
+        /// <summary>
+        /// uc<#= field.FieldName #> control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::OnSite.WebUI.ClientCode.UserControls.<#= controlType #> uc<#= field.FieldName #>;
 <#+ 
 		}
 		return "";
