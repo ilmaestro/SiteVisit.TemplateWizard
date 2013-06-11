@@ -24,7 +24,7 @@ switch (OutputType) {
 		string ftable = sitevisitname + "_" + parentForm.DBTableName;
 		string fkey = sitevisitname + "_" + parentForm.DBPrimaryKeyName;
 #>
-<%@ Page Title="<#= form.SiteVisitFormName #>" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="<#= form.DBTableName #>Edit.aspx.cs" Inherits="OnSite.WebUI.ClientCode.SiteVisits.<#= form.DBTableName #>Edit" %>
+<%@ Page Title="<#= form.SiteVisitFormName #>" Language="C#" MasterPageFile="~/ChildEdit.Master" AutoEventWireup="true" CodeBehind="<#= form.DBTableName #>Edit.aspx.cs" Inherits="OnSite.WebUI.ClientCode.SiteVisits.<#= form.DBTableName #>Edit" %>
 <%@ Register src="~/ClientCode/UserControls/<#= form.DBTableName #>.ascx" tagname="<#= form.DBTableName #>" tagprefix="uc" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
@@ -34,6 +34,8 @@ switch (OutputType) {
         }
     </script>
     <script type="text/javascript" src="../Scripts/SiteVisitEdit.js"></script>
+    <script type="text/javascript" src="../ClientCode/Javascript/<#= form.DBTableName #>_CheckState.js"></script>
+    <script type="text/javascript" src="../ClientCode/Javascript/<#= form.DBTableName #>_OnChange.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:HiddenField ID="hf<#= form.DBTableName #>FormKey" runat="server" />

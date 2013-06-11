@@ -234,10 +234,11 @@ namespace OnSite.WebUI.ClientCode.UserControls
             int id = (int)gv<#= form.DBTableName #>.GetRowValues(container.VisibleIndex, "<#= pkey #>");
             string fieldValue = (string)gv<#= form.DBTableName #>.GetRowValues(container.VisibleIndex, fieldName);
             string fieldLabel = "";
-
-            var sql = "SELECT VALUE SiteVisitDataModel.Store.ListItemGetFieldLabel('<#= form.DBTableName #>','" + fieldName + "',@FieldItemValue) FROM {1}";
-            fieldLabel = ctx.CreateQuery<string>(sql, new ObjectParameter("FieldItemValue", fieldValue)).FirstOrDefault();
-
+			if (!string.IsNullOrEmpty(fieldValue))
+            {
+				var sql = "SELECT VALUE SiteVisitDataModel.Store.ListItemGetFieldLabel('<#= form.DBTableName #>','" + fieldName + "',@FieldItemValue) FROM {1}";
+				fieldLabel = ctx.CreateQuery<string>(sql, new ObjectParameter("FieldItemValue", fieldValue)).FirstOrDefault();
+			}
             return fieldLabel;
         }
 	}

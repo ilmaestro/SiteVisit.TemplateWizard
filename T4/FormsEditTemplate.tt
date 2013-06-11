@@ -40,6 +40,7 @@ switch (OutputType) {
 	}
 </script>
 <script type="text/javascript" src="../Scripts/SiteVisitEdit.js"></script>
+<#= GenerateJavascriptReferences(parentForm, forms) #>
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
 	<div class="formsEditHeader">
@@ -136,12 +137,25 @@ switch (OutputType) {
 <#+ 
 		}
 		return "";
+	}  
+
+	private string GenerateJavascriptReferences(SiteVisitForm parentForm, IEnumerable<SiteVisitForm> forms)
+	{
+		var query = from f in forms
+					where (f.SiteVisitParentFormID == parentForm.SiteVisitFormID || f.SiteVisitFormID == parentForm.SiteVisitFormID)  && f.IsMultipleReponse == false
+					select f;
+		foreach(SiteVisitForm form in query) {
+#><script type="text/javascript" src="../ClientCode/Javascript/<#= form.DBTableName #>_CheckState.js"></script>
+<script type="text/javascript" src="../ClientCode/Javascript/<#= form.DBTableName #>_OnChange.js"></script>
+<#+ 
+		}
+		return "";
 	}
 	
 	private string GenerateNavBarItems(SiteVisitForm parentForm, IEnumerable<SiteVisitForm> forms)
 	{
 		var query = from f in forms
-					where f.SiteVisitParentFormID == parentForm.SiteVisitFormID || f.SiteVisitFormID == parentForm.SiteVisitFormID
+					where f.SiteVisitParentFormID == parentForm.SiteVisitFormID //|| f.SiteVisitFormID == parentForm.SiteVisitFormID
 					select f;
 		foreach(SiteVisitForm form in query) 
 		{
@@ -193,6 +207,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using OnSite.WebUI.ClientCode.Models;
 using OnSite.WebUI.Models;
+using OnSite.WebUI.ClientCode.Classes;
 
 namespace OnSite.WebUI.ClientCode.SiteVisits
 {
@@ -220,6 +235,7 @@ namespace OnSite.WebUI.ClientCode.SiteVisits
 					string formHeader = ""<#= GenerateSummaryExpression(parentForm) #>;
 					Page.Title = formHeader;
 					lblFormHeader.Text = formHeader;
+					//SiteVisitHelper.HideNavbarItems(nbFormNavigation, (int)ucSiteContact.GrocerMeasureChecklist_SiteContactID, dataCtx);
                 }
                 else
                 {
@@ -264,7 +280,7 @@ namespace OnSite.WebUI.ClientCode.SiteVisits
             }
             else
             {
-                string[] forms = e.Parameter.Split('_');
+                string[] forms = e.Parameter.Split('|');
                 saveForm(forms[0]);
                 if (forms[1].Length > 0)
                 {

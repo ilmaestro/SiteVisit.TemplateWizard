@@ -351,7 +351,7 @@ this.Write("\" %>\r\n");
 		foreach(SiteVisitFormGroup grp in groups) {
 			string displayName = (grp.SiteVisitFormGroupDisplayName == null ? string.Empty : StringSanitizer.SanitizeForWeb(grp.SiteVisitFormGroupDisplayName));
 			string groupName = (grp.SiteVisitFormGroupName == null ? string.Empty : StringSanitizer.SanitizeForWeb(grp.SiteVisitFormGroupName));
-			string description = (grp.SiteVisitFormGroupDescription == null ? string.Empty : StringSanitizer.SanitizeForWeb(grp.SiteVisitFormGroupDescription));
+			string description = (grp.SiteVisitFormGroupDescription == null ? string.Empty : StringSanitizer.SanitizeForHtml(grp.SiteVisitFormGroupDescription));
 			string groupID = StringSanitizer.SanitizeForCode(groupName);
 			
 			if (groupName != displayName && groupName.Length > 0)
