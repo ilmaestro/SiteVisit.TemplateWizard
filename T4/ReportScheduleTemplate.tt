@@ -22,7 +22,7 @@ switch (OutputType) {
         string pkey = sitevisit.SiteVisitName.Replace(" ", "") + "_" + parentForm.DBPrimaryKeyName;
 #>
 <%@ Page Title="<#= sitevisit.SiteVisitName #>" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="<#= sitevisitName #>Schedule.aspx.cs" Inherits="OnSite.WebUI.ClientCode.Reports.<#= sitevisitName #>Schedule" %>
-<%@ Register Assembly="DevExpress.XtraReports.v12.1.Web, Version=12.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+<%@ Register Assembly="DevExpress.XtraReports.v13.1.Web, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.XtraReports.Web" TagPrefix="dx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>

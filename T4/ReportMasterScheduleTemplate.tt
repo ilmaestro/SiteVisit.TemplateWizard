@@ -31,9 +31,9 @@ switch (OutputType) {
 		}		
 #>
 <%@ Page Title="<#= sitevisit.SiteVisitName #>" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="Master<#= sitevisitName #>Schedule.aspx.cs" Inherits="OnSite.WebUI.ClientCode.Reports.Master<#= sitevisitName #>Schedule" %>
-<%@ Register Assembly="DevExpress.Web.ASPxScheduler.v12.1, Version=12.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+<%@ Register Assembly="DevExpress.Web.ASPxScheduler.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxScheduler" TagPrefix="dxwschs" %>
-<%@ Register assembly="DevExpress.XtraScheduler.v12.1.Core, Version=12.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.XtraScheduler" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.XtraScheduler.v13.1.Core, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.XtraScheduler" tagprefix="dx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 <script type="text/javascript">
     // <![CDATA[
