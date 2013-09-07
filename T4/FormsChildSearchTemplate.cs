@@ -366,78 +366,80 @@ this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
         #line hidden
         
         #line 75 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
-this.Write("DataSource\" runat=\"server\" \r\n    ConnectionString=\"name=SiteVisitDataEntities\" \r\n" +
-        "    DefaultContainerName=\"SiteVisitDataEntities\" EnableDelete=\"True\" \r\n    Enabl" +
-        "eFlattening=\"False\" EntitySetName=\"");
+this.Write(@"DataSource"" runat=""server"" 
+    ConnectionString=""name=SiteVisitDataEntities"" 
+	ContextTypeName=""OnSite.WebUI.ClientCode.Models.SiteVisitDataEntities""
+    DefaultContainerName=""SiteVisitDataEntities"" EnableDelete=""True"" 
+    EnableFlattening=""False"" EntitySetName=""");
 
         
         #line default
         #line hidden
         
-        #line 78 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 79 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(table));
 
         
         #line default
         #line hidden
         
-        #line 78 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 79 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write("\" \r\n    EntityTypeFilter=\"\" Select=\"\" Where=\"it.");
 
         
         #line default
         #line hidden
         
-        #line 79 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 80 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(fkey));
 
         
         #line default
         #line hidden
         
-        #line 79 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 80 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(" = @");
 
         
         #line default
         #line hidden
         
-        #line 79 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 80 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(fkey));
 
         
         #line default
         #line hidden
         
-        #line 79 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 80 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write("\">\r\n    <WhereParameters>\r\n        <asp:ControlParameter ControlID=\"hf");
 
         
         #line default
         #line hidden
         
-        #line 81 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 82 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 81 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 82 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write("FormKey\" DefaultValue=\"0\" \r\n            Name=\"");
 
         
         #line default
         #line hidden
         
-        #line 82 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 83 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(fkey));
 
         
         #line default
         #line hidden
         
-        #line 82 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 83 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write("\" PropertyName=\"Value\" Type=\"Int16\" />\r\n    </WhereParameters>\r\n</asp:EntityDataS" +
         "ource>\r\n \r\n<dx:ASPxGridViewExporter ID=\"gridExport\" runat=\"server\" GridViewID=\"g" +
         "v");
@@ -446,21 +448,21 @@ this.Write("\" PropertyName=\"Value\" Type=\"Int16\" />\r\n    </WhereParameters
         #line default
         #line hidden
         
-        #line 86 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 87 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 86 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 87 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write("\">\r\n</dx:ASPxGridViewExporter>\r\n<br />\r\n");
 
         
         #line default
         #line hidden
         
-        #line 89 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 90 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 
     } 
 	
@@ -485,70 +487,70 @@ this.Write("\">\r\n</dx:ASPxGridViewExporter>\r\n<br />\r\n");
         #line default
         #line hidden
         
-        #line 108 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 109 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write("\t\t\t<dx:GridViewDataTextColumn FieldName=\"");
 
         
         #line default
         #line hidden
         
-        #line 108 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 109 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 108 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 109 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write("\" Caption=\"");
 
         
         #line default
         #line hidden
         
-        #line 108 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 109 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.FieldLabel));
 
         
         #line default
         #line hidden
         
-        #line 108 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 109 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write("\"\r\n                ReadOnly=\"True\" VisibleIndex=\"");
 
         
         #line default
         #line hidden
         
-        #line 109 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 110 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(startIndex++));
 
         
         #line default
         #line hidden
         
-        #line 109 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 110 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write("\">\r\n\t\t\t\t");
 
         
         #line default
         #line hidden
         
-        #line 110 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 111 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(dataItemTemplate));
 
         
         #line default
         #line hidden
         
-        #line 110 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 111 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write("\r\n            </dx:GridViewDataTextColumn>\r\n");
 
         
         #line default
         #line hidden
         
-        #line 112 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 113 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
  
 		}
 		return "";
@@ -568,7 +570,7 @@ this.Write("\r\n            </dx:GridViewDataTextColumn>\r\n");
         #line default
         #line hidden
         
-        #line 126 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 127 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(@"
 using System;
 using System.Collections.Generic;
@@ -592,14 +594,14 @@ namespace OnSite.WebUI.ClientCode.UserControls
         #line default
         #line hidden
         
-        #line 144 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 145 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 144 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 145 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(@"Search : System.Web.UI.UserControl
     {
 		SiteVisitDataEntities ctx = new SiteVisitDataEntities();
@@ -624,42 +626,42 @@ this.Write(@"Search : System.Web.UI.UserControl
         #line default
         #line hidden
         
-        #line 162 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 163 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(ftable));
 
         
         #line default
         #line hidden
         
-        #line 162 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 163 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(" parentForm)\r\n        {\r\n            hf");
 
         
         #line default
         #line hidden
         
-        #line 164 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 165 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 164 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 165 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write("FormKey.Value = parentForm.");
 
         
         #line default
         #line hidden
         
-        #line 164 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 165 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(fkey));
 
         
         #line default
         #line hidden
         
-        #line 164 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 165 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(".ToString();\r\n            btnCreate.ClientSideEvents.Click = \"function(s,e){windo" +
         "w.open(\'");
 
@@ -667,42 +669,42 @@ this.Write(".ToString();\r\n            btnCreate.ClientSideEvents.Click = \"fun
         #line default
         #line hidden
         
-        #line 165 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 166 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 165 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 166 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write("Edit.aspx?PID=\" + hf");
 
         
         #line default
         #line hidden
         
-        #line 165 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 166 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 165 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 166 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write("FormKey.Value + \"\');}\";\r\n            gv");
 
         
         #line default
         #line hidden
         
-        #line 166 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 167 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 166 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 167 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(@".DataBind();
         }
 
@@ -721,28 +723,28 @@ this.Write(@".DataBind();
         #line default
         #line hidden
         
-        #line 178 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 179 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 178 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 179 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write("FormKey.Value))\r\n                retVal = (int?)int.Parse(hf");
 
         
         #line default
         #line hidden
         
-        #line 179 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 180 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 179 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 180 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write("FormKey.Value);\r\n            return retVal;\r\n        }\r\n\r\n        protected void " +
         "Page_Init(object sender, EventArgs e)\r\n        {\r\n            gv");
 
@@ -750,14 +752,14 @@ this.Write("FormKey.Value);\r\n            return retVal;\r\n        }\r\n\r\n  
         #line default
         #line hidden
         
-        #line 185 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 186 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 185 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 186 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(".CustomCallback += new DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEven" +
         "tHandler(gv");
 
@@ -765,28 +767,28 @@ this.Write(".CustomCallback += new DevExpress.Web.ASPxGridView.ASPxGridViewCusto
         #line default
         #line hidden
         
-        #line 185 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 186 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 185 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 186 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write("_CustomCallback);\r\n\t\t\tgv");
 
         
         #line default
         #line hidden
         
-        #line 186 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 187 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 186 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 187 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(".CustomButtonCallback += new DevExpress.Web.ASPxGridView.ASPxGridViewCustomButton" +
         "CallbackEventHandler(gv");
 
@@ -794,56 +796,56 @@ this.Write(".CustomButtonCallback += new DevExpress.Web.ASPxGridView.ASPxGridVie
         #line default
         #line hidden
         
-        #line 186 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 187 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 186 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 187 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write("_CustomButtonCallback);\r\n\t\t\tgv");
 
         
         #line default
         #line hidden
         
-        #line 187 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 188 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 187 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 188 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(".CustomColumnDisplayText += new ASPxGridViewColumnDisplayTextEventHandler(gv");
 
         
         #line default
         #line hidden
         
-        #line 187 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 188 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 187 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 188 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write("_CustomColumnDisplayText);\r\n        }\r\n\r\n        protected void gv");
 
         
         #line default
         #line hidden
         
-        #line 190 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 191 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 190 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 191 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write("_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCall" +
         "backEventArgs e)\r\n        {\r\n            gv");
 
@@ -851,28 +853,28 @@ this.Write("_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridV
         #line default
         #line hidden
         
-        #line 192 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 193 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 192 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 193 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(".DataBind();\r\n        }\r\n\r\n\t\tprotected void gv");
 
         
         #line default
         #line hidden
         
-        #line 195 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 196 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 195 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 196 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write("_CustomButtonCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCust" +
         "omButtonCallbackEventArgs e)\r\n        {\r\n            if (e.ButtonID == \"Delete\")" +
         "\r\n            {\r\n                int id = (int)gv");
@@ -881,56 +883,56 @@ this.Write("_CustomButtonCallback(object sender, DevExpress.Web.ASPxGridView.ASP
         #line default
         #line hidden
         
-        #line 199 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 200 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 199 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 200 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(".GetRowValues(e.VisibleIndex, \"");
 
         
         #line default
         #line hidden
         
-        #line 199 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 200 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 199 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 200 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write("\");\r\n\r\n                var record = (from b in ctx.");
 
         
         #line default
         #line hidden
         
-        #line 201 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 202 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(table));
 
         
         #line default
         #line hidden
         
-        #line 201 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 202 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write("\r\n                              where b.");
 
         
         #line default
         #line hidden
         
-        #line 202 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 203 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 202 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 203 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(" == id\r\n                              select b).FirstOrDefault();\r\n\r\n            " +
         "    ctx.DeleteObject(record);\r\n                ctx.SaveChanges();\r\n             " +
         "   gv");
@@ -939,28 +941,28 @@ this.Write(" == id\r\n                              select b).FirstOrDefault();\
         #line default
         #line hidden
         
-        #line 207 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 208 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 207 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 208 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(".DataBind();\r\n            }\r\n   \r\n        }\r\n\r\n\t\tprotected void gv");
 
         
         #line default
         #line hidden
         
-        #line 212 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 213 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 212 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 213 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(@"_CustomColumnDisplayText(object sender, ASPxGridViewColumnDisplayTextEventArgs e)
         {
             if (e.Column.Caption == ""Row"")
@@ -977,84 +979,84 @@ this.Write(@"_CustomColumnDisplayText(object sender, ASPxGridViewColumnDisplayTe
         #line default
         #line hidden
         
-        #line 222 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 223 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 222 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 223 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(".Columns[\"");
 
         
         #line default
         #line hidden
         
-        #line 222 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 223 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(fkey));
 
         
         #line default
         #line hidden
         
-        #line 222 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 223 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write("\"].Visible = true;\r\n            gv");
 
         
         #line default
         #line hidden
         
-        #line 223 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 224 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 223 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 224 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(".Columns[\"");
 
         
         #line default
         #line hidden
         
-        #line 223 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 224 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 223 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 224 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write("\"].Visible = true;\r\n\r\n            gv");
 
         
         #line default
         #line hidden
         
-        #line 225 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 226 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 225 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 226 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(".DataBind();\r\n            gridExport.FileName = \"");
 
         
         #line default
         #line hidden
         
-        #line 226 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 227 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(table));
 
         
         #line default
         #line hidden
         
-        #line 226 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 227 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write("\";\r\n            gridExport.WriteCsvToResponse();\r\n        }   \r\n\r\n\t\tprotected str" +
         "ing GetFieldLabel(GridViewDataItemTemplateContainer container, string fieldName)" +
         "\r\n        {\r\n            int id = (int)gv");
@@ -1063,42 +1065,42 @@ this.Write("\";\r\n            gridExport.WriteCsvToResponse();\r\n        }   \
         #line default
         #line hidden
         
-        #line 232 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 233 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 232 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 233 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(".GetRowValues(container.VisibleIndex, \"");
 
         
         #line default
         #line hidden
         
-        #line 232 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 233 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(pkey));
 
         
         #line default
         #line hidden
         
-        #line 232 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 233 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write("\");\r\n            string fieldValue = (string)gv");
 
         
         #line default
         #line hidden
         
-        #line 233 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 234 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 233 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 234 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(".GetRowValues(container.VisibleIndex, fieldName);\r\n            string fieldLabel " +
         "= \"\";\r\n\t\t\tif (!string.IsNullOrEmpty(fieldValue))\r\n            {\r\n\t\t\t\tvar sql = \"" +
         "SELECT VALUE SiteVisitDataModel.Store.ListItemGetFieldLabel(\'");
@@ -1107,14 +1109,14 @@ this.Write(".GetRowValues(container.VisibleIndex, fieldName);\r\n            str
         #line default
         #line hidden
         
-        #line 237 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 238 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 237 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 238 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write("\',\'\" + fieldName + \"\',@FieldItemValue) FROM {1}\";\r\n\t\t\t\tfieldLabel = ctx.CreateQue" +
         "ry<string>(sql, new ObjectParameter(\"FieldItemValue\", fieldValue)).FirstOrDefaul" +
         "t();\r\n\t\t\t}\r\n            return fieldLabel;\r\n        }\r\n\t}\r\n}\r\n");
@@ -1123,7 +1125,7 @@ this.Write("\',\'\" + fieldName + \"\',@FieldItemValue) FROM {1}\";\r\n\t\t\t\tf
         #line default
         #line hidden
         
-        #line 244 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 245 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 
     }
 
@@ -1142,7 +1144,7 @@ this.Write("\',\'\" + fieldName + \"\',@FieldItemValue) FROM {1}\";\r\n\t\t\t\tf
         #line default
         #line hidden
         
-        #line 257 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 258 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(@"//------------------------------------------------------------------------------
 // <auto-generated>
 //     This code was generated by a tool.
@@ -1161,14 +1163,14 @@ namespace OnSite.WebUI.ClientCode.UserControls {
         #line default
         #line hidden
         
-        #line 270 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 271 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 270 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 271 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(@"Search {
 
 		/// <summary>
@@ -1184,14 +1186,14 @@ this.Write(@"Search {
         #line default
         #line hidden
         
-        #line 279 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 280 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 279 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 280 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(@"FormKey;
         
         /// <summary>
@@ -1225,14 +1227,14 @@ this.Write(@"FormKey;
         #line default
         #line hidden
         
-        #line 306 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 307 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 306 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 307 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(@";
         
         /// <summary>
@@ -1248,14 +1250,14 @@ this.Write(@";
         #line default
         #line hidden
         
-        #line 315 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 316 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 315 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 316 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 this.Write(@"DataSource;
         
         /// <summary>
@@ -1275,7 +1277,7 @@ this.Write(@"DataSource;
         #line default
         #line hidden
         
-        #line 328 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
+        #line 329 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\FormsChildSearchTemplate.tt"
 
 	}
 

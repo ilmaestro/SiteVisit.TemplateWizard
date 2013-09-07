@@ -83,12 +83,14 @@ switch (OutputType) {
     </dx:ASPxGridView>
     <asp:EntityDataSource ID="<#= table #>DataSource" runat="server" 
         ConnectionString="name=SiteVisitDataEntities" 
+		ContextTypeName="OnSite.WebUI.ClientCode.Models.SiteVisitDataEntities"
         DefaultContainerName="SiteVisitDataEntities" EnableFlattening="False" 
         EntitySetName="<#= table #>" Where="<#= reportViewerFilterExpression #>">
         <#= whereParameters #>
     </asp:EntityDataSource>
 	<asp:EntityDataSource ID="DispositionsDataSource" runat="server" 
 		ConnectionString="name=SiteVisitDataEntities" DefaultContainerName="SiteVisitDataEntities" 
+		ContextTypeName="OnSite.WebUI.ClientCode.Models.SiteVisitDataEntities"
 		EnableFlattening="False" EntitySetName="Dispositions">
 	</asp:EntityDataSource> 
 	<dx:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="ASPxGridView1">

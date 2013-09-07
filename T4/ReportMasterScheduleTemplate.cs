@@ -198,63 +198,64 @@ this.Write("Schedule\" %>\r\n<%@ Register Assembly=\"DevExpress.Web.ASPxSchedule
         "rver\" \r\n        SelectMethod=\"GetResources\" TypeName=\"OnSite.WebUI.Classes.Membe" +
         "rshipHelper\">\r\n    </asp:ObjectDataSource>\r\n    <asp:EntityDataSource ID=\"Appoin" +
         "tmentsDataSource\" runat=\"server\" \r\n        ConnectionString=\"name=SiteVisitDataE" +
-        "ntities\" DefaultContainerName=\"SiteVisitDataEntities\" \r\n        EnableFlattening" +
-        "=\"False\" \r\n        EntitySetName=\"");
+        "ntities\" DefaultContainerName=\"SiteVisitDataEntities\" \r\n\t\tContextTypeName=\"OnSit" +
+        "e.WebUI.ClientCode.Models.SiteVisitDataEntities\"\r\n        EnableFlattening=\"Fals" +
+        "e\" \r\n        EntitySetName=\"");
 
         
         #line default
         #line hidden
         
-        #line 146 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 147 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(table));
 
         
         #line default
         #line hidden
         
-        #line 146 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 147 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write("Appointments\" Include=\"");
 
         
         #line default
         #line hidden
         
-        #line 146 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 147 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(table));
 
         
         #line default
         #line hidden
         
-        #line 146 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 147 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(",SiteVisitAppointment\" Where=\"");
 
         
         #line default
         #line hidden
         
-        #line 146 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 147 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(reportViewerFilterExpression));
 
         
         #line default
         #line hidden
         
-        #line 146 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 147 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write("\">\r\n        ");
 
         
         #line default
         #line hidden
         
-        #line 147 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 148 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(whereParameters));
 
         
         #line default
         #line hidden
         
-        #line 147 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 148 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write("\r\n    </asp:EntityDataSource> \r\n\t<br />\r\n    <table cellpadding=\"0\" cellspacing=\"" +
         "0\" width=\"100%\">\r\n        <tr valign=\"top\">\r\n            <td>\r\n            </td>" +
         "\r\n            <td style=\"width: 6px\">\r\n                &nbsp;\r\n            </td>" +
@@ -303,7 +304,7 @@ this.Write("\r\n    </asp:EntityDataSource> \r\n\t<br />\r\n    <table cellpaddi
         #line default
         #line hidden
         
-        #line 224 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 225 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 
     }  
 
@@ -315,56 +316,56 @@ this.Write("\r\n    </asp:EntityDataSource> \r\n\t<br />\r\n    <table cellpaddi
         #line default
         #line hidden
         
-        #line 230 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 231 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write("\t\t\t\t\t\t\t\t\t\t<dx:GridViewDataTextColumn FieldName=\"");
 
         
         #line default
         #line hidden
         
-        #line 230 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 231 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 230 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 231 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write("\" Caption=\"");
 
         
         #line default
         #line hidden
         
-        #line 230 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 231 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.FieldLabel));
 
         
         #line default
         #line hidden
         
-        #line 230 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 231 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write("\"\r\n\t\t\t\t\t\t\t\t\t\t\tReadOnly=\"True\" VisibleIndex=\"");
 
         
         #line default
         #line hidden
         
-        #line 231 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 232 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.FieldTabIndex));
 
         
         #line default
         #line hidden
         
-        #line 231 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 232 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write("\">\r\n\t\t\t\t\t\t\t\t\t\t</dx:GridViewDataTextColumn>\r\n");
 
         
         #line default
         #line hidden
         
-        #line 233 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 234 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
  
 		}
 		return "";
@@ -382,35 +383,35 @@ this.Write("\">\r\n\t\t\t\t\t\t\t\t\t\t</dx:GridViewDataTextColumn>\r\n");
         #line default
         #line hidden
         
-        #line 245 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 246 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write("\t\t\t\t                <dx:NavBarItem Text=\"");
 
         
         #line default
         #line hidden
         
-        #line 245 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 246 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.UIDisplayName));
 
         
         #line default
         #line hidden
         
-        #line 245 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 246 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write("\" Name=\"");
 
         
         #line default
         #line hidden
         
-        #line 245 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 246 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
 
         
         #line default
         #line hidden
         
-        #line 245 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 246 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write("\" Image-Url=\"~/Images/application_form.png\">                        \r\n           " +
         "                     </dx:NavBarItem>\r\n");
 
@@ -418,7 +419,7 @@ this.Write("\" Image-Url=\"~/Images/application_form.png\">                     
         #line default
         #line hidden
         
-        #line 247 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 248 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
  
 		}
 		return "";
@@ -433,56 +434,56 @@ this.Write("\" Image-Url=\"~/Images/application_form.png\">                     
         #line default
         #line hidden
         
-        #line 256 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 257 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write("\t\t\t\t\t\t<uc:");
 
         
         #line default
         #line hidden
         
-        #line 256 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 257 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
-
-        
-        #line default
-        #line hidden
-        
-        #line 256 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
-this.Write(" ID=\"uc");
-
-        
-        #line default
-        #line hidden
-        
-        #line 256 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
-
-        
-        #line default
-        #line hidden
-        
-        #line 256 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
-this.Write("\" runat=\"server\" Visible=\"");
-
-        
-        #line default
-        #line hidden
-        
-        #line 256 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(visible));
-
-        
-        #line default
-        #line hidden
-        
-        #line 256 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
-this.Write("\" />\r\n");
 
         
         #line default
         #line hidden
         
         #line 257 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+this.Write(" ID=\"uc");
+
+        
+        #line default
+        #line hidden
+        
+        #line 257 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(form.DBTableName));
+
+        
+        #line default
+        #line hidden
+        
+        #line 257 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+this.Write("\" runat=\"server\" Visible=\"");
+
+        
+        #line default
+        #line hidden
+        
+        #line 257 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(visible));
+
+        
+        #line default
+        #line hidden
+        
+        #line 257 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+this.Write("\" />\r\n");
+
+        
+        #line default
+        #line hidden
+        
+        #line 258 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
  
 		}
 		return "";
@@ -500,7 +501,7 @@ this.Write("\" />\r\n");
         #line default
         #line hidden
         
-        #line 269 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 270 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(@"
 using System;
 using System.Collections.Generic;
@@ -524,14 +525,14 @@ namespace OnSite.WebUI.ClientCode.Reports
         #line default
         #line hidden
         
-        #line 287 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 288 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 287 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 288 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write("Schedule : System.Web.UI.Page\r\n    {\r\n        private int lastInsertedAppointment" +
         "Id;\r\n\r\n        SiteVisitDataEntities dataCtx = new SiteVisitDataEntities();\r\n\r\n " +
         "       protected void Page_Load(object sender, EventArgs e)\r\n        {\r\n        " +
@@ -558,14 +559,14 @@ this.Write("Schedule : System.Web.UI.Page\r\n    {\r\n        private int lastIn
         #line default
         #line hidden
         
-        #line 317 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 318 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(siteVisitID));
 
         
         #line default
         #line hidden
         
-        #line 317 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 318 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(";\r\n            if (e.NewValues[\"CreateDate\"] == null)\r\n                e.NewValue" +
         "s[\"CreateDate\"] = DateTime.Now;\r\n            e.NewValues[\"LastModifiedDate\"] = D" +
         "ateTime.Now;\r\n        }\r\n\r\n        protected void ASPxScheduler1_AppointmentRowU" +
@@ -591,14 +592,14 @@ this.Write(";\r\n            if (e.NewValues[\"CreateDate\"] == null)\r\n       
         #line default
         #line hidden
         
-        #line 350 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 351 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(siteVisitID));
 
         
         #line default
         #line hidden
         
-        #line 350 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 351 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write("&UID=\" + onSiteUserGUID);\r\n            \r\n\t\t\tstring ICSNavigateUrl =  \"http://\" + " +
         "rootURL + ResolveUrl(\"~/WebServices/");
 
@@ -606,14 +607,14 @@ this.Write("&UID=\" + onSiteUserGUID);\r\n            \r\n\t\t\tstring ICSNaviga
         #line default
         #line hidden
         
-        #line 352 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 353 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 352 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 353 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write("Calendar.aspx?q=\" + q);\r\n            string OutlookNavigateUrl = \"webcal://\" + ro" +
         "otURL + ResolveUrl(\"~/WebServices/");
 
@@ -621,14 +622,14 @@ this.Write("Calendar.aspx?q=\" + q);\r\n            string OutlookNavigateUrl = 
         #line default
         #line hidden
         
-        #line 353 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 354 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 353 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 354 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(@"Calendar.aspx?q="" + q);
 
             CalendarMenu.Items.Add(""Open in Outlook"", ""Outlook"", ""~/Images/Outlook-icon.gif"", OutlookNavigateUrl, """");
@@ -642,7 +643,7 @@ this.Write(@"Calendar.aspx?q="" + q);
         #line default
         #line hidden
         
-        #line 360 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 361 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 
     }
 
@@ -654,28 +655,28 @@ this.Write(@"Calendar.aspx?q="" + q);
         #line default
         #line hidden
         
-        #line 366 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 367 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(" + contact.");
 
         
         #line default
         #line hidden
         
-        #line 366 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 367 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 366 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 367 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(" + \" \"");
 
         
         #line default
         #line hidden
         
-        #line 366 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 367 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
  
 		}
 		return "";
@@ -701,63 +702,63 @@ this.Write(" + \" \"");
         #line default
         #line hidden
         
-        #line 386 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 387 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write("contact.");
 
         
         #line default
         #line hidden
         
-        #line 386 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 387 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(addressField.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 386 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 387 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(" + \" \" + contact.");
 
         
         #line default
         #line hidden
         
-        #line 386 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 387 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(cityField.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 386 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 387 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(" + \", \" + contact.");
 
         
         #line default
         #line hidden
         
-        #line 386 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 387 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(stateField.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 386 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 387 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(" + \" \" + contact.");
 
         
         #line default
         #line hidden
         
-        #line 386 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 387 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(zipField.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 386 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 387 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
  
 		return "";
 	}
@@ -799,77 +800,77 @@ this.Write(this.ToStringHelper.ToStringWithCulture(zipField.FieldName));
         #line default
         #line hidden
         
-        #line 422 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 423 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(summaryExpression));
 
         
         #line default
         #line hidden
         
-        #line 422 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 423 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(phoneExpression));
 
         
         #line default
         #line hidden
         
-        #line 422 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 423 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write("\"Address:\\n\" + contact.");
 
         
         #line default
         #line hidden
         
-        #line 422 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 423 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(addressField.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 422 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 423 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(" + \"\\n\" + contact.");
 
         
         #line default
         #line hidden
         
-        #line 422 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 423 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(cityField.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 422 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 423 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(" + \", \" + contact.");
 
         
         #line default
         #line hidden
         
-        #line 422 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 423 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(stateField.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 422 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 423 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(" + \" \" + contact.");
 
         
         #line default
         #line hidden
         
-        #line 422 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 423 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(zipField.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 422 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 423 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
  
 		return "";
 	}
@@ -885,7 +886,7 @@ this.Write(this.ToStringHelper.ToStringWithCulture(zipField.FieldName));
         #line default
         #line hidden
         
-        #line 432 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 433 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(@"//------------------------------------------------------------------------------
 // <auto-generated>
 //     This code was generated by a tool.
@@ -904,14 +905,14 @@ namespace OnSite.WebUI.ClientCode.Reports {
         #line default
         #line hidden
         
-        #line 445 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 446 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 445 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 446 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 this.Write("Schedule {\r\n\r\n        /// <summary>\r\n        /// CalendarMenu control.\r\n        /" +
         "// </summary>\r\n        /// <remarks>\r\n        /// Auto-generated field.\r\n       " +
         " /// To modify move field declaration from designer file to code-behind file.\r\n " +
@@ -948,7 +949,7 @@ this.Write("Schedule {\r\n\r\n        /// <summary>\r\n        /// CalendarMenu 
         #line default
         #line hidden
         
-        #line 512 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
+        #line 513 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportMasterScheduleTemplate.tt"
 
 	}
 

@@ -94,10 +94,12 @@ switch (OutputType) {
     <asp:EntityDataSource ID="<#= table #>DataSource" runat="server" 
         ConnectionString="name=SiteVisitDataEntities" 
         DefaultContainerName="SiteVisitDataEntities" EnableFlattening="False" 
+        ContextTypeName="OnSite.WebUI.ClientCode.Models.SiteVisitDataEntities"
         EntitySetName="<#= table #>">
     </asp:EntityDataSource>
 	<asp:EntityDataSource ID="DispositionsDataSource" runat="server" 
 		ConnectionString="name=SiteVisitDataEntities" DefaultContainerName="SiteVisitDataEntities" 
+        ContextTypeName="OnSite.WebUI.ClientCode.Models.SiteVisitDataEntities"
 		EnableFlattening="False" EntitySetName="Dispositions">
 	</asp:EntityDataSource> 
 	<dx:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="ASPxGridView1">

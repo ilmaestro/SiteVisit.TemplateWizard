@@ -446,6 +446,7 @@ this.Write(@"AppointmentsCookie"" Enabled=""true"" StoreColumnsVisiblePosition="
     </div>
     <asp:EntityDataSource ID=""AppointmentsDataSource"" runat=""server"" 
         ConnectionString=""name=SiteVisitDataEntities"" 
+		ContextTypeName=""OnSite.WebUI.ClientCode.Models.SiteVisitDataEntities""
         DefaultContainerName=""SiteVisitDataEntities"" EnableFlattening=""False"" 
         EntitySetName=""");
 
@@ -453,28 +454,28 @@ this.Write(@"AppointmentsCookie"" Enabled=""true"" StoreColumnsVisiblePosition="
         #line default
         #line hidden
         
-        #line 218 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 219 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(table));
 
         
         #line default
         #line hidden
         
-        #line 218 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 219 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write("Appointments\" Include=\"");
 
         
         #line default
         #line hidden
         
-        #line 218 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 219 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(table));
 
         
         #line default
         #line hidden
         
-        #line 218 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 219 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write(",SiteVisitAppointment,AppointmentStatus\" Where=\"it.SiteVisitAppointment.SiteVisit" +
         "ID = ");
 
@@ -482,42 +483,42 @@ this.Write(",SiteVisitAppointment,AppointmentStatus\" Where=\"it.SiteVisitAppoin
         #line default
         #line hidden
         
-        #line 218 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 219 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisit.SiteVisitID));
 
         
         #line default
         #line hidden
         
-        #line 218 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 219 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write(" ");
 
         
         #line default
         #line hidden
         
-        #line 218 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 219 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(reportViewerFilterExpression));
 
         
         #line default
         #line hidden
         
-        #line 218 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 219 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write("\">\r\n        ");
 
         
         #line default
         #line hidden
         
-        #line 219 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 220 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(whereParameters));
 
         
         #line default
         #line hidden
         
-        #line 219 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 220 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write("\r\n    </asp:EntityDataSource>\r\n    <dx:ASPxGridViewExporter ID=\"gridExporter\" run" +
         "at=\"server\" GridViewID=\"grid\">\r\n    </dx:ASPxGridViewExporter>\r\n    <br />\r\n</as" +
         "p:Content>\r\n\r\n");
@@ -526,7 +527,7 @@ this.Write("\r\n    </asp:EntityDataSource>\r\n    <dx:ASPxGridViewExporter ID=\
         #line default
         #line hidden
         
-        #line 226 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 227 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 
     }  
 
@@ -539,70 +540,70 @@ this.Write("\r\n    </asp:EntityDataSource>\r\n    <dx:ASPxGridViewExporter ID=\
         #line default
         #line hidden
         
-        #line 233 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 234 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write("\t\t\t<dx:GridViewDataTextColumn FieldName=\"");
 
         
         #line default
         #line hidden
         
-        #line 233 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 234 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
 
         
         #line default
         #line hidden
         
-        #line 233 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 234 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write(".");
 
         
         #line default
         #line hidden
         
-        #line 233 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 234 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.FieldName));
 
         
         #line default
         #line hidden
         
-        #line 233 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 234 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write("\" Caption=\"");
 
         
         #line default
         #line hidden
         
-        #line 233 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 234 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(field.FieldLabel));
 
         
         #line default
         #line hidden
         
-        #line 233 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 234 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write("\"\r\n                ReadOnly=\"True\" VisibleIndex=\"");
 
         
         #line default
         #line hidden
         
-        #line 234 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 235 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(indexSeed));
 
         
         #line default
         #line hidden
         
-        #line 234 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 235 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write("\">\r\n            </dx:GridViewDataTextColumn>\r\n");
 
         
         #line default
         #line hidden
         
-        #line 236 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 237 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
  
 		}
 		return "";
@@ -630,28 +631,28 @@ this.Write("\">\r\n            </dx:GridViewDataTextColumn>\r\n");
         #line default
         #line hidden
         
-        #line 258 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 259 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write("\t\t\t");
 
         
         #line default
         #line hidden
         
-        #line 258 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 259 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(output));
 
         
         #line default
         #line hidden
         
-        #line 258 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 259 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write("\r\n");
 
         
         #line default
         #line hidden
         
-        #line 259 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 260 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
  
 		}
 		return "";
@@ -668,7 +669,7 @@ this.Write("\r\n");
         #line default
         #line hidden
         
-        #line 270 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 271 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write(@"
 using System;
 using System.Collections.Generic;
@@ -692,14 +693,14 @@ namespace OnSite.WebUI.ClientCode.Reports
         #line default
         #line hidden
         
-        #line 288 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 289 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 288 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 289 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write(@"Appointments : System.Web.UI.Page
     {
         private SiteVisitDataEntities dataCtx = new SiteVisitDataEntities();
@@ -723,28 +724,28 @@ this.Write(@"Appointments : System.Web.UI.Page
         #line default
         #line hidden
         
-        #line 305 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 306 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(GenerateExportColumns(table, parentForm)));
 
         
         #line default
         #line hidden
         
-        #line 305 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 306 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write("\r\n\t\t\tgrid.DataBind();\r\n\t\t\tgridExporter.FileName = \"");
 
         
         #line default
         #line hidden
         
-        #line 307 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 308 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 307 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 308 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write("Appointments\";\r\n            gridExporter.WriteCsvToResponse();\r\n        }\r\n    }\r" +
         "\n}\r\n");
 
@@ -752,7 +753,7 @@ this.Write("Appointments\";\r\n            gridExporter.WriteCsvToResponse();\r\
         #line default
         #line hidden
         
-        #line 312 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 313 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 
     }
 
@@ -778,28 +779,28 @@ this.Write("Appointments\";\r\n            gridExporter.WriteCsvToResponse();\r\
         #line default
         #line hidden
         
-        #line 332 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 333 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write("\t\t\t");
 
         
         #line default
         #line hidden
         
-        #line 332 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 333 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(output));
 
         
         #line default
         #line hidden
         
-        #line 332 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 333 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write("\r\n");
 
         
         #line default
         #line hidden
         
-        #line 333 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 334 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
  
 		}
 		return "";
@@ -814,7 +815,7 @@ this.Write("\r\n");
         #line default
         #line hidden
         
-        #line 342 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 343 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write(@"//------------------------------------------------------------------------------
 // <auto-generated>
 //     This code was generated by a tool.
@@ -833,14 +834,14 @@ namespace OnSite.WebUI.ClientCode.Reports {
         #line default
         #line hidden
         
-        #line 355 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 356 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(sitevisitName));
 
         
         #line default
         #line hidden
         
-        #line 355 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 356 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 this.Write(@"Appointments {
 
 /// <summary>
@@ -886,7 +887,7 @@ this.Write(@"Appointments {
         #line default
         #line hidden
         
-        #line 394 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
+        #line 395 "C:\Users\ryan.kilkenny\Documents\Workspace\On-Site\Admin\OnSite.TemplateWizard\T4\ReportAppointmentsTemplate.tt"
 
 	}
 

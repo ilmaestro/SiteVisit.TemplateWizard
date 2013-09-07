@@ -74,6 +74,7 @@ switch (OutputType) {
 
 <asp:EntityDataSource ID="<#= form.DBTableName #>DataSource" runat="server" 
     ConnectionString="name=SiteVisitDataEntities" 
+	ContextTypeName="OnSite.WebUI.ClientCode.Models.SiteVisitDataEntities"
     DefaultContainerName="SiteVisitDataEntities" EnableDelete="True" 
     EnableFlattening="False" EntitySetName="<#= table #>" 
     EntityTypeFilter="" Select="" Where="it.<#= fkey #> = @<#= fkey #>">

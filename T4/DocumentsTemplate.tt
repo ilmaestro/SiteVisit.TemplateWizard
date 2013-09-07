@@ -131,6 +131,7 @@ switch (OutputType) {
     <asp:EntityDataSource ID="FileDataSource" runat="server" 
         ConnectionString="name=SiteVisitMetaEntities" 
         DefaultContainerName="SiteVisitMetaEntities" EnableFlattening="False" 
+		ContextTypeName="OnSite.WebUI.Models.SiteVisitMetaEntities"
         EntitySetName="ProjectFiles">
     </asp:EntityDataSource>
 </asp:Content>

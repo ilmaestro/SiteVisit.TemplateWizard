@@ -142,6 +142,7 @@ switch (OutputType) {
     </asp:ObjectDataSource>
     <asp:EntityDataSource ID="AppointmentsDataSource" runat="server" 
         ConnectionString="name=SiteVisitDataEntities" DefaultContainerName="SiteVisitDataEntities" 
+		ContextTypeName="OnSite.WebUI.ClientCode.Models.SiteVisitDataEntities"
         EnableFlattening="False" 
         EntitySetName="<#= table #>Appointments" Include="<#= table #>,SiteVisitAppointment" Where="<#= reportViewerFilterExpression #>">
         <#= whereParameters #>

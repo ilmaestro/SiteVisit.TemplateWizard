@@ -227,6 +227,7 @@ switch (OutputType) {
 								</dx:ASPxGridView>
 								<asp:EntityDataSource ID="DispositionsDataSource" runat="server" 
 									ConnectionString="name=SiteVisitDataEntities" DefaultContainerName="SiteVisitDataEntities" 
+                                    ContextTypeName="OnSite.WebUI.ClientCode.Models.SiteVisitDataEntities"
 									EnableFlattening="False" EntitySetName="Dispositions">
 								</asp:EntityDataSource> 
 								</p>
@@ -284,7 +285,7 @@ switch (OutputType) {
                             </asp:ObjectDataSource>
                             <asp:EntityDataSource ID="AppointmentsDataSource" runat="server" 
                                 ConnectionString="name=SiteVisitDataEntities" DefaultContainerName="SiteVisitDataEntities" 
-                                EnableDelete="True" EnableFlattening="False" EnableInsert="True" 
+                                EnableDelete="True" EnableFlattening="False" EnableInsert="True" ContextTypeName="OnSite.WebUI.ClientCode.Models.SiteVisitDataEntities"
                                 EnableUpdate="True" EntitySetName="SiteVisitAppointments" StoreOriginalValuesInViewState="false">
                             </asp:EntityDataSource>      
 							</div>   
